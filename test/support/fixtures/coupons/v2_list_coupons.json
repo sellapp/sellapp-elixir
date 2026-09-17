@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "code": "code",
+      "type": "PERCENTAGE",
+      "discount": "discount",
+      "limit": null,
+      "store_wide": true,
+      "minimum_amount": null,
+      "expires_at": null,
+      "created_at": "2024-01-01T00:00:00.000Z",
+      "updated_at": "2024-01-01T00:00:00.000Z",
+      "store_id": 1,
+      "deleted_at": null,
+      "maximum_discount_amount": null,
+      "products": [
+        1
+      ],
+      "product_variants": [
+        1
+      ]
+    }
+  ],
+  "list_metadata": {
+    "before": null,
+    "after": null
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "data": {
+    "id": 1,
+    "name": "name",
+    "status": "active",
+    "starts_at": null,
+    "ends_at": null,
+    "priority": 1,
+    "is_stackable": true,
+    "max_redemptions": null,
+    "phases": [
+      {
+        "id": 1,
+        "promotion_id": 1,
+        "sort_order": 1,
+        "discount_type": "percentage",
+        "discount_value": "discount_value",
+        "ends_at": null,
+        "max_redemptions": null,
+        "minimum_amount": null,
+        "created_at": null,
+        "updated_at": null,
+        "deleted_at": null
+      }
+    ],
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "data": [
+    {
+      "id": "item:1",
+      "kind": "delivered_product",
+      "state": "pending",
+      "customer_id": 1,
+      "subject": {
+        "type": "type",
+        "id": 1,
+        "name": "name"
+      }
+    }
+  ]
+}

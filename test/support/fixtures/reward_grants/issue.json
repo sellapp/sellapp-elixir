@@ -1,0 +1,23 @@
+{
+  "data": {
+    "id": 1,
+    "reward_rule_id": 1,
+    "customer_id": 1,
+    "customer": null,
+    "granted_at": null,
+    "trigger_type": "PURCHASE_COUNT",
+    "trigger_value": 1,
+    "trigger_threshold": 1,
+    "outputs": [
+      {
+        "id": 1,
+        "type": "WALLET_CREDIT",
+        "payload": {},
+        "coupon_id": null,
+        "wallet_ledger_entry_id": null,
+        "created_at": null
+      }
+    ],
+    "created_at": null
+  }
+}

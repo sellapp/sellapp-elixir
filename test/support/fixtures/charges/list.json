@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "url": "url",
+      "status": "status",
+      "custom_payment_method_id": null
+    }
+  ],
+  "list_metadata": {
+    "before": null,
+    "after": null
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "data": {
+    "id": 1,
+    "order": {
+      "id": 1,
+      "status": null,
+      "payment_method": null,
+      "customer_id": null,
+      "created_at": null,
+      "updated_at": null
+    },
+    "status": "PENDING",
+    "product": {
+      "id": null,
+      "title": null
+    },
+    "variant": {
+      "id": null,
+      "title": null
+    },
+    "customer_id": null,
+    "quantity": 1,
+    "currency": null,
+    "currency_rate": null,
+    "payment_method": null,
+    "amounts": {
+      "unit_price": null,
+      "subtotal_cents": null,
+      "credit_cents": null,
+      "total_exclusive_cents": null,
+      "total_exclusive_usd_cents": null,
+      "total_cents": 1,
+      "total_usd_cents": null,
+      "revenue_cents": null,
+      "revenue_usd_cents": null,
+      "fee_cents": null,
+      "fee_rate": null
+    },
+    "discounts": {
+      "coupon": null,
+      "modifiers": [
+        {
+          "type": "type",
+          "key": "key",
+          "amount_cents": 1,
+          "attributes": {
+            "label": "label",
+            "code": "code"
+          }
+        }
+      ]
+    },
+    "tax": {
+      "id": null,
+      "rate": null,
+      "amount_cents": null,
+      "country": null
+    },
+    "promotion": null,
+    "referral": null,
+    "subscription": null,
+    "fulfillment": {
+      "deliveries_count": 1,
+      "delivered_quantity": 1,
+      "types": [
+        "DOWNLOADABLE"
+      ],
+      "first_delivered_at": null,
+      "last_delivered_at": null
+    },
+    "created_at": null,
+    "updated_at": null
+  }
+}

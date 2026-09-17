@@ -1,0 +1,97 @@
+{
+  "message": "message",
+  "payment_url": "payment_url",
+  "invoice": {
+    "id": 1,
+    "payment": {
+      "fee": {
+        "base": "base",
+        "currency": "currency",
+        "units": 1,
+        "vat": 1,
+        "total": {
+          "exclusive": "exclusive",
+          "inclusive": "inclusive"
+        }
+      },
+      "gateway": {
+        "data": {},
+        "type": "type"
+      },
+      "subtotal": {
+        "base": "base",
+        "currency": "currency",
+        "units": 1,
+        "vat": 1,
+        "total": {
+          "exclusive": "exclusive",
+          "inclusive": "inclusive"
+        }
+      },
+      "expires_at": "2024-01-01T00:00:00.000Z",
+      "full_price": {
+        "base": "base",
+        "currency": "currency",
+        "units": 1,
+        "vat": 1,
+        "total": {
+          "exclusive": "exclusive",
+          "inclusive": "inclusive"
+        }
+      },
+      "original_amount": {
+        "base": "base",
+        "currency": "currency",
+        "units": 1,
+        "vat": 1,
+        "total": {
+          "exclusive": "exclusive",
+          "inclusive": "inclusive"
+        }
+      }
+    },
+    "status": {
+      "history": [
+        "history"
+      ],
+      "status": {
+        "setAt": "2024-01-01T00:00:00.000Z",
+        "status": "status",
+        "updatedAt": "2024-01-01T00:00:00.000Z"
+      }
+    },
+    "webhooks": [
+      {
+        "url": "url",
+        "attempts": 1,
+        "response": null,
+        "queried_at": null
+      }
+    ],
+    "feedback": null,
+    "created_at": "2024-01-01T00:00:00.000Z",
+    "updated_at": "2024-01-01T00:00:00.000Z",
+    "store_id": 1,
+    "coupon_id": null,
+    "subscription_id": null,
+    "customer_information": {
+      "id": 1,
+      "email": "email",
+      "country": null,
+      "location": "location",
+      "ip": "ip",
+      "proxied": true,
+      "browser_agent": "browser_agent",
+      "vat": null,
+      "discord_data": {},
+      "billing_details": {}
+    },
+    "product_variants": [
+      {
+        "id": 1,
+        "product_id": 1,
+        "title": "title"
+      }
+    ]
+  }
+}

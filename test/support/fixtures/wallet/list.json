@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "customer_id": 1,
+      "customer_email": "customer_email",
+      "balance_cents": 1,
+      "held_cents": 1,
+      "available_cents": 1,
+      "status": "active",
+      "created_at": null,
+      "updated_at": null
+    }
+  ],
+  "list_metadata": {
+    "before": null,
+    "after": null
+  }
+}

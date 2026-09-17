@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "title",
+      "status": "status",
+      "customer": {
+        "id": null,
+        "email": "email"
+      },
+      "reference": {
+        "type": null,
+        "id": null
+      },
+      "created_at": null,
+      "updated_at": null,
+      "store_id": 1,
+      "archived": 1,
+      "read_status": {
+        "customer": true,
+        "store": true
+      },
+      "order_id": null,
+      "reason": null,
+      "message_count": 1
+    }
+  ],
+  "list_metadata": {
+    "before": null,
+    "after": null
+  }
+}

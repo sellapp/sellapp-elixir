@@ -1,0 +1,40 @@
+{
+  "data": {
+    "id": 1,
+    "name": "name",
+    "description": null,
+    "is_active": true,
+    "source_listing_id": 1,
+    "source_variant_id": null,
+    "minimum_order_total_usd_cents": null,
+    "maximum_order_total_usd_cents": null,
+    "starts_at": null,
+    "ends_at": null,
+    "available_for_days": null,
+    "max_accepts_per_customer": null,
+    "sort_order": 1,
+    "version": 1,
+    "source_product": null,
+    "source_variant": null,
+    "items": [
+      {
+        "id": 1,
+        "target_listing_id": 1,
+        "target_variant_id": 1,
+        "headline": null,
+        "description": null,
+        "discount_type": null,
+        "discount_value": null,
+        "maximum_discount_amount": null,
+        "sort_order": 1,
+        "target_product": null,
+        "target_variant": null,
+        "created_at": null,
+        "updated_at": null
+      }
+    ],
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  }
+}

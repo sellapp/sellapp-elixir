@@ -1,0 +1,41 @@
+{
+  "data": [
+    {
+      "platform": "discord",
+      "label": "label",
+      "configured": true,
+      "healthy": true,
+      "credential_health_status": null,
+      "credential_health_checked_at": null,
+      "pending_grant_count": 1,
+      "failed_grant_count": 1,
+      "issues": [
+        {}
+      ],
+      "accounts": [
+        {
+          "id": "id",
+          "username": null,
+          "display_name": null,
+          "avatar_url": null
+        }
+      ],
+      "servers": [
+        {
+          "id": "id",
+          "name": "name",
+          "type": null,
+          "health_status": null,
+          "health_checked_at": null,
+          "roles": [
+            {
+              "id": "id",
+              "name": "name",
+              "color": "color"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

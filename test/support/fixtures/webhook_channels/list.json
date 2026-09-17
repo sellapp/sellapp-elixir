@@ -1,0 +1,17 @@
+{
+  "data": [
+    {
+      "id": "00000000-0000-4000-8000-000000000000",
+      "name": null,
+      "url": "url",
+      "allowed_notifications": [
+        "booking.cancelled"
+      ],
+      "signing_secret_configured": true
+    }
+  ],
+  "list_metadata": {
+    "before": null,
+    "after": null
+  }
+}

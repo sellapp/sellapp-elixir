@@ -1,0 +1,9 @@
+SellApp SDK
+
+Maintained by SellApp.
+
+This SDK contains software derived from WorkOS oagen and oagen-emitters,
+licensed under the MIT License reproduced in LICENSE.txt.
+
+Upstream source: https://github.com/workos/oagen
+Upstream emitters: https://github.com/workos/oagen-emitters

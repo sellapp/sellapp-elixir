@@ -1,0 +1,20 @@
+{
+  "data": {
+    "id": 1,
+    "feedback": "feedback",
+    "rating": null,
+    "deleted_at": null,
+    "created_at": null,
+    "updated_at": null,
+    "store_id": 1,
+    "metadata": {},
+    "message": null,
+    "reply": null,
+    "is_automatic": true,
+    "product_id": null,
+    "order_id": null,
+    "sentiment": "POSITIVE",
+    "variant_id": null,
+    "product_title": null
+  }
+}

@@ -1,0 +1,80 @@
+# Generated manual validation for sellapp/sellapp-elixir; ordinary source delivery is validated locally.
+name: SDK CI
+'on':
+  workflow_dispatch: {}
+permissions:
+  contents: read
+concurrency:
+  group: sdk-ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  native:
+    name: elixir native build, tests, audit and package
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - name: Initialize evidence
+        run: |-
+          mkdir -p "$RUNNER_TEMP/sdk-ci-logs"
+          printf "Native validation started\n" > "$RUNNER_TEMP/sdk-ci-logs/lifecycle.log"
+      - name: Set up Node
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version-file: .node-version
+      - name: Validate runtime lane
+        shell: bash
+        env:
+          SDK_LANGUAGE: elixir
+        run: |
+          case "$SDK_LANGUAGE" in
+            node|python|php|go|dotnet|kotlin|ruby|rust|elixir|cli|source|generation) ;;
+            *) echo "Unsupported SDK runtime: $SDK_LANGUAGE" >&2; exit 1 ;;
+          esac
+      - name: Set up Erlang and Elixir
+        uses: erlef/setup-beam@54075bcc5e249e4758d363f27d099f55d843f124
+        with:
+          otp-version: 28.5.0.6
+          elixir-version: 1.20.4
+      - name: Set up Hex and Rebar
+        shell: bash
+        run: |
+          mix local.hex --force
+          mix local.rebar --force
+      - name: Cache native downloads
+        uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+            ~/.cargo/registry
+            ~/.cargo/git
+            ~/.nuget/packages
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+            ~/.cache/sellapp-gradle
+            ~/.cache/pip
+            ~/.cache/composer
+            ~/.hex
+          key: >-
+            native-${{ runner.os }}-${{ runner.arch }}-elixir-${{ hashFiles('.node-version',
+            '.github/actions/setup-sdk-runtime/action.yml', '.github/workflows/ci.yml', 'package-lock.json',
+            'emitter/*/src/**/*.ts', '**/go.sum', '**/Cargo.lock', '**/Cargo.toml', '**/pyproject.toml',
+            '**/Gemfile', '**/composer.json', '**/*.csproj', '**/build.gradle.kts', '**/mix.exs') }}
+          restore-keys: |
+            native-${{ runner.os }}-${{ runner.arch }}-elixir-
+      - name: Validate the standalone SDK
+        run: node .github/scripts/native-ci.mjs
+      - name: Retain native validation evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: native-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/sdk-ci-logs
+          if-no-files-found: error
+          retention-days: 30

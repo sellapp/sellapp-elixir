@@ -1,0 +1,12 @@
+{
+  "data": {
+    "id": "00000000-0000-4000-8000-000000000000",
+    "type": "email",
+    "email": null,
+    "channel": null,
+    "webhook_configured": true,
+    "allowed_notifications": [
+      "allowed_notifications"
+    ]
+  }
+}

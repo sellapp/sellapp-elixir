@@ -1,0 +1,68 @@
+{
+  "data": {
+    "product_id": 1,
+    "product_variant_id": 1,
+    "mode": "native",
+    "conflict_scope": "product",
+    "timezone": "timezone",
+    "duration_minutes": 30,
+    "capacity_per_slot": 1,
+    "min_notice_minutes": 1,
+    "max_advance_days": 1,
+    "buffer_before_minutes": 30,
+    "buffer_after_minutes": 30,
+    "availability": [
+      {
+        "day": 1,
+        "enabled": true,
+        "start": "start",
+        "end": "end"
+      },
+      {
+        "day": 1,
+        "enabled": true,
+        "start": "start",
+        "end": "end"
+      },
+      {
+        "day": 1,
+        "enabled": true,
+        "start": "start",
+        "end": "end"
+      },
+      {
+        "day": 1,
+        "enabled": true,
+        "start": "start",
+        "end": "end"
+      },
+      {
+        "day": 1,
+        "enabled": true,
+        "start": "start",
+        "end": "end"
+      },
+      {
+        "day": 1,
+        "enabled": true,
+        "start": "start",
+        "end": "end"
+      },
+      {
+        "day": 1,
+        "enabled": true,
+        "start": "start",
+        "end": "end"
+      }
+    ],
+    "provider_connection_ids": [
+      1
+    ],
+    "video_provider": "none",
+    "video_provider_connection_id": null,
+    "reminders_enabled": true,
+    "reminder_offset_value": 1,
+    "reminder_offset_unit": "minutes",
+    "meta": {}
+  }
+}

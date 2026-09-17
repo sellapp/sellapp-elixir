@@ -1,0 +1,15 @@
+{
+  "data": {
+    "platform": "discord",
+    "healthy_count": 1,
+    "issue_count": 1,
+    "retried_count": 1,
+    "skipped_count": 1,
+    "skipped_products": [
+      "skipped_products"
+    ],
+    "unchanged_products": [
+      "unchanged_products"
+    ]
+  }
+}

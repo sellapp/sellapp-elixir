@@ -1,0 +1,24 @@
+{
+  "data": {
+    "id": 1,
+    "affiliate_id": null,
+    "affiliate_email": "affiliate_email",
+    "order_id": 1,
+    "invoice_v2_id": null,
+    "product_variant_id": 1,
+    "product_title": null,
+    "variant_title": null,
+    "customer_id": 1,
+    "amount_usd_cents": 1,
+    "commission": {
+      "type": "percentage",
+      "percentage": null,
+      "amount_usd_cents": null
+    },
+    "status": "created",
+    "eligible_for_payout_at": "2024-01-01T00:00:00.000Z",
+    "payout_id": null,
+    "created_at": "2024-01-01T00:00:00.000Z",
+    "updated_at": "2024-01-01T00:00:00.000Z"
+  }
+}

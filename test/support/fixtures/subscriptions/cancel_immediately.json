@@ -1,0 +1,16 @@
+{
+  "data": {
+    "id": 1,
+    "product_subscription_id": 1,
+    "subscription_id": null,
+    "action": "pause",
+    "status": "pending",
+    "provider": "provider",
+    "customer_message": null,
+    "confirmed_at": null,
+    "failed_at": null,
+    "created_at": "2024-01-01T00:00:00.000Z",
+    "updated_at": "2024-01-01T00:00:00.000Z"
+  },
+  "message": "message"
+}

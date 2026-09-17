@@ -1,0 +1,30 @@
+{
+  "data": [
+    {
+      "id": "00000000-0000-4000-8000-000000000000",
+      "type": "sales",
+      "format": "csv",
+      "status": "pending",
+      "parameters": {
+        "from": null,
+        "to": null,
+        "report_type": "summary"
+      },
+      "download_url": "download_url",
+      "filename": null,
+      "content_type": null,
+      "size": null,
+      "failure_message": null,
+      "started_at": null,
+      "completed_at": null,
+      "failed_at": null,
+      "expires_at": null,
+      "created_at": "2024-01-01T00:00:00.000Z",
+      "updated_at": null
+    }
+  ],
+  "list_metadata": {
+    "before": null,
+    "after": null
+  }
+}

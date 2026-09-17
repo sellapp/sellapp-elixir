@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "id": "id",
+      "type": "instructions",
+      "name": "name",
+      "description": null,
+      "instructions": null,
+      "steps": null,
+      "redirect_url": null,
+      "skip_interstitial_page": true,
+      "show_processing_status_page": true,
+      "require_proof_of_payment": true,
+      "enabled": true,
+      "sort_order": 1,
+      "modifier": null,
+      "icon_url": null,
+      "created_at": null,
+      "updated_at": null
+    }
+  ]
+}

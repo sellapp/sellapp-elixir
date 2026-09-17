@@ -1,0 +1,11 @@
+{
+  "data": {
+    "preview_token": null,
+    "expires_at": null,
+    "preview_payload": {},
+    "request_payload": {},
+    "customer_message": null,
+    "seller_message": null
+  },
+  "message": "message"
+}

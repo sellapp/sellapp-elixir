@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "status": "status",
+      "currency": "currency",
+      "subtotal_cents": 1,
+      "total_cents": 1,
+      "line_items": [
+        {
+          "id": 1,
+          "product_id": null,
+          "product_variant_id": null,
+          "product_title": null,
+          "variant_title": null,
+          "quantity": 1,
+          "status": "status"
+        }
+      ],
+      "created_at": null,
+      "updated_at": null
+    }
+  ],
+  "list_metadata": {
+    "before": null,
+    "after": null
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "data": {
+    "id": 1,
+    "wallet_id": 1,
+    "type": "TOP_UP",
+    "amount_cents": 1,
+    "currency_at_source": null,
+    "exchange_rate_to_usd": null,
+    "order_id": null,
+    "charge_id": null,
+    "reverses_entry_id": null,
+    "expired_at": null,
+    "balance_after_cents": 1,
+    "note": null,
+    "idempotency_key": null,
+    "expires_at": null,
+    "created_by_user_id": null,
+    "created_at": null
+  }
+}

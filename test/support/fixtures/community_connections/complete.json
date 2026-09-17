@@ -1,0 +1,20 @@
+{
+  "data": {
+    "platform": "whatsapp",
+    "connected": true,
+    "server": {
+      "id": "id",
+      "name": "name",
+      "type": null,
+      "health_status": null,
+      "health_checked_at": null,
+      "roles": [
+        {
+          "id": "id",
+          "name": "name",
+          "color": "color"
+        }
+      ]
+    }
+  }
+}

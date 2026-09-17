@@ -1,0 +1,21 @@
+{
+  "data": [
+    {
+      "id": "00000000-0000-4000-8000-000000000000",
+      "source": {
+        "type": null,
+        "id": 1
+      },
+      "provider": "provider",
+      "provider_dispute_id": "provider_dispute_id",
+      "amount": 1,
+      "currency": "currency",
+      "status": "open",
+      "reason": null
+    }
+  ],
+  "list_metadata": {
+    "before": null,
+    "after": null
+  }
+}

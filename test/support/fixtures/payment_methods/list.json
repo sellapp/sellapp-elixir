@@ -1,0 +1,27 @@
+{
+  "data": [
+    {
+      "id": "id",
+      "name": "name",
+      "description": "description",
+      "category": "processor",
+      "connection_type": "oauth",
+      "status": "disconnected",
+      "enabled": true,
+      "health_status": "disconnected",
+      "configuration_supported": true,
+      "required_input": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "secret": true
+        }
+      ],
+      "connect_url": null,
+      "configuration_url": null,
+      "status_url": "status_url",
+      "actionable_error": null
+    }
+  ]
+}

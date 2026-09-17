@@ -1,0 +1,8 @@
+{
+  "data": {
+    "id": "id",
+    "username": null,
+    "email": "email",
+    "credential_type": "sanctum"
+  }
+}

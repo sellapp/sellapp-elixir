@@ -1,0 +1,8 @@
+{
+  "data": {
+    "payment_method": "payment_method",
+    "connect_url": "connect_url",
+    "status_url": "status_url",
+    "expires_at": "2024-01-01T00:00:00.000Z"
+  }
+}

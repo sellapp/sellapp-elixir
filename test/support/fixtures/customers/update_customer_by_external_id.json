@@ -1,0 +1,25 @@
+{
+  "data": {
+    "id": 1,
+    "email": "email",
+    "external_id": null,
+    "name": null,
+    "locale": null,
+    "metadata": {},
+    "insights": {
+      "orders_count": 1,
+      "line_items_count": 1,
+      "completed_line_items_count": 1,
+      "pending_line_items_count": 1,
+      "voided_line_items_count": 1,
+      "subscriptions_count": 1,
+      "revenue_usd_cents": 1,
+      "first_purchase_at": null,
+      "last_purchase_at": null,
+      "favorite_payment_method": null
+    },
+    "wallet": null,
+    "created_at": null,
+    "updated_at": null
+  }
+}

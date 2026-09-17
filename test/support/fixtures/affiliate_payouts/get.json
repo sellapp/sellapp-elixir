@@ -1,0 +1,14 @@
+{
+  "data": {
+    "id": 1,
+    "affiliate_id": 1,
+    "affiliate_email": "affiliate_email",
+    "amount_usd_cents": 1,
+    "status": "due",
+    "payout_method": null,
+    "payout_account": "payout_account",
+    "referrals_count": 1,
+    "created_at": "2024-01-01T00:00:00.000Z",
+    "updated_at": "2024-01-01T00:00:00.000Z"
+  }
+}

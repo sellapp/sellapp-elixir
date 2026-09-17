@@ -1,0 +1,17 @@
+{
+  "data": {
+    "platform": "telegram",
+    "status": "pending",
+    "expires_at": null,
+    "qr_code": null,
+    "server": null,
+    "groups_loaded": true,
+    "available_servers": [
+      {
+        "id": "id",
+        "name": "name",
+        "type": "group"
+      }
+    ]
+  }
+}

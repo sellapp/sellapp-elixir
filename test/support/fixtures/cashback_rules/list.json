@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "percent_basis": 1,
+      "maximum_cashback_cents": null,
+      "is_active": true,
+      "product_ids": [
+        1
+      ],
+      "created_at": null,
+      "updated_at": null,
+      "deleted_at": null
+    }
+  ]
+}

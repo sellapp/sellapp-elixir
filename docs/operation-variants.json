@@ -1,0 +1,373 @@
+[
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "createCharge",
+    "mountTarget": "Charges",
+    "methodName": "create",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Charges.create(client, %{\"email\" => \"sofia.rivera@example.com\", \"return_url\" => \"https://example.com/launch-complete\", \"reference\" => \"One more thing launch\", \"currency\" => \"USD\", \"total\" => 10000, \"payment_method\" => \"PAYPAL\"})\nIO.inspect(result)\n",
+    "exampleId": "default",
+    "summary": "default",
+    "mediaType": "application/json",
+    "request": {
+      "email": "sofia.rivera@example.com",
+      "return_url": "https://example.com/launch-complete",
+      "currency": "USD",
+      "total": 10000,
+      "payment_method": "PAYPAL",
+      "reference": "One more thing launch"
+    }
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "createCharge",
+    "mountTarget": "Charges",
+    "methodName": "create",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Charges.create(client, %{\"email\" => \"maya.chen@example.com\", \"return_url\" => \"https://example.com/payment-return\", \"currency\" => \"USD\", \"total\" => 1999, \"payment_method\" => \"CUSTOM_PAYMENT_METHOD\", \"custom_payment_method_id\" => \"01J00000000000000000000001\"})\nIO.inspect(result)\n",
+    "exampleId": "customPreselected",
+    "summary": "Preselect an enabled custom method in this store",
+    "mediaType": "application/json",
+    "request": {
+      "email": "maya.chen@example.com",
+      "return_url": "https://example.com/payment-return",
+      "currency": "USD",
+      "total": 1999,
+      "payment_method": "CUSTOM_PAYMENT_METHOD",
+      "custom_payment_method_id": "01J00000000000000000000001"
+    }
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "createCharge",
+    "mountTarget": "Charges",
+    "methodName": "create",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Charges.create(client, %{\"email\" => \"maya.chen@example.com\", \"return_url\" => \"https://example.com/payment-return\", \"currency\" => \"USD\", \"total\" => 1999, \"payment_methods\" => [\"CUSTOM_PAYMENT_METHOD\"], \"custom_payment_method_ids\" => [\"01J00000000000000000000001\"]})\nIO.inspect(result)\n",
+    "exampleId": "customChoices",
+    "summary": "Offer a specific custom method for customer selection",
+    "mediaType": "application/json",
+    "request": {
+      "email": "maya.chen@example.com",
+      "return_url": "https://example.com/payment-return",
+      "currency": "USD",
+      "total": 1999,
+      "payment_methods": [
+        "CUSTOM_PAYMENT_METHOD"
+      ],
+      "custom_payment_method_ids": [
+        "01J00000000000000000000001"
+      ]
+    }
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "createGroup",
+    "mountTarget": "Groups",
+    "methodName": "create",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Groups.create(client, %{\"title\" => \"Design kit\", \"unlisted\" => true})\nIO.inspect(result)\n",
+    "exampleId": "minimal",
+    "summary": "Minimal valid request",
+    "mediaType": "application/json",
+    "request": {
+      "title": "Design kit",
+      "unlisted": true
+    }
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "createGroup",
+    "mountTarget": "Groups",
+    "methodName": "create",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Groups.create(client, %{\"title\" => \"Design kit\", \"unlisted\" => true, \"order\" => 1})\nIO.inspect(result)\n",
+    "exampleId": "realistic",
+    "summary": "With optional fields",
+    "mediaType": "application/json",
+    "request": {
+      "title": "Design kit",
+      "unlisted": true,
+      "order": 1
+    }
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "validateLicenseKey",
+    "mountTarget": "Licenses",
+    "methodName": "validate",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Licenses.validate(client, %{\"license_key\" => \"01965f1d-f038-7116-b57f-9e7ecb4e7b8f\"})\nIO.inspect(result)\n",
+    "exampleId": "minimal",
+    "summary": "Minimal valid request",
+    "mediaType": "application/json",
+    "request": {
+      "license_key": "01965f1d-f038-7116-b57f-9e7ecb4e7b8f"
+    }
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "validateLicenseKey",
+    "mountTarget": "Licenses",
+    "methodName": "validate",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Licenses.validate(client, %{\"license_key\" => \"01965f1d-f038-7116-b57f-9e7ecb4e7b8f\", \"instance_id\" => \"9ebd3be0-de72-4da7-805e-bc99d1ac1186\"})\nIO.inspect(result)\n",
+    "exampleId": "realistic",
+    "summary": "With optional fields",
+    "mediaType": "application/json",
+    "request": {
+      "license_key": "01965f1d-f038-7116-b57f-9e7ecb4e7b8f",
+      "instance_id": "9ebd3be0-de72-4da7-805e-bc99d1ac1186"
+    }
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "createProduct",
+    "mountTarget": "Products",
+    "methodName": "create",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Products.create(client, %{\"title\" => \"Design kit\", \"description\" => \"Templates for your next project.\", \"visibility\" => \"HIDDEN\"})\nIO.inspect(result)\n",
+    "exampleId": "minimal",
+    "summary": "Minimal hidden product",
+    "mediaType": "application/json",
+    "request": {
+      "title": "Design kit",
+      "description": "Templates for your next project.",
+      "visibility": "HIDDEN"
+    }
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "createProduct",
+    "mountTarget": "Products",
+    "methodName": "create",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Products.create(client, %{\"title\" => \"Design kit\", \"description\" => \"Templates for your next project.\", \"visibility\" => \"HIDDEN\", \"slug\" => \"design-kit-launch\"})\nIO.inspect(result)\n",
+    "exampleId": "realistic",
+    "summary": "Product with a custom URL slug",
+    "mediaType": "application/json",
+    "request": {
+      "title": "Design kit",
+      "description": "Templates for your next project.",
+      "visibility": "HIDDEN",
+      "slug": "design-kit-launch"
+    }
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "createProduct",
+    "mountTarget": "Products",
+    "methodName": "create",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Products.create(client, %{\"title\" => \"Design kit\", \"description\" => \"Reusable templates for your next launch\", \"visibility\" => \"PUBLIC\", \"variants\" => [%{\"title\" => \"Standard\", \"description\" => \"The complete design kit\", \"pricing\" => %{\"price\" => %{\"price\" => 1999, \"currency\" => \"USD\"}, \"humble\" => false}, \"deliverable\" => %{\"types\" => [\"MANUAL\"], \"data\" => %{\"comment\" => \"Your kit will be delivered shortly.\"}}, \"minimum_purchase_quantity\" => 1, \"maximum_purchase_quantity\" => 10, \"payment_methods\" => [\"PAYPAL\"]}]})\nIO.inspect(result)\n",
+    "exampleId": "withVariants",
+    "summary": "Create a product and its first variant",
+    "mediaType": "application/json",
+    "request": {
+      "title": "Design kit",
+      "description": "Reusable templates for your next launch",
+      "visibility": "PUBLIC",
+      "variants": [
+        {
+          "title": "Standard",
+          "description": "The complete design kit",
+          "pricing": {
+            "price": {
+              "price": 1999,
+              "currency": "USD"
+            },
+            "humble": false
+          },
+          "deliverable": {
+            "types": [
+              "MANUAL"
+            ],
+            "data": {
+              "comment": "Your kit will be delivered shortly."
+            }
+          },
+          "minimum_purchase_quantity": 1,
+          "maximum_purchase_quantity": 10,
+          "payment_methods": [
+            "PAYPAL"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "createProduct",
+    "mountTarget": "Products",
+    "methodName": "create",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Products.create(client, %{\"title\" => \"Launch bundle\", \"description\" => \"Two design kits in one purchase\", \"visibility\" => \"PUBLIC\", \"type\" => \"bundle\", \"variants\" => [%{\"title\" => \"Standard\", \"description\" => \"The complete design kit\", \"pricing\" => %{\"price\" => %{\"price\" => 1999, \"currency\" => \"USD\"}, \"humble\" => false}, \"deliverable\" => %{\"types\" => [\"BUNDLE\"], \"data\" => %{}}, \"minimum_purchase_quantity\" => 1, \"maximum_purchase_quantity\" => 10, \"payment_methods\" => [\"PAYPAL\"]}], \"bundle_items\" => [%{\"product_variant_id\" => 4321, \"quantity\" => 2}]})\nIO.inspect(result)\n",
+    "exampleId": "completeBundle",
+    "summary": "Create a complete bundle",
+    "mediaType": "application/json",
+    "request": {
+      "title": "Launch bundle",
+      "description": "Two design kits in one purchase",
+      "visibility": "PUBLIC",
+      "type": "bundle",
+      "variants": [
+        {
+          "title": "Standard",
+          "description": "The complete design kit",
+          "pricing": {
+            "price": {
+              "price": 1999,
+              "currency": "USD"
+            },
+            "humble": false
+          },
+          "deliverable": {
+            "types": [
+              "BUNDLE"
+            ],
+            "data": {}
+          },
+          "minimum_purchase_quantity": 1,
+          "maximum_purchase_quantity": 10,
+          "payment_methods": [
+            "PAYPAL"
+          ]
+        }
+      ],
+      "bundle_items": [
+        {
+          "product_variant_id": 4321,
+          "quantity": 2
+        }
+      ]
+    }
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "cancelSubscriptionImmediately",
+    "mountTarget": "Subscriptions",
+    "methodName": "cancel_immediately",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Subscriptions.cancel_immediately(client, 55, %{\"reason\" => \"Customer request\"})\nIO.inspect(result)\n",
+    "exampleId": "minimal",
+    "summary": "Cancel without requesting a refund",
+    "mediaType": "application/json",
+    "request": {
+      "reason": "Customer request"
+    }
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "cancelSubscriptionImmediately",
+    "mountTarget": "Subscriptions",
+    "methodName": "cancel_immediately",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Subscriptions.cancel_immediately(client, 55, %{\"reason\" => \"Customer request\", \"refund_last_payment\" => true, \"pro_rated_refund\" => true})\nIO.inspect(result)\n",
+    "exampleId": "with_refund",
+    "summary": "Requests a real prorated refund; cancellation success does not prove refund success",
+    "mediaType": "application/json",
+    "request": {
+      "reason": "Customer request",
+      "refund_last_payment": true,
+      "pro_rated_refund": true
+    }
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "createAddOnDraft",
+    "mountTarget": "AddOns",
+    "methodName": "create",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.AddOns.create(client, %{\"title\" => \"Customer support\", \"description\" => \"Priority support for launches scheduled suspiciously close to Friday.\", \"visibility\" => \"PUBLIC\", \"parent_product_ids\" => [120, 121]})\nIO.inspect(result)\n",
+    "exampleId": "draft",
+    "summary": "Create a draft add-on",
+    "mediaType": "application/json",
+    "request": {
+      "title": "Customer support",
+      "description": "Priority support for launches scheduled suspiciously close to Friday.",
+      "visibility": "PUBLIC",
+      "parent_product_ids": [
+        120,
+        121
+      ]
+    }
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "createAddOnDraft",
+    "mountTarget": "AddOns",
+    "methodName": "create",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.AddOns.create(client, %{\"title\" => \"Priority support\", \"description\" => \"Personal help with your design kit\", \"visibility\" => \"PUBLIC\", \"is_draft\" => false, \"parent_product_ids\" => [120], \"variant\" => %{\"title\" => \"Standard\", \"description\" => \"The complete design kit\", \"pricing\" => %{\"price\" => %{\"price\" => 1999, \"currency\" => \"USD\"}, \"humble\" => false}, \"deliverable\" => %{\"types\" => [\"MANUAL\"], \"data\" => %{\"comment\" => \"Your kit will be delivered shortly.\"}}, \"minimum_purchase_quantity\" => 1, \"maximum_purchase_quantity\" => 10, \"payment_methods\" => [\"PAYPAL\"]}})\nIO.inspect(result)\n",
+    "exampleId": "published",
+    "summary": "Create and publish an add-on with a variant",
+    "mediaType": "application/json",
+    "request": {
+      "title": "Priority support",
+      "description": "Personal help with your design kit",
+      "visibility": "PUBLIC",
+      "is_draft": false,
+      "parent_product_ids": [
+        120
+      ],
+      "variant": {
+        "title": "Standard",
+        "description": "The complete design kit",
+        "pricing": {
+          "price": {
+            "price": 1999,
+            "currency": "USD"
+          },
+          "humble": false
+        },
+        "deliverable": {
+          "types": [
+            "MANUAL"
+          ],
+          "data": {
+            "comment": "Your kit will be delivered shortly."
+          }
+        },
+        "minimum_purchase_quantity": 1,
+        "maximum_purchase_quantity": 10,
+        "payment_methods": [
+          "PAYPAL"
+        ]
+      }
+    }
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "exchangeOAuthToken",
+    "mountTarget": "Oauth",
+    "methodName": "exchange_oauth_token",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: \"\",\n  store: \"\"\n)\n\n{:ok, result} = SellApp.OAuth.exchange_oauth_token(client, %{\"client_id\" => \"01992a65-e064-71ba-b38f-902b7966a6be\", \"grant_type\" => \"authorization_code\", \"code\" => \"AUTHORIZATION_CODE\", \"redirect_uri\" => \"http://127.0.0.1:49152/callback\", \"code_verifier\" => \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\"})\nIO.inspect(result)\n",
+    "exampleId": "authorizationCode",
+    "summary": "authorizationCode",
+    "mediaType": "application/x-www-form-urlencoded",
+    "request": {
+      "client_id": "01992a65-e064-71ba-b38f-902b7966a6be",
+      "grant_type": "authorization_code",
+      "code": "AUTHORIZATION_CODE",
+      "redirect_uri": "http://127.0.0.1:49152/callback",
+      "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"
+    }
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "exchangeOAuthToken",
+    "mountTarget": "Oauth",
+    "methodName": "exchange_oauth_token",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: \"\",\n  store: \"\"\n)\n\n{:ok, result} = SellApp.OAuth.exchange_oauth_token(client, %{\"client_id\" => \"01992a65-e064-71ba-b38f-902b7966a6be\", \"grant_type\" => \"refresh_token\", \"refresh_token\" => \"REFRESH_TOKEN\"})\nIO.inspect(result)\n",
+    "exampleId": "refresh",
+    "summary": "refresh",
+    "mediaType": "application/x-www-form-urlencoded",
+    "request": {
+      "client_id": "01992a65-e064-71ba-b38f-902b7966a6be",
+      "grant_type": "refresh_token",
+      "refresh_token": "REFRESH_TOKEN"
+    }
+  }
+]

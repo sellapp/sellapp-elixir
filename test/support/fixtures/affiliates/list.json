@@ -1,0 +1,27 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "email": "email",
+      "status": "pending",
+      "reason": null,
+      "payout_method": null,
+      "profile": null,
+      "balances": {
+        "available_usd_cents": 1,
+        "pending_usd_cents": 1,
+        "paid_usd_cents": 1
+      },
+      "referrals_count": 1,
+      "payouts_count": 1,
+      "invited_at": null,
+      "application_submitted_at": null,
+      "created_at": "2024-01-01T00:00:00.000Z",
+      "updated_at": "2024-01-01T00:00:00.000Z"
+    }
+  ],
+  "list_metadata": {
+    "before": null,
+    "after": null
+  }
+}

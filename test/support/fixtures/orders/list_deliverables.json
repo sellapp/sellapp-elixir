@@ -1,0 +1,21 @@
+{
+  "data": [
+    {
+      "order_id": 1,
+      "line_item_id": 1,
+      "type": "type",
+      "status": "pending",
+      "product_variant_id": null,
+      "quantity": 1,
+      "deliverable": {
+        "types": [
+          "types"
+        ],
+        "data": {}
+      },
+      "additional_information": [
+        {}
+      ]
+    }
+  ]
+}

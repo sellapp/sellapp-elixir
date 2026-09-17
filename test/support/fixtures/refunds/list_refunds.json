@@ -1,0 +1,23 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "source": "source",
+      "refundable": {
+        "type": "order",
+        "id": 1
+      },
+      "provider": "provider",
+      "provider_payment_id": null,
+      "provider_refund_id": null,
+      "amount_cents": 1,
+      "currency": "currency",
+      "status": "status",
+      "reason": null
+    }
+  ],
+  "list_metadata": {
+    "before": null,
+    "after": null
+  }
+}

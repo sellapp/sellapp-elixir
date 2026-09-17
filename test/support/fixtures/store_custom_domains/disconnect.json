@@ -1,0 +1,14 @@
+{
+  "data": {
+    "id": 1,
+    "domain": "domain",
+    "status": "pending",
+    "hostname_status": null,
+    "ssl_status": null,
+    "ownership_verification": {},
+    "ssl_validation_records": null,
+    "cname_target": "cname_target",
+    "last_checked_at": null,
+    "verified_at": null
+  }
+}

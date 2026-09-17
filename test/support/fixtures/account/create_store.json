@@ -1,0 +1,10 @@
+{
+  "data": {
+    "id": "id",
+    "slug": "slug",
+    "name": "name",
+    "visibility": "PUBLIC",
+    "storefront_url": "storefront_url",
+    "dashboard_url": "dashboard_url"
+  }
+}

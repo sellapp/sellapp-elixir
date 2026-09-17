@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "invoice_id": 1,
+      "product_variant_id": 1,
+      "deliverable": {
+        "types": [
+          "DOWNLOADABLE"
+        ],
+        "data": {
+          "serials": [
+            "serials"
+          ],
+          "delivered_files": [
+            "delivered_files"
+          ],
+          "dynamic": "dynamic",
+          "manual": "manual",
+          "license_keys": [
+            "license_keys"
+          ],
+          "credits_granted": 1
+        }
+      },
+      "quantity": 1,
+      "additional_information": [
+        {
+          "key": "key",
+          "type": "type",
+          "label": "label",
+          "value": null
+        }
+      ]
+    }
+  ]
+}

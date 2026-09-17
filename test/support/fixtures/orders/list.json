@@ -1,0 +1,62 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "status": "PENDING",
+      "timeline": [
+        {
+          "status": "PENDING",
+          "set_at": "2024-01-01T00:00:00.000Z"
+        }
+      ],
+      "customer": {
+        "id": null,
+        "email": null,
+        "country": null,
+        "location": null,
+        "proxied": null
+      },
+      "payment": {
+        "method": null,
+        "transaction_id": null,
+        "payment_id": null,
+        "payment_capture_id": null,
+        "blockchain_txid": null,
+        "settlement_gateway": null,
+        "has_checkout_url": true
+      },
+      "totals": {
+        "currency": "currency",
+        "subtotal_cents": 1,
+        "total_exclusive_cents": 1,
+        "total_cents": 1,
+        "total_exclusive_usd_cents": null,
+        "total_usd_cents": null
+      },
+      "coupon_id": null,
+      "line_items": [
+        {
+          "id": 1,
+          "product_id": null,
+          "product_variant_id": null,
+          "product_title": null,
+          "variant_title": null,
+          "quantity": 1,
+          "status": "PENDING",
+          "currency": null,
+          "subtotal_cents": null,
+          "total_exclusive_cents": null,
+          "total_cents": 1,
+          "subscription_id": null,
+          "created_at": null
+        }
+      ],
+      "created_at": null,
+      "updated_at": null
+    }
+  ],
+  "list_metadata": {
+    "before": null,
+    "after": null
+  }
+}

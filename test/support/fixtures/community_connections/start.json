@@ -1,0 +1,13 @@
+{
+  "data": {
+    "platform": "discord",
+    "type": "oauth",
+    "mode": "mode",
+    "connect_url": "connect_url",
+    "verification_token": "verification_token",
+    "status_token": "status_token",
+    "expires_at": null,
+    "bot_username": null,
+    "qr_code": "qr_code"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "data": [
+    {
+      "id": "00000000-0000-4000-8000-000000000000",
+      "product_id": null,
+      "product_variant_id": null,
+      "type": "blocked",
+      "status": "active",
+      "title": "title",
+      "slot_start_at": "2024-01-01T00:00:00.000Z",
+      "slot_end_at": "2024-01-01T00:00:00.000Z",
+      "timezone": "timezone",
+      "created_at": "2024-01-01T00:00:00.000Z",
+      "updated_at": "2024-01-01T00:00:00.000Z"
+    }
+  ]
+}

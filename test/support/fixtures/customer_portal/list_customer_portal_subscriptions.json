@@ -1,0 +1,21 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "status": "status",
+      "subscription_id": null,
+      "customer_id": null,
+      "provider_subscription_id": null,
+      "provider_customer_id": null,
+      "customer": {
+        "id": 1,
+        "email": "email",
+        "external_id": null,
+        "name": null,
+        "locale": null,
+        "metadata": {}
+      },
+      "product_variant_id": 1
+    }
+  ]
+}

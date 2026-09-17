@@ -1,0 +1,11 @@
+{
+  "data": {
+    "enabled": true,
+    "minimum_top_up_cents": null,
+    "maximum_top_up_cents": null,
+    "expiration_days": null,
+    "payment_methods": [
+      "payment_methods"
+    ]
+  }
+}
