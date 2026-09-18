@@ -392,7 +392,7 @@ defmodule SellApp.Client do
 
   defp request_headers(_client, opts) do
     idempotency = Keyword.get(opts, :idempotency_key)
-    base = Keyword.fetch!(opts, :auth_headers) ++ [{"user-agent", "SellApp Elixir/0.1.0"}]
+    base = Keyword.fetch!(opts, :auth_headers) ++ [{"user-agent", "SellApp Elixir/0.1.1"}]
 
     base =
       if is_binary(idempotency) and String.trim(idempotency) != "",

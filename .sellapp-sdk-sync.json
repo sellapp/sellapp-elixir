@@ -2,12 +2,12 @@
   "schemaVersion": 1,
   "language": "elixir",
   "repository": "sellapp/sellapp-elixir",
-  "sourceSha": "8d8876b1921e931e18baf6f31ed48f79c5282f73",
+  "sourceSha": "e4051383c6618a31c201c050d55d7bdacd157f0c",
   "specSha256": "02043ebfc36589e78743f00a0f4a2f3ac9ac14914b9cf2910f04fc34ad2d0924",
   "runId": "0",
   "runAttempt": "1",
-  "treeDigest": "8846e5dc1024bd3822dc6a1aa9636ef2e296334d3a7c7dc4c35739726d04411a",
-  "contentDigest": "0563227a8043b8019bb6535cc6f4bf872a767e27602dc02783c54b186bd7f1fd",
+  "treeDigest": "54328bde0531fa799cdaa82b16d27dd86c4cb44981975f39e5a431970319c078",
+  "contentDigest": "1d422f28bf00e279ef2803222612a867960666b5c6c6c66df212489322d39db0",
   "files": [
     {
       "path": ".formatter.exs",
@@ -57,7 +57,7 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "sha256": "d6929dfb6453ef5f8b13bc3536eddbb38c68f8b5c64ed93737d8aeeec013a60b"
+      "sha256": "1d453e8a8a84e194af657961e64292ade472861c39c0f0bb66196bfe501f57cc"
     },
     {
       "path": "docs/methods.md",
@@ -497,7 +497,7 @@
     {
       "path": "generation-manifest.json",
       "mode": "100644",
-      "sha256": "4b8f69e7a949f9bf5410e01cb37df601f8be3362987cb45b0455b4338cc2c605"
+      "sha256": "649802fcc23f4180239b88c13f89c659e13d63088b6a67dd6aa06c1385c6ebee"
     },
     {
       "path": "lib/sellapp.ex",
@@ -1492,7 +1492,7 @@
     {
       "path": "lib/sellapp/client.ex",
       "mode": "100644",
-      "sha256": "2f51f2ec92fd5c9d0ef9e6d1c02610bec27e9d1b9c7c6097aaf6e162e122531f"
+      "sha256": "1e8b637138c1bd9d01f4e81c12fb5ca9711d77bbe821d1c596f7caa87aae33b9"
     },
     {
       "path": "lib/sellapp/community_connections.ex",
@@ -16322,7 +16322,7 @@
     {
       "path": "mix.exs",
       "mode": "100644",
-      "sha256": "6e59be989d4b27b168267505b7888683adb86775ae78205bfa75c16b2767746c"
+      "sha256": "811648bc86439ad5ad4a5e55a8ce789a637af8bc1617923c3506f8a22db8a480"
     },
     {
       "path": "test/operation_contract_test.exs",
