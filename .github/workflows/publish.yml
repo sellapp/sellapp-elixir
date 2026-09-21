@@ -1,0 +1,93 @@
+# Generated manual publication; pushes and tags never publish automatically.
+name: Publish validated Elixir package and HexDocs
+'on':
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Release tag containing the validated package assets (vX.Y.Z)
+        required: true
+        type: string
+      manifest_sha256:
+        description: SHA-256 from the reviewed local publication manifest
+        required: true
+        type: string
+      docs_only:
+        description: Resume documentation upload only after a verified package was already accepted
+        required: true
+        default: false
+        type: boolean
+      publish:
+        description: Upload to Hex after verification (leave unchecked for verification only)
+        required: true
+        default: false
+        type: boolean
+permissions:
+  contents: read
+concurrency:
+  group: elixir-hex-publication
+  cancel-in-progress: false
+jobs:
+  verify:
+    if: github.repository == 'sellapp/sellapp-elixir' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      artifact_id: ${{ steps.verified_artifact.outputs.artifact-id }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - name: Verify retained package hashes and source identity
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          MANIFEST_SHA256: ${{ inputs.manifest_sha256 }}
+        run: >-
+          python3 .github/scripts/verify-elixir-publication.py --tag "$RELEASE_TAG" --sha256
+          "$MANIFEST_SHA256"
+      - name: Retain verified distributions
+        id: verified_artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: verified-hex-${{ github.run_id }}-${{ github.run_attempt }}
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
+  publish:
+    needs: verify
+    if: inputs.publish && !github.event.repository.private
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment:
+      name: hex
+      url: https://hex.pm/packages/sellapp
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0
+        with:
+          artifact-ids: ${{ needs.verify.outputs.artifact_id }}
+          path: dist/
+      - name: Upload the exact verified package and documentation without rebuilding
+        env:
+          HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
+          DOCS_ONLY: ${{ inputs.docs_only }}
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          MANIFEST_SHA256: ${{ inputs.manifest_sha256 }}
+        run: >-
+          if [ "$DOCS_ONLY" = "true" ]; then python3 .github/scripts/verify-elixir-publication.py
+          --publish-retained --docs-only --tag "$RELEASE_TAG" --sha256 "$MANIFEST_SHA256"; else python3
+          .github/scripts/verify-elixir-publication.py --publish-retained --tag "$RELEASE_TAG" --sha256
+          "$MANIFEST_SHA256"; fi
+      - name: Retain publication acknowledgment, including partial acceptance
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: hex-acknowledgment-${{ github.run_id }}-${{ github.run_attempt }}
+          path: publication-acknowledgment.json
+          if-no-files-found: ignore
+          retention-days: 30

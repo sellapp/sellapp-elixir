@@ -2,12 +2,12 @@
   "schemaVersion": 1,
   "language": "elixir",
   "repository": "sellapp/sellapp-elixir",
-  "sourceSha": "e4051383c6618a31c201c050d55d7bdacd157f0c",
+  "sourceSha": "617c71170f5c326d2d707c0f3e01caf9a948d2fc",
   "specSha256": "02043ebfc36589e78743f00a0f4a2f3ac9ac14914b9cf2910f04fc34ad2d0924",
   "runId": "0",
   "runAttempt": "1",
-  "treeDigest": "54328bde0531fa799cdaa82b16d27dd86c4cb44981975f39e5a431970319c078",
-  "contentDigest": "1d422f28bf00e279ef2803222612a867960666b5c6c6c66df212489322d39db0",
+  "treeDigest": "e8f9e78bc0d4dc1db2675e57524ce5956ba8563c5d2fd9032bfd944cd2d1c828",
+  "contentDigest": "00c0aa7f5c718805f580d8d5101320d3c4e2981f52102ba582f9178db4f6521c",
   "files": [
     {
       "path": ".formatter.exs",
@@ -15,9 +15,14 @@
       "sha256": "ef78c0c642715c525194070d5c439bb3164de855ae9f7f3e0e41088f92527ff1"
     },
     {
+      "path": ".github/scripts/build-elixir-docs.py",
+      "mode": "100644",
+      "sha256": "4b6a356ef19e33390001790826d64e96f211fb2c71f5350b1499665bf3e39598"
+    },
+    {
       "path": ".github/scripts/native-ci.mjs",
       "mode": "100644",
-      "sha256": "598e45384094a5fbf9655853149ddee423e677589ce9880abe611af328511334"
+      "sha256": "e7c5e578cb1925fb90fcfdec3bc1d5be9f610414835590c5872bca6dcf57dd6b"
     },
     {
       "path": ".github/scripts/sdk-documentation-packages.mjs",
@@ -30,9 +35,19 @@
       "sha256": "ac2df255c52242dbddab236bbc5606c93a5a8c2d0ab49568b3889f29b08c2664"
     },
     {
+      "path": ".github/scripts/verify-elixir-publication.py",
+      "mode": "100644",
+      "sha256": "447f421fbb59f0a134debdaac917fa5e01269969df88c54ac94c2a3b1ecb0d6e"
+    },
+    {
       "path": ".github/workflows/ci.yml",
       "mode": "100644",
       "sha256": "0665bd6d3acdfb58e450013d6bbe1fae9c0041de76a6b92ef2273f2158e9f2f9"
+    },
+    {
+      "path": ".github/workflows/publish.yml",
+      "mode": "100644",
+      "sha256": "c5ffdb21d68a3965f9f9c9f753f2b0cb50ddef007f9a9c85d9400293586ac1d8"
     },
     {
       "path": ".node-version",
@@ -57,7 +72,7 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "sha256": "1d453e8a8a84e194af657961e64292ade472861c39c0f0bb66196bfe501f57cc"
+      "sha256": "d6f6184c0179922156c287c1d9183194b35c9721883e3245373a9c71b570c013"
     },
     {
       "path": "docs/methods.md",
@@ -467,7 +482,7 @@
     {
       "path": "docs/usage.md",
       "mode": "100644",
-      "sha256": "a3219666d86997be23f0453713c66bb917d4901d3253ce9f8ecbc1bb6cb0f8e8"
+      "sha256": "85a310d024cf77d38b7a997d3460301e408e173c8ab12782cb9f885348806b78"
     },
     {
       "path": "examples/README.md",
@@ -497,7 +512,7 @@
     {
       "path": "generation-manifest.json",
       "mode": "100644",
-      "sha256": "649802fcc23f4180239b88c13f89c659e13d63088b6a67dd6aa06c1385c6ebee"
+      "sha256": "69168997b3fef29769cde19fb6dbd26d161b22da3b40bf730a712a652dbf6951"
     },
     {
       "path": "lib/sellapp.ex",
@@ -16322,7 +16337,7 @@
     {
       "path": "mix.exs",
       "mode": "100644",
-      "sha256": "811648bc86439ad5ad4a5e55a8ce789a637af8bc1617923c3506f8a22db8a480"
+      "sha256": "adfcafa822feda6fa95a12e7ce063af42ff4a967d7cc86705483cc9358fa08d5"
     },
     {
       "path": "test/operation_contract_test.exs",

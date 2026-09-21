@@ -10,10 +10,33 @@ defmodule SellApp.MixProject do
       elixir: "~> 1.15",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      description: "SellApp Elixir SDK",
+      description:
+        "Official Elixir SDK for the SellApp API: manage products, orders, subscriptions, and customers.",
+      name: "SellApp",
+      source_url: "https://github.com/sellapp/sellapp-elixir",
+      homepage_url: "https://sell.app",
+      docs: [
+        main: "readme",
+        source_ref: "v0.1.1",
+        extras:
+          [
+            {"README.md", [filename: "readme"]},
+            {"examples/README.md", [filename: "examples", title: "Examples"]},
+            "LICENSE.txt",
+            "NOTICE.txt"
+          ] ++ Path.wildcard("docs/**/*.md")
+      ],
       package: [
         licenses: ["MIT"],
-        files: ["lib", "mix.exs", "README.md", "LICENSE.txt", "NOTICE.txt", "docs"],
+        files: [
+          "lib",
+          "mix.exs",
+          "README.md",
+          "LICENSE.txt",
+          "NOTICE.txt",
+          "docs",
+          ".formatter.exs"
+        ],
         links: %{
           "SellApp" => "https://sell.app/docs/api",
           "GitHub" => "https://github.com/sellapp/sellapp-elixir"
@@ -28,7 +51,8 @@ defmodule SellApp.MixProject do
     [
       {:req, "~> 0.5"},
       {:plug, "~> 1.16", only: :test},
-      {:jason, "~> 1.4"}
+      {:jason, "~> 1.4"},
+      {:ex_doc, "~> 0.40.3", only: :dev, runtime: false}
     ]
   end
 end

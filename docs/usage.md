@@ -28,7 +28,7 @@ you can use, `:error` for a failure you need to handle.
 Authentication failures return `{:error, %SellApp.Error.Authentication{}}`;
 other API failures return `{:error, %SellApp.Error.Api{}}` with `type`, `code`,
 `message`, `status`, `param`, `request_id`, and `docs_url`.
-The request ID comes from the body or `X-Request-ID` and may be nil. Successful
+The request ID comes from the body or `X-Request-ID` and may be nil.
 Pass `with_response: true` to receive a `SellApp.Response` envelope containing
 the typed value, status, headers, and request ID.
 Other returned error structs are `Error.Configuration`, `Error.Timeout`,
@@ -85,7 +85,7 @@ calling process; there is no separate SDK client process to stop.
 ## Pages and failures
 
 More products? The API returns a page at a time. The
-[pagination example](https://github.com/sellapp/sellapp-elixir/blob/main/examples/pagination.exs) asks for numbered pages, checks
+[pagination example](https://github.com/sellapp/sellapp-elixir/blob/v0.1.1/examples/pagination.exs) asks for numbered pages, checks
 every result, and stops at a defined limit.
 
 Generated pages support `Page.next/1` and bounded `Page.stream/2`. They
@@ -93,7 +93,7 @@ extract positive numeric page values only after validating the configured API
 origin and operation path, detect cycles, continue through empty intermediate
 pages, and raise later-page failures instead of returning an incomplete list.
 
-When a request fails, the [error example](https://github.com/sellapp/sellapp-elixir/blob/main/examples/errors.exs) matches API,
+When a request fails, the [error example](https://github.com/sellapp/sellapp-elixir/blob/v0.1.1/examples/errors.exs) matches API,
 timeout, and transport errors separately and reports the API request ID.
 Check the key for a 401, permissions for a 403, and the store slug or resource
 ID for a 404.

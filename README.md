@@ -9,32 +9,23 @@ and no changes to your store.
 Already know the basics? Jump to [configuration](https://github.com/sellapp/sellapp-elixir/blob/main/docs/usage.md#client-configuration) or the
 [method index](https://github.com/sellapp/sellapp-elixir/blob/main/docs/methods.md).
 
-## Availability and installation
+## Install
 
-**Start with a local checkout.** This is pre-release source for the planned
-**0.1.1** release; registry publication and namespace ownership are unconfirmed.
-You'll need access to the private
-[sellapp-elixir](https://github.com/sellapp/sellapp-elixir) repository.
+Add the [Hex package](https://hex.pm/packages/sellapp) to your application's
+`mix.exs` dependency list:
+
+```elixir
+{:sellapp, "~> 0.1.1"}
+```
+
+Then run `mix deps.get` to download the SDK and its dependencies.
 
 The package declares **Elixir ~> 1.15**. Native validation runs on Elixir 1.20.4
 with OTP 28.4; the declared minimum and an independent minimum OTP version have
 not been verified. Use a compatible Erlang/OTP installation and Mix.
 
-Tell Mix where to find your local SDK. Add this entry to your application's
-`mix.exs` dependency list, replacing the placeholder with your checkout's path:
-
-```elixir
-{:sellapp, path: "/path/to/sellapp-elixir"}
-```
-
-Then run `mix deps.get` to install dependencies. If you'd like to try the examples
-before adding the SDK to your app, run these commands in the SDK checkout itself:
-
-```sh
-mix deps.get
-mix compile
-```
-
+If you are starting a new application, run `mix new sellapp_example` and
+`cd sellapp_example` before adding the dependency above.
 
 ## Your first request
 
@@ -45,23 +36,8 @@ For `launch-lab.sell.app`, the slug is `launch-lab`.
 The [authentication guide](https://sell.app/docs/api/authentication) explains key
 setup and access rules. Keep the key on your server and out of Git.
 
-Run these commands in a Bash-compatible terminal from the SDK checkout, replacing
-the key and store. The `export` lines set environment variables: values the
-script reads without keeping secrets in its source code.
-
-```sh
-export SELLAPP_API_KEY='replace-with-your-key'
-export SELLAPP_STORE='launch-lab'
-export SELLAPP_API_BASE_URL='https://sell.app/api'
-mix run examples/first-request.exs
-```
-
-This endpoint reads your real store. `SELLAPP_API_BASE_URL` is an example variable
-passed explicitly to the client, not a built-in SDK setting. Use `SELLAPP_STORE`
-consistently across the API guides.
-
-Here's the complete [first-request.exs](https://github.com/sellapp/sellapp-elixir/blob/main/examples/first-request.exs) script you just
-ran. It builds the client, requests one product, and prints the result:
+Save this complete program as `first-request.exs` in your application's root
+directory. It builds the client, requests one product, and prints the result:
 
 ```elixir
 base_url = System.fetch_env!("SELLAPP_API_BASE_URL")
@@ -74,6 +50,21 @@ client = SellApp.client(base_url: base_url)
 Enum.each(page.data, fn product -> IO.puts("#{product.id} #{product.title}") end)
 if page.data == [], do: IO.puts("No products yet. The request worked!")
 ```
+
+Replace the key and store below, then run these commands from your application
+in a Bash-compatible terminal. The `export` lines set environment variables:
+values the script reads without keeping secrets in its source code.
+
+```sh
+export SELLAPP_API_KEY='replace-with-your-key'
+export SELLAPP_STORE='launch-lab'
+export SELLAPP_API_BASE_URL='https://sell.app/api'
+mix run first-request.exs
+```
+
+This endpoint reads your real store without changing it. `SELLAPP_API_BASE_URL`
+is an example variable passed explicitly to the client, not a built-in SDK
+setting. Use `SELLAPP_STORE` consistently across the API guides.
 
 You should see a product ID and title from your own store. If the store is empty,
 you'll see the success message instead. The connection still worked.

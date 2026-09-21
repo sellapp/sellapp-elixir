@@ -87,6 +87,13 @@ const config = {
       },
       {
         "stage": "documentation",
+        "executable": "python3",
+        "args": [
+          ".github/scripts/build-elixir-docs.py"
+        ]
+      },
+      {
+        "stage": "documentation",
         "executable": "node",
         "args": [
           ".github/scripts/sdk-documentation-packages.mjs",
