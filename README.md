@@ -15,7 +15,7 @@ Add the [Hex package](https://hex.pm/packages/sellapp) to your application's
 `mix.exs` dependency list:
 
 ```elixir
-{:sellapp, "~> 0.2.0"}
+{:sellapp, "~> 0.2.1"}
 ```
 
 Then run `mix deps.get` to download the SDK and its dependencies.

@@ -103,13 +103,13 @@ defmodule SellApp.SubscriptionsActions do
   @doc """
   Dismiss a subscription action
 
-  Dismiss a pending lifecycle action that the provider left unresolved, which frees the subscription for its next change. Only a pending action can be dismissed, and the required `note` is stored on the action as its `error` so the decision stays on the record. An action in any other state returns `422` with the refusal sentence under `errors.subscription`, while a missing or over-long `note` returns an ordinary field error. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Dismiss a pending lifecycle action that the provider left unresolved, which frees the subscription for its next change. Only a pending action can be dismissed, and the required `note` is stored on the action as its `error` so the decision stays on the record. An action in any other state returns `422` with the refusal sentence under `errors.subscription`, while a missing or over-long `note` returns an ordinary field error. This operation does not replay completed dismissals: idempotency keys are ignored. After a lost response, retrieve the action before repeating the request; an already-dismissed action returns `422`. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
     * `product_subscription` — The productSubscription path parameter.
     * `action` — The action path parameter.
-    * `params` — request body map
+    * `params` — request body map. Deprecated: `:idempotency_key` (see `SellApp.SdkDismissSubscriptionActionRequestApplicationJson`).
     * `opts` — per-request options (see `SellApp.Client.request/5`)
   """
   @spec dismiss(SellApp.Client.t(), String.t(), String.t(), map(), keyword()) ::
@@ -130,7 +130,7 @@ defmodule SellApp.SubscriptionsActions do
              "/v2/subscriptions/#{URI.encode(product_subscription, &URI.char_unreserved?/1)}/actions/#{URI.encode(action, &URI.char_unreserved?/1)}/dismiss",
              params,
              Keyword.put(
-               Keyword.put(Keyword.put(opts, :idempotency_supported, true), :request_body, true),
+               Keyword.put(opts, :request_body, true),
                :operation_id,
                "dismissSubscriptionAction"
              )

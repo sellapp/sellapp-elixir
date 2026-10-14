@@ -2,6 +2,12 @@
 
 This update covers 438 SDK operations. Existing API-key constructors remain available. Review the changes below before rebuilding your integration.
 
+## SDK and CLI 0.2.1 retry correction
+
+The new `dismissSubscriptionAction` operation does not replay an earlier successful dismissal. Its inherited `idempotency_key` body field remains accepted for compatibility but is ignored. The contract no longer advertises `Idempotency-Key` header support, so SDKs, CLI and MCP do not enable automatic write retries for this operation. After an uncertain response, retrieve the action; a second dismissal of an already-dismissed action returns `422`.
+
+This corrects the 0.2.0 retry metadata without changing the backend action. Already-published 0.2.0 packages remain immutable. Registry publication and clean installation of 0.2.1 are separate gates.
+
 ## SDK and CLI 0.2.0 candidate
 
 This candidate includes the docs changes merged from September 22 through October 14, 2026. Publication and registry installation are separate release gates; this note does not establish that 0.2.0 is available.

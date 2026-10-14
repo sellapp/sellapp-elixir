@@ -3,6 +3,10 @@
 defmodule SellApp.SdkDismissSubscriptionActionRequestApplicationJson do
   @moduledoc """
   SdkDismissSubscriptionActionRequestApplicationJson model.
+
+  ## Deprecated fields
+
+    * `:idempotency_key` — Accepted for compatibility but ignored by this operation. Retrieve the action after an uncertain response; repeating a completed dismissal returns 422.
   """
 
   defstruct [
