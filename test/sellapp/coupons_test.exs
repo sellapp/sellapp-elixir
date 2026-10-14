@@ -63,7 +63,9 @@ defmodule SellApp.CouponsTest do
                "product_variants" => [1],
                "limit" => nil,
                "expires_at" => nil,
-               "minimum_amount" => nil
+               "minimum_amount" => nil,
+               "applies_to" => "one_time",
+               "subscription_payments" => nil
              })
   end
 
@@ -95,7 +97,9 @@ defmodule SellApp.CouponsTest do
                "product_variants" => [1],
                "limit" => nil,
                "expires_at" => nil,
-               "minimum_amount" => nil
+               "minimum_amount" => nil,
+               "applies_to" => "one_time",
+               "subscription_payments" => nil
              })
   end
 
@@ -116,7 +120,9 @@ defmodule SellApp.CouponsTest do
                "product_variants" => [1],
                "limit" => nil,
                "expires_at" => nil,
-               "minimum_amount" => nil
+               "minimum_amount" => nil,
+               "applies_to" => "one_time",
+               "subscription_payments" => nil
              })
   end
 
@@ -208,7 +214,9 @@ defmodule SellApp.CouponsTest do
                    "product_variants" => [1],
                    "limit" => nil,
                    "expires_at" => nil,
-                   "minimum_amount" => nil
+                   "minimum_amount" => nil,
+                   "applies_to" => "one_time",
+                   "subscription_payments" => nil
                  }
                ]
              })
@@ -282,7 +290,9 @@ defmodule SellApp.CouponsTest do
                "product_variants" => [1],
                "limit" => nil,
                "expires_at" => nil,
-               "minimum_amount" => nil
+               "minimum_amount" => nil,
+               "applies_to" => "one_time",
+               "subscription_payments" => nil
              })
   end
 
@@ -372,7 +382,9 @@ defmodule SellApp.CouponsTest do
                "product_variants" => [1],
                "limit" => nil,
                "expires_at" => nil,
-               "minimum_amount" => nil
+               "minimum_amount" => nil,
+               "applies_to" => "one_time",
+               "subscription_payments" => nil
              })
   end
 
@@ -393,7 +405,9 @@ defmodule SellApp.CouponsTest do
                "product_variants" => [1],
                "limit" => nil,
                "expires_at" => nil,
-               "minimum_amount" => nil
+               "minimum_amount" => nil,
+               "applies_to" => "one_time",
+               "subscription_payments" => nil
              })
   end
 
@@ -427,7 +441,9 @@ defmodule SellApp.CouponsTest do
                    "product_variants" => [1],
                    "limit" => nil,
                    "expires_at" => nil,
-                   "minimum_amount" => nil
+                   "minimum_amount" => nil,
+                   "applies_to" => "one_time",
+                   "subscription_payments" => nil
                  }
                ]
              })
@@ -457,7 +473,8 @@ defmodule SellApp.CouponsTest do
 
   test "list encodes query parameters", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
-      params = Plug.Conn.fetch_query_params(conn).query_params
+      pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()
+      params = Map.new(pairs)
       assert params["limit"] == "hello world&x"
       refute Map.has_key?(params, "page")
       Req.Test.json(conn, SellApp.TestFixtures.fixture("coupons/list"))

@@ -67,7 +67,8 @@ Choose a resource for native signatures, complete examples, permissions, errors,
 | [store_custom_domains](resources/store_custom_domains.md) | 5 |
 | [store_notification_channels](resources/store_notification_channels.md) | 6 |
 | [store_settings](resources/store_settings.md) | 7 |
-| [subscriptions](resources/subscriptions.md) | 14 |
+| [subscriptions](resources/subscriptions.md) | 15 |
+| [subscriptions_actions](resources/subscriptions_actions.md) | 3 |
 | [tickets](resources/tickets.md) | 7 |
 | [tickets_messages](resources/tickets_messages.md) | 8 |
 | [upsell_offers](resources/upsell_offers.md) | 7 |

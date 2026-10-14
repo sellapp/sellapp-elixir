@@ -272,7 +272,7 @@ Delete a product variant
 [API reference](https://sell.app/docs/api/product-variants/delete-a-product-variant) · Effect: **consequential**
 
 ```elixir
-def delete(client, product, variant, opts \\ [])
+def delete(client, product, variant, params \\ %{}, opts \\ [])
 ```
 
 | Argument | Native type | Required |
@@ -280,6 +280,7 @@ def delete(client, product, variant, opts \\ [])
 | client | `any` | Yes |
 | product | `any` | Yes |
 | variant | `any` | Yes |
+| params | `any` | Yes |
 | opts | `any` | Yes |
 
 Returns: `any`.
@@ -291,7 +292,7 @@ client = SellApp.Client.new(
   store: System.fetch_env!("SELLAPP_STORE")
 )
 
-{:ok, result} = SellApp.ProductVariants.delete(client, 1, 2)
+{:ok, result} = SellApp.ProductVariants.delete(client, 1, 2, %{})
 IO.inspect(result)
 ```
 

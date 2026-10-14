@@ -13,6 +13,11 @@ defmodule SellApp.SdkReplacePromotionRequestApplicationJson do
     :priority,
     :is_stackable,
     :max_redemptions,
+    :applies_to,
+    :subscription_payments,
+    :store_wide,
+    :products,
+    :product_variants,
     :phases,
     __additional_properties__: %{},
     __present_fields__: []
@@ -26,6 +31,11 @@ defmodule SellApp.SdkReplacePromotionRequestApplicationJson do
           priority: integer() | nil,
           is_stackable: boolean() | nil,
           max_redemptions: integer() | nil,
+          applies_to: SellApp.SdkReplacePromotionRequestApplicationJsonAppliesTo.t() | nil,
+          subscription_payments: integer() | nil,
+          store_wide: boolean() | nil,
+          products: [integer()] | nil,
+          product_variants: [integer()] | nil,
           phases: [SellApp.ReplacePromotionRequestApplicationJsonPropertyPhasesItem.t()] | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
@@ -53,6 +63,17 @@ defmodule SellApp.SdkReplacePromotionRequestApplicationJson do
         required: false,
         schema: %{kind: :nullable, inner: %{kind: :integer, minimum: 1, maximum: 4_294_967_295}}
       },
+      "applies_to" => %{
+        required: false,
+        schema: %{kind: :enum, values: ["one_time", "subscriptions"]}
+      },
+      "subscription_payments" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :integer, minimum: 1, maximum: 36}}
+      },
+      "store_wide" => %{required: false, schema: %{kind: :boolean}},
+      "products" => %{required: false, schema: %{kind: :array, items: %{kind: :integer}}},
+      "product_variants" => %{required: false, schema: %{kind: :array, items: %{kind: :integer}}},
       "phases" => %{
         required: false,
         schema: %{
@@ -87,6 +108,15 @@ defmodule SellApp.SdkReplacePromotionRequestApplicationJson do
       priority: map["priority"],
       is_stackable: map["is_stackable"],
       max_redemptions: map["max_redemptions"],
+      applies_to:
+        SellApp.Cast.enum(
+          map["applies_to"],
+          &SellApp.SdkReplacePromotionRequestApplicationJsonAppliesTo.cast/1
+        ),
+      subscription_payments: map["subscription_payments"],
+      store_wide: map["store_wide"],
+      products: map["products"],
+      product_variants: map["product_variants"],
       phases:
         SellApp.Cast.list(
           map["phases"],
@@ -101,6 +131,11 @@ defmodule SellApp.SdkReplacePromotionRequestApplicationJson do
           "priority",
           "is_stackable",
           "max_redemptions",
+          "applies_to",
+          "subscription_payments",
+          "store_wide",
+          "products",
+          "product_variants",
           "phases"
         ]),
       __present_fields__: Map.keys(map)
@@ -124,6 +159,15 @@ defmodule SellApp.SdkReplacePromotionRequestApplicationJson do
           "priority" => struct.priority,
           "is_stackable" => struct.is_stackable,
           "max_redemptions" => struct.max_redemptions,
+          "applies_to" =>
+            SellApp.Cast.enum(
+              struct.applies_to,
+              &SellApp.SdkReplacePromotionRequestApplicationJsonAppliesTo.dump/1
+            ),
+          "subscription_payments" => struct.subscription_payments,
+          "store_wide" => struct.store_wide,
+          "products" => struct.products,
+          "product_variants" => struct.product_variants,
           "phases" =>
             SellApp.Cast.list(struct.phases, fn item ->
               SellApp.Cast.dump_struct(

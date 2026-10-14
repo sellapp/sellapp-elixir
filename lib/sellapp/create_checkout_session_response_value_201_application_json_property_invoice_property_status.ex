@@ -13,7 +13,9 @@ defmodule SellApp.CreateCheckoutSessionResponseValue201ApplicationJsonPropertyIn
   ]
 
   @type t :: %__MODULE__{
-          history: [String.t()],
+          history: [
+            SellApp.CreateCheckoutSessionResponseValue201ApplicationJsonPropertyInvoicePropertyStatusPropertyHistoryItem.t()
+          ],
           status:
             SellApp.CreateCheckoutSessionResponseValue201ApplicationJsonPropertyInvoicePropertyStatusPropertyStatus.t(),
           __additional_properties__: map(),
@@ -23,7 +25,17 @@ defmodule SellApp.CreateCheckoutSessionResponseValue201ApplicationJsonPropertyIn
   @schema %{
     name: "CreateCheckoutSessionResponseValue201ApplicationJsonPropertyInvoicePropertyStatus",
     properties: %{
-      "history" => %{required: true, schema: %{kind: :array, items: %{kind: :string}}},
+      "history" => %{
+        required: true,
+        schema: %{
+          kind: :array,
+          items: %{
+            kind: :model,
+            module:
+              SellApp.CreateCheckoutSessionResponseValue201ApplicationJsonPropertyInvoicePropertyStatusPropertyHistoryItem
+          }
+        }
+      },
       "status" => %{
         required: true,
         schema: %{
@@ -44,7 +56,11 @@ defmodule SellApp.CreateCheckoutSessionResponseValue201ApplicationJsonPropertyIn
     SellApp.Schema.validate_model!(map, @schema, :response)
 
     %__MODULE__{
-      history: map["history"],
+      history:
+        SellApp.Cast.list(
+          map["history"],
+          &SellApp.CreateCheckoutSessionResponseValue201ApplicationJsonPropertyInvoicePropertyStatusPropertyHistoryItem.from_map/1
+        ),
       status:
         SellApp.Cast.nested(
           map["status"],
@@ -61,7 +77,13 @@ defmodule SellApp.CreateCheckoutSessionResponseValue201ApplicationJsonPropertyIn
     known =
       SellApp.Cast.keep_present(
         %{
-          "history" => struct.history,
+          "history" =>
+            SellApp.Cast.list(struct.history, fn item ->
+              SellApp.Cast.dump_struct(
+                item,
+                &SellApp.CreateCheckoutSessionResponseValue201ApplicationJsonPropertyInvoicePropertyStatusPropertyHistoryItem.to_map/1
+              )
+            end),
           "status" =>
             SellApp.Cast.dump_struct(
               struct.status,

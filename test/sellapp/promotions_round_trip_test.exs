@@ -14,6 +14,11 @@ defmodule SellApp.PromotionsRoundTripTest do
         "priority" => 1,
         "is_stackable" => true,
         "max_redemptions" => nil,
+        "applies_to" => "one_time",
+        "subscription_payments" => nil,
+        "store_wide" => true,
+        "products" => [1],
+        "product_variants" => [1],
         "phases" => [
           %{
             "id" => 1,
@@ -58,6 +63,11 @@ defmodule SellApp.PromotionsRoundTripTest do
         "priority" => 1,
         "is_stackable" => true,
         "max_redemptions" => nil,
+        "applies_to" => "one_time",
+        "subscription_payments" => nil,
+        "store_wide" => true,
+        "products" => [1],
+        "product_variants" => [1],
         "phases" => [
           %{
             "id" => 1,
@@ -102,6 +112,11 @@ defmodule SellApp.PromotionsRoundTripTest do
         "priority" => 1,
         "is_stackable" => true,
         "max_redemptions" => nil,
+        "applies_to" => "one_time",
+        "subscription_payments" => nil,
+        "store_wide" => true,
+        "products" => [1],
+        "product_variants" => [1],
         "phases" => [
           %{
             "id" => 1,
@@ -146,6 +161,11 @@ defmodule SellApp.PromotionsRoundTripTest do
         "priority" => 1,
         "is_stackable" => true,
         "max_redemptions" => nil,
+        "applies_to" => "one_time",
+        "subscription_payments" => nil,
+        "store_wide" => true,
+        "products" => [1],
+        "product_variants" => [1],
         "phases" => [
           %{
             "id" => 1,
@@ -190,6 +210,11 @@ defmodule SellApp.PromotionsRoundTripTest do
         "priority" => 1,
         "is_stackable" => true,
         "max_redemptions" => nil,
+        "applies_to" => "one_time",
+        "subscription_payments" => nil,
+        "store_wide" => true,
+        "products" => [1],
+        "product_variants" => [1],
         "phases" => [
           %{
             "id" => 1,
@@ -234,6 +259,11 @@ defmodule SellApp.PromotionsRoundTripTest do
         "priority" => 1,
         "is_stackable" => true,
         "max_redemptions" => nil,
+        "applies_to" => "one_time",
+        "subscription_payments" => nil,
+        "store_wide" => true,
+        "products" => [1],
+        "product_variants" => [1],
         "phases" => [
           %{
             "id" => 1,

@@ -2,7 +2,7 @@
 
 defmodule SellApp.PreviewSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyPreviewPayload do
   @moduledoc """
-  PreviewSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyPreviewPayload model.
+  The provider's own preview of the change, so its keys differ per provider.
   """
 
   defstruct __additional_properties__: %{}, __present_fields__: []

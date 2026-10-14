@@ -6,21 +6,27 @@ defmodule SellApp.SdkConfirmCustomerSubscriptionPlanChangeRequestApplicationJson
   """
 
   defstruct [
-    :preview_id,
-    :product_variant_id,
-    :renewal_date,
-    :return_url,
-    :reason,
+    :target_variant_id,
+    :preview_token,
+    :effective_timing,
+    :proration_behavior,
+    :metadata,
     __additional_properties__: %{},
     __present_fields__: []
   ]
 
   @type t :: %__MODULE__{
-          preview_id: String.t() | nil,
-          product_variant_id: integer() | nil,
-          renewal_date: String.t() | nil,
-          return_url: String.t() | nil,
-          reason: String.t() | nil,
+          target_variant_id: integer(),
+          preview_token: String.t(),
+          effective_timing:
+            SellApp.SdkConfirmCustomerSubscriptionPlanChangeRequestApplicationJsonEffectiveTiming.t()
+            | nil,
+          proration_behavior:
+            SellApp.SdkConfirmCustomerSubscriptionPlanChangeRequestApplicationJsonProrationBehavior.t()
+            | nil,
+          metadata:
+            SellApp.ConfirmCustomerSubscriptionPlanChangeRequestApplicationJsonPropertyMetadata.t()
+            | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -28,11 +34,27 @@ defmodule SellApp.SdkConfirmCustomerSubscriptionPlanChangeRequestApplicationJson
   @schema %{
     name: "SdkConfirmCustomerSubscriptionPlanChangeRequestApplicationJson",
     properties: %{
-      "preview_id" => %{required: false, schema: %{kind: :string}},
-      "product_variant_id" => %{required: false, schema: %{kind: :integer}},
-      "renewal_date" => %{required: false, schema: %{kind: :string, format: "date"}},
-      "return_url" => %{required: false, schema: %{kind: :string, format: "uri"}},
-      "reason" => %{required: false, schema: %{kind: :string}}
+      "target_variant_id" => %{required: true, schema: %{kind: :integer}},
+      "preview_token" => %{required: true, schema: %{kind: :string, max_length: 128}},
+      "effective_timing" => %{
+        required: false,
+        schema: %{kind: :enum, values: ["immediate", "next_renewal"]}
+      },
+      "proration_behavior" => %{
+        required: false,
+        schema: %{
+          kind: :enum,
+          values: ["invoice_now", "credit_next_invoice", "none", "provider_default"]
+        }
+      },
+      "metadata" => %{
+        required: false,
+        schema: %{
+          kind: :model,
+          module:
+            SellApp.ConfirmCustomerSubscriptionPlanChangeRequestApplicationJsonPropertyMetadata
+        }
+      }
     },
     additional_properties: true
   }
@@ -45,13 +67,31 @@ defmodule SellApp.SdkConfirmCustomerSubscriptionPlanChangeRequestApplicationJson
     SellApp.Schema.validate_model!(map, @schema, :response)
 
     %__MODULE__{
-      preview_id: map["preview_id"],
-      product_variant_id: map["product_variant_id"],
-      renewal_date: map["renewal_date"],
-      return_url: map["return_url"],
-      reason: map["reason"],
+      target_variant_id: map["target_variant_id"],
+      preview_token: map["preview_token"],
+      effective_timing:
+        SellApp.Cast.enum(
+          map["effective_timing"],
+          &SellApp.SdkConfirmCustomerSubscriptionPlanChangeRequestApplicationJsonEffectiveTiming.cast/1
+        ),
+      proration_behavior:
+        SellApp.Cast.enum(
+          map["proration_behavior"],
+          &SellApp.SdkConfirmCustomerSubscriptionPlanChangeRequestApplicationJsonProrationBehavior.cast/1
+        ),
+      metadata:
+        SellApp.Cast.nested(
+          map["metadata"],
+          &SellApp.ConfirmCustomerSubscriptionPlanChangeRequestApplicationJsonPropertyMetadata.from_map/1
+        ),
       __additional_properties__:
-        Map.drop(map, ["preview_id", "product_variant_id", "renewal_date", "return_url", "reason"]),
+        Map.drop(map, [
+          "target_variant_id",
+          "preview_token",
+          "effective_timing",
+          "proration_behavior",
+          "metadata"
+        ]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -62,13 +102,25 @@ defmodule SellApp.SdkConfirmCustomerSubscriptionPlanChangeRequestApplicationJson
     known =
       SellApp.Cast.keep_present(
         %{
-          "preview_id" => struct.preview_id,
-          "product_variant_id" => struct.product_variant_id,
-          "renewal_date" => struct.renewal_date,
-          "return_url" => struct.return_url,
-          "reason" => struct.reason
+          "target_variant_id" => struct.target_variant_id,
+          "preview_token" => struct.preview_token,
+          "effective_timing" =>
+            SellApp.Cast.enum(
+              struct.effective_timing,
+              &SellApp.SdkConfirmCustomerSubscriptionPlanChangeRequestApplicationJsonEffectiveTiming.dump/1
+            ),
+          "proration_behavior" =>
+            SellApp.Cast.enum(
+              struct.proration_behavior,
+              &SellApp.SdkConfirmCustomerSubscriptionPlanChangeRequestApplicationJsonProrationBehavior.dump/1
+            ),
+          "metadata" =>
+            SellApp.Cast.dump_struct(
+              struct.metadata,
+              &SellApp.ConfirmCustomerSubscriptionPlanChangeRequestApplicationJsonPropertyMetadata.to_map/1
+            )
         },
-        [],
+        ["target_variant_id", "preview_token"],
         struct.__present_fields__
       )
 

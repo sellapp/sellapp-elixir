@@ -1,0 +1,17 @@
+{
+  "data": {
+    "preview_token": null,
+    "expires_at": null,
+    "preview_payload": {
+      "provider": "provider",
+      "payment_required": true,
+      "renewal_date": null,
+      "amount_due": 1,
+      "discount_warning": "discount_warning"
+    },
+    "request_payload": {},
+    "customer_message": null,
+    "seller_message": null
+  },
+  "message": "message"
+}

@@ -10,6 +10,7 @@ defmodule SellApp.BatchDeleteProductVariantsResponseValue200ApplicationJsonPrope
     :frequency,
     :type,
     :price,
+    :trial,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -21,6 +22,9 @@ defmodule SellApp.BatchDeleteProductVariantsResponseValue200ApplicationJsonPrope
           type: String.t(),
           price:
             SellApp.BatchDeleteProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPrice.t(),
+          trial:
+            SellApp.BatchDeleteProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrial.t()
+            | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -45,6 +49,14 @@ defmodule SellApp.BatchDeleteProductVariantsResponseValue200ApplicationJsonPrope
           kind: :model,
           module:
             SellApp.BatchDeleteProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPrice
+        }
+      },
+      "trial" => %{
+        required: false,
+        schema: %{
+          kind: :model,
+          module:
+            SellApp.BatchDeleteProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrial
         }
       }
     },
@@ -71,7 +83,12 @@ defmodule SellApp.BatchDeleteProductVariantsResponseValue200ApplicationJsonPrope
           map["price"],
           &SellApp.BatchDeleteProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPrice.from_map/1
         ),
-      __additional_properties__: Map.drop(map, ["humble", "frequency", "type", "price"]),
+      trial:
+        SellApp.Cast.nested(
+          map["trial"],
+          &SellApp.BatchDeleteProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrial.from_map/1
+        ),
+      __additional_properties__: Map.drop(map, ["humble", "frequency", "type", "price", "trial"]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -93,6 +110,11 @@ defmodule SellApp.BatchDeleteProductVariantsResponseValue200ApplicationJsonPrope
             SellApp.Cast.dump_struct(
               struct.price,
               &SellApp.BatchDeleteProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPrice.to_map/1
+            ),
+          "trial" =>
+            SellApp.Cast.dump_struct(
+              struct.trial,
+              &SellApp.BatchDeleteProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrial.to_map/1
             )
         },
         ["humble", "frequency", "type", "price"],

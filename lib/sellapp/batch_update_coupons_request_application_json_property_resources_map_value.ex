@@ -15,6 +15,8 @@ defmodule SellApp.BatchUpdateCouponsRequestApplicationJsonPropertyResourcesMapVa
     :limit,
     :expires_at,
     :minimum_amount,
+    :applies_to,
+    :subscription_payments,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -31,6 +33,10 @@ defmodule SellApp.BatchUpdateCouponsRequestApplicationJsonPropertyResourcesMapVa
           limit: integer() | nil,
           expires_at: String.t() | nil,
           minimum_amount: number() | String.t() | nil,
+          applies_to:
+            SellApp.BatchUpdateCouponsRequestApplicationJsonPropertyResourcesMapValueAppliesTo.t()
+            | nil,
+          subscription_payments: integer() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -76,6 +82,14 @@ defmodule SellApp.BatchUpdateCouponsRequestApplicationJsonPropertyResourcesMapVa
             ]
           }
         }
+      },
+      "applies_to" => %{
+        required: false,
+        schema: %{kind: :enum, values: ["one_time", "subscriptions"]}
+      },
+      "subscription_payments" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :integer, minimum: 1, maximum: 36}}
       }
     },
     additional_properties: true
@@ -102,6 +116,12 @@ defmodule SellApp.BatchUpdateCouponsRequestApplicationJsonPropertyResourcesMapVa
       limit: map["limit"],
       expires_at: map["expires_at"],
       minimum_amount: map["minimum_amount"],
+      applies_to:
+        SellApp.Cast.enum(
+          map["applies_to"],
+          &SellApp.BatchUpdateCouponsRequestApplicationJsonPropertyResourcesMapValueAppliesTo.cast/1
+        ),
+      subscription_payments: map["subscription_payments"],
       __additional_properties__:
         Map.drop(map, [
           "code",
@@ -112,7 +132,9 @@ defmodule SellApp.BatchUpdateCouponsRequestApplicationJsonPropertyResourcesMapVa
           "product_variants",
           "limit",
           "expires_at",
-          "minimum_amount"
+          "minimum_amount",
+          "applies_to",
+          "subscription_payments"
         ]),
       __present_fields__: Map.keys(map)
     }
@@ -136,7 +158,13 @@ defmodule SellApp.BatchUpdateCouponsRequestApplicationJsonPropertyResourcesMapVa
           "product_variants" => struct.product_variants,
           "limit" => struct.limit,
           "expires_at" => struct.expires_at,
-          "minimum_amount" => SellApp.Cast.dump_union(struct.minimum_amount)
+          "minimum_amount" => SellApp.Cast.dump_union(struct.minimum_amount),
+          "applies_to" =>
+            SellApp.Cast.enum(
+              struct.applies_to,
+              &SellApp.BatchUpdateCouponsRequestApplicationJsonPropertyResourcesMapValueAppliesTo.dump/1
+            ),
+          "subscription_payments" => struct.subscription_payments
         },
         [],
         struct.__present_fields__

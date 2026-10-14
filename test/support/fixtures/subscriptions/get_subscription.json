@@ -1,19 +1,30 @@
 {
   "data": {
     "id": 1,
-    "status": "status",
+    "invoice_id": null,
+    "provider": null,
     "subscription_id": null,
     "customer_id": null,
     "provider_subscription_id": null,
     "provider_customer_id": null,
-    "customer": {
-      "id": 1,
-      "email": "email",
-      "external_id": null,
-      "name": null,
-      "locale": null,
-      "metadata": {}
-    },
-    "product_variant_id": 1
+    "customer": null,
+    "customer_email": null,
+    "status": "ACTIVE",
+    "current_period_start": null,
+    "current_period_end": null,
+    "trial_ends_at": null,
+    "cancel_at_period_end": true,
+    "cancellation_in_progress": true,
+    "store_id": null,
+    "product_variant_id": null,
+    "current_plan_variant_id": null,
+    "auto_renew": true,
+    "paused_at": null,
+    "pause_resumes_at": null,
+    "canceled_immediately_at": null,
+    "payment_method_updated_at": null,
+    "last_customer_action_at": null,
+    "created_at": "2024-01-01T00:00:00.000Z",
+    "updated_at": "2024-01-01T00:00:00.000Z"
   }
 }

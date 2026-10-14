@@ -34,6 +34,94 @@ defmodule SellApp.SubscriptionsTest do
              })
   end
 
+  test "list_subscriptions succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "GET"
+      assert String.ends_with?(conn.request_path, "/v2/subscriptions")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("subscriptions/list_subscriptions"))
+    end)
+
+    assert {:ok,
+            %SellApp.Page{
+              data: [%SellApp.SdkListSubscriptionsResponseValue200ApplicationJson{} | _]
+            }} = SellApp.Subscriptions.list_subscriptions(client)
+  end
+
+  test "list_subscriptions handles an empty page", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      Req.Test.json(conn, %{"data" => [], "list_metadata" => %{"after" => nil}})
+    end)
+
+    assert {:ok, %SellApp.Page{data: []} = page} =
+             SellApp.Subscriptions.list_subscriptions(client)
+
+    refute SellApp.Page.has_more?(page)
+    assert page |> SellApp.Page.stream() |> Enum.to_list() == []
+  end
+
+  test "search_subscriptions succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "POST"
+      assert String.ends_with?(conn.request_path, "/v2/subscriptions/search")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("subscriptions/search_subscriptions"))
+    end)
+
+    assert {:ok,
+            %SellApp.Page{
+              data: [%SellApp.SdkSearchSubscriptionsResponseValue200ApplicationJson{} | _]
+            }} =
+             SellApp.Subscriptions.search_subscriptions(client, %{
+               "filters" => [
+                 %{
+                   "field" => "field",
+                   "operator" => "operator",
+                   "value" => nil,
+                   "type" => "and",
+                   "nested" => [%{}]
+                 }
+               ],
+               "sort" => [%{"field" => "field", "direction" => "asc"}],
+               "search" => %{"value" => nil, "case_sensitive" => true},
+               "includes" => [%{"relation" => "relation"}]
+             })
+  end
+
+  test "search_subscriptions handles an empty page", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      Req.Test.json(conn, %{"data" => [], "list_metadata" => %{"after" => nil}})
+    end)
+
+    assert {:ok, %SellApp.Page{data: []} = page} =
+             SellApp.Subscriptions.search_subscriptions(client, %{
+               "filters" => [
+                 %{
+                   "field" => "field",
+                   "operator" => "operator",
+                   "value" => nil,
+                   "type" => "and",
+                   "nested" => [%{}]
+                 }
+               ],
+               "sort" => [%{"field" => "field", "direction" => "asc"}],
+               "search" => %{"value" => nil, "case_sensitive" => true},
+               "includes" => [%{"relation" => "relation"}]
+             })
+
+    refute SellApp.Page.has_more?(page)
+    assert page |> SellApp.Page.stream() |> Enum.to_list() == []
+  end
+
+  test "get_subscription succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "GET"
+      assert String.ends_with?(conn.request_path, "/v2/subscriptions/test_product_subscription")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("subscriptions/get_subscription"))
+    end)
+
+    assert {:ok, %SellApp.SdkGetSubscriptionResponseValue200ApplicationJson{}} =
+             SellApp.Subscriptions.get_subscription(client, "test_product_subscription")
+  end
+
   test "get_capabilities succeeds", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       assert conn.method == "GET"
@@ -96,6 +184,24 @@ defmodule SellApp.SubscriptionsTest do
              })
   end
 
+  test "keep succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "POST"
+
+      assert String.ends_with?(
+               conn.request_path,
+               "/v2/subscriptions/test_product_subscription/actions/keep"
+             )
+
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("subscriptions/keep"))
+    end)
+
+    assert {:ok, %SellApp.SdkKeepSubscriptionResponseValue200ApplicationJson{message: "message"}} =
+             SellApp.Subscriptions.keep(client, "test_product_subscription", %{
+               "idempotency_key" => nil
+             })
+  end
+
   test "pause succeeds", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       assert conn.method == "POST"
@@ -144,12 +250,16 @@ defmodule SellApp.SubscriptionsTest do
                "/v2/subscriptions/test_product_subscription/actions/update-payment-method"
              )
 
-      Plug.Conn.send_resp(conn, 204, "")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("subscriptions/update_payment_method"))
     end)
 
-    assert {:ok, _} =
+    assert {:ok,
+            %SellApp.SdkUpdateSubscriptionPaymentMethodResponseValue200ApplicationJson{
+              message: "message"
+            }} =
              SellApp.Subscriptions.update_payment_method(client, "test_product_subscription", %{
-               "idempotency_key" => nil
+               "idempotency_key" => nil,
+               "return_url" => nil
              })
   end
 
@@ -162,10 +272,13 @@ defmodule SellApp.SubscriptionsTest do
                "/v2/subscriptions/test_product_subscription/actions/change-plan/preview"
              )
 
-      Plug.Conn.send_resp(conn, 204, "")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("subscriptions/preview_plan_change"))
     end)
 
-    assert {:ok, _} =
+    assert {:ok,
+            %SellApp.SdkPreviewSubscriptionPlanChangeResponseValue200ApplicationJson{
+              message: "message"
+            }} =
              SellApp.Subscriptions.preview_plan_change(client, "test_product_subscription", %{
                "idempotency_key" => nil,
                "target_variant_id" => 1,
@@ -184,10 +297,14 @@ defmodule SellApp.SubscriptionsTest do
                "/v2/subscriptions/test_product_subscription/actions/change-plan/confirm"
              )
 
-      Plug.Conn.send_resp(conn, 204, "")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("subscriptions/confirm_plan_change"))
     end)
 
-    assert {:ok, _} =
+    assert {:ok,
+            %SellApp.SdkConfirmSubscriptionPlanChangeResponseValue200ApplicationJson{
+              message: "message",
+              approval_url: "approval_url"
+            }} =
              SellApp.Subscriptions.confirm_plan_change(client, "test_product_subscription", %{
                "idempotency_key" => nil,
                "target_variant_id" => 1,
@@ -247,84 +364,21 @@ defmodule SellApp.SubscriptionsTest do
              })
   end
 
-  test "list_subscriptions succeeds", %{client: client} do
+  test "list_subscriptions encodes query parameters", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
-      assert conn.method == "GET"
-      assert String.ends_with?(conn.request_path, "/v2/subscriptions")
+      pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()
+      params = Map.new(pairs)
+      assert params["limit"] == "hello world&x"
+      assert for({"status[]", value} <- pairs, do: value) == ["a", "b"]
+      refute Map.has_key?(params, "page")
       Req.Test.json(conn, SellApp.TestFixtures.fixture("subscriptions/list_subscriptions"))
     end)
 
-    assert {:ok,
-            %SellApp.Page{
-              data: [
-                %SellApp.ListSubscriptionsResponseValue200ApplicationJsonPropertyDataItem{
-                  id: 1,
-                  status: "status"
-                }
-                | _
-              ]
-            }} = SellApp.Subscriptions.list_subscriptions(client)
-  end
-
-  test "list_subscriptions handles an empty page", %{client: client} do
-    Req.Test.stub(SellApp.Client, fn conn ->
-      Req.Test.json(conn, %{"data" => [], "list_metadata" => %{"after" => nil}})
-    end)
-
-    assert {:ok, %SellApp.Page{data: []} = page} =
-             SellApp.Subscriptions.list_subscriptions(client)
-
-    refute SellApp.Page.has_more?(page)
-    assert page |> SellApp.Page.stream() |> Enum.to_list() == []
-  end
-
-  test "search_subscriptions succeeds", %{client: client} do
-    Req.Test.stub(SellApp.Client, fn conn ->
-      assert conn.method == "POST"
-      assert String.ends_with?(conn.request_path, "/v2/subscriptions/search")
-      Req.Test.json(conn, SellApp.TestFixtures.fixture("subscriptions/search_subscriptions"))
-    end)
-
-    assert {:ok,
-            %SellApp.Page{
-              data: [
-                %SellApp.SearchSubscriptionsResponseValue200ApplicationJsonPropertyDataItem{
-                  id: 1,
-                  status: "status"
-                }
-                | _
-              ]
-            }} =
-             SellApp.Subscriptions.search_subscriptions(client, %{
-               "search" => "search",
-               "status" => "status"
+    assert {:ok, _} =
+             SellApp.Subscriptions.list_subscriptions(client, %{
+               limit: "hello world&x",
+               status: ["a", "b"]
              })
-  end
-
-  test "search_subscriptions handles an empty page", %{client: client} do
-    Req.Test.stub(SellApp.Client, fn conn ->
-      Req.Test.json(conn, %{"data" => [], "list_metadata" => %{"after" => nil}})
-    end)
-
-    assert {:ok, %SellApp.Page{data: []} = page} =
-             SellApp.Subscriptions.search_subscriptions(client, %{
-               "search" => "search",
-               "status" => "status"
-             })
-
-    refute SellApp.Page.has_more?(page)
-    assert page |> SellApp.Page.stream() |> Enum.to_list() == []
-  end
-
-  test "get_subscription succeeds", %{client: client} do
-    Req.Test.stub(SellApp.Client, fn conn ->
-      assert conn.method == "GET"
-      assert String.ends_with?(conn.request_path, "/v2/subscriptions/test_product_subscription")
-      Req.Test.json(conn, SellApp.TestFixtures.fixture("subscriptions/get_subscription"))
-    end)
-
-    assert {:ok, %SellApp.SdkGetSubscriptionResponseValue200ApplicationJson{}} =
-             SellApp.Subscriptions.get_subscription(client, "test_product_subscription")
   end
 
   test "cancel honors per-request options", %{client: client} do

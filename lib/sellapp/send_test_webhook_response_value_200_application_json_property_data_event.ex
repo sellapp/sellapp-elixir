@@ -24,9 +24,13 @@ defmodule SellApp.SendTestWebhookResponseValue200ApplicationJsonPropertyDataEven
           | :product_created
           | :product_trashed
           | :product_updated
+          | :subscription_action
           | :subscription_cancelled
           | :subscription_created
+          | :subscription_plan_change_needs_attention
+          | :subscription_renewal_needs_attention
           | :subscription_renewed
+          | :subscription_signup_needs_attention
           | :ticket_message_created
           | :variant_created
           | :variant_sold_out
@@ -54,9 +58,13 @@ defmodule SellApp.SendTestWebhookResponseValue200ApplicationJsonPropertyDataEven
       :product_created,
       :product_trashed,
       :product_updated,
+      :subscription_action,
       :subscription_cancelled,
       :subscription_created,
+      :subscription_plan_change_needs_attention,
+      :subscription_renewal_needs_attention,
       :subscription_renewed,
+      :subscription_signup_needs_attention,
       :ticket_message_created,
       :variant_created,
       :variant_sold_out,
@@ -83,9 +91,16 @@ defmodule SellApp.SendTestWebhookResponseValue200ApplicationJsonPropertyDataEven
   def cast("product.created"), do: :product_created
   def cast("product.trashed"), do: :product_trashed
   def cast("product.updated"), do: :product_updated
+  def cast("subscription.action"), do: :subscription_action
   def cast("subscription.cancelled"), do: :subscription_cancelled
   def cast("subscription.created"), do: :subscription_created
+
+  def cast("subscription.plan_change_needs_attention"),
+    do: :subscription_plan_change_needs_attention
+
+  def cast("subscription.renewal_needs_attention"), do: :subscription_renewal_needs_attention
   def cast("subscription.renewed"), do: :subscription_renewed
+  def cast("subscription.signup_needs_attention"), do: :subscription_signup_needs_attention
   def cast("ticket_message.created"), do: :ticket_message_created
   def cast("variant.created"), do: :variant_created
   def cast("variant.sold_out"), do: :variant_sold_out
@@ -112,9 +127,16 @@ defmodule SellApp.SendTestWebhookResponseValue200ApplicationJsonPropertyDataEven
   def dump(:product_created), do: "product.created"
   def dump(:product_trashed), do: "product.trashed"
   def dump(:product_updated), do: "product.updated"
+  def dump(:subscription_action), do: "subscription.action"
   def dump(:subscription_cancelled), do: "subscription.cancelled"
   def dump(:subscription_created), do: "subscription.created"
+
+  def dump(:subscription_plan_change_needs_attention),
+    do: "subscription.plan_change_needs_attention"
+
+  def dump(:subscription_renewal_needs_attention), do: "subscription.renewal_needs_attention"
   def dump(:subscription_renewed), do: "subscription.renewed"
+  def dump(:subscription_signup_needs_attention), do: "subscription.signup_needs_attention"
   def dump(:ticket_message_created), do: "ticket_message.created"
   def dump(:variant_created), do: "variant.created"
   def dump(:variant_sold_out), do: "variant.sold_out"

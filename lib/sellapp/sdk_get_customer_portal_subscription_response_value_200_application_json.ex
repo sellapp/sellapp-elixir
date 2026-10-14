@@ -12,8 +12,7 @@ defmodule SellApp.SdkGetCustomerPortalSubscriptionResponseValue200ApplicationJso
   ]
 
   @type t :: %__MODULE__{
-          data:
-            SellApp.GetCustomerPortalSubscriptionResponseValue200ApplicationJsonPropertyData.t(),
+          data: SellApp.CustomerPortalSubscription.t(),
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -23,10 +22,7 @@ defmodule SellApp.SdkGetCustomerPortalSubscriptionResponseValue200ApplicationJso
     properties: %{
       "data" => %{
         required: true,
-        schema: %{
-          kind: :model,
-          module: SellApp.GetCustomerPortalSubscriptionResponseValue200ApplicationJsonPropertyData
-        }
+        schema: %{kind: :model, module: SellApp.CustomerPortalSubscription}
       }
     },
     additional_properties: true
@@ -40,11 +36,7 @@ defmodule SellApp.SdkGetCustomerPortalSubscriptionResponseValue200ApplicationJso
     SellApp.Schema.validate_model!(map, @schema, :response)
 
     %__MODULE__{
-      data:
-        SellApp.Cast.nested(
-          map["data"],
-          &SellApp.GetCustomerPortalSubscriptionResponseValue200ApplicationJsonPropertyData.from_map/1
-        ),
+      data: SellApp.Cast.nested(map["data"], &SellApp.CustomerPortalSubscription.from_map/1),
       __additional_properties__: Map.drop(map, ["data"]),
       __present_fields__: Map.keys(map)
     }
@@ -57,10 +49,7 @@ defmodule SellApp.SdkGetCustomerPortalSubscriptionResponseValue200ApplicationJso
       SellApp.Cast.keep_present(
         %{
           "data" =>
-            SellApp.Cast.dump_struct(
-              struct.data,
-              &SellApp.GetCustomerPortalSubscriptionResponseValue200ApplicationJsonPropertyData.to_map/1
-            )
+            SellApp.Cast.dump_struct(struct.data, &SellApp.CustomerPortalSubscription.to_map/1)
         },
         ["data"],
         struct.__present_fields__

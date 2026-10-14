@@ -10,6 +10,7 @@ defmodule SellApp.GetBundleItemResponseValue200ApplicationJsonPropertyDataProper
     :frequency,
     :type,
     :price,
+    :trial,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -21,6 +22,9 @@ defmodule SellApp.GetBundleItemResponseValue200ApplicationJsonPropertyDataProper
           type: String.t(),
           price:
             SellApp.GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPrice.t(),
+          trial:
+            SellApp.GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrial.t()
+            | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -44,6 +48,14 @@ defmodule SellApp.GetBundleItemResponseValue200ApplicationJsonPropertyDataProper
           kind: :model,
           module:
             SellApp.GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPrice
+        }
+      },
+      "trial" => %{
+        required: false,
+        schema: %{
+          kind: :model,
+          module:
+            SellApp.GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrial
         }
       }
     },
@@ -70,7 +82,12 @@ defmodule SellApp.GetBundleItemResponseValue200ApplicationJsonPropertyDataProper
           map["price"],
           &SellApp.GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPrice.from_map/1
         ),
-      __additional_properties__: Map.drop(map, ["humble", "frequency", "type", "price"]),
+      trial:
+        SellApp.Cast.nested(
+          map["trial"],
+          &SellApp.GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrial.from_map/1
+        ),
+      __additional_properties__: Map.drop(map, ["humble", "frequency", "type", "price", "trial"]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -92,6 +109,11 @@ defmodule SellApp.GetBundleItemResponseValue200ApplicationJsonPropertyDataProper
             SellApp.Cast.dump_struct(
               struct.price,
               &SellApp.GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPrice.to_map/1
+            ),
+          "trial" =>
+            SellApp.Cast.dump_struct(
+              struct.trial,
+              &SellApp.GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrial.to_map/1
             )
         },
         ["humble", "frequency", "type", "price"],

@@ -8,7 +8,7 @@ defmodule SellApp.Subscriptions do
   @doc """
   Cancel a subscription
 
-  Cancel an active subscription now or at period end. cancel_at_period_end is required. Refund flags are valid only when it is false; period-end cancellation does not refund the last payment. Refunds are off by default. refund_last_payment requests a real refund; pro_rated_refund requires refund_last_payment and defaults to false. Cancellation can succeed even if the requested refund fails. A 200 response or confirmed cancellation does not prove a refund, and the action response does not expose the provider refund result. Check the order and payment-provider refund records before retrying; do not replay cancellation as a refund-recovery step. Reuse an idempotency key only with identical action input and actor. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Cancel an active subscription now or at period end, or one with a payment still owed now: a past due one the store bills in house, or a past due or unpaid Stripe, PayPal, or Razorpay subscription. cancel_at_period_end is required. Refund flags are valid only when it is false; period-end cancellation does not refund the last payment. New integrations should use the cancel-at-period-end and cancel-immediately lifecycle actions instead. A provider refusal, or a state check such as a change already in progress or a subscription that is no longer active, returns `422` with the refusal sentence under `errors.subscription`. Requires the `invoice` Sanctum ability. Refunds are off by default. refund_last_payment requests a real refund; pro_rated_refund requires refund_last_payment and defaults to false. While a Stripe, PayPal, or Razorpay subscription is past due or unpaid, its current period was never paid for, so a pro-rated refund returns `422`; a full refund or no refund still works. Cancellation can succeed even if the requested refund fails. A 200 response or confirmed cancellation does not prove a refund, and the action response does not expose the provider refund result. Check the order and payment-provider refund records before retrying; do not replay cancellation as a refund-recovery step. Reuse an idempotency key only with identical action input and actor. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -16,6 +16,7 @@ defmodule SellApp.Subscriptions do
     * `params` — request body map
     * `opts` — per-request options (see `SellApp.Client.request/5`)
   """
+  @deprecated "This operation is deprecated."
   @spec cancel(SellApp.Client.t(), String.t(), map(), keyword()) ::
           {:ok, SellApp.SdkCancelSubscriptionResponseValue200ApplicationJson.t()}
           | {:error, SellApp.Error.error()}
@@ -60,9 +61,158 @@ defmodule SellApp.Subscriptions do
   end
 
   @doc """
+  List subscriptions
+
+  List the subscriptions belonging to the authenticated store, ordered by identifier ascending. Requires the `invoice` Sanctum ability. Use `status[]` to keep only the states you care about. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `params` — query parameters: `:limit`, `:page`, `:pagination`, `:status`
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec list_subscriptions(SellApp.Client.t(), map(), keyword()) ::
+          {:ok, SellApp.Page.t(SellApp.SdkListSubscriptionsResponseValue200ApplicationJson.t())}
+          | {:error, SellApp.Error.error()}
+  def list_subscriptions(client, params \\ %{}, opts \\ []) do
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :get,
+             "/v2/subscriptions",
+             params,
+             Keyword.put(opts, :operation_id, "listSubscriptions")
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      fetch_next = fn cursor ->
+        list_subscriptions(
+          client,
+          SellApp.Page.next_params(params, "page", cursor),
+          Keyword.delete(opts, :with_response)
+        )
+      end
+
+      result =
+        SellApp.Page.from_map(
+          body,
+          "data",
+          &SellApp.SdkListSubscriptionsResponseValue200ApplicationJson.from_map/1,
+          fetch_next,
+          base_url: client.base_url,
+          path: "/v2/subscriptions",
+          pagination_param: "page"
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Search subscriptions
+
+  Search the store's subscriptions, ordered by identifier ascending unless `sort` says otherwise. `search.value` matches the provider subscription ID, the provider customer ID, and the customer email. Filter on `id`, `customer_id` (the SellApp customer ID, as in `customer.id`), `provider`, `status`, or `product_variant_id`, and sort on `id`, `status`, `current_period_start`, `current_period_end`, `created_at`, or `updated_at`. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `params` — request body map
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec search_subscriptions(SellApp.Client.t(), map(), keyword()) ::
+          {:ok, SellApp.Page.t(SellApp.SdkSearchSubscriptionsResponseValue200ApplicationJson.t())}
+          | {:error, SellApp.Error.error()}
+  def search_subscriptions(client, params \\ %{}, opts \\ []) do
+    SellApp.Schema.validate_value!(
+      params,
+      %{kind: :model, module: SellApp.SdkSearchSubscriptionsRequestApplicationJson},
+      :request,
+      "$request.body"
+    )
+
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :post,
+             "/v2/subscriptions/search",
+             params,
+             Keyword.put(
+               Keyword.put(opts, :request_body, true),
+               :operation_id,
+               "searchSubscriptions"
+             )
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      fetch_next = fn cursor ->
+        search_subscriptions(
+          client,
+          SellApp.Page.next_params(params, "page", cursor),
+          Keyword.delete(opts, :with_response)
+        )
+      end
+
+      result =
+        SellApp.Page.from_map(
+          body,
+          "data",
+          &SellApp.SdkSearchSubscriptionsResponseValue200ApplicationJson.from_map/1,
+          fetch_next,
+          base_url: client.base_url,
+          path: "/v2/subscriptions/search",
+          pagination_param: "page"
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Retrieve a subscription
+
+  Retrieve one subscription by its SellApp subscription record identifier. Requires the `invoice` Sanctum ability. Foreign-store identifiers return not found. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `product_subscription` — The productSubscription path parameter.
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec get_subscription(SellApp.Client.t(), String.t(), keyword()) ::
+          {:ok, SellApp.SdkGetSubscriptionResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def get_subscription(client, product_subscription, opts \\ []) do
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :get,
+             "/v2/subscriptions/#{URI.encode(product_subscription, &URI.char_unreserved?/1)}",
+             %{},
+             Keyword.put(opts, :operation_id, "getSubscription")
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{kind: :model, module: SellApp.SdkGetSubscriptionResponseValue200ApplicationJson},
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkGetSubscriptionResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
   View subscription capabilities
 
-  Return the lifecycle actions currently supported for a subscription. Capability status controls whether an actor can pause, resume, cancel, update the payment method, change plan, or shift the billing date. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Return the lifecycle actions currently supported for a subscription, each with the reason the customer and the seller are shown. A `customer_only` status names who owns the action rather than who may call the API: a store token carries a plan change and a payment method update on the customer's behalf, while a `customer_only` auto-renewal switch stays with the customer portal. `set_auto_renew` has no API route at all. While a Stripe, PayPal, or Razorpay subscription is past due or unpaid, every action except `cancel_immediately` and, on Razorpay, `update_payment_method`, is `unsupported`, and a subscription the store bills in house that is on hold for an unpaid renewal reports `resume` as `customer_only`, because only the customer can pay to resume it. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -107,7 +257,7 @@ defmodule SellApp.Subscriptions do
   @doc """
   Cancel a subscription at period end
 
-  Schedule cancellation at the end of the current billing period without requesting a refund. Inspect capabilities first. The response records the cancellation action; retrieve the subscription to observe its current state. Reuse an idempotency key only with identical action input and actor. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Schedule cancellation at the end of the current billing period without requesting a refund. Inspect capabilities first. PayPal has no cancellation at period end, so on a PayPal subscription this cancels it with PayPal straight away and keeps the customer's access until the period ends; it can't be kept afterwards. The response records the cancellation action; retrieve the subscription to observe its current state. Reuse an idempotency key only with identical action input and actor. A provider refusal, or a state check such as a change already in progress or a subscription that is no longer active, returns `422` with the refusal sentence under `errors.subscription`. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -164,7 +314,7 @@ defmodule SellApp.Subscriptions do
   @doc """
   Cancel a subscription immediately
 
-  Request immediate subscription cancellation. Inspect capabilities for provider support. This ends future billing and can change customer access. Refunds are off by default. refund_last_payment requests a real refund; pro_rated_refund requires refund_last_payment and defaults to false. Cancellation can succeed even if the requested refund fails. A 200 response or confirmed cancellation does not prove a refund, and the action response does not expose the provider refund result. Check the order and payment-provider refund records before retrying; do not replay cancellation as a refund-recovery step. Reuse an idempotency key only with identical action input and actor. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Request immediate subscription cancellation. Inspect capabilities for provider support. This ends future billing and can change customer access. It is the one action left on a Stripe or PayPal subscription that is past due or unpaid, and one of two left on a Razorpay one alongside a payment method update. A provider refusal, or a state check such as a change already in progress or a subscription that is no longer active, returns `422` with the refusal sentence under `errors.subscription`. Requires the `invoice` Sanctum ability. Refunds are off by default. refund_last_payment requests a real refund; pro_rated_refund requires refund_last_payment and defaults to false. While a Stripe, PayPal, or Razorpay subscription is past due or unpaid, its current period was never paid for, so a pro-rated refund returns `422`; a full refund or no refund still works. Cancellation can succeed even if the requested refund fails. A 200 response or confirmed cancellation does not prove a refund, and the action response does not expose the provider refund result. Check the order and payment-provider refund records before retrying; do not replay cancellation as a refund-recovery step. Reuse an idempotency key only with identical action input and actor. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -219,9 +369,63 @@ defmodule SellApp.Subscriptions do
   end
 
   @doc """
+  Keep a subscription
+
+  Stop a scheduled cancellation so the subscription keeps renewing, which is the undo for cancelling at period end. The subscription has to still be active, still be scheduled to cancel, and its period must not have ended yet. Any of those, a provider that cannot undo its own schedule (a PayPal subscription or a Razorpay trial, both already cancelled with the provider), or a change already in progress returns `422` with the refusal sentence under `errors.subscription`. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `product_subscription` — The productSubscription path parameter.
+    * `params` — request body map
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec keep(SellApp.Client.t(), String.t(), map(), keyword()) ::
+          {:ok, SellApp.SdkKeepSubscriptionResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def keep(client, product_subscription, params \\ %{}, opts \\ []) do
+    SellApp.Schema.validate_value!(
+      params,
+      %{kind: :model, module: SellApp.SdkKeepSubscriptionRequestApplicationJson},
+      :request,
+      "$request.body"
+    )
+
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :post,
+             "/v2/subscriptions/#{URI.encode(product_subscription, &URI.char_unreserved?/1)}/actions/keep",
+             params,
+             Keyword.put(
+               Keyword.put(Keyword.put(opts, :idempotency_supported, true), :request_body, true),
+               :operation_id,
+               "keepSubscription"
+             )
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{kind: :model, module: SellApp.SdkKeepSubscriptionResponseValue200ApplicationJson},
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkKeepSubscriptionResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
   Pause a subscription
 
-  Pause a subscription after checking capabilities. Automatic resume dates are supported only by the current Stripe flow; use a future resume_at when supplied. Other provider pauses may need an explicit resume action. Customer-originated pauses are also subject to store pause policies. Reuse an idempotency key only with identical input and actor, and retrieve the subscription after the action. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Pause a subscription after checking capabilities. Automatic resume dates are supported by Stripe and by subscriptions the store bills in house; use a future resume_at when supplied. Other provider pauses may need an explicit resume action. Customer-originated pauses are also subject to store pause policies. Reuse an idempotency key only with identical input and actor, and retrieve the subscription after the action. A provider refusal, or a state check such as a change already in progress or a subscription that is no longer active, returns `422` with the refusal sentence under `errors.subscription`. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -275,7 +479,7 @@ defmodule SellApp.Subscriptions do
   @doc """
   Resume a subscription
 
-  Resume a paused subscription and restore related entitlements where possible. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Resume a paused subscription and restore related entitlements where possible. A subscription that is not paused, a subscription the store bills in house that is on hold for an unpaid renewal (only the customer can resume it, by paying that renewal from the customer portal), a provider refusal, or a change already in progress returns `422` with the refusal sentence under `errors.subscription`. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -329,7 +533,7 @@ defmodule SellApp.Subscriptions do
   @doc """
   Update a subscription payment method
 
-  This action belongs to the customer. Seller API requests return a 422 validation error. Check subscription capabilities and use the customer flow; never expose a seller API key to work around this restriction. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Request a subscription payment method update. A payment method belongs to the customer, and a store token requests the update on their behalf. The customer still enters the new card themselves, so the action stays `pending` and `redirect_url` is where they finish it: Stripe's hosted page for a Stripe subscription, or a SellApp page for a Razorpay one. `return_url` chooses where Stripe sends the customer afterwards; Razorpay ignores it. PayPal subscriptions and subscriptions the store bills in house don't support the update. Read `update_payment_method` in the capabilities response before calling: an unsupported payment method, or a state check such as a change already in progress, a subscription that is no longer active, or a Stripe subscription with a payment still owed, returns `422` with the refusal sentence under `errors.subscription`. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -338,7 +542,8 @@ defmodule SellApp.Subscriptions do
     * `opts` — per-request options (see `SellApp.Client.request/5`)
   """
   @spec update_payment_method(SellApp.Client.t(), String.t(), map(), keyword()) ::
-          {:ok, String.t()} | {:error, SellApp.Error.error()}
+          {:ok, SellApp.SdkUpdateSubscriptionPaymentMethodResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
   def update_payment_method(client, product_subscription, params \\ %{}, opts \\ []) do
     SellApp.Schema.validate_value!(
       params,
@@ -361,8 +566,23 @@ defmodule SellApp.Subscriptions do
            ) do
       raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
       body = if raw_response, do: raw_response.data, else: body
-      SellApp.Schema.validate_value!(body, %{kind: :string}, :response, "$response")
-      result = body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{
+          kind: :model,
+          module: SellApp.SdkUpdateSubscriptionPaymentMethodResponseValue200ApplicationJson
+        },
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkUpdateSubscriptionPaymentMethodResponseValue200ApplicationJson.from_map/1
+        )
+
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
     end
   end
@@ -370,7 +590,7 @@ defmodule SellApp.Subscriptions do
   @doc """
   Preview a subscription plan change
 
-  This action belongs to the customer. Seller API requests return a 422 validation error. Check subscription capabilities and use the customer flow; never expose a seller API key to work around this restriction. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Preview a subscription plan change before confirming it. The preview stores the change it was taken for and returns a `preview_token` the confirmation must send back, alongside the provider's own pricing preview. On Stripe and in-house subscriptions, `preview_payload.payment_required` says whether confirming charges `amount_due` today or leaves any amount to the next invoice, and `preview_payload.renewal_date` says when the subscription renews next. A plan change belongs to the customer, and a store token previews it on their behalf; a provider refusal, or a state check such as a change already in progress or a subscription that is no longer active, returns `422` with the refusal sentence under `errors.subscription`. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -379,7 +599,8 @@ defmodule SellApp.Subscriptions do
     * `opts` — per-request options (see `SellApp.Client.request/5`)
   """
   @spec preview_plan_change(SellApp.Client.t(), String.t(), map(), keyword()) ::
-          {:ok, String.t()} | {:error, SellApp.Error.error()}
+          {:ok, SellApp.SdkPreviewSubscriptionPlanChangeResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
   def preview_plan_change(client, product_subscription, params \\ %{}, opts \\ []) do
     SellApp.Schema.validate_value!(
       params,
@@ -402,8 +623,23 @@ defmodule SellApp.Subscriptions do
            ) do
       raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
       body = if raw_response, do: raw_response.data, else: body
-      SellApp.Schema.validate_value!(body, %{kind: :string}, :response, "$response")
-      result = body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{
+          kind: :model,
+          module: SellApp.SdkPreviewSubscriptionPlanChangeResponseValue200ApplicationJson
+        },
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkPreviewSubscriptionPlanChangeResponseValue200ApplicationJson.from_map/1
+        )
+
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
     end
   end
@@ -411,7 +647,7 @@ defmodule SellApp.Subscriptions do
   @doc """
   Confirm a subscription plan change
 
-  This action belongs to the customer. Seller API requests return a 422 validation error. Check subscription capabilities and use the customer flow; never expose a seller API key to work around this restriction. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Confirm a previously previewed subscription plan change, sending back the `preview_token` for a preview of the same change. A plan change belongs to the customer, and a store token confirms it on their behalf; a provider refusal, or a state check such as a change already in progress or a subscription that is no longer active, returns `422` with the refusal sentence under `errors.subscription`. `approval_url` accompanies a `pending` action whenever the customer still has to approve the revision at the provider or pay the proration order `proration_order_id` names, and is left out entirely when the provider applied the change itself. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -420,7 +656,8 @@ defmodule SellApp.Subscriptions do
     * `opts` — per-request options (see `SellApp.Client.request/5`)
   """
   @spec confirm_plan_change(SellApp.Client.t(), String.t(), map(), keyword()) ::
-          {:ok, String.t()} | {:error, SellApp.Error.error()}
+          {:ok, SellApp.SdkConfirmSubscriptionPlanChangeResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
   def confirm_plan_change(client, product_subscription, params \\ %{}, opts \\ []) do
     SellApp.Schema.validate_value!(
       params,
@@ -443,8 +680,23 @@ defmodule SellApp.Subscriptions do
            ) do
       raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
       body = if raw_response, do: raw_response.data, else: body
-      SellApp.Schema.validate_value!(body, %{kind: :string}, :response, "$response")
-      result = body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{
+          kind: :model,
+          module: SellApp.SdkConfirmSubscriptionPlanChangeResponseValue200ApplicationJson
+        },
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkConfirmSubscriptionPlanChangeResponseValue200ApplicationJson.from_map/1
+        )
+
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
     end
   end
@@ -452,7 +704,7 @@ defmodule SellApp.Subscriptions do
   @doc """
   Preview a subscription renewal date change
 
-  Preview a new renewal date before confirmation when the subscription's billing-date policy requires a preview. The current Stripe and PayPal provider flows do not support renewal-date changes and return 422. Check shift_billing_date capabilities before sending a request. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Preview a new renewal date before confirmation when the subscription's billing-date policy requires one. No payment method supports renewal-date changes today: Stripe, PayPal, Razorpay, and subscriptions the store bills in house all report `shift_billing_date` as `unsupported`, so this returns `422` with the refusal sentence under `errors.subscription`. Read the capabilities response first. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -513,7 +765,7 @@ defmodule SellApp.Subscriptions do
   @doc """
   Confirm a subscription renewal date change
 
-  Confirm a subscription renewal date change. A preview token is required when the variant's billing-date policy requires previews. The current Stripe and PayPal provider flows do not support renewal-date changes and return 422. Check shift_billing_date capabilities before sending a request. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Confirm a subscription renewal date change, sending a `preview_token` when the variant's billing-date policy requires previews. No payment method supports renewal-date changes today: Stripe, PayPal, Razorpay, and subscriptions the store bills in house all report `shift_billing_date` as `unsupported`, so this returns `422` with the refusal sentence under `errors.subscription`. Read the capabilities response first. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -565,161 +817,6 @@ defmodule SellApp.Subscriptions do
         SellApp.Cast.nested(
           body,
           &SellApp.SdkConfirmSubscriptionRenewalDateChangeResponseValue200ApplicationJson.from_map/1
-        )
-
-      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
-    end
-  end
-
-  @doc """
-  List subscriptions
-
-  List page-based subscriptions with canonical customer and deprecated provider aliases. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
-
-  ## Parameters
-
-    * `params` — query parameters
-    * `opts` — per-request options (see `SellApp.Client.request/5`)
-  """
-  @spec list_subscriptions(SellApp.Client.t(), map(), keyword()) ::
-          {:ok,
-           SellApp.Page.t(
-             SellApp.ListSubscriptionsResponseValue200ApplicationJsonPropertyDataItem.t()
-           )}
-          | {:error, SellApp.Error.error()}
-  def list_subscriptions(client, params \\ %{}, opts \\ []) do
-    with {:ok, body} <-
-           SellApp.Client.request(
-             client,
-             :get,
-             "/v2/subscriptions",
-             params,
-             Keyword.put(opts, :operation_id, "listSubscriptions")
-           ) do
-      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
-      body = if raw_response, do: raw_response.data, else: body
-
-      fetch_next = fn cursor ->
-        list_subscriptions(
-          client,
-          SellApp.Page.next_params(params, "after", cursor),
-          Keyword.delete(opts, :with_response)
-        )
-      end
-
-      result =
-        SellApp.Page.from_map(
-          body,
-          "data",
-          &SellApp.ListSubscriptionsResponseValue200ApplicationJsonPropertyDataItem.from_map/1,
-          fetch_next,
-          base_url: client.base_url,
-          path: "/v2/subscriptions",
-          pagination_param: "after"
-        )
-
-      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
-    end
-  end
-
-  @doc """
-  Search subscriptions
-
-  Search while preserving page-based pagination. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
-
-  ## Parameters
-
-    * `params` — request body map
-    * `opts` — per-request options (see `SellApp.Client.request/5`)
-  """
-  @spec search_subscriptions(SellApp.Client.t(), map(), keyword()) ::
-          {:ok,
-           SellApp.Page.t(
-             SellApp.SearchSubscriptionsResponseValue200ApplicationJsonPropertyDataItem.t()
-           )}
-          | {:error, SellApp.Error.error()}
-  def search_subscriptions(client, params \\ %{}, opts \\ []) do
-    SellApp.Schema.validate_value!(
-      params,
-      %{kind: :model, module: SellApp.SdkSearchSubscriptionsRequestApplicationJson},
-      :request,
-      "$request.body"
-    )
-
-    with {:ok, body} <-
-           SellApp.Client.request(
-             client,
-             :post,
-             "/v2/subscriptions/search",
-             params,
-             Keyword.put(
-               Keyword.put(opts, :request_body, true),
-               :operation_id,
-               "searchSubscriptions"
-             )
-           ) do
-      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
-      body = if raw_response, do: raw_response.data, else: body
-
-      fetch_next = fn cursor ->
-        search_subscriptions(
-          client,
-          SellApp.Page.next_params(params, "after", cursor),
-          Keyword.delete(opts, :with_response)
-        )
-      end
-
-      result =
-        SellApp.Page.from_map(
-          body,
-          "data",
-          &SellApp.SearchSubscriptionsResponseValue200ApplicationJsonPropertyDataItem.from_map/1,
-          fetch_next,
-          base_url: client.base_url,
-          path: "/v2/subscriptions/search",
-          pagination_param: "after"
-        )
-
-      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
-    end
-  end
-
-  @doc """
-  Retrieve a subscription
-
-  Retrieve by SellApp subscription record ID. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
-
-  ## Parameters
-
-    * `product_subscription` — The productSubscription identifier.
-    * `opts` — per-request options (see `SellApp.Client.request/5`)
-  """
-  @spec get_subscription(SellApp.Client.t(), String.t(), keyword()) ::
-          {:ok, SellApp.SdkGetSubscriptionResponseValue200ApplicationJson.t()}
-          | {:error, SellApp.Error.error()}
-  def get_subscription(client, product_subscription, opts \\ []) do
-    with {:ok, body} <-
-           SellApp.Client.request(
-             client,
-             :get,
-             "/v2/subscriptions/#{URI.encode(product_subscription, &URI.char_unreserved?/1)}",
-             %{},
-             Keyword.put(opts, :operation_id, "getSubscription")
-           ) do
-      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
-      body = if raw_response, do: raw_response.data, else: body
-
-      SellApp.Schema.validate_value!(
-        body,
-        %{kind: :model, module: SellApp.SdkGetSubscriptionResponseValue200ApplicationJson},
-        :response,
-        "$response"
-      )
-
-      result =
-        SellApp.Cast.nested(
-          body,
-          &SellApp.SdkGetSubscriptionResponseValue200ApplicationJson.from_map/1
         )
 
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}

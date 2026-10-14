@@ -1,19 +1,11 @@
 {
   "data": {
     "id": 1,
-    "status": "status",
-    "subscription_id": null,
-    "customer_id": null,
-    "provider_subscription_id": null,
-    "provider_customer_id": null,
-    "customer": {
-      "id": 1,
-      "email": "email",
-      "external_id": null,
-      "name": null,
-      "locale": null,
-      "metadata": {}
-    },
-    "product_variant_id": 1
+    "subscription_id": 1,
+    "action": "pause",
+    "status": "pending",
+    "customer_message": null,
+    "redirect_url": null,
+    "created_at": null
   }
 }

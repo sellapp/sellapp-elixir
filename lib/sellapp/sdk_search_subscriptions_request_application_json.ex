@@ -6,15 +6,21 @@ defmodule SellApp.SdkSearchSubscriptionsRequestApplicationJson do
   """
 
   defstruct [
+    :filters,
+    :sort,
     :search,
-    :status,
+    :includes,
     __additional_properties__: %{},
     __present_fields__: []
   ]
 
   @type t :: %__MODULE__{
-          search: String.t() | nil,
-          status: String.t() | nil,
+          filters:
+            [SellApp.SearchSubscriptionsRequestApplicationJsonPropertyFiltersItem.t()] | nil,
+          sort: [SellApp.SearchSubscriptionsRequestApplicationJsonPropertySortItem.t()] | nil,
+          search: SellApp.SearchSubscriptionsRequestApplicationJsonPropertySearch.t() | nil,
+          includes:
+            [SellApp.SearchSubscriptionsRequestApplicationJsonPropertyIncludesItem.t()] | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -22,8 +28,43 @@ defmodule SellApp.SdkSearchSubscriptionsRequestApplicationJson do
   @schema %{
     name: "SdkSearchSubscriptionsRequestApplicationJson",
     properties: %{
-      "search" => %{required: false, schema: %{kind: :string}},
-      "status" => %{required: false, schema: %{kind: :string}}
+      "filters" => %{
+        required: false,
+        schema: %{
+          kind: :array,
+          items: %{
+            kind: :model,
+            module: SellApp.SearchSubscriptionsRequestApplicationJsonPropertyFiltersItem
+          }
+        }
+      },
+      "sort" => %{
+        required: false,
+        schema: %{
+          kind: :array,
+          items: %{
+            kind: :model,
+            module: SellApp.SearchSubscriptionsRequestApplicationJsonPropertySortItem
+          }
+        }
+      },
+      "search" => %{
+        required: false,
+        schema: %{
+          kind: :model,
+          module: SellApp.SearchSubscriptionsRequestApplicationJsonPropertySearch
+        }
+      },
+      "includes" => %{
+        required: false,
+        schema: %{
+          kind: :array,
+          items: %{
+            kind: :model,
+            module: SellApp.SearchSubscriptionsRequestApplicationJsonPropertyIncludesItem
+          }
+        }
+      }
     },
     additional_properties: true
   }
@@ -36,9 +77,27 @@ defmodule SellApp.SdkSearchSubscriptionsRequestApplicationJson do
     SellApp.Schema.validate_model!(map, @schema, :response)
 
     %__MODULE__{
-      search: map["search"],
-      status: map["status"],
-      __additional_properties__: Map.drop(map, ["search", "status"]),
+      filters:
+        SellApp.Cast.list(
+          map["filters"],
+          &SellApp.SearchSubscriptionsRequestApplicationJsonPropertyFiltersItem.from_map/1
+        ),
+      sort:
+        SellApp.Cast.list(
+          map["sort"],
+          &SellApp.SearchSubscriptionsRequestApplicationJsonPropertySortItem.from_map/1
+        ),
+      search:
+        SellApp.Cast.nested(
+          map["search"],
+          &SellApp.SearchSubscriptionsRequestApplicationJsonPropertySearch.from_map/1
+        ),
+      includes:
+        SellApp.Cast.list(
+          map["includes"],
+          &SellApp.SearchSubscriptionsRequestApplicationJsonPropertyIncludesItem.from_map/1
+        ),
+      __additional_properties__: Map.drop(map, ["filters", "sort", "search", "includes"]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -49,8 +108,32 @@ defmodule SellApp.SdkSearchSubscriptionsRequestApplicationJson do
     known =
       SellApp.Cast.keep_present(
         %{
-          "search" => struct.search,
-          "status" => struct.status
+          "filters" =>
+            SellApp.Cast.list(struct.filters, fn item ->
+              SellApp.Cast.dump_struct(
+                item,
+                &SellApp.SearchSubscriptionsRequestApplicationJsonPropertyFiltersItem.to_map/1
+              )
+            end),
+          "sort" =>
+            SellApp.Cast.list(struct.sort, fn item ->
+              SellApp.Cast.dump_struct(
+                item,
+                &SellApp.SearchSubscriptionsRequestApplicationJsonPropertySortItem.to_map/1
+              )
+            end),
+          "search" =>
+            SellApp.Cast.dump_struct(
+              struct.search,
+              &SellApp.SearchSubscriptionsRequestApplicationJsonPropertySearch.to_map/1
+            ),
+          "includes" =>
+            SellApp.Cast.list(struct.includes, fn item ->
+              SellApp.Cast.dump_struct(
+                item,
+                &SellApp.SearchSubscriptionsRequestApplicationJsonPropertyIncludesItem.to_map/1
+              )
+            end)
         },
         [],
         struct.__present_fields__

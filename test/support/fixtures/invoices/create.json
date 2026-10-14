@@ -14,7 +14,7 @@
       },
       "gateway": {
         "data": {},
-        "type": "type"
+        "type": null
       },
       "subtotal": {
         "base": "base",

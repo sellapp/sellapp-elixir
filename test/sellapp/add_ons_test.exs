@@ -108,6 +108,7 @@ defmodule SellApp.AddOnsTest do
                    %{"minimum_purchase_amount" => 1, "discount_percentage" => 1}
                  ],
                  "payment_methods" => ["AUTHNET"],
+                 "custom_payment_method_ids" => ["00000000000000000000000000"],
                  "other_settings" => %{"quantity_increments" => 1},
                  "expected_updated_at" => "2024-01-01T00:00:00.000Z"
                }
@@ -224,7 +225,8 @@ defmodule SellApp.AddOnsTest do
 
   test "list encodes query parameters", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
-      params = Plug.Conn.fetch_query_params(conn).query_params
+      pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()
+      params = Map.new(pairs)
       assert params["limit"] == "hello world&x"
       refute Map.has_key?(params, "page")
       Req.Test.json(conn, SellApp.TestFixtures.fixture("add_ons/list"))

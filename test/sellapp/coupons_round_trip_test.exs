@@ -18,6 +18,8 @@ defmodule SellApp.CouponsRoundTripTest do
       "store_id" => 1,
       "deleted_at" => nil,
       "maximum_discount_amount" => nil,
+      "applies_to" => "one_time",
+      "subscription_payments" => nil,
       "products" => [1],
       "product_variants" => [1]
     }
@@ -52,6 +54,8 @@ defmodule SellApp.CouponsRoundTripTest do
           "store_id" => 1,
           "deleted_at" => nil,
           "maximum_discount_amount" => nil,
+          "applies_to" => "one_time",
+          "subscription_payments" => nil,
           "products" => [1],
           "product_variants" => [1]
         }
@@ -87,6 +91,8 @@ defmodule SellApp.CouponsRoundTripTest do
           "store_id" => 1,
           "deleted_at" => nil,
           "maximum_discount_amount" => nil,
+          "applies_to" => "one_time",
+          "subscription_payments" => nil,
           "products" => [1],
           "product_variants" => [1]
         }
@@ -122,6 +128,8 @@ defmodule SellApp.CouponsRoundTripTest do
           "store_id" => 1,
           "deleted_at" => nil,
           "maximum_discount_amount" => nil,
+          "applies_to" => "one_time",
+          "subscription_payments" => nil,
           "products" => [1],
           "product_variants" => [1]
         }
@@ -156,6 +164,8 @@ defmodule SellApp.CouponsRoundTripTest do
         "store_id" => 1,
         "deleted_at" => nil,
         "maximum_discount_amount" => nil,
+        "applies_to" => "one_time",
+        "subscription_payments" => nil,
         "products" => [1],
         "product_variants" => [1]
       }
@@ -189,6 +199,8 @@ defmodule SellApp.CouponsRoundTripTest do
         "store_id" => 1,
         "deleted_at" => nil,
         "maximum_discount_amount" => nil,
+        "applies_to" => "one_time",
+        "subscription_payments" => nil,
         "products" => [1],
         "product_variants" => [1]
       }
@@ -222,6 +234,8 @@ defmodule SellApp.CouponsRoundTripTest do
         "store_id" => 1,
         "deleted_at" => nil,
         "maximum_discount_amount" => nil,
+        "applies_to" => "one_time",
+        "subscription_payments" => nil,
         "products" => [1],
         "product_variants" => [1]
       }
@@ -256,6 +270,8 @@ defmodule SellApp.CouponsRoundTripTest do
           "store_id" => 1,
           "deleted_at" => nil,
           "maximum_discount_amount" => nil,
+          "applies_to" => "one_time",
+          "subscription_payments" => nil,
           "products" => [1],
           "product_variants" => [1]
         }
@@ -292,6 +308,8 @@ defmodule SellApp.CouponsRoundTripTest do
         "store_id" => 1,
         "deleted_at" => nil,
         "maximum_discount_amount" => nil,
+        "applies_to" => "one_time",
+        "subscription_payments" => nil,
         "products" => [1],
         "product_variants" => [1]
       }
@@ -326,6 +344,8 @@ defmodule SellApp.CouponsRoundTripTest do
           "store_id" => 1,
           "deleted_at" => nil,
           "maximum_discount_amount" => nil,
+          "applies_to" => "one_time",
+          "subscription_payments" => nil,
           "products" => [1],
           "product_variants" => [1]
         }
@@ -362,6 +382,8 @@ defmodule SellApp.CouponsRoundTripTest do
         "store_id" => 1,
         "deleted_at" => nil,
         "maximum_discount_amount" => nil,
+        "applies_to" => "one_time",
+        "subscription_payments" => nil,
         "products" => [1],
         "product_variants" => [1]
       }
@@ -396,6 +418,8 @@ defmodule SellApp.CouponsRoundTripTest do
           "store_id" => 1,
           "deleted_at" => nil,
           "maximum_discount_amount" => nil,
+          "applies_to" => "one_time",
+          "subscription_payments" => nil,
           "products" => [1],
           "product_variants" => [1]
         }
@@ -432,6 +456,8 @@ defmodule SellApp.CouponsRoundTripTest do
           "store_id" => 1,
           "deleted_at" => nil,
           "maximum_discount_amount" => nil,
+          "applies_to" => "one_time",
+          "subscription_payments" => nil,
           "products" => [1],
           "product_variants" => [1]
         }
@@ -468,6 +494,8 @@ defmodule SellApp.CouponsRoundTripTest do
           "store_id" => 1,
           "deleted_at" => nil,
           "maximum_discount_amount" => nil,
+          "applies_to" => "one_time",
+          "subscription_payments" => nil,
           "products" => [1],
           "product_variants" => [1]
         }
@@ -503,6 +531,8 @@ defmodule SellApp.CouponsRoundTripTest do
         "store_id" => 1,
         "deleted_at" => nil,
         "maximum_discount_amount" => nil,
+        "applies_to" => "one_time",
+        "subscription_payments" => nil,
         "products" => [1],
         "product_variants" => [1]
       }
@@ -536,6 +566,8 @@ defmodule SellApp.CouponsRoundTripTest do
         "store_id" => 1,
         "deleted_at" => nil,
         "maximum_discount_amount" => nil,
+        "applies_to" => "one_time",
+        "subscription_payments" => nil,
         "products" => [1],
         "product_variants" => [1]
       }
@@ -569,6 +601,8 @@ defmodule SellApp.CouponsRoundTripTest do
         "store_id" => 1,
         "deleted_at" => nil,
         "maximum_discount_amount" => nil,
+        "applies_to" => "one_time",
+        "subscription_payments" => nil,
         "products" => [1],
         "product_variants" => [1]
       }
@@ -603,6 +637,8 @@ defmodule SellApp.CouponsRoundTripTest do
           "store_id" => 1,
           "deleted_at" => nil,
           "maximum_discount_amount" => nil,
+          "applies_to" => "one_time",
+          "subscription_payments" => nil,
           "products" => [1],
           "product_variants" => [1]
         }
@@ -639,6 +675,8 @@ defmodule SellApp.CouponsRoundTripTest do
         "store_id" => 1,
         "deleted_at" => nil,
         "maximum_discount_amount" => nil,
+        "applies_to" => "one_time",
+        "subscription_payments" => nil,
         "products" => [1],
         "product_variants" => [1]
       }
@@ -673,6 +711,8 @@ defmodule SellApp.CouponsRoundTripTest do
           "store_id" => 1,
           "deleted_at" => nil,
           "maximum_discount_amount" => nil,
+          "applies_to" => "one_time",
+          "subscription_payments" => nil,
           "products" => [1],
           "product_variants" => [1]
         }
@@ -709,6 +749,8 @@ defmodule SellApp.CouponsRoundTripTest do
         "store_id" => 1,
         "deleted_at" => nil,
         "maximum_discount_amount" => nil,
+        "applies_to" => "one_time",
+        "subscription_payments" => nil,
         "products" => [1],
         "product_variants" => [1]
       }
@@ -741,6 +783,8 @@ defmodule SellApp.CouponsRoundTripTest do
       "store_id" => 1,
       "deleted_at" => nil,
       "maximum_discount_amount" => nil,
+      "applies_to" => "one_time",
+      "subscription_payments" => nil,
       "products" => [1],
       "product_variants" => [1]
     }
@@ -773,6 +817,8 @@ defmodule SellApp.CouponsRoundTripTest do
       "store_id" => 1,
       "deleted_at" => nil,
       "maximum_discount_amount" => nil,
+      "applies_to" => "one_time",
+      "subscription_payments" => nil,
       "products" => [1],
       "product_variants" => [1]
     }
@@ -805,6 +851,8 @@ defmodule SellApp.CouponsRoundTripTest do
       "store_id" => 1,
       "deleted_at" => nil,
       "maximum_discount_amount" => nil,
+      "applies_to" => "one_time",
+      "subscription_payments" => nil,
       "products" => [1],
       "product_variants" => [1]
     }

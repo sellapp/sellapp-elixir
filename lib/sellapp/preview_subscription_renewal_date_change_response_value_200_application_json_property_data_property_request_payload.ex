@@ -2,7 +2,7 @@
 
 defmodule SellApp.PreviewSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyRequestPayload do
   @moduledoc """
-  PreviewSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyRequestPayload model.
+  The request the preview was taken for. The confirmation has to describe the same change, or it is rejected.
   """
 
   defstruct __additional_properties__: %{}, __present_fields__: []

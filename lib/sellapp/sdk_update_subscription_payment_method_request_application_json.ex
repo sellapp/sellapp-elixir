@@ -7,12 +7,14 @@ defmodule SellApp.SdkUpdateSubscriptionPaymentMethodRequestApplicationJson do
 
   defstruct [
     :idempotency_key,
+    :return_url,
     __additional_properties__: %{},
     __present_fields__: []
   ]
 
   @type t :: %__MODULE__{
           idempotency_key: String.t() | nil,
+          return_url: String.t() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -23,6 +25,10 @@ defmodule SellApp.SdkUpdateSubscriptionPaymentMethodRequestApplicationJson do
       "idempotency_key" => %{
         required: false,
         schema: %{kind: :nullable, inner: %{kind: :string, max_length: 128}}
+      },
+      "return_url" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :string, format: "uri", max_length: 2000}}
       }
     },
     additional_properties: true
@@ -37,7 +43,8 @@ defmodule SellApp.SdkUpdateSubscriptionPaymentMethodRequestApplicationJson do
 
     %__MODULE__{
       idempotency_key: map["idempotency_key"],
-      __additional_properties__: Map.drop(map, ["idempotency_key"]),
+      return_url: map["return_url"],
+      __additional_properties__: Map.drop(map, ["idempotency_key", "return_url"]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -48,7 +55,8 @@ defmodule SellApp.SdkUpdateSubscriptionPaymentMethodRequestApplicationJson do
     known =
       SellApp.Cast.keep_present(
         %{
-          "idempotency_key" => struct.idempotency_key
+          "idempotency_key" => struct.idempotency_key,
+          "return_url" => struct.return_url
         },
         [],
         struct.__present_fields__

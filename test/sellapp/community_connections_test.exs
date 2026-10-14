@@ -108,7 +108,8 @@ defmodule SellApp.CommunityConnectionsTest do
 
   test "poll encodes query parameters", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
-      params = Plug.Conn.fetch_query_params(conn).query_params
+      pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()
+      params = Map.new(pairs)
       assert params["status_token"] == "hello world&x"
       Req.Test.json(conn, SellApp.TestFixtures.fixture("community_connections/poll"))
     end)

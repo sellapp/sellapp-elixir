@@ -3,36 +3,23 @@
 defmodule SellApp.PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyData do
   @moduledoc """
   PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyData model.
-
-  ## Deprecated fields
-
-    * `:subscription_id`
-    * `:customer_id`
   """
 
   defstruct [
-    :id,
-    :status,
-    :provider_subscription_id,
-    :provider_customer_id,
-    :customer,
-    :subscription_id,
-    :customer_id,
-    :product_variant_id,
+    :preview_token,
+    :expires_at,
+    :preview,
+    :customer_message,
     __additional_properties__: %{},
     __present_fields__: []
   ]
 
   @type t :: %__MODULE__{
-          id: integer(),
-          status: String.t(),
-          provider_subscription_id: String.t() | nil,
-          provider_customer_id: String.t() | nil,
-          customer:
-            SellApp.PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyCustomer.t(),
-          subscription_id: String.t() | nil,
-          customer_id: String.t() | nil,
-          product_variant_id: integer() | nil,
+          preview_token: String.t() | nil,
+          expires_at: String.t() | nil,
+          preview:
+            SellApp.PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyPreview.t(),
+          customer_message: String.t() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -41,27 +28,20 @@ defmodule SellApp.PreviewCustomerSubscriptionRenewalDateChangeResponseValue200Ap
     name:
       "PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyData",
     properties: %{
-      "id" => %{required: true, schema: %{kind: :integer}},
-      "status" => %{required: true, schema: %{kind: :string}},
-      "provider_subscription_id" => %{
+      "preview_token" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}},
+      "expires_at" => %{
         required: true,
-        schema: %{kind: :nullable, inner: %{kind: :string}}
+        schema: %{kind: :nullable, inner: %{kind: :string, format: "date-time"}}
       },
-      "provider_customer_id" => %{
-        required: true,
-        schema: %{kind: :nullable, inner: %{kind: :string}}
-      },
-      "customer" => %{
+      "preview" => %{
         required: true,
         schema: %{
           kind: :model,
           module:
-            SellApp.PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyCustomer
+            SellApp.PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyPreview
         }
       },
-      "subscription_id" => %{required: false, schema: %{kind: :nullable, inner: %{kind: :string}}},
-      "customer_id" => %{required: false, schema: %{kind: :nullable, inner: %{kind: :string}}},
-      "product_variant_id" => %{required: false, schema: %{kind: :integer}}
+      "customer_message" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}}
     },
     additional_properties: true
   }
@@ -74,29 +54,16 @@ defmodule SellApp.PreviewCustomerSubscriptionRenewalDateChangeResponseValue200Ap
     SellApp.Schema.validate_model!(map, @schema, :response)
 
     %__MODULE__{
-      id: map["id"],
-      status: map["status"],
-      provider_subscription_id: map["provider_subscription_id"],
-      provider_customer_id: map["provider_customer_id"],
-      customer:
+      preview_token: map["preview_token"],
+      expires_at: map["expires_at"],
+      preview:
         SellApp.Cast.nested(
-          map["customer"],
-          &SellApp.PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyCustomer.from_map/1
+          map["preview"],
+          &SellApp.PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyPreview.from_map/1
         ),
-      subscription_id: map["subscription_id"],
-      customer_id: map["customer_id"],
-      product_variant_id: map["product_variant_id"],
+      customer_message: map["customer_message"],
       __additional_properties__:
-        Map.drop(map, [
-          "id",
-          "status",
-          "provider_subscription_id",
-          "provider_customer_id",
-          "customer",
-          "subscription_id",
-          "customer_id",
-          "product_variant_id"
-        ]),
+        Map.drop(map, ["preview_token", "expires_at", "preview", "customer_message"]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -107,20 +74,16 @@ defmodule SellApp.PreviewCustomerSubscriptionRenewalDateChangeResponseValue200Ap
     known =
       SellApp.Cast.keep_present(
         %{
-          "id" => struct.id,
-          "status" => struct.status,
-          "provider_subscription_id" => struct.provider_subscription_id,
-          "provider_customer_id" => struct.provider_customer_id,
-          "customer" =>
+          "preview_token" => struct.preview_token,
+          "expires_at" => struct.expires_at,
+          "preview" =>
             SellApp.Cast.dump_struct(
-              struct.customer,
-              &SellApp.PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyCustomer.to_map/1
+              struct.preview,
+              &SellApp.PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyPreview.to_map/1
             ),
-          "subscription_id" => struct.subscription_id,
-          "customer_id" => struct.customer_id,
-          "product_variant_id" => struct.product_variant_id
+          "customer_message" => struct.customer_message
         },
-        ["id", "status", "provider_subscription_id", "provider_customer_id", "customer"],
+        ["preview_token", "expires_at", "preview", "customer_message"],
         struct.__present_fields__
       )
 

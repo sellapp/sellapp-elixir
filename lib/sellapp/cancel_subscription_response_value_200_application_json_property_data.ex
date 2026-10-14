@@ -3,6 +3,11 @@
 defmodule SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyData do
   @moduledoc """
   CancelSubscriptionResponseValue200ApplicationJsonPropertyData model.
+
+  ## Deprecated fields
+
+    * `:subscription_id` — Deprecated alias of provider_subscription_id.
+    * `:customer_id` — Deprecated alias of provider_customer_id.
   """
 
   defstruct [
@@ -11,6 +16,9 @@ defmodule SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyData 
     :provider,
     :subscription_id,
     :customer_id,
+    :provider_subscription_id,
+    :provider_customer_id,
+    :customer,
     :customer_email,
     :status,
     :current_period_start,
@@ -21,6 +29,14 @@ defmodule SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyData 
     :product_variant_id,
     :created_at,
     :updated_at,
+    :trial_ends_at,
+    :current_plan_variant_id,
+    :auto_renew,
+    :paused_at,
+    :pause_resumes_at,
+    :canceled_immediately_at,
+    :payment_method_updated_at,
+    :last_customer_action_at,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -28,19 +44,32 @@ defmodule SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyData 
   @type t :: %__MODULE__{
           id: integer(),
           invoice_id: integer() | nil,
-          provider: String.t(),
-          subscription_id: String.t(),
-          customer_id: String.t(),
-          customer_email: String.t(),
-          status: String.t(),
-          current_period_start: String.t(),
-          current_period_end: String.t(),
+          provider: String.t() | nil,
+          subscription_id: String.t() | nil,
+          customer_id: String.t() | nil,
+          provider_subscription_id: String.t() | nil,
+          provider_customer_id: String.t() | nil,
+          customer:
+            SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyDataPropertyCustomer.t()
+            | nil,
+          customer_email: String.t() | nil,
+          status: SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyDataStatus.t(),
+          current_period_start: String.t() | nil,
+          current_period_end: String.t() | nil,
           cancel_at_period_end: boolean(),
           cancellation_in_progress: boolean(),
-          store_id: integer(),
-          product_variant_id: integer(),
+          store_id: integer() | nil,
+          product_variant_id: integer() | nil,
           created_at: String.t(),
           updated_at: String.t(),
+          trial_ends_at: String.t() | nil,
+          current_plan_variant_id: integer() | nil,
+          auto_renew: boolean() | nil,
+          paused_at: String.t() | nil,
+          pause_resumes_at: String.t() | nil,
+          canceled_immediately_at: String.t() | nil,
+          payment_method_updated_at: String.t() | nil,
+          last_customer_action_at: String.t() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -50,19 +79,90 @@ defmodule SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyData 
     properties: %{
       "id" => %{required: true, schema: %{kind: :integer}},
       "invoice_id" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :integer}}},
-      "provider" => %{required: true, schema: %{kind: :string}},
-      "subscription_id" => %{required: true, schema: %{kind: :string}},
-      "customer_id" => %{required: true, schema: %{kind: :string}},
-      "customer_email" => %{required: true, schema: %{kind: :string}},
-      "status" => %{required: true, schema: %{kind: :string}},
-      "current_period_start" => %{required: true, schema: %{kind: :string, format: "date-time"}},
-      "current_period_end" => %{required: true, schema: %{kind: :string, format: "date-time"}},
+      "provider" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}},
+      "subscription_id" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}},
+      "customer_id" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}},
+      "provider_subscription_id" => %{
+        required: true,
+        schema: %{kind: :nullable, inner: %{kind: :string}}
+      },
+      "provider_customer_id" => %{
+        required: true,
+        schema: %{kind: :nullable, inner: %{kind: :string}}
+      },
+      "customer" => %{
+        required: true,
+        schema: %{
+          kind: :nullable,
+          inner: %{
+            kind: :model,
+            module:
+              SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyDataPropertyCustomer
+          }
+        }
+      },
+      "customer_email" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}},
+      "status" => %{
+        required: true,
+        schema: %{
+          kind: :enum,
+          values: [
+            "ACTIVE",
+            "PAST_DUE",
+            "UNPAID",
+            "CANCELED",
+            "INCOMPLETE",
+            "INCOMPLETE_EXPIRED",
+            "TRIALING"
+          ]
+        }
+      },
+      "current_period_start" => %{
+        required: true,
+        schema: %{kind: :nullable, inner: %{kind: :string, format: "date-time"}}
+      },
+      "current_period_end" => %{
+        required: true,
+        schema: %{kind: :nullable, inner: %{kind: :string, format: "date-time"}}
+      },
       "cancel_at_period_end" => %{required: true, schema: %{kind: :boolean}},
       "cancellation_in_progress" => %{required: true, schema: %{kind: :boolean}},
-      "store_id" => %{required: true, schema: %{kind: :integer}},
-      "product_variant_id" => %{required: true, schema: %{kind: :integer}},
+      "store_id" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :integer}}},
+      "product_variant_id" => %{
+        required: true,
+        schema: %{kind: :nullable, inner: %{kind: :integer}}
+      },
       "created_at" => %{required: true, schema: %{kind: :string, format: "date-time"}},
-      "updated_at" => %{required: true, schema: %{kind: :string, format: "date-time"}}
+      "updated_at" => %{required: true, schema: %{kind: :string, format: "date-time"}},
+      "trial_ends_at" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :string, format: "date-time"}}
+      },
+      "current_plan_variant_id" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :integer}}
+      },
+      "auto_renew" => %{required: false, schema: %{kind: :boolean}},
+      "paused_at" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :string, format: "date-time"}}
+      },
+      "pause_resumes_at" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :string, format: "date-time"}}
+      },
+      "canceled_immediately_at" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :string, format: "date-time"}}
+      },
+      "payment_method_updated_at" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :string, format: "date-time"}}
+      },
+      "last_customer_action_at" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :string, format: "date-time"}}
+      }
     },
     additional_properties: true
   }
@@ -80,8 +180,19 @@ defmodule SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyData 
       provider: map["provider"],
       subscription_id: map["subscription_id"],
       customer_id: map["customer_id"],
+      provider_subscription_id: map["provider_subscription_id"],
+      provider_customer_id: map["provider_customer_id"],
+      customer:
+        SellApp.Cast.nested(
+          map["customer"],
+          &SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyDataPropertyCustomer.from_map/1
+        ),
       customer_email: map["customer_email"],
-      status: map["status"],
+      status:
+        SellApp.Cast.enum(
+          map["status"],
+          &SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyDataStatus.cast/1
+        ),
       current_period_start: map["current_period_start"],
       current_period_end: map["current_period_end"],
       cancel_at_period_end: map["cancel_at_period_end"],
@@ -90,6 +201,14 @@ defmodule SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyData 
       product_variant_id: map["product_variant_id"],
       created_at: map["created_at"],
       updated_at: map["updated_at"],
+      trial_ends_at: map["trial_ends_at"],
+      current_plan_variant_id: map["current_plan_variant_id"],
+      auto_renew: map["auto_renew"],
+      paused_at: map["paused_at"],
+      pause_resumes_at: map["pause_resumes_at"],
+      canceled_immediately_at: map["canceled_immediately_at"],
+      payment_method_updated_at: map["payment_method_updated_at"],
+      last_customer_action_at: map["last_customer_action_at"],
       __additional_properties__:
         Map.drop(map, [
           "id",
@@ -97,6 +216,9 @@ defmodule SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyData 
           "provider",
           "subscription_id",
           "customer_id",
+          "provider_subscription_id",
+          "provider_customer_id",
+          "customer",
           "customer_email",
           "status",
           "current_period_start",
@@ -106,7 +228,15 @@ defmodule SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyData 
           "store_id",
           "product_variant_id",
           "created_at",
-          "updated_at"
+          "updated_at",
+          "trial_ends_at",
+          "current_plan_variant_id",
+          "auto_renew",
+          "paused_at",
+          "pause_resumes_at",
+          "canceled_immediately_at",
+          "payment_method_updated_at",
+          "last_customer_action_at"
         ]),
       __present_fields__: Map.keys(map)
     }
@@ -123,8 +253,19 @@ defmodule SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyData 
           "provider" => struct.provider,
           "subscription_id" => struct.subscription_id,
           "customer_id" => struct.customer_id,
+          "provider_subscription_id" => struct.provider_subscription_id,
+          "provider_customer_id" => struct.provider_customer_id,
+          "customer" =>
+            SellApp.Cast.dump_struct(
+              struct.customer,
+              &SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyDataPropertyCustomer.to_map/1
+            ),
           "customer_email" => struct.customer_email,
-          "status" => struct.status,
+          "status" =>
+            SellApp.Cast.enum(
+              struct.status,
+              &SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyDataStatus.dump/1
+            ),
           "current_period_start" => struct.current_period_start,
           "current_period_end" => struct.current_period_end,
           "cancel_at_period_end" => struct.cancel_at_period_end,
@@ -132,7 +273,15 @@ defmodule SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyData 
           "store_id" => struct.store_id,
           "product_variant_id" => struct.product_variant_id,
           "created_at" => struct.created_at,
-          "updated_at" => struct.updated_at
+          "updated_at" => struct.updated_at,
+          "trial_ends_at" => struct.trial_ends_at,
+          "current_plan_variant_id" => struct.current_plan_variant_id,
+          "auto_renew" => struct.auto_renew,
+          "paused_at" => struct.paused_at,
+          "pause_resumes_at" => struct.pause_resumes_at,
+          "canceled_immediately_at" => struct.canceled_immediately_at,
+          "payment_method_updated_at" => struct.payment_method_updated_at,
+          "last_customer_action_at" => struct.last_customer_action_at
         },
         [
           "id",
@@ -140,6 +289,9 @@ defmodule SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyData 
           "provider",
           "subscription_id",
           "customer_id",
+          "provider_subscription_id",
+          "provider_customer_id",
+          "customer",
           "customer_email",
           "status",
           "current_period_start",

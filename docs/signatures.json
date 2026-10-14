@@ -2053,7 +2053,7 @@
     "operationId": "deleteProductVariant",
     "resource": "product_variants",
     "method": "delete",
-    "nativeSignature": "def delete(client, product, variant, opts \\\\ [])",
+    "nativeSignature": "def delete(client, product, variant, params \\\\ %{}, opts \\\\ [])",
     "signatures": [
       {
         "name": "delete",
@@ -2072,6 +2072,12 @@
           },
           {
             "name": "variant",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
             "type": "any",
             "optional": false,
             "passingStyle": "positional"
@@ -2520,6 +2526,108 @@
     "sourceFile": "lib/sellapp/subscriptions.ex"
   },
   {
+    "operationId": "listSubscriptions",
+    "resource": "subscriptions",
+    "method": "list_subscriptions",
+    "nativeSignature": "def list_subscriptions(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "list_subscriptions",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/subscriptions.ex"
+  },
+  {
+    "operationId": "searchSubscriptions",
+    "resource": "subscriptions",
+    "method": "search_subscriptions",
+    "nativeSignature": "def search_subscriptions(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "search_subscriptions",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/subscriptions.ex"
+  },
+  {
+    "operationId": "getSubscription",
+    "resource": "subscriptions",
+    "method": "get_subscription",
+    "nativeSignature": "def get_subscription(client, product_subscription, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get_subscription",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product_subscription",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/subscriptions.ex"
+  },
+  {
     "operationId": "getSubscriptionCapabilities",
     "resource": "subscriptions",
     "method": "get_capabilities",
@@ -2601,6 +2709,46 @@
     "signatures": [
       {
         "name": "cancel_immediately",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product_subscription",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/subscriptions.ex"
+  },
+  {
+    "operationId": "keepSubscription",
+    "resource": "subscriptions",
+    "method": "keep",
+    "nativeSignature": "def keep(client, product_subscription, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "keep",
         "params": [
           {
             "name": "client",
@@ -2914,81 +3062,13 @@
     "sourceFile": "lib/sellapp/subscriptions.ex"
   },
   {
-    "operationId": "listSubscriptions",
-    "resource": "subscriptions",
-    "method": "list_subscriptions",
-    "nativeSignature": "def list_subscriptions(client, params \\\\ %{}, opts \\\\ [])",
+    "operationId": "listSubscriptionActions",
+    "resource": "subscriptions_actions",
+    "method": "list",
+    "nativeSignature": "def list(client, product_subscription, params \\\\ %{}, opts \\\\ [])",
     "signatures": [
       {
-        "name": "list_subscriptions",
-        "params": [
-          {
-            "name": "client",
-            "type": "any",
-            "optional": false,
-            "passingStyle": "positional"
-          },
-          {
-            "name": "params",
-            "type": "any",
-            "optional": false,
-            "passingStyle": "positional"
-          },
-          {
-            "name": "opts",
-            "type": "any",
-            "optional": false,
-            "passingStyle": "keyword"
-          }
-        ],
-        "returnType": "any",
-        "async": false
-      }
-    ],
-    "sourceFile": "lib/sellapp/subscriptions.ex"
-  },
-  {
-    "operationId": "searchSubscriptions",
-    "resource": "subscriptions",
-    "method": "search_subscriptions",
-    "nativeSignature": "def search_subscriptions(client, params \\\\ %{}, opts \\\\ [])",
-    "signatures": [
-      {
-        "name": "search_subscriptions",
-        "params": [
-          {
-            "name": "client",
-            "type": "any",
-            "optional": false,
-            "passingStyle": "positional"
-          },
-          {
-            "name": "params",
-            "type": "any",
-            "optional": false,
-            "passingStyle": "positional"
-          },
-          {
-            "name": "opts",
-            "type": "any",
-            "optional": false,
-            "passingStyle": "keyword"
-          }
-        ],
-        "returnType": "any",
-        "async": false
-      }
-    ],
-    "sourceFile": "lib/sellapp/subscriptions.ex"
-  },
-  {
-    "operationId": "getSubscription",
-    "resource": "subscriptions",
-    "method": "get_subscription",
-    "nativeSignature": "def get_subscription(client, product_subscription, opts \\\\ [])",
-    "signatures": [
-      {
-        "name": "get_subscription",
+        "name": "list",
         "params": [
           {
             "name": "client",
@@ -3003,6 +3083,12 @@
             "passingStyle": "positional"
           },
           {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
             "name": "opts",
             "type": "any",
             "optional": false,
@@ -3013,7 +3099,93 @@
         "async": false
       }
     ],
-    "sourceFile": "lib/sellapp/subscriptions.ex"
+    "sourceFile": "lib/sellapp/subscriptions_actions.ex"
+  },
+  {
+    "operationId": "getSubscriptionAction",
+    "resource": "subscriptions_actions",
+    "method": "get",
+    "nativeSignature": "def get(client, product_subscription, action, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product_subscription",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "action",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/subscriptions_actions.ex"
+  },
+  {
+    "operationId": "dismissSubscriptionAction",
+    "resource": "subscriptions_actions",
+    "method": "dismiss",
+    "nativeSignature": "def dismiss(client, product_subscription, action, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "dismiss",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product_subscription",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "action",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/subscriptions_actions.ex"
   },
   {
     "operationId": "listAppointments",
@@ -12021,13 +12193,19 @@
     "operationId": "listCustomerPortalSubscriptions",
     "resource": "customer_portal",
     "method": "list_customer_portal_subscriptions",
-    "nativeSignature": "def list_customer_portal_subscriptions(client, opts \\\\ [])",
+    "nativeSignature": "def list_customer_portal_subscriptions(client, params \\\\ %{}, opts \\\\ [])",
     "signatures": [
       {
         "name": "list_customer_portal_subscriptions",
         "params": [
           {
             "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
             "type": "any",
             "optional": false,
             "passingStyle": "positional"
@@ -12265,7 +12443,7 @@
     "operationId": "resumeCustomerSubscription",
     "resource": "customer_portal",
     "method": "resume_customer_subscription",
-    "nativeSignature": "def resume_customer_subscription(client, product_subscription, params \\\\ %{}, opts \\\\ [])",
+    "nativeSignature": "def resume_customer_subscription(client, product_subscription, opts \\\\ [])",
     "signatures": [
       {
         "name": "resume_customer_subscription",
@@ -12278,12 +12456,6 @@
           },
           {
             "name": "product_subscription",
-            "type": "any",
-            "optional": false,
-            "passingStyle": "positional"
-          },
-          {
-            "name": "params",
             "type": "any",
             "optional": false,
             "passingStyle": "positional"

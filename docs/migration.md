@@ -1,6 +1,18 @@
 # Move to the current SellApp API contract
 
-This update covers 433 SDK operations. Existing API-key constructors remain available. Review the changes below before rebuilding your integration.
+This update covers 438 SDK operations. Existing API-key constructors remain available. Review the changes below before rebuilding your integration.
+
+## SDK and CLI 0.2.0 candidate
+
+This candidate includes the docs changes merged from September 22 through October 14, 2026. Publication and registry installation are separate release gates; this note does not establish that 0.2.0 is available.
+
+Four operations are added: `keepSubscription`, `listSubscriptionActions`, `getSubscriptionAction`, and `dismissSubscriptionAction`. Existing subscription list, search, and retrieve method names remain unchanged. Keep reverses an eligible scheduled cancellation; dismiss records a required note on a pending action and leaves the provider unchanged. Check current subscription capabilities and state before either write. CLI and MCP require consequential-action confirmation for these writes. Each MCP call selects its store and retains current role checks.
+
+Subscription response models now describe the lifecycle, action history, failed-payment state, trials, and discounts in the canonical API. Coupon and promotion models add subscription eligibility and discounted-payment counts. Recompile integrations that construct generated models or pass filter enums: the new contract corrects model shapes and removes unsupported order-line-item filter choices. Use the generated method reference for the exact request and response types in your language.
+
+The deprecated legacy cancellation route remains available in SDKs for compatibility but is excluded from MCP discovery. Use the explicit subscription cancellation actions for new work. SDK integrations continue to use API keys; CLI login continues to use browser consent.
+
+Elixir array filters now preserve their wire names and follow the API's repeat-versus-comma rules. For example, `status: ["ACTIVE", "TRIALING"]` sends repeated `status[]` parameters. Deprecated Rust methods retain caller warnings while their internal forwarding compiles cleanly.
 
 ## Convenience operations and atomic creation
 
@@ -122,6 +134,6 @@ For a business request whose contract supports an idempotency key, keep the same
 
 Events use ordinary cursor polling and `meta.next_cursor`. Empty pages are normal. Save your checkpoint only after processing the page successfully. Cursors are bound to the store and filters; `410 cursor_expired` requires a recovery decision. Events are retained for 30 days. Only `order.completed` guarantees detailed event data; other events can require retrieving the referenced resource.
 
-Exports support sales, tax, customers and affiliate payouts in CSV or JSON. Date ranges cover at most 366 inclusive days, defaulting to today and the previous 365 days. One job per store and two per account may be queued or running. Limits are 10,000 source rows, 5 MiB serialized source data, and 10 MiB output; use a smaller date range after a size-limit failure. Follow `poll_after_seconds` and inspect the current state before downloading or retrying a failed export. The authenticated download returns a redirect to short-lived storage. Never send SellApp credentials or `X-STORE` to that storage URL.
+Exports support sales, tax, customers and affiliate payouts in CSV or JSON. Date ranges cover at most 366 inclusive days, defaulting to today and the previous 365 days. One job per store and two per account may be queued or running. Limits are 100,000 source rows, 50 MiB serialized source data, and 100 MiB output; use a smaller date range after a size-limit failure. Follow `poll_after_seconds` and inspect the current state before downloading or retrying a failed export. The authenticated download returns a redirect to short-lived storage. Never send SellApp credentials or `X-STORE` to that storage URL.
 
 Webhook replay creates a new delivery ID for the same integration event. It does not repeat the business mutation and accepts no caller URL, payload or query override. Keep the required idempotency key.

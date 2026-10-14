@@ -2,12 +2,12 @@
   "schemaVersion": 1,
   "language": "elixir",
   "repository": "sellapp/sellapp-elixir",
-  "sourceSha": "617c71170f5c326d2d707c0f3e01caf9a948d2fc",
-  "specSha256": "02043ebfc36589e78743f00a0f4a2f3ac9ac14914b9cf2910f04fc34ad2d0924",
+  "sourceSha": "2a8fd1a82c3091e60f332257fe4460785b0c6e9a",
+  "specSha256": "aea767326d7193deffe5004a5751f7e8f59e40b037636c8fc29b936699dfff2e",
   "runId": "0",
   "runAttempt": "1",
-  "treeDigest": "e8f9e78bc0d4dc1db2675e57524ce5956ba8563c5d2fd9032bfd944cd2d1c828",
-  "contentDigest": "00c0aa7f5c718805f580d8d5101320d3c4e2981f52102ba582f9178db4f6521c",
+  "treeDigest": "a16e6f23bf8094896d0500f19c4c26419861e297faa08f702e3bd1828f36fe47",
+  "contentDigest": "2b1d813b5bbf02c3de4b547ea9c911b50654d40521b2f648016a9ac826d05913",
   "files": [
     {
       "path": ".formatter.exs",
@@ -22,7 +22,7 @@
     {
       "path": ".github/scripts/native-ci.mjs",
       "mode": "100644",
-      "sha256": "e7c5e578cb1925fb90fcfdec3bc1d5be9f610414835590c5872bca6dcf57dd6b"
+      "sha256": "a66e3e35847cdb569aabfa59a21b27f6e9f7053845a48f8838ba330081d94328"
     },
     {
       "path": ".github/scripts/sdk-documentation-packages.mjs",
@@ -57,7 +57,7 @@
     {
       "path": ".oagen-manifest.json",
       "mode": "100644",
-      "sha256": "d6131e451d3e047c4f2614701cc34e2211d0b4de8f9e5f39b475b0479a73d0d7"
+      "sha256": "74863c64d3810224897d20f4769ac1688a2d4c0de8490043f838a9f45dbdc0d2"
     },
     {
       "path": "LICENSE.txt",
@@ -72,27 +72,27 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "sha256": "d6f6184c0179922156c287c1d9183194b35c9721883e3245373a9c71b570c013"
+      "sha256": "1717531b424fdc5c521bcd63cbaccf10c7d27439fb9b1941e9a49af5f2dc4fb4"
     },
     {
       "path": "docs/methods.md",
       "mode": "100644",
-      "sha256": "5d999a2922cf6d093f1964b8d1cae51dd57f309323b014af61127d0375a73172"
+      "sha256": "2b2be7b5c068efb59316ae1ae9c9e28c7e0e4f6fb50f556824e5671df36e1736"
     },
     {
       "path": "docs/migration.md",
       "mode": "100644",
-      "sha256": "81237c3238b531d3128763739e4cbcead99d288d524ba9bebc5e665ad8f22861"
+      "sha256": "d2152af699fb26ebea01160423ee170c0d2516d1100b8188a4e583956b20528d"
     },
     {
       "path": "docs/operation-examples.json",
       "mode": "100644",
-      "sha256": "d856a462229da4169a1ff35c9a4cfa193a100b9f14dc14ef5e4b0cfeac5b4d47"
+      "sha256": "e34ead8fb8dc3d736d032df3cf9adca800931c1a411771e27fe51842f30c81e7"
     },
     {
       "path": "docs/operation-variants.json",
       "mode": "100644",
-      "sha256": "ffde670531c93d51b7cab6e443a61f5480d25aec96fd0a9faca6a0ac7b38ec20"
+      "sha256": "cd3392293dd15dc5c9bbb69ffb187b98a6459d4bdafb8b1e8f449f61938e16df"
     },
     {
       "path": "docs/resources/account.md",
@@ -212,7 +212,7 @@
     {
       "path": "docs/resources/customer_portal.md",
       "mode": "100644",
-      "sha256": "ec0d703f3e5187079e34c2e7a62b64a6c728a20451e38eb62a5576292ebad3b1"
+      "sha256": "93145228fbc582d5808a1c60ab3e3bbe4419d97e519748a5081040a182bcb647"
     },
     {
       "path": "docs/resources/customer_sessions.md",
@@ -327,7 +327,7 @@
     {
       "path": "docs/resources/product_variants.md",
       "mode": "100644",
-      "sha256": "5bd0cf059006d4187200fda4f049256482186eb0eec873c08350bf34cf58700e"
+      "sha256": "4ba4630d0f02d4cac71ac4cfef41652a270407cdf7019d0ff01fad353654e308"
     },
     {
       "path": "docs/resources/product_variants_booking.md",
@@ -402,7 +402,12 @@
     {
       "path": "docs/resources/subscriptions.md",
       "mode": "100644",
-      "sha256": "34e6d0a1ac379d11815084d432a82206e7b3aa90d3ed0add650d60ae0b946419"
+      "sha256": "ba0b04d8f8621e15d46a3660a95f4a445fec994df829d36ae1bd57e47addd72c"
+    },
+    {
+      "path": "docs/resources/subscriptions_actions.md",
+      "mode": "100644",
+      "sha256": "354b185747dd5513bf69732eeed60b4f3190d36fe7e6fe5ea8cae2ab735f5583"
     },
     {
       "path": "docs/resources/tickets.md",
@@ -477,12 +482,12 @@
     {
       "path": "docs/signatures.json",
       "mode": "100644",
-      "sha256": "75b3ea696bf30ff45eb44d528d9325cf752c433d5073201897405c3e08c3d2b4"
+      "sha256": "adb23d4510a79b6786db01c89797077abe3c8add878a3196406b9e14293817e8"
     },
     {
       "path": "docs/usage.md",
       "mode": "100644",
-      "sha256": "85a310d024cf77d38b7a997d3460301e408e173c8ab12782cb9f885348806b78"
+      "sha256": "b7b0be9585c4211b3f7e449d394456212777eb202cf9ecef4ffd58e5b062ae95"
     },
     {
       "path": "examples/README.md",
@@ -512,7 +517,7 @@
     {
       "path": "generation-manifest.json",
       "mode": "100644",
-      "sha256": "69168997b3fef29769cde19fb6dbd26d161b22da3b40bf730a712a652dbf6951"
+      "sha256": "41b4256005ca85cda412b0f4ad3d5c8888df57db070f1a88d926667246a0a42c"
     },
     {
       "path": "lib/sellapp.ex",
@@ -642,7 +647,12 @@
     {
       "path": "lib/sellapp/batch_create_coupons_request_application_json_property_resources_item.ex",
       "mode": "100644",
-      "sha256": "b6be637b995c16316d4642f2f7ecb6b6bb5ddb7eda3e2c1db187defe1e294ebc"
+      "sha256": "11db34058e7f254d4bacad8b69775c685a15b3e50e17e354a553b5860731570e"
+    },
+    {
+      "path": "lib/sellapp/batch_create_coupons_request_application_json_property_resources_item_applies_to.ex",
+      "mode": "100644",
+      "sha256": "234fe3de6d00e70d6a2f1928c1658216e41ff512579da6fd301cc8622087d95b"
     },
     {
       "path": "lib/sellapp/batch_create_coupons_request_application_json_property_resources_item_type.ex",
@@ -652,7 +662,12 @@
     {
       "path": "lib/sellapp/batch_create_coupons_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "b65bc46a88f34b0d71b77a6af3a6da9876dc1564dc8ff11850b0af5139115e27"
+      "sha256": "6e5711ab66ea67be3a66ab0e3c213dbdf0ea7da7cc73fe389878d94ff398ee89"
+    },
+    {
+      "path": "lib/sellapp/batch_create_coupons_response_value_200_application_json_property_data_item_applies_to.ex",
+      "mode": "100644",
+      "sha256": "bddeeea1cde35dc4fabd79101f582730d4cd3dc0f44ea6f948d53faa4a1068aa"
     },
     {
       "path": "lib/sellapp/batch_create_coupons_response_value_200_application_json_property_data_item_type.ex",
@@ -662,7 +677,12 @@
     {
       "path": "lib/sellapp/batch_create_coupons_response_value_201_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "4ab16caf2fef1d2085a4c2a466eac5bbaaa5c5459fb85456f7ce71f843995db0"
+      "sha256": "38e0daf108037bd1a51f578b110b1f0d25949f61cf9a8d40ec4fc58f07eca38d"
+    },
+    {
+      "path": "lib/sellapp/batch_create_coupons_response_value_201_application_json_property_data_item_applies_to.ex",
+      "mode": "100644",
+      "sha256": "e90a1895705f18c5871f306fbef760fa98bb1058e1b8361f3ba4a22d1a654bf4"
     },
     {
       "path": "lib/sellapp/batch_create_coupons_response_value_201_application_json_property_data_item_type.ex",
@@ -672,7 +692,7 @@
     {
       "path": "lib/sellapp/batch_create_product_variants_request_application_json_property_resources_item.ex",
       "mode": "100644",
-      "sha256": "047489af0568dcaad35e5c111a428e86046019637b9f16c1437da3493d336377"
+      "sha256": "526e416afe8f65a8eefde8aec61026db1c6a919575f5b0c4cf59a471ea711a9d"
     },
     {
       "path": "lib/sellapp/batch_create_product_variants_request_application_json_property_resources_item_payment_methods.ex",
@@ -747,7 +767,7 @@
     {
       "path": "lib/sellapp/batch_create_product_variants_request_application_json_property_resources_item_property_pricing.ex",
       "mode": "100644",
-      "sha256": "b20b0d91e9ffd9ae74e270b2a01dd063308aef729eee3523f66312b1ca381bc3"
+      "sha256": "7a3d286e734d6b7592ffffd87a83a2f026a3b16da27bfeb0f764f8458c203662"
     },
     {
       "path": "lib/sellapp/batch_create_product_variants_request_application_json_property_resources_item_property_pricing_property_price.ex",
@@ -782,7 +802,7 @@
     {
       "path": "lib/sellapp/batch_create_product_variants_response_value_200_application_json_property_data_item_property_pricing.ex",
       "mode": "100644",
-      "sha256": "dece4c9428631a351d8e3772bc997648cf67da0b4a1f2d27e06ecbc288665119"
+      "sha256": "046c1ef06efeb8fce047efb003171735bddf557225ba59fb8a7618fcb4c48949"
     },
     {
       "path": "lib/sellapp/batch_create_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_frequency.ex",
@@ -793,6 +813,31 @@
       "path": "lib/sellapp/batch_create_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_price.ex",
       "mode": "100644",
       "sha256": "96cc40d7c38bc7048ae0c13ba8cb15bda09c5e16a424cb83bf3e6d972808c6fa"
+    },
+    {
+      "path": "lib/sellapp/batch_create_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial.ex",
+      "mode": "100644",
+      "sha256": "ccb75deb2cf0fea523b71381038f608ae109b4f52ab85c86f5c24c331272b33f"
+    },
+    {
+      "path": "lib/sellapp/batch_create_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_kind.ex",
+      "mode": "100644",
+      "sha256": "d2c4932b82f27979a2286e88df42d1eadde38acda7e046be3cdd0853474477df"
+    },
+    {
+      "path": "lib/sellapp/batch_create_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_property_length.ex",
+      "mode": "100644",
+      "sha256": "f64f2cca358f20aa51ef5c833e4158ee28e53b5d92dc9d082a21cd4fe40e3192"
+    },
+    {
+      "path": "lib/sellapp/batch_create_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_property_length_interval.ex",
+      "mode": "100644",
+      "sha256": "55c5e6cfd803da413c0f4a97c985e6ce9922610dbd7df0fa2f4eab3402ca54c7"
+    },
+    {
+      "path": "lib/sellapp/batch_create_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_property_price.ex",
+      "mode": "100644",
+      "sha256": "7d0c62a0039dda694e259d36c25a5cba35e4bd3098b0df9d7f82f2b6c8842da9"
     },
     {
       "path": "lib/sellapp/batch_create_product_variants_response_value_200_application_json_property_data_item_property_product.ex",
@@ -832,7 +877,7 @@
     {
       "path": "lib/sellapp/batch_create_product_variants_response_value_201_application_json_property_data_item_property_pricing.ex",
       "mode": "100644",
-      "sha256": "4ff251e2d84d7dee04c6f3b342792d0f000043ce7250967af92e248c4c4e5d11"
+      "sha256": "8a53d576063c3a4dd7301229d36d62e0d32141eda91c932cd78ececed89eed58"
     },
     {
       "path": "lib/sellapp/batch_create_product_variants_response_value_201_application_json_property_data_item_property_pricing_property_frequency.ex",
@@ -843,6 +888,31 @@
       "path": "lib/sellapp/batch_create_product_variants_response_value_201_application_json_property_data_item_property_pricing_property_price.ex",
       "mode": "100644",
       "sha256": "111c633e6e3d996c118571a465aef3884141ff67c626a2854488d8d2d62e8559"
+    },
+    {
+      "path": "lib/sellapp/batch_create_product_variants_response_value_201_application_json_property_data_item_property_pricing_property_trial.ex",
+      "mode": "100644",
+      "sha256": "c9ca61418900392e1e7209e6b07900b83c57f2902eaa86105fb89cbeab6b492d"
+    },
+    {
+      "path": "lib/sellapp/batch_create_product_variants_response_value_201_application_json_property_data_item_property_pricing_property_trial_kind.ex",
+      "mode": "100644",
+      "sha256": "ea7db4cd76c715b6c065642e132bd65ce4f044a3ea79f00136a0663000fb64dc"
+    },
+    {
+      "path": "lib/sellapp/batch_create_product_variants_response_value_201_application_json_property_data_item_property_pricing_property_trial_property_length.ex",
+      "mode": "100644",
+      "sha256": "af4289d6cd4124985a45f0d53cb8ab2cf9cc91d172ee57835fc705339c49bf45"
+    },
+    {
+      "path": "lib/sellapp/batch_create_product_variants_response_value_201_application_json_property_data_item_property_pricing_property_trial_property_length_interval.ex",
+      "mode": "100644",
+      "sha256": "c330f2d2837665a485b34e46f54b79226ca6da80a3473d23864d5ca5337f96a3"
+    },
+    {
+      "path": "lib/sellapp/batch_create_product_variants_response_value_201_application_json_property_data_item_property_pricing_property_trial_property_price.ex",
+      "mode": "100644",
+      "sha256": "8753302cea2dfced5c33a0f273f7096e2a69941954bcb7d42b8c7dca8fbb6373"
     },
     {
       "path": "lib/sellapp/batch_create_product_variants_response_value_201_application_json_property_data_item_property_product.ex",
@@ -982,7 +1052,12 @@
     {
       "path": "lib/sellapp/batch_delete_coupons_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "70216164c406367072677002cc32841cd45a270265fb66f68ad95480ec198339"
+      "sha256": "3d2e6f43254a2ea19a0fc18c020fe6bad283def5ef8206e22e2ed889ad6c29de"
+    },
+    {
+      "path": "lib/sellapp/batch_delete_coupons_response_value_200_application_json_property_data_item_applies_to.ex",
+      "mode": "100644",
+      "sha256": "ee41f3fdc45612406fb3e70ad0f620cce6698e7516d927936369fccc80c318f9"
     },
     {
       "path": "lib/sellapp/batch_delete_coupons_response_value_200_application_json_property_data_item_type.ex",
@@ -1017,7 +1092,7 @@
     {
       "path": "lib/sellapp/batch_delete_product_variants_response_value_200_application_json_property_data_item_property_pricing.ex",
       "mode": "100644",
-      "sha256": "7ce32099be5b71adeaa0bd63f520fc18b65520409bdb2d343ec5d191a1252248"
+      "sha256": "fe061ebf59fe34cc5625b24b80b6d862e0b8a6e6dc7f3910127bd89a24b287d4"
     },
     {
       "path": "lib/sellapp/batch_delete_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_frequency.ex",
@@ -1028,6 +1103,31 @@
       "path": "lib/sellapp/batch_delete_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_price.ex",
       "mode": "100644",
       "sha256": "65368ba2783f7c922aa44f92cea5c4db0ab91a79b76eaf0f8849fe84d3d51ebc"
+    },
+    {
+      "path": "lib/sellapp/batch_delete_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial.ex",
+      "mode": "100644",
+      "sha256": "182a3f2a6e151964f870292f43bcba4fcefc60ee61e5d2a1dae1b52a03f84474"
+    },
+    {
+      "path": "lib/sellapp/batch_delete_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_kind.ex",
+      "mode": "100644",
+      "sha256": "e45ca2de142c6ad7a1dc71bbbb5fe6c3d47d08db153f16ce8ae2a769cfd822d0"
+    },
+    {
+      "path": "lib/sellapp/batch_delete_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_property_length.ex",
+      "mode": "100644",
+      "sha256": "8784bf03c6ddeb5751c065b30faa84944a682d8f1c5ebefa84c29ef5e2385b69"
+    },
+    {
+      "path": "lib/sellapp/batch_delete_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_property_length_interval.ex",
+      "mode": "100644",
+      "sha256": "909321099e6da0599d17d07a42dcf1a8ce62ea7c1419b87e45fe06d189bc0d5c"
+    },
+    {
+      "path": "lib/sellapp/batch_delete_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_property_price.ex",
+      "mode": "100644",
+      "sha256": "c33e3aec65e4b9a744494406a6a2af8fe2876f1908f854bdbac0fec644dd65b9"
     },
     {
       "path": "lib/sellapp/batch_delete_product_variants_response_value_200_application_json_property_data_item_property_product.ex",
@@ -1092,7 +1192,12 @@
     {
       "path": "lib/sellapp/batch_update_coupons_request_application_json_property_resources_map_value.ex",
       "mode": "100644",
-      "sha256": "d801e5febae6c25600c64dc97204f1dcccc9cbc9cce69bfa891fa5a43f01fff8"
+      "sha256": "8a8c754b3b07951f170757ee0f2880d1fe2cf4a57b934230f448d93e5d2e4424"
+    },
+    {
+      "path": "lib/sellapp/batch_update_coupons_request_application_json_property_resources_map_value_applies_to.ex",
+      "mode": "100644",
+      "sha256": "838e1c3c2d5c216abe1df88799238d3fb25a1231f20d3f63beb4977fcd4e8bef"
     },
     {
       "path": "lib/sellapp/batch_update_coupons_request_application_json_property_resources_map_value_type.ex",
@@ -1102,7 +1207,12 @@
     {
       "path": "lib/sellapp/batch_update_coupons_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "8f731e7484c4c4e5598281071e4af6f479f3073845ba645e9d2ccc0ae1dd75ce"
+      "sha256": "5fc1bb3e15651cebabd441caf946b80c7106d19357334c82029d985144604e1e"
+    },
+    {
+      "path": "lib/sellapp/batch_update_coupons_response_value_200_application_json_property_data_item_applies_to.ex",
+      "mode": "100644",
+      "sha256": "0b3cd051517b40dd9c6b69a43d3c302a2048af72a5a19e9432fc5ce740a4750a"
     },
     {
       "path": "lib/sellapp/batch_update_coupons_response_value_200_application_json_property_data_item_type.ex",
@@ -1117,7 +1227,7 @@
     {
       "path": "lib/sellapp/batch_update_product_variants_request_application_json_property_resources_map_value.ex",
       "mode": "100644",
-      "sha256": "f7159fc34f36320db8f0c4ab372c5df3727471ddf68164d7ff95fcc2e70c97ee"
+      "sha256": "45f465b32984cb92df29d98d5dc11d06a482017005bf2631362e4cde773cc2da"
     },
     {
       "path": "lib/sellapp/batch_update_product_variants_request_application_json_property_resources_map_value_payment_methods.ex",
@@ -1192,7 +1302,7 @@
     {
       "path": "lib/sellapp/batch_update_product_variants_request_application_json_property_resources_map_value_property_pricing.ex",
       "mode": "100644",
-      "sha256": "2a276318506775ba510a813b0e182739e1e50db8ddd2b638129d2848a9c3d314"
+      "sha256": "f5929e90464c080ebaef8ce3c9c656ad1940e07546a4b66779b771a965e6bc2e"
     },
     {
       "path": "lib/sellapp/batch_update_product_variants_request_application_json_property_resources_map_value_property_pricing_property_price.ex",
@@ -1227,7 +1337,7 @@
     {
       "path": "lib/sellapp/batch_update_product_variants_response_value_200_application_json_property_data_item_property_pricing.ex",
       "mode": "100644",
-      "sha256": "7a45b72dfed619ef6330c59d3531e144ffc4f384aa107d646abe41fe70da3661"
+      "sha256": "5bf05a9446b7f402ed4b88d6453cf64d89f348039d13b6c56a72329156f7d8fb"
     },
     {
       "path": "lib/sellapp/batch_update_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_frequency.ex",
@@ -1238,6 +1348,31 @@
       "path": "lib/sellapp/batch_update_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_price.ex",
       "mode": "100644",
       "sha256": "16f347bb306aa069a5e4ad889728b01ffbc1dc064701349acee3d811e27a395c"
+    },
+    {
+      "path": "lib/sellapp/batch_update_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial.ex",
+      "mode": "100644",
+      "sha256": "9924bc3ca789efaafdae047303ea059cf87217bc80aa03765120ad6d230986ab"
+    },
+    {
+      "path": "lib/sellapp/batch_update_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_kind.ex",
+      "mode": "100644",
+      "sha256": "45514aec664d4d118f392541ebd49b8a1ee4fd86b5f3de1de237c8a408594c16"
+    },
+    {
+      "path": "lib/sellapp/batch_update_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_property_length.ex",
+      "mode": "100644",
+      "sha256": "f8249b2e59180cdc605a8ca425636e40ee11f7257141e6c04b49a88b83bfb48e"
+    },
+    {
+      "path": "lib/sellapp/batch_update_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_property_length_interval.ex",
+      "mode": "100644",
+      "sha256": "b3238a0d16f7e31da1743c1c5f4029f37295d985e2483636285c4731db16683d"
+    },
+    {
+      "path": "lib/sellapp/batch_update_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_property_price.ex",
+      "mode": "100644",
+      "sha256": "6d51edcde7df26e5b77c4dcb11b3b774d547c5328c5c345ee7bea41a22139f3c"
     },
     {
       "path": "lib/sellapp/batch_update_product_variants_response_value_200_application_json_property_data_item_property_product.ex",
@@ -1417,42 +1552,42 @@
     {
       "path": "lib/sellapp/cancel_customer_subscription_at_period_end_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "6d996f0f0fc76b0e58ea36489baa3d9cf341fb445130007bf17b490b718313cd"
+      "sha256": "70bfb574efd5cd5f86f46fa5d344311f76b67096099bc9e84167ed27bc6ae1a5"
     },
     {
-      "path": "lib/sellapp/cancel_customer_subscription_at_period_end_response_value_200_application_json_property_data_property_customer.ex",
+      "path": "lib/sellapp/cancel_customer_subscription_at_period_end_response_value_200_application_json_property_data_action.ex",
       "mode": "100644",
-      "sha256": "31ae152bb53e3f5c62ae736577ff44c23ed07c9ba9fa908b472dd95a3c1c2b8d"
+      "sha256": "f87bd9d61da8de0ad1d0d8ec70a2f7dfa975946a2695361cc433821ae20cbc6a"
     },
     {
-      "path": "lib/sellapp/cancel_customer_subscription_at_period_end_response_value_200_application_json_property_data_property_customer_property_metadata.ex",
+      "path": "lib/sellapp/cancel_customer_subscription_at_period_end_response_value_200_application_json_property_data_status.ex",
       "mode": "100644",
-      "sha256": "4f117aac205c6acc40366e525ab06e234a23ab6e22a647e0455d4e00543cc02b"
+      "sha256": "a70848edc7fc6644a94e4bb69703bc48e710ff8737ff244262ffb9c1f534e501"
     },
     {
       "path": "lib/sellapp/cancel_customer_subscription_immediately_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "150c25ff97251e338a949d687becca416f194cc765258a595210fd1b4663af8d"
+      "sha256": "207de33be9d0e3a6f3295365d1de808ca980c104342678cb1c8afd8d671e629d"
     },
     {
-      "path": "lib/sellapp/cancel_customer_subscription_immediately_response_value_200_application_json_property_data_property_customer.ex",
+      "path": "lib/sellapp/cancel_customer_subscription_immediately_response_value_200_application_json_property_data_action.ex",
       "mode": "100644",
-      "sha256": "acba4cf9007d739d5aa6b387e482952ce5cef4f7ad70e897042a65640f602ec8"
+      "sha256": "45d2dd99e01403a87ffb5984b8e0577a511d9ac1f43612f4bc234c57885cd467"
     },
     {
-      "path": "lib/sellapp/cancel_customer_subscription_immediately_response_value_200_application_json_property_data_property_customer_property_metadata.ex",
+      "path": "lib/sellapp/cancel_customer_subscription_immediately_response_value_200_application_json_property_data_status.ex",
       "mode": "100644",
-      "sha256": "629e4c836c357b112a9edbd2a246f2c4d7427c9b34fed3e4c15fb530163ce93e"
+      "sha256": "1f7653b68683baa4ffec8e103ece15005028dc7300a42275b35e892e336240b1"
     },
     {
       "path": "lib/sellapp/cancel_subscription_at_period_end_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "95610cde01e63f334d2bf5af1e6c6a957916ccc4bf78dc56abc318fa0cfe2db6"
+      "sha256": "f0bb907acdb37ee3986680494de9fed10b129e70b9dd57bbd9a0c7f43ec1ab12"
     },
     {
       "path": "lib/sellapp/cancel_subscription_at_period_end_response_value_200_application_json_property_data_action.ex",
       "mode": "100644",
-      "sha256": "877e94af5ff067eeeffa72f167b5a1d16a73b28c785d6dc0ed99efd011eceda7"
+      "sha256": "881e1195763ab1393dec77373dd1fe7eb49bbaf99192afbc0f23247544835211"
     },
     {
       "path": "lib/sellapp/cancel_subscription_at_period_end_response_value_200_application_json_property_data_status.ex",
@@ -1462,12 +1597,12 @@
     {
       "path": "lib/sellapp/cancel_subscription_immediately_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "6df60447aeca0e361724d9595b77deca4c45dd8700f2405e5dc5b222f0a001ed"
+      "sha256": "32a9bfe94f3eb61e7c5c1f99a0bf92d49cae47367aa42df8e18e50d652c1e8a1"
     },
     {
       "path": "lib/sellapp/cancel_subscription_immediately_response_value_200_application_json_property_data_action.ex",
       "mode": "100644",
-      "sha256": "afb03b2a0edc8bef986b39556aac57da7bd3c518233fb997260781f4aa6cac62"
+      "sha256": "5cfc382e86bfc610a9a056bfdeb0919599958859884eb18a7b19019bda4e0f25"
     },
     {
       "path": "lib/sellapp/cancel_subscription_immediately_response_value_200_application_json_property_data_status.ex",
@@ -1477,7 +1612,17 @@
     {
       "path": "lib/sellapp/cancel_subscription_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "c27b1b2d03cd97900e077bac5aeeebdf1f6213909e089aa31c55b65eae50510a"
+      "sha256": "ae6235609d51762aecce8c77184336b6b9886f4320b2e5b34858d9e92537ae54"
+    },
+    {
+      "path": "lib/sellapp/cancel_subscription_response_value_200_application_json_property_data_property_customer.ex",
+      "mode": "100644",
+      "sha256": "77d7e373e9266edf780c0767863b4f4a48fc38d0bb5567253d4ad4c72753b4a3"
+    },
+    {
+      "path": "lib/sellapp/cancel_subscription_response_value_200_application_json_property_data_status.ex",
+      "mode": "100644",
+      "sha256": "2447036c1fe419419f2fe6701f5e24f5ed3a35b1ea70e404cabe8041db020cf7"
     },
     {
       "path": "lib/sellapp/cashback_rules.ex",
@@ -1507,7 +1652,7 @@
     {
       "path": "lib/sellapp/client.ex",
       "mode": "100644",
-      "sha256": "1e8b637138c1bd9d01f4e81c12fb5ca9711d77bbe821d1c596f7caa87aae33b9"
+      "sha256": "1ba4874fb567510ead0b1de05cc66e644c94d18f4af50ceb722241c384239fea"
     },
     {
       "path": "lib/sellapp/community_connections.ex",
@@ -1535,39 +1680,64 @@
       "sha256": "fa011bb0f341d1cac8e32fd9ea228a1c69423ec009de9382f1cb43a6b028f805"
     },
     {
+      "path": "lib/sellapp/confirm_customer_subscription_plan_change_request_application_json_property_metadata.ex",
+      "mode": "100644",
+      "sha256": "d038bd616399d077a3992702eeff873d229b5d7ac73d6394d5c8c3ad1ed8e0eb"
+    },
+    {
       "path": "lib/sellapp/confirm_customer_subscription_plan_change_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "a4df74f146a43c7679298572d9f51f969ee6cb9f6a50f8297a231c0e55d734f1"
+      "sha256": "e51b720a46e24f598c49e4fd6e1e57e4ebfc607391c3476d1666060766451935"
     },
     {
-      "path": "lib/sellapp/confirm_customer_subscription_plan_change_response_value_200_application_json_property_data_property_customer.ex",
+      "path": "lib/sellapp/confirm_customer_subscription_plan_change_response_value_200_application_json_property_data_action.ex",
       "mode": "100644",
-      "sha256": "8e5559c28bbd3f313e9195a5555ace24f1ea48afe7df7fb67bbdec739b14c6ff"
+      "sha256": "ab6eac1470ba65771c499cee637410d1383a5834e17e1623cd28cfe470de9729"
     },
     {
-      "path": "lib/sellapp/confirm_customer_subscription_plan_change_response_value_200_application_json_property_data_property_customer_property_metadata.ex",
+      "path": "lib/sellapp/confirm_customer_subscription_plan_change_response_value_200_application_json_property_data_status.ex",
       "mode": "100644",
-      "sha256": "05cf0bf8b8cc2cf5413c4065eee0682f377b7fd6318fd8441542ff4c9918b145"
+      "sha256": "c16dc8b44004ae8062e4eba20baa312e6f2e69e8ac51ee8616d4a66ac0994c4c"
+    },
+    {
+      "path": "lib/sellapp/confirm_customer_subscription_renewal_date_change_request_application_json_property_metadata.ex",
+      "mode": "100644",
+      "sha256": "8d833e327dbc8496db138a96aa4c735a57778636a9ca3ad7438f91cdeca84157"
     },
     {
       "path": "lib/sellapp/confirm_customer_subscription_renewal_date_change_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "1a521bacf396414dd244d729c6b44a41b7d12aeecd286f19678e9520ab585a57"
+      "sha256": "3ed6a629329180cc6702d13f70592456fd9f8a13d883779e866fa8c5b7c28e97"
     },
     {
-      "path": "lib/sellapp/confirm_customer_subscription_renewal_date_change_response_value_200_application_json_property_data_property_customer.ex",
+      "path": "lib/sellapp/confirm_customer_subscription_renewal_date_change_response_value_200_application_json_property_data_action.ex",
       "mode": "100644",
-      "sha256": "64a9523bb49061b39aa5bb29338062a0e615bb96d4332952e9e718186e3c1c75"
+      "sha256": "6912b70847b91ff557f7076a49b03526c6e7273c343fd7ac7e37b6e3f44d57e3"
     },
     {
-      "path": "lib/sellapp/confirm_customer_subscription_renewal_date_change_response_value_200_application_json_property_data_property_customer_property_metadata.ex",
+      "path": "lib/sellapp/confirm_customer_subscription_renewal_date_change_response_value_200_application_json_property_data_status.ex",
       "mode": "100644",
-      "sha256": "79aa52a21e38b971013b4c80036b4b050240e8aba076851a36b162540e2a6946"
+      "sha256": "744c75ff696aed491fcd8ac9ddd3c7f26bfc07d1c35fdeaab86320e55c144b6a"
     },
     {
       "path": "lib/sellapp/confirm_subscription_plan_change_request_application_json_property_metadata.ex",
       "mode": "100644",
       "sha256": "20b286f5cf0e7aa684b8a33bec6b1310ac341590943dd5cf696f40bb5e6ab049"
+    },
+    {
+      "path": "lib/sellapp/confirm_subscription_plan_change_response_value_200_application_json_property_data.ex",
+      "mode": "100644",
+      "sha256": "d582c34733e8a184c5f5264a77565567713fc9eb22da8ac3db6f25cb565ebd6c"
+    },
+    {
+      "path": "lib/sellapp/confirm_subscription_plan_change_response_value_200_application_json_property_data_action.ex",
+      "mode": "100644",
+      "sha256": "db64835de0577599bfb9000e44d790a5791e2eda3ed6670388780fa2d380dd3b"
+    },
+    {
+      "path": "lib/sellapp/confirm_subscription_plan_change_response_value_200_application_json_property_data_status.ex",
+      "mode": "100644",
+      "sha256": "0f01def2ab07f4b47daa5f2c31d7cffc62e112d4c2a4539ba3b1bd36e25c25d1"
     },
     {
       "path": "lib/sellapp/confirm_subscription_renewal_date_change_request_application_json_property_metadata.ex",
@@ -1577,12 +1747,12 @@
     {
       "path": "lib/sellapp/confirm_subscription_renewal_date_change_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "8480a4ac3e133673fdf9e8f6e27ab26889b5e2698ef4880cf48ebee3b1394844"
+      "sha256": "532c185a01ed4bfca623b68585c0503126a28472aa8450f747c3668db718f180"
     },
     {
       "path": "lib/sellapp/confirm_subscription_renewal_date_change_response_value_200_application_json_property_data_action.ex",
       "mode": "100644",
-      "sha256": "8da7e84d0204f75b07343894765bb8bedd45626cfca69b36c72a02ae90d2e423"
+      "sha256": "49b8d70b26adef875072dfc4e107c1eef040149ef4fc5c93071ed251ad3bc731"
     },
     {
       "path": "lib/sellapp/confirm_subscription_renewal_date_change_response_value_200_application_json_property_data_status.ex",
@@ -1637,7 +1807,7 @@
     {
       "path": "lib/sellapp/create_add_on_draft_request_application_json_property_variant.ex",
       "mode": "100644",
-      "sha256": "2ff987cdd58eed5c56066287dadb8b5b0548b171ea45e6d1d97a3642e347762d"
+      "sha256": "454ff55bece2dadb419461723548f6b281f571e467c79ff9d1402b80db97c68e"
     },
     {
       "path": "lib/sellapp/create_add_on_draft_request_application_json_property_variant_payment_methods.ex",
@@ -1712,7 +1882,7 @@
     {
       "path": "lib/sellapp/create_add_on_draft_request_application_json_property_variant_property_pricing.ex",
       "mode": "100644",
-      "sha256": "84a370485b1bfdf0eae7d5b070bbc88f0b8c5da9c2e64b51467a91d3cff09a84"
+      "sha256": "fe28f07552882b96d5294785c2b86b8e9a936eb54a53a7f0e1ccce030650fa1b"
     },
     {
       "path": "lib/sellapp/create_add_on_draft_request_application_json_property_variant_property_pricing_property_price.ex",
@@ -1832,7 +2002,7 @@
     {
       "path": "lib/sellapp/create_checkout_session_response_value_200_application_json_property_invoice_property_payment_property_gateway.ex",
       "mode": "100644",
-      "sha256": "25fe25d5105c3d37ce453f785ca85b4b972722f03c1648d25015c011b9addded"
+      "sha256": "ee141ffc38a784107f7811dc69016d49535b1022267f4de487edd869cfa13fb3"
     },
     {
       "path": "lib/sellapp/create_checkout_session_response_value_200_application_json_property_invoice_property_payment_property_gateway_property_data.ex",
@@ -1867,7 +2037,12 @@
     {
       "path": "lib/sellapp/create_checkout_session_response_value_200_application_json_property_invoice_property_status.ex",
       "mode": "100644",
-      "sha256": "170cd2f18f501e175fe9579fcab29875ed3b9d5bf08ee78cbd92b2f84f218d32"
+      "sha256": "4b7196fdc52b5fdd5d063c1e6f1473d1c55fea484d05912631593403e3166e1a"
+    },
+    {
+      "path": "lib/sellapp/create_checkout_session_response_value_200_application_json_property_invoice_property_status_property_history_item.ex",
+      "mode": "100644",
+      "sha256": "dc88169875bbfc94fa459ea2c613afc02eac3aca4516eb3888ed4f0a5e021a29"
     },
     {
       "path": "lib/sellapp/create_checkout_session_response_value_200_application_json_property_invoice_property_status_property_status.ex",
@@ -1922,7 +2097,7 @@
     {
       "path": "lib/sellapp/create_checkout_session_response_value_201_application_json_property_invoice_property_payment_property_gateway.ex",
       "mode": "100644",
-      "sha256": "c014208cad53d731d6f0d6d3f1b4d745f44961ff1e1a9fdc03a58eb6b8d80c18"
+      "sha256": "ab137febecd440272b4f2186d83b70eafb4619bc44cd1dfd8c35c520f35b8aa9"
     },
     {
       "path": "lib/sellapp/create_checkout_session_response_value_201_application_json_property_invoice_property_payment_property_gateway_property_data.ex",
@@ -1952,7 +2127,12 @@
     {
       "path": "lib/sellapp/create_checkout_session_response_value_201_application_json_property_invoice_property_status.ex",
       "mode": "100644",
-      "sha256": "c692d70ddb65e20903975c1aee5f752aed59eb6bf024e2f86db5029887de231a"
+      "sha256": "2135dc2451ee8fcccb02f1b4ba3c589d5fd8c5f02643e202a7032b1ae3d98320"
+    },
+    {
+      "path": "lib/sellapp/create_checkout_session_response_value_201_application_json_property_invoice_property_status_property_history_item.ex",
+      "mode": "100644",
+      "sha256": "e56fef527a10a954b3e2fa3f70d681ee702069a1aca9afe6058f740a97d21893"
     },
     {
       "path": "lib/sellapp/create_checkout_session_response_value_201_application_json_property_invoice_property_status_property_status.ex",
@@ -1967,7 +2147,12 @@
     {
       "path": "lib/sellapp/create_coupon_response_value_201_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "dc34fe622cef9c2e9895451695c9d31c850f850f8ec5b250504e6f29ffd94c99"
+      "sha256": "6401482a4a1fe8a200b7bb1cdc972e4dd496ca356d2ad05228769b5aae0bdb2e"
+    },
+    {
+      "path": "lib/sellapp/create_coupon_response_value_201_application_json_property_data_applies_to.ex",
+      "mode": "100644",
+      "sha256": "4dd20fc161116af31b10bf0c401e9c21c8ff7471c63c8053b08b443fa223e709"
     },
     {
       "path": "lib/sellapp/create_coupon_response_value_201_application_json_property_data_type.ex",
@@ -2377,7 +2562,7 @@
     {
       "path": "lib/sellapp/create_invoice_refund_response_value_200_application_json_property_data_property_invoice_property_payment_property_gateway.ex",
       "mode": "100644",
-      "sha256": "c1c6e419e7f3e6ef33c705cb4d9e55c6856a1d78a583656868c41666bfff1320"
+      "sha256": "ae2059f8ade0dea04680efabd9e2064ce672091ead5cfb4338b060a0a0d1dcd4"
     },
     {
       "path": "lib/sellapp/create_invoice_refund_response_value_200_application_json_property_data_property_invoice_property_payment_property_gateway_property_data.ex",
@@ -2502,7 +2687,7 @@
     {
       "path": "lib/sellapp/create_invoice_response_value_201_application_json_property_data_property_payment_property_gateway.ex",
       "mode": "100644",
-      "sha256": "a938c7c78dfddedd831a2b9a93ad545f03271d5c1dd11fc1be23d3c1ba05ae8e"
+      "sha256": "08d62640b85a6d778094c57401dd2fde380d3a965fbf844b09f706a455be0a9f"
     },
     {
       "path": "lib/sellapp/create_invoice_response_value_201_application_json_property_data_property_payment_property_gateway_property_data.ex",
@@ -2872,7 +3057,7 @@
     {
       "path": "lib/sellapp/create_product_request_application_json_property_variants_item.ex",
       "mode": "100644",
-      "sha256": "8c4464ea82419b51d4d4ce1ef9e44804de74f7d39774c34736ab5e0a1a220304"
+      "sha256": "318e161078958be31dae62f4a98879fbbafb3ee5e79197bc0b88450961efe1c1"
     },
     {
       "path": "lib/sellapp/create_product_request_application_json_property_variants_item_payment_methods.ex",
@@ -2947,7 +3132,7 @@
     {
       "path": "lib/sellapp/create_product_request_application_json_property_variants_item_property_pricing.ex",
       "mode": "100644",
-      "sha256": "dc29551bf74c302e190cbeddc5eec4acf58307ce9a59ab20429751f9e2c2115b"
+      "sha256": "a5e3f8c9226dc03b015ff7cd1ef2b84cf8cc545a021e3584d7f2d86fcbfe2f66"
     },
     {
       "path": "lib/sellapp/create_product_request_application_json_property_variants_item_property_pricing_property_price.ex",
@@ -3052,7 +3237,7 @@
     {
       "path": "lib/sellapp/create_product_variant_request_application_json_property_pricing.ex",
       "mode": "100644",
-      "sha256": "bf07be382743663b7175e2afb15303d0984a5f9e788eca7df142f5555b4ec710"
+      "sha256": "b3ba71d9fad9948b26c6d91080f313f49ec5959caaaed252be4537e56838c09e"
     },
     {
       "path": "lib/sellapp/create_product_variant_request_application_json_property_pricing_property_price.ex",
@@ -3087,7 +3272,7 @@
     {
       "path": "lib/sellapp/create_product_variant_response_value_201_application_json_property_data_property_pricing.ex",
       "mode": "100644",
-      "sha256": "6a31a42a090b058f97df55fd865cc676fa78f727eead632cbd88fb07d68f79c9"
+      "sha256": "d7e5c46612e2278d51281ee2ccfcf63ae7739b400ec51c8abd2a39976b45eb0b"
     },
     {
       "path": "lib/sellapp/create_product_variant_response_value_201_application_json_property_data_property_pricing_property_frequency.ex",
@@ -3098,6 +3283,31 @@
       "path": "lib/sellapp/create_product_variant_response_value_201_application_json_property_data_property_pricing_property_price.ex",
       "mode": "100644",
       "sha256": "e30f7aa8922d104b100edb08dd925b4577c4d5819152495e65b681a34ba13b2b"
+    },
+    {
+      "path": "lib/sellapp/create_product_variant_response_value_201_application_json_property_data_property_pricing_property_trial.ex",
+      "mode": "100644",
+      "sha256": "3c5bafbff3db04a8f64a594cf96b8081b1d8a00fe5ec13348f934af1ba329dc9"
+    },
+    {
+      "path": "lib/sellapp/create_product_variant_response_value_201_application_json_property_data_property_pricing_property_trial_kind.ex",
+      "mode": "100644",
+      "sha256": "6e40b57282ec7c015a86f19de3ae802536317ac6de1c0c6a0c2331b66affe307"
+    },
+    {
+      "path": "lib/sellapp/create_product_variant_response_value_201_application_json_property_data_property_pricing_property_trial_property_length.ex",
+      "mode": "100644",
+      "sha256": "9e0b34b199065a3043e534e01be68fd7e687fdbfc8b4f9c8544218c512caa776"
+    },
+    {
+      "path": "lib/sellapp/create_product_variant_response_value_201_application_json_property_data_property_pricing_property_trial_property_length_interval.ex",
+      "mode": "100644",
+      "sha256": "e74bcdfd36332a7501751934378b000d2f1857fa1942367a3aeeeffd0b2ac616"
+    },
+    {
+      "path": "lib/sellapp/create_product_variant_response_value_201_application_json_property_data_property_pricing_property_trial_property_price.ex",
+      "mode": "100644",
+      "sha256": "635e3d9c620b67f8c86f2acfa349749054b641116ac2b43478e3866ea5709380"
     },
     {
       "path": "lib/sellapp/create_product_variant_response_value_201_application_json_property_data_property_product.ex",
@@ -3122,7 +3332,12 @@
     {
       "path": "lib/sellapp/create_promotion_response_value_201_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "d2ce93896762d1868a0ba172c73cecb7267eeba84fc0909e6d4fbfbfde3d1a7b"
+      "sha256": "2d15e3453babf608c3519c27a9fb1b7e31ffcf028dab22f1c28e3f06d4307ad2"
+    },
+    {
+      "path": "lib/sellapp/create_promotion_response_value_201_application_json_property_data_applies_to.ex",
+      "mode": "100644",
+      "sha256": "a4ff3273f87bdae22eae422fb41d6d1aaa8468a0269aeb86f02c48078d305b5f"
     },
     {
       "path": "lib/sellapp/create_promotion_response_value_201_application_json_property_data_property_phases_item.ex",
@@ -3342,12 +3557,12 @@
     {
       "path": "lib/sellapp/create_webhook_channel_response_value_201_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "99bbbd0ed3ea755ba25799e8ba46e6ece6c83b7d5de7c3d52880fd796a7620d4"
+      "sha256": "ec71dd61c8e5cfdb2f70db4b2ad8f48c91c8b4194edce5e58af48104a2e14092"
     },
     {
       "path": "lib/sellapp/create_webhook_channel_response_value_201_application_json_property_data_allowed_notifications.ex",
       "mode": "100644",
-      "sha256": "a7f168ea446281327008ef4e9e2c432945bf710cb109cdb193f16c9472dc1ed3"
+      "sha256": "bf58e3cdd9ae97579a3ead55f25d7d7ad786d1cf15ae4af03ee582d7a7150c62"
     },
     {
       "path": "lib/sellapp/credits.ex",
@@ -3382,7 +3597,7 @@
     {
       "path": "lib/sellapp/customer_portal.ex",
       "mode": "100644",
-      "sha256": "b88cfd2ae5c2f411b99027fc9a67dea4931ea5274f38969c964886fefc2b28cb"
+      "sha256": "017e9def29de3bb0628f61ba3f8692a7278c5cf666c5d444b805fffc1bcc482e"
     },
     {
       "path": "lib/sellapp/customer_portal_order.ex",
@@ -3393,6 +3608,21 @@
       "path": "lib/sellapp/customer_portal_order_line_item.ex",
       "mode": "100644",
       "sha256": "7c07d80cbfdb654d3389eb4325ca612f7238195d38c6fd1172553ab12d097070"
+    },
+    {
+      "path": "lib/sellapp/customer_portal_subscription.ex",
+      "mode": "100644",
+      "sha256": "ab42254888eb26b825c57f76c77e59ecc9041a336d701f1ddc719b96a35a603f"
+    },
+    {
+      "path": "lib/sellapp/customer_portal_subscription_plan.ex",
+      "mode": "100644",
+      "sha256": "d5a9695c2d8706a10fd5a343a5d5890bc7ccd219b3df108021ec7ad8fb2a94e6"
+    },
+    {
+      "path": "lib/sellapp/customer_portal_subscription_status.ex",
+      "mode": "100644",
+      "sha256": "500bbb3ce8927b88f6a009a04767a3e41777c269df6ee0259924060b719fb278"
     },
     {
       "path": "lib/sellapp/customer_sessions.ex",
@@ -3427,7 +3657,12 @@
     {
       "path": "lib/sellapp/delete_coupon_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "a35bbd58e0358e4dd572ef787077b862b1fb5866679242497d3a307d79ec176d"
+      "sha256": "2b7af1fa43d8c0ef7332a4c855d66d4ea52aa82cf44b76f19eba8645803289aa"
+    },
+    {
+      "path": "lib/sellapp/delete_coupon_response_value_200_application_json_property_data_applies_to.ex",
+      "mode": "100644",
+      "sha256": "0f8b03a55c33e5a17012ce7a1b2fed3ce379bb60399b5d93935980ecc713288f"
     },
     {
       "path": "lib/sellapp/delete_coupon_response_value_200_application_json_property_data_type.ex",
@@ -3712,7 +3947,7 @@
     {
       "path": "lib/sellapp/delete_product_variant_response_value_200_application_json_property_data_property_pricing.ex",
       "mode": "100644",
-      "sha256": "3a8d185ddfea18e3d25980610ef1da2ca896ed230553778bb3a2c557e2d552f6"
+      "sha256": "aca872517c27d225dc3906889bb98d9885ece83945890cd98d6a048f649a9f3f"
     },
     {
       "path": "lib/sellapp/delete_product_variant_response_value_200_application_json_property_data_property_pricing_property_frequency.ex",
@@ -3723,6 +3958,31 @@
       "path": "lib/sellapp/delete_product_variant_response_value_200_application_json_property_data_property_pricing_property_price.ex",
       "mode": "100644",
       "sha256": "8263509c4405c9e3a31be142529dcbd8085ef243f14f85deff6fd2a6ff2d9b6e"
+    },
+    {
+      "path": "lib/sellapp/delete_product_variant_response_value_200_application_json_property_data_property_pricing_property_trial.ex",
+      "mode": "100644",
+      "sha256": "89178f5bc3b4ec88fa9f209faa9f5529e45e08fa2919c313015c0b8a71014888"
+    },
+    {
+      "path": "lib/sellapp/delete_product_variant_response_value_200_application_json_property_data_property_pricing_property_trial_kind.ex",
+      "mode": "100644",
+      "sha256": "1c2bcc4528446bc3342e652054791d2604e3dd43425299747c3d46a398636013"
+    },
+    {
+      "path": "lib/sellapp/delete_product_variant_response_value_200_application_json_property_data_property_pricing_property_trial_property_length.ex",
+      "mode": "100644",
+      "sha256": "dbc1422c4f2ea658ccbd0729778991084f9eb0e29b898a9c61e02a3d0abb61ca"
+    },
+    {
+      "path": "lib/sellapp/delete_product_variant_response_value_200_application_json_property_data_property_pricing_property_trial_property_length_interval.ex",
+      "mode": "100644",
+      "sha256": "59cc2f8aedd5a3c4c9152144d2b15f4625c8142c6654e732c6035133bae41a7c"
+    },
+    {
+      "path": "lib/sellapp/delete_product_variant_response_value_200_application_json_property_data_property_pricing_property_trial_property_price.ex",
+      "mode": "100644",
+      "sha256": "3030f8142d9b681291ebcb6c525b8f0e9126a62c3c56ac50737cd777a9602d75"
     },
     {
       "path": "lib/sellapp/delete_product_variant_response_value_200_application_json_property_data_property_product.ex",
@@ -3737,7 +3997,12 @@
     {
       "path": "lib/sellapp/delete_promotion_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "366f5451a0bf7232035953b482a396e65c0034041dd5a307fb4dee5654cf2232"
+      "sha256": "711bfca4d6d12710953f895b7a4e12477611063550c9db7bc557daeeb348f08f"
+    },
+    {
+      "path": "lib/sellapp/delete_promotion_response_value_200_application_json_property_data_applies_to.ex",
+      "mode": "100644",
+      "sha256": "24e34ac42269bc5ea193ff7cee8cd2b354978df546ce6fc71030410603d64023"
     },
     {
       "path": "lib/sellapp/delete_promotion_response_value_200_application_json_property_data_property_phases_item.ex",
@@ -3817,12 +4082,12 @@
     {
       "path": "lib/sellapp/delete_webhook_channel_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "f82f659ceb423207426f61472e2db9e0dc80cfa57372dae39a1b03fadd8ac5c1"
+      "sha256": "1cff2397d52b500310f35c6f65f32ef817921cef92e9db9ee20bd3e226b9ccc4"
     },
     {
       "path": "lib/sellapp/delete_webhook_channel_response_value_200_application_json_property_data_allowed_notifications.ex",
       "mode": "100644",
-      "sha256": "53d1e00a86f5a67e5adf72749a9ffbb56604c78b851347206d5a88fd8f29725e"
+      "sha256": "bb2eef3088df091f96b7fd69c13793b1d7718acab8e953996dfb54fbf58cdbfb"
     },
     {
       "path": "lib/sellapp/disconnect_community_platform_response_value_200_application_json_property_data.ex",
@@ -3858,6 +4123,21 @@
       "path": "lib/sellapp/discount_type.ex",
       "mode": "100644",
       "sha256": "5444c90e26a9b14ed59414adb72def7447ce72cbf23b2144ae9f36a1fe6c7c3b"
+    },
+    {
+      "path": "lib/sellapp/dismiss_subscription_action_response_value_200_application_json_property_data.ex",
+      "mode": "100644",
+      "sha256": "2ab242a4b37e7d3261c39a333cb03097cb9fd48285c0941156cbb2ece8e25ea1"
+    },
+    {
+      "path": "lib/sellapp/dismiss_subscription_action_response_value_200_application_json_property_data_action.ex",
+      "mode": "100644",
+      "sha256": "54f2e09986d2c50360aa4203db6821c414470168705e43cf9b920edc116bd676"
+    },
+    {
+      "path": "lib/sellapp/dismiss_subscription_action_response_value_200_application_json_property_data_status.ex",
+      "mode": "100644",
+      "sha256": "33f4c15e8119a6441fc7acddd508f35f0a8368bb38ddb48302dbc900385674bb"
     },
     {
       "path": "lib/sellapp/disputes.ex",
@@ -3912,7 +4192,7 @@
     {
       "path": "lib/sellapp/event.ex",
       "mode": "100644",
-      "sha256": "6f095ff0f0817f6609d948643d065e85f415ff811d3356ce1a7fdadc2a672c79"
+      "sha256": "081cf70b169de84952ae8dd0b34a97d43224546ef26dbe3e916e6b86fb53c89e"
     },
     {
       "path": "lib/sellapp/events.ex",
@@ -3937,7 +4217,7 @@
     {
       "path": "lib/sellapp/exports.ex",
       "mode": "100644",
-      "sha256": "5df193b9bc2fba36549511ffee74888869c6dcba24ead3857af4e109edb168ee"
+      "sha256": "55475df2a4f7f444557e40d7f0be56e43b41502149167080471d0b2bd1c2d19d"
     },
     {
       "path": "lib/sellapp/feedback.ex",
@@ -4147,7 +4427,7 @@
     {
       "path": "lib/sellapp/get_bundle_item_response_value_200_application_json_property_data_property_pricing.ex",
       "mode": "100644",
-      "sha256": "2f035d810e4b348b2d6159b9205d28cf4aa472d1d518d0f3325bfce120a93d38"
+      "sha256": "d12d2a8b5ec286c26a24651dec38416209e4ed07adf1c44a471c278c308867b5"
     },
     {
       "path": "lib/sellapp/get_bundle_item_response_value_200_application_json_property_data_property_pricing_property_frequency.ex",
@@ -4158,6 +4438,31 @@
       "path": "lib/sellapp/get_bundle_item_response_value_200_application_json_property_data_property_pricing_property_price.ex",
       "mode": "100644",
       "sha256": "2037ef1c3dda4962899b76c7caf8ec22dfb27b9d3f3ba9d645ddd28b657e158d"
+    },
+    {
+      "path": "lib/sellapp/get_bundle_item_response_value_200_application_json_property_data_property_pricing_property_trial.ex",
+      "mode": "100644",
+      "sha256": "38eefc5b4ccb06b716d6f7a642cc98552b1d78ce71d74b8bb1ffb359ae00aba9"
+    },
+    {
+      "path": "lib/sellapp/get_bundle_item_response_value_200_application_json_property_data_property_pricing_property_trial_kind.ex",
+      "mode": "100644",
+      "sha256": "34f28181a547689dd10f4cafb799fabacfa3d5ca67230027c6255d30ead52484"
+    },
+    {
+      "path": "lib/sellapp/get_bundle_item_response_value_200_application_json_property_data_property_pricing_property_trial_property_length.ex",
+      "mode": "100644",
+      "sha256": "fcb56001934aa427f6ad40a31f3e0cc8e640364d9158ad043bda04f0e2352e10"
+    },
+    {
+      "path": "lib/sellapp/get_bundle_item_response_value_200_application_json_property_data_property_pricing_property_trial_property_length_interval.ex",
+      "mode": "100644",
+      "sha256": "d373da105a3d3c9c1e227e4f63cf85dea0f3d3d7b5175ee152e67c03a4e6ec02"
+    },
+    {
+      "path": "lib/sellapp/get_bundle_item_response_value_200_application_json_property_data_property_pricing_property_trial_property_price.ex",
+      "mode": "100644",
+      "sha256": "d8ee08c603f758bafac30e1909586ef0f41f6da781eb942bbebce4fee522362b"
     },
     {
       "path": "lib/sellapp/get_bundle_item_response_value_200_application_json_property_data_property_product.ex",
@@ -4177,7 +4482,12 @@
     {
       "path": "lib/sellapp/get_coupon_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "a2bbbc76c0b9579af833ee2d642d40b920329e6f2b021491560e8da0bae78272"
+      "sha256": "dd65126eb97909ce0601afe87465e11666ed1ea41b0432b304d6a17bf09d848c"
+    },
+    {
+      "path": "lib/sellapp/get_coupon_response_value_200_application_json_property_data_applies_to.ex",
+      "mode": "100644",
+      "sha256": "3f44ad4d6cc40a70a8d78627cad0bd23ad240b2d2ce97bb4c6d34826132ba515"
     },
     {
       "path": "lib/sellapp/get_coupon_response_value_200_application_json_property_data_type.ex",
@@ -4362,7 +4672,7 @@
     {
       "path": "lib/sellapp/get_customer_portal_subscription_capabilities_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "3246c7bf87d70a0ffd5a1ee34eebd21d94361f6a0878df21d6247c2d6e9a24e2"
+      "sha256": "3e07a3ff3a68a0ec7923221080683af335012734a3bc02cd270a9f9a21d1e71f"
     },
     {
       "path": "lib/sellapp/get_customer_portal_subscription_capabilities_response_value_200_application_json_property_data_property_capabilities.ex",
@@ -4372,22 +4682,12 @@
     {
       "path": "lib/sellapp/get_customer_portal_subscription_capabilities_response_value_200_application_json_property_data_property_capabilities_map_value.ex",
       "mode": "100644",
-      "sha256": "ba56bfd98ad5ebbe954942d5e2b19514352338b7bcb9ea1b94d6f54b607a0385"
+      "sha256": "5ca194d7539e0faf425192bc9433b200bce225c8c0cdc55ee7ffa519c8f415cb"
     },
     {
-      "path": "lib/sellapp/get_customer_portal_subscription_response_value_200_application_json_property_data.ex",
+      "path": "lib/sellapp/get_customer_portal_subscription_capabilities_response_value_200_application_json_property_data_property_capabilities_map_value_status.ex",
       "mode": "100644",
-      "sha256": "47ab26d69b372bc4e70ecd96484ea5f553726c9e2256f4f54dcfb306ca29f8ce"
-    },
-    {
-      "path": "lib/sellapp/get_customer_portal_subscription_response_value_200_application_json_property_data_property_customer.ex",
-      "mode": "100644",
-      "sha256": "9b1f05a0c264fcb0a6a1eca1cdc9b3701ebf2f46a4d61b261a36a2684c03e160"
-    },
-    {
-      "path": "lib/sellapp/get_customer_portal_subscription_response_value_200_application_json_property_data_property_customer_property_metadata.ex",
-      "mode": "100644",
-      "sha256": "a36b6747d01df8102125af50a25894b38f92b8f213e4cf48bb281dc17a4f6458"
+      "sha256": "e3ca8245cbd5c7bfcbe0b770b0dc485d23432291f018a7d1b7330cd055e88158"
     },
     {
       "path": "lib/sellapp/get_customer_response_value_200_application_json_property_data.ex",
@@ -4592,7 +4892,7 @@
     {
       "path": "lib/sellapp/get_invoice_response_value_200_application_json_property_data_property_payment_property_gateway.ex",
       "mode": "100644",
-      "sha256": "de9a7e079f2e16000a7d9602f75b7f0a727f312318bd27aaa496de0744f68737"
+      "sha256": "bfb17fa8be9897ea3fb2b58cd82c04e58202bb660bbceaf563a3a7f922cb243e"
     },
     {
       "path": "lib/sellapp/get_invoice_response_value_200_application_json_property_data_property_payment_property_gateway_property_data.ex",
@@ -4967,7 +5267,7 @@
     {
       "path": "lib/sellapp/get_product_variant_response_value_200_application_json_property_data_property_pricing.ex",
       "mode": "100644",
-      "sha256": "dcda60fe7126bc45782bfbbd534c67c20bfa36cdfb38cb739ca7170c3763d529"
+      "sha256": "191ca2eceef22d9ee0da1a2e0d9a0ca5b55738ce6cc64172357750fbabf21c5a"
     },
     {
       "path": "lib/sellapp/get_product_variant_response_value_200_application_json_property_data_property_pricing_property_frequency.ex",
@@ -4978,6 +5278,31 @@
       "path": "lib/sellapp/get_product_variant_response_value_200_application_json_property_data_property_pricing_property_price.ex",
       "mode": "100644",
       "sha256": "5d71bf477edda0cd9cb4b1396b802ae2a23fcd9d65599040d8e892f93dbdea61"
+    },
+    {
+      "path": "lib/sellapp/get_product_variant_response_value_200_application_json_property_data_property_pricing_property_trial.ex",
+      "mode": "100644",
+      "sha256": "b6495a62571b0330d679f4ba80f833cf9ef5f5cf3e1a286edfc7eeff9fc03952"
+    },
+    {
+      "path": "lib/sellapp/get_product_variant_response_value_200_application_json_property_data_property_pricing_property_trial_kind.ex",
+      "mode": "100644",
+      "sha256": "1f23b976915fe23b8934f413d220646ec8da35f12a4290f085b915fb31a7680f"
+    },
+    {
+      "path": "lib/sellapp/get_product_variant_response_value_200_application_json_property_data_property_pricing_property_trial_property_length.ex",
+      "mode": "100644",
+      "sha256": "5e32d19e159b89721f59c2bc8ba2b8770c1e0a21c2b9f55830d9904175f4be12"
+    },
+    {
+      "path": "lib/sellapp/get_product_variant_response_value_200_application_json_property_data_property_pricing_property_trial_property_length_interval.ex",
+      "mode": "100644",
+      "sha256": "4c287530d01a8f22fc42d1f90e83b7171a2c810db0a7bc69b698aa42a32dd916"
+    },
+    {
+      "path": "lib/sellapp/get_product_variant_response_value_200_application_json_property_data_property_pricing_property_trial_property_price.ex",
+      "mode": "100644",
+      "sha256": "d5045113a3858dd51dba82405084ef93ba5bb7395a63fd0df777c971bcc0596b"
     },
     {
       "path": "lib/sellapp/get_product_variant_response_value_200_application_json_property_data_property_product.ex",
@@ -5017,7 +5342,12 @@
     {
       "path": "lib/sellapp/get_promotion_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "9f9cb846c2c292e57bc4d0cf0416e0d5d527c0b5d6db3a2635fd787c4a6eb80e"
+      "sha256": "bc3f618c7f70dea6c7ff84f3bb69c355a1608ce9af0f1fedd26c14b0448e447a"
+    },
+    {
+      "path": "lib/sellapp/get_promotion_response_value_200_application_json_property_data_applies_to.ex",
+      "mode": "100644",
+      "sha256": "0b8534970eba5567db981979015c03aecc3eb5082fee9a7fa96769b5cb1807cc"
     },
     {
       "path": "lib/sellapp/get_promotion_response_value_200_application_json_property_data_property_phases_item.ex",
@@ -5165,6 +5495,21 @@
       "sha256": "f6009aed73bd1eb4402a1ce65fab4ae0abee9c1c145d756ccad245e60828812f"
     },
     {
+      "path": "lib/sellapp/get_subscription_action_response_value_200_application_json_property_data.ex",
+      "mode": "100644",
+      "sha256": "33eb48c09a0291330ca53e3183eac7f6b9e43243e22d631c3047083fb7d3c4e1"
+    },
+    {
+      "path": "lib/sellapp/get_subscription_action_response_value_200_application_json_property_data_action.ex",
+      "mode": "100644",
+      "sha256": "6078ae9d75c07af795dd86c2cfd98f27d5d569662376c8a8eb8c25b07f8d0211"
+    },
+    {
+      "path": "lib/sellapp/get_subscription_action_response_value_200_application_json_property_data_status.ex",
+      "mode": "100644",
+      "sha256": "e1e0b98bc79b9b7c75d1d83afe12062c17f76ae0af506cf787802842c5655b99"
+    },
+    {
       "path": "lib/sellapp/get_subscription_capabilities_response_value_200_application_json_property_data.ex",
       "mode": "100644",
       "sha256": "98c86526f0977978c9a1b22c010660c755f42af87ebdfad94e973ab786bd180a"
@@ -5187,17 +5532,17 @@
     {
       "path": "lib/sellapp/get_subscription_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "685bde60d037bde83713a76a8d082c5c78e51524bcf9ed7b823401ec8d6e3965"
+      "sha256": "18477b2b85c52b0f80a6193f6bff83eec8eab81deec594b17cfe83091640ffa5"
     },
     {
       "path": "lib/sellapp/get_subscription_response_value_200_application_json_property_data_property_customer.ex",
       "mode": "100644",
-      "sha256": "ec030a3cc544a97dffa2c9af20b50743249089d294bc50743be4e20eae57c06b"
+      "sha256": "3db33ae60dbeef457a43c490ecfabdde54fa79e7665290e8cbc05e5aba5b3390"
     },
     {
-      "path": "lib/sellapp/get_subscription_response_value_200_application_json_property_data_property_customer_property_metadata.ex",
+      "path": "lib/sellapp/get_subscription_response_value_200_application_json_property_data_status.ex",
       "mode": "100644",
-      "sha256": "8ad2073ebcc935da699358db2a76671a97febf4b1376bbd93309c92d2b5ff097"
+      "sha256": "5749a208615409f5c16b6420c83430267db51e020119b048c1a580880c7cfbe9"
     },
     {
       "path": "lib/sellapp/get_ticket_message_response_value_200_application_json_property_data.ex",
@@ -5277,22 +5622,22 @@
     {
       "path": "lib/sellapp/get_webhook_channel_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "763ff530ab47d4fe9d0181d84ad7dcc0ec5074638363adafeb162a458bbff9b1"
+      "sha256": "07b2fc32126bbab5cfc860b79a75b9b58b065896f313a3c1ac0da1b3dd7969fb"
     },
     {
       "path": "lib/sellapp/get_webhook_channel_response_value_200_application_json_property_data_allowed_notifications.ex",
       "mode": "100644",
-      "sha256": "1a11c687172a63ddbca674b11e16df39dac460db8db17ff182d1a251e5232ef2"
+      "sha256": "1bba3e4865ff396d581c0427d8e2e8ed0fa30d90acd0210da0e56969f9595c42"
     },
     {
       "path": "lib/sellapp/get_webhook_delivery_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "8707f1df19fd06fe77c0770ff4c336296b71eff5a7005bcc9ebdc7318fb3e66b"
+      "sha256": "25545d0085d2dfb4a7d74f34b516bb9b056053dd11d0b8a438de4a471b8b1a3b"
     },
     {
       "path": "lib/sellapp/get_webhook_delivery_response_value_200_application_json_property_data_status.ex",
       "mode": "100644",
-      "sha256": "9dbcc841083020672ba0ef1903b06b8501e5d4f305ab3c2bfaabfc38c3def98b"
+      "sha256": "40c25bbe31bb920266a6e086777262d0456d2d57c1420d8436d8aa137f5c429f"
     },
     {
       "path": "lib/sellapp/groups.ex",
@@ -5327,7 +5672,7 @@
     {
       "path": "lib/sellapp/invoices.ex",
       "mode": "100644",
-      "sha256": "9b08cf973f916a5d6d82a7d6339322e4666671e8b978cdf88d4f8fe058aca9fe"
+      "sha256": "52dd78cae0f2b976fc3cf858a8926e2399f76c69a5b7c259ea66bca9123ba830"
     },
     {
       "path": "lib/sellapp/invoices_payment_methods.ex",
@@ -5462,7 +5807,7 @@
     {
       "path": "lib/sellapp/issue_replacement_for_completed_invoice_response_value_200_application_json_property_payment_property_gateway.ex",
       "mode": "100644",
-      "sha256": "257a4be95e352d7bc1b2d9f8aaf8bb5835c14292da0268340afbddc4d335499f"
+      "sha256": "7ef714f4dd3e54c63b77d7afddfd3731a3515742fcc3c8b8add8745868b559f6"
     },
     {
       "path": "lib/sellapp/issue_replacement_for_completed_invoice_response_value_200_application_json_property_payment_property_gateway_property_data.ex",
@@ -5513,6 +5858,21 @@
       "path": "lib/sellapp/issue_replacement_for_completed_invoice_response_value_200_application_json_property_webhooks_item.ex",
       "mode": "100644",
       "sha256": "2602502fc32046358fe4fe6ce43e2350f6c5d00bc172e84c895539796bf61681"
+    },
+    {
+      "path": "lib/sellapp/keep_subscription_response_value_200_application_json_property_data.ex",
+      "mode": "100644",
+      "sha256": "af3eb4acd0102d63763d9112e062b9f888cd2b35b41688ef82d7f424ec6630a7"
+    },
+    {
+      "path": "lib/sellapp/keep_subscription_response_value_200_application_json_property_data_action.ex",
+      "mode": "100644",
+      "sha256": "6be13554d2a1058889ec9fb91b74b0d838c74f6dc5e47a0acfa58d00e7b28e35"
+    },
+    {
+      "path": "lib/sellapp/keep_subscription_response_value_200_application_json_property_data_status.ex",
+      "mode": "100644",
+      "sha256": "6e07b52c50e0078a52d717d4483c7731aacef04bcaeb7faa8ac641779aa44f1e"
     },
     {
       "path": "lib/sellapp/license_instances.ex",
@@ -5647,7 +6007,7 @@
     {
       "path": "lib/sellapp/list_bundle_items_response_value_200_application_json_property_data_item_property_pricing.ex",
       "mode": "100644",
-      "sha256": "9a653a7fdc061e7a16b9add1ec4c8ad0ef6e25b43bd9b8a8a97f10c14cd59901"
+      "sha256": "9284075c6d56f0d69b2b0f31366383019190109ed41555f64f45d2a6fcbf0f03"
     },
     {
       "path": "lib/sellapp/list_bundle_items_response_value_200_application_json_property_data_item_property_pricing_property_frequency.ex",
@@ -5658,6 +6018,31 @@
       "path": "lib/sellapp/list_bundle_items_response_value_200_application_json_property_data_item_property_pricing_property_price.ex",
       "mode": "100644",
       "sha256": "b382930930eefda649f5c3932d082db0252934611305b5bd2170c59da86a7f5a"
+    },
+    {
+      "path": "lib/sellapp/list_bundle_items_response_value_200_application_json_property_data_item_property_pricing_property_trial.ex",
+      "mode": "100644",
+      "sha256": "0a10994efd88dbdcbcf8c87f2c1727d646791d8261e3deefab2a698f2065d8be"
+    },
+    {
+      "path": "lib/sellapp/list_bundle_items_response_value_200_application_json_property_data_item_property_pricing_property_trial_kind.ex",
+      "mode": "100644",
+      "sha256": "2d88f13c81f4eb40f006f71dda0b28bb2e2c668de085bca62e289757eaa82912"
+    },
+    {
+      "path": "lib/sellapp/list_bundle_items_response_value_200_application_json_property_data_item_property_pricing_property_trial_property_length.ex",
+      "mode": "100644",
+      "sha256": "4f4601e6447c42c513a6cb7618b4685a36d9968f59c4e3b86fa0b103f2fb9e7e"
+    },
+    {
+      "path": "lib/sellapp/list_bundle_items_response_value_200_application_json_property_data_item_property_pricing_property_trial_property_length_interval.ex",
+      "mode": "100644",
+      "sha256": "2b5dfd1fdfe15edfe0b9a7f8105c6a4b4b1c36e3c3c3e51f28f5d535184f89dc"
+    },
+    {
+      "path": "lib/sellapp/list_bundle_items_response_value_200_application_json_property_data_item_property_pricing_property_trial_property_price.ex",
+      "mode": "100644",
+      "sha256": "230e5b1726538f9b3f828c081eeef151af5fd1d41a8f0660fb10ca20dfdfea1c"
     },
     {
       "path": "lib/sellapp/list_bundle_items_response_value_200_application_json_property_data_item_property_product.ex",
@@ -5712,7 +6097,12 @@
     {
       "path": "lib/sellapp/list_coupons_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "141d7852f0f7e487979e976e80efdbe9179e67e054a74a0a3703db875d6482d1"
+      "sha256": "35e241c4befa4322ea5656e2db0a3ca62f07769c68bfab873ee7b80f954e9a6d"
+    },
+    {
+      "path": "lib/sellapp/list_coupons_response_value_200_application_json_property_data_item_applies_to.ex",
+      "mode": "100644",
+      "sha256": "7e8b810a0836f92bcc96a4567f3f76c9ce47c2fdc5b082a2e16f910749d9fbd4"
     },
     {
       "path": "lib/sellapp/list_coupons_response_value_200_application_json_property_data_item_type.ex",
@@ -5868,21 +6258,6 @@
       "path": "lib/sellapp/list_customer_portal_entitlements_response_value_200_application_json_property_data_item_state.ex",
       "mode": "100644",
       "sha256": "1cb7bd56b074aaf9478945b5364fde4405edf1c1e599bfe2670c1ec4fa5f6f1b"
-    },
-    {
-      "path": "lib/sellapp/list_customer_portal_subscriptions_response_value_200_application_json_property_data_item.ex",
-      "mode": "100644",
-      "sha256": "02ebfe415768d37c35de91c729784f5c90b20b29cd9ecee538c456f7224f40a9"
-    },
-    {
-      "path": "lib/sellapp/list_customer_portal_subscriptions_response_value_200_application_json_property_data_item_property_customer.ex",
-      "mode": "100644",
-      "sha256": "185c5c8e880b8a6552a2fbb8eed781c84f13789fd7ce2209a2387fe8a1c21205"
-    },
-    {
-      "path": "lib/sellapp/list_customer_portal_subscriptions_response_value_200_application_json_property_data_item_property_customer_property_metadata.ex",
-      "mode": "100644",
-      "sha256": "379e6d8acb95c289fb314c8ffebeba27ada1cf98d57952a4d2e17b2cdebfd87c"
     },
     {
       "path": "lib/sellapp/list_customer_wallets_response_value_200_application_json_property_data_item.ex",
@@ -6072,7 +6447,7 @@
     {
       "path": "lib/sellapp/list_invoices_response_value_200_application_json_property_data_item_property_payment_property_gateway.ex",
       "mode": "100644",
-      "sha256": "0a92313deec47bfd89506728ed66280829645d84df58b08bdc3202ec8903ba9b"
+      "sha256": "9dc22c4e082b93a583fd268c8f7c06a30a653222052ed0a75192fae23ef84e0d"
     },
     {
       "path": "lib/sellapp/list_invoices_response_value_200_application_json_property_data_item_property_payment_property_gateway_property_data.ex",
@@ -6497,7 +6872,7 @@
     {
       "path": "lib/sellapp/list_product_variants_response_value_200_application_json_property_data_item_property_pricing.ex",
       "mode": "100644",
-      "sha256": "b4d805e14a30da473ff039cff5fa3cd7669f4fab39a6a3e1d0048fc2b33e81ce"
+      "sha256": "68eb0f14137c4fe05044dc3ed61d809c116e9ad8339ae6b3c589b67867e2f21b"
     },
     {
       "path": "lib/sellapp/list_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_frequency.ex",
@@ -6508,6 +6883,31 @@
       "path": "lib/sellapp/list_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_price.ex",
       "mode": "100644",
       "sha256": "8b2bf9e2be45e4bebbc970f65cc53a6da3a5a8e3ff9fb1845c2e415e5dc893ec"
+    },
+    {
+      "path": "lib/sellapp/list_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial.ex",
+      "mode": "100644",
+      "sha256": "bd8e898cb4d60ec2bc7e2f66e8c4c05365ea6dc2a6d245808ebc66e61898d28a"
+    },
+    {
+      "path": "lib/sellapp/list_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_kind.ex",
+      "mode": "100644",
+      "sha256": "be3f43a185d45087a58ce030677ef6a10fca5ec990c0a6d1e37efb0e189a100f"
+    },
+    {
+      "path": "lib/sellapp/list_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_property_length.ex",
+      "mode": "100644",
+      "sha256": "35d010ee9ccf1b03800e7b1e452c8f25a75cfcc00a75fc361b44161ee4cd9a31"
+    },
+    {
+      "path": "lib/sellapp/list_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_property_length_interval.ex",
+      "mode": "100644",
+      "sha256": "b04c93f3d27a336908d5b6fdb0e7ff4c23fc3d3a30fad8616b09d17dc68f1c04"
+    },
+    {
+      "path": "lib/sellapp/list_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_property_price.ex",
+      "mode": "100644",
+      "sha256": "999ba3ac9ca25218977921007b3e2fcbaecbaea53569d3dd752d9cf35c5cc109"
     },
     {
       "path": "lib/sellapp/list_product_variants_response_value_200_application_json_property_data_item_property_product.ex",
@@ -6645,21 +7045,6 @@
       "sha256": "c4c03f6a5f9348b44b8a9278075f2affb6a96e6438a907a44fd7836bd2eb8659"
     },
     {
-      "path": "lib/sellapp/list_subscriptions_response_value_200_application_json_property_data_item.ex",
-      "mode": "100644",
-      "sha256": "b56b681c9355d1817bb40b034ada25fe9e54a84fe2cb8a0b3c9c1c3431c80196"
-    },
-    {
-      "path": "lib/sellapp/list_subscriptions_response_value_200_application_json_property_data_item_property_customer.ex",
-      "mode": "100644",
-      "sha256": "f9c39aea38e309e2ba676e3bfb889b3b8bf7fceb470898b3b7368c2b6d48cd2f"
-    },
-    {
-      "path": "lib/sellapp/list_subscriptions_response_value_200_application_json_property_data_item_property_customer_property_metadata.ex",
-      "mode": "100644",
-      "sha256": "16d0d51901b2d3d4cf6474187e7d5111de1d05e177415f2f9fe54e47cd85a8f2"
-    },
-    {
       "path": "lib/sellapp/list_ticket_messages_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
       "sha256": "82d861731fc723a5a74e2be546f3ffa6636c934a0aa5599d6991a8a576a2e7a6"
@@ -6732,22 +7117,22 @@
     {
       "path": "lib/sellapp/list_webhook_channels_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "7ef2c04a0ae980dcbca6592fe2adce6487706551253404f958a2c81b8d649425"
+      "sha256": "a882f8e6cc5d12e3cc13267046f4e6802f91d44fe5863e3a170c704295530044"
     },
     {
       "path": "lib/sellapp/list_webhook_channels_response_value_200_application_json_property_data_item_allowed_notifications.ex",
       "mode": "100644",
-      "sha256": "7025ee0bdbbd5e3297068e8b8d3dc92085fe8536ed1090300f167f75c5f76e8b"
+      "sha256": "c814b1b1e7efcde61e89d0211a1339689e9c81097375b1918a6d55519664577f"
     },
     {
       "path": "lib/sellapp/list_webhook_deliveries_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "4a8ab3f7e6ab8956876849f796e890eb9a4075c3dc398534c341a3dd8254fa9c"
+      "sha256": "26b592ccbd995fc9f94fd026d0f69e3bf204c1d85c2939b42c70cd63c98c3201"
     },
     {
       "path": "lib/sellapp/list_webhook_deliveries_response_value_200_application_json_property_data_item_status.ex",
       "mode": "100644",
-      "sha256": "670b81fabbb693369b08424aef1c9927c85ba9e4735c8a76e598dfd273cbe8b9"
+      "sha256": "cf4d2f4ecefd3d8eb9ab9bf59122bbc6d3b51c716a630d33c48bf35fefa35cc9"
     },
     {
       "path": "lib/sellapp/list_webhook_event_types_response_value_200_application_json_property_data_item.ex",
@@ -6802,7 +7187,7 @@
     {
       "path": "lib/sellapp/mark_pending_invoice_completed_response_value_200_application_json_property_payment_property_gateway.ex",
       "mode": "100644",
-      "sha256": "39f8bf0792ae9eafab8d54e6b59f3474ca9ea3e57b5376ada345bf3d1c215925"
+      "sha256": "6c43057a3027ce2f1e84770411ed51cc816230804d4907dd313753ac2e6f4c6c"
     },
     {
       "path": "lib/sellapp/mark_pending_invoice_completed_response_value_200_application_json_property_payment_property_gateway_property_data.ex",
@@ -6902,7 +7287,7 @@
     {
       "path": "lib/sellapp/mark_pending_invoice_voided_response_value_200_application_json_property_payment_property_gateway.ex",
       "mode": "100644",
-      "sha256": "617c0e77be3ceeb825f79d24f4250bf0afac3e94cd8df8a598d01c7e2a1e63a4"
+      "sha256": "2771513f9458260775804a4483d49d8e54f7821827e719c158e9f20fcf7af4e7"
     },
     {
       "path": "lib/sellapp/mark_pending_invoice_voided_response_value_200_application_json_property_payment_property_gateway_property_data.ex",
@@ -6972,7 +7357,7 @@
     {
       "path": "lib/sellapp/orders.ex",
       "mode": "100644",
-      "sha256": "a4e3dcbb0f8ae32063616930d0336ce5f98b4703f21467bc3264b52f646f55ce"
+      "sha256": "e228b3780ab6803dc7d7ce8922aae93bde6ebc92f5c04573548c652ff8b0cdf6"
     },
     {
       "path": "lib/sellapp/orders_line_items.ex",
@@ -7002,27 +7387,27 @@
     {
       "path": "lib/sellapp/pause_customer_subscription_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "0a164a410702673ef32a1b4d2a9c7fc648906ce245fb074df1d967886ca7c179"
+      "sha256": "f40f984bcd38a46a658e8e406196ffc938aab984b9035638d90b341878f4fd6c"
     },
     {
-      "path": "lib/sellapp/pause_customer_subscription_response_value_200_application_json_property_data_property_customer.ex",
+      "path": "lib/sellapp/pause_customer_subscription_response_value_200_application_json_property_data_action.ex",
       "mode": "100644",
-      "sha256": "bb8ceb95f121eefa64ae886a24e53b023703168f5a989ae2267a748f7de4b605"
+      "sha256": "7bc184001a8049d30deea8b01355c708bd398f44d0e0bf08696aa683694617be"
     },
     {
-      "path": "lib/sellapp/pause_customer_subscription_response_value_200_application_json_property_data_property_customer_property_metadata.ex",
+      "path": "lib/sellapp/pause_customer_subscription_response_value_200_application_json_property_data_status.ex",
       "mode": "100644",
-      "sha256": "5587347f346ddb467e925b69e3cf7c029ba0960b757f678845b5f9bf3bf3d17c"
+      "sha256": "385b365ec4f39e43c4b585d7c0bdbdfbb4d0199f246a9f49242ddf993858e500"
     },
     {
       "path": "lib/sellapp/pause_subscription_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "79bb4ff9abd570a6ae711688c011f22c0419d0ac9bbc26f4150052a30f866766"
+      "sha256": "e8fbb561bcb24b199b3195763cd71081db7ecf47ec7275edbf07e78b6be378b1"
     },
     {
       "path": "lib/sellapp/pause_subscription_response_value_200_application_json_property_data_action.ex",
       "mode": "100644",
-      "sha256": "ad951bedc0b9c52bf5559f5f2c0576da4dde83fad63b6934870a901fbdf448c7"
+      "sha256": "851691f8124e472b820208237b647e70c0df9b3a1db7472a1ba60ce8ab73cb8d"
     },
     {
       "path": "lib/sellapp/pause_subscription_response_value_200_application_json_property_data_status.ex",
@@ -7120,39 +7505,44 @@
       "sha256": "3f6123d17d3f1030eb72a34af72c37621b1a1a7926a56d2f6cc77cdc330963b1"
     },
     {
+      "path": "lib/sellapp/preview_customer_subscription_plan_change_request_application_json_property_metadata.ex",
+      "mode": "100644",
+      "sha256": "38e2042a53f944a9bb817a8b5d1e021d6a76572bfc096144020bbe461cdca1d4"
+    },
+    {
       "path": "lib/sellapp/preview_customer_subscription_plan_change_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "ef4165200ccf69cd89b0f71a2a816f62ef2b510174dadba105a6816b64ea61af"
+      "sha256": "ade5b9d24bff0e05acc4364352a62586119be27fa75347294c5a4e94045f99cd"
     },
     {
-      "path": "lib/sellapp/preview_customer_subscription_plan_change_response_value_200_application_json_property_data_property_customer.ex",
+      "path": "lib/sellapp/preview_customer_subscription_renewal_date_change_request_application_json_property_metadata.ex",
       "mode": "100644",
-      "sha256": "fc37e75b3605ba0bed8b83277ca75f0998848e1a8d7f96691b32376c32853bf8"
-    },
-    {
-      "path": "lib/sellapp/preview_customer_subscription_plan_change_response_value_200_application_json_property_data_property_customer_property_metadata.ex",
-      "mode": "100644",
-      "sha256": "7c3a802433f0662af464d97a545d380277b83d880f719d3af4a0468a3de65831"
+      "sha256": "c8521db41d03155fcadbadafcd8ac7d2f4d8b4df0a679d60ba5f9e8e7e22293e"
     },
     {
       "path": "lib/sellapp/preview_customer_subscription_renewal_date_change_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "663860ab845073767c1d495beb74f640ebe7ebf61e98177f709d6e3dab017048"
+      "sha256": "25e36100b65b136a3003b3822c332b48fb0c39b15bc350ae806a0dc1be553215"
     },
     {
-      "path": "lib/sellapp/preview_customer_subscription_renewal_date_change_response_value_200_application_json_property_data_property_customer.ex",
+      "path": "lib/sellapp/preview_customer_subscription_renewal_date_change_response_value_200_application_json_property_data_property_preview.ex",
       "mode": "100644",
-      "sha256": "cc76836512d3e85db7a2a139e2a2419c865c7e21692e463d297972b14621fa90"
-    },
-    {
-      "path": "lib/sellapp/preview_customer_subscription_renewal_date_change_response_value_200_application_json_property_data_property_customer_property_metadata.ex",
-      "mode": "100644",
-      "sha256": "353bcd4b9f4826c5de44465136a7ac8f187c95074a80f3cdf45e508d98480876"
+      "sha256": "92bb8902f84cdcf6e0cec0e1a46c269776d1cfe70ebb67dee53b42858ba8c692"
     },
     {
       "path": "lib/sellapp/preview_subscription_plan_change_request_application_json_property_metadata.ex",
       "mode": "100644",
       "sha256": "6fc9b115df83d365946d621bd4120b9819c85df60ae04747d06d85754a3f20e6"
+    },
+    {
+      "path": "lib/sellapp/preview_subscription_plan_change_response_value_200_application_json_property_data.ex",
+      "mode": "100644",
+      "sha256": "6a452f1bb9742faada20b1a8327f6a013208631cc4ee1080facce31641723634"
+    },
+    {
+      "path": "lib/sellapp/preview_subscription_plan_change_response_value_200_application_json_property_data_property_request_payload.ex",
+      "mode": "100644",
+      "sha256": "d537e534738e0109b5fedb309292bdffd3d1975236a03bc0c11031fd43338eff"
     },
     {
       "path": "lib/sellapp/preview_subscription_renewal_date_change_request_application_json_property_metadata.ex",
@@ -7167,12 +7557,12 @@
     {
       "path": "lib/sellapp/preview_subscription_renewal_date_change_response_value_200_application_json_property_data_property_preview_payload.ex",
       "mode": "100644",
-      "sha256": "c97fc23e5bbbf82d3f110ab976fa17895817813ca02c9c0f55d2e52477e1b825"
+      "sha256": "3447d2017632beb8a884c75ddc50b69a81948014659d69ec405cedc3ad5e5691"
     },
     {
       "path": "lib/sellapp/preview_subscription_renewal_date_change_response_value_200_application_json_property_data_property_request_payload.ex",
       "mode": "100644",
-      "sha256": "444365abbf9b87a44a430d53759209c35c8ea7fa39196d40cc956435b3f59269"
+      "sha256": "ee11d2801e6c9c7924f479ca7de69dac537a5c6b6137874f54533dcfcb3bd7f0"
     },
     {
       "path": "lib/sellapp/product_faq_input.ex",
@@ -7187,7 +7577,7 @@
     {
       "path": "lib/sellapp/product_variants.ex",
       "mode": "100644",
-      "sha256": "5bd33000fda96ebf6ddc7ba9e62558a7b6b8af9f65c1b6a04c594b95a76f0fc2"
+      "sha256": "566f14c000b4676f5ab9703e6219bdc1e73a854e14872cb6fe123f26da9cb385"
     },
     {
       "path": "lib/sellapp/product_variants_booking.ex",
@@ -7197,7 +7587,7 @@
     {
       "path": "lib/sellapp/product_variants_pricing.ex",
       "mode": "100644",
-      "sha256": "b35a8cba52fe0b5539701cdbf8846fc5015b082319d2c00d4bc723ee55a02dab"
+      "sha256": "ede28988905571c03b8b1a823d93ac917cb25d309cd1f2c9620f94eacfe1d7d5"
     },
     {
       "path": "lib/sellapp/products.ex",
@@ -7212,7 +7602,7 @@
     {
       "path": "lib/sellapp/promotions.ex",
       "mode": "100644",
-      "sha256": "9a5df249038a7d85f0caf44c37707ebaac7f6d5fa36412406921ab239dbb125b"
+      "sha256": "d73b2bcf9d4314d97cc3fa9e62f2e913c4f24ccb8ce295ed6a635fde61b1f76f"
     },
     {
       "path": "lib/sellapp/promotions_phases.ex",
@@ -7657,7 +8047,12 @@
     {
       "path": "lib/sellapp/replace_coupon_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "54d18213dfa4f3cf411a3bbb3f862048682d8c14f66c5a11d2eeb32ccd6f9cbe"
+      "sha256": "9f1022c3002679e98b4c53b5419c1e54aacd9b013d749b6ae7352ddf112d5b62"
+    },
+    {
+      "path": "lib/sellapp/replace_coupon_response_value_200_application_json_property_data_applies_to.ex",
+      "mode": "100644",
+      "sha256": "f0142712938967fe5bb50a2080fe726321551280b2d23a69af9af3a0c13de470"
     },
     {
       "path": "lib/sellapp/replace_coupon_response_value_200_application_json_property_data_type.ex",
@@ -8142,7 +8537,7 @@
     {
       "path": "lib/sellapp/replace_product_variant_pricing_request_application_json_property_pricing.ex",
       "mode": "100644",
-      "sha256": "b9d592ebed90098011cbc375ae9e8528fc6a96205c1ce03d9340102e20cee8a7"
+      "sha256": "6dec2faaab61415498d01dcafffed37458f88429f6ad85fdbc4c06e74d3a8ed9"
     },
     {
       "path": "lib/sellapp/replace_product_variant_pricing_request_application_json_property_pricing_property_compare_at_price.ex",
@@ -8173,6 +8568,36 @@
       "path": "lib/sellapp/replace_product_variant_pricing_request_application_json_property_pricing_property_price_currency.ex",
       "mode": "100644",
       "sha256": "da216d5f3abd943fd267f0a1cf3160adeec5fd84b0b9807b85e6afc097dee64a"
+    },
+    {
+      "path": "lib/sellapp/replace_product_variant_pricing_request_application_json_property_pricing_property_trial.ex",
+      "mode": "100644",
+      "sha256": "4aced27026120324ebc2221264a96e5f106ccde9c9031d9a6236eeaf9e70cb10"
+    },
+    {
+      "path": "lib/sellapp/replace_product_variant_pricing_request_application_json_property_pricing_property_trial_kind.ex",
+      "mode": "100644",
+      "sha256": "4a95ac888755d478c46aa2ca7e11560e799fdfd64b62bedf32f70146f8067816"
+    },
+    {
+      "path": "lib/sellapp/replace_product_variant_pricing_request_application_json_property_pricing_property_trial_value_property_length.ex",
+      "mode": "100644",
+      "sha256": "1d709cd7331b5b9b285bcd9ddba534b008fc73e3b1e520d943525cf406677a2e"
+    },
+    {
+      "path": "lib/sellapp/replace_product_variant_pricing_request_application_json_property_pricing_property_trial_value_property_length_interval.ex",
+      "mode": "100644",
+      "sha256": "61ed34c835fdd9068ebd083c33ec33910792c12b685aa6a67cc2e385a567428b"
+    },
+    {
+      "path": "lib/sellapp/replace_product_variant_pricing_request_application_json_property_pricing_property_trial_value_property_price.ex",
+      "mode": "100644",
+      "sha256": "f0f318fae5b1c8b0b1d1441ea79eae52181c749cb6dd223b32ed3356704a48fa"
+    },
+    {
+      "path": "lib/sellapp/replace_product_variant_pricing_request_application_json_property_pricing_property_trial_value_property_price_currency.ex",
+      "mode": "100644",
+      "sha256": "e3d7201323f50c5912fa620d1246b24ac1266221810cead238de1484b74eba87"
     },
     {
       "path": "lib/sellapp/replace_product_variant_pricing_request_application_json_property_pricing_type.ex",
@@ -8207,7 +8632,7 @@
     {
       "path": "lib/sellapp/replace_product_variant_pricing_response_value_200_application_json_property_data_property_pricing.ex",
       "mode": "100644",
-      "sha256": "dd82d5ea805b2dd56213857a4cf9a34ef625729e5ad07ab95b1598e3c01d637c"
+      "sha256": "44b6d8f095499241272039755f8b633bfc7b9e47b6c0019f502a0646a0657f76"
     },
     {
       "path": "lib/sellapp/replace_product_variant_pricing_response_value_200_application_json_property_data_property_pricing_property_frequency.ex",
@@ -8218,6 +8643,31 @@
       "path": "lib/sellapp/replace_product_variant_pricing_response_value_200_application_json_property_data_property_pricing_property_price.ex",
       "mode": "100644",
       "sha256": "3acaaaa473c51881785ec7a9c3f1ecf379ef64c8f43650c7df8728f102338c70"
+    },
+    {
+      "path": "lib/sellapp/replace_product_variant_pricing_response_value_200_application_json_property_data_property_pricing_property_trial.ex",
+      "mode": "100644",
+      "sha256": "e67cf54542fa3fafb1b5e9b339eecc821a384a4f5332f87ad99720144720cfd4"
+    },
+    {
+      "path": "lib/sellapp/replace_product_variant_pricing_response_value_200_application_json_property_data_property_pricing_property_trial_kind.ex",
+      "mode": "100644",
+      "sha256": "03d3b65f549fcca3232ca8b8434737895b4874770d759dc8ebe0f4d75305d0a6"
+    },
+    {
+      "path": "lib/sellapp/replace_product_variant_pricing_response_value_200_application_json_property_data_property_pricing_property_trial_property_length.ex",
+      "mode": "100644",
+      "sha256": "b82574d1152c414adc5b7a8e3b5492f6f6e8c519440cd79cb8d50a13bbb30ec2"
+    },
+    {
+      "path": "lib/sellapp/replace_product_variant_pricing_response_value_200_application_json_property_data_property_pricing_property_trial_property_length_interval.ex",
+      "mode": "100644",
+      "sha256": "276a8edac6eb8495aa05b90b18616751ed920b00c47f35e321e90c94aac0c518"
+    },
+    {
+      "path": "lib/sellapp/replace_product_variant_pricing_response_value_200_application_json_property_data_property_pricing_property_trial_property_price.ex",
+      "mode": "100644",
+      "sha256": "97ae34d05f195e8a0d1d21a4d1a5260734de9fd31c8a9b6ced92455d37703dc8"
     },
     {
       "path": "lib/sellapp/replace_product_variant_pricing_response_value_200_application_json_property_data_property_product.ex",
@@ -8297,7 +8747,7 @@
     {
       "path": "lib/sellapp/replace_product_variant_with_put_request_application_json_property_pricing.ex",
       "mode": "100644",
-      "sha256": "1381e40502e3fdd1981796d68db6617f0966c24aaad5e6f235d514159dc972e0"
+      "sha256": "cf1c424af323ba0bab04c1669b5d00bbff8a50b6e8609f8f94ddafdc30485753"
     },
     {
       "path": "lib/sellapp/replace_product_variant_with_put_request_application_json_property_pricing_property_price.ex",
@@ -8332,7 +8782,7 @@
     {
       "path": "lib/sellapp/replace_product_variant_with_put_response_value_200_application_json_property_data_property_pricing.ex",
       "mode": "100644",
-      "sha256": "efb38438702a4ca4c72f805411d7bd3fc33f1f1de8fdf58a4c21f51b33c5789c"
+      "sha256": "b852034da77a2d33358244a72f6dc48c053290618ca80c11669056d303e68b5d"
     },
     {
       "path": "lib/sellapp/replace_product_variant_with_put_response_value_200_application_json_property_data_property_pricing_property_frequency.ex",
@@ -8343,6 +8793,31 @@
       "path": "lib/sellapp/replace_product_variant_with_put_response_value_200_application_json_property_data_property_pricing_property_price.ex",
       "mode": "100644",
       "sha256": "3cbc0e52cae3aadcdc7e25a8af8e1c5446cd2d3396e4322a59c68b1a674ec0c4"
+    },
+    {
+      "path": "lib/sellapp/replace_product_variant_with_put_response_value_200_application_json_property_data_property_pricing_property_trial.ex",
+      "mode": "100644",
+      "sha256": "323875f07980183469e4f4c594ffd1640b47950fc5de1261f64f50b445ca1191"
+    },
+    {
+      "path": "lib/sellapp/replace_product_variant_with_put_response_value_200_application_json_property_data_property_pricing_property_trial_kind.ex",
+      "mode": "100644",
+      "sha256": "c0e66d1b26459cbd3b00527f14b7db441ef01647140ee71e96a0a57a06acefa9"
+    },
+    {
+      "path": "lib/sellapp/replace_product_variant_with_put_response_value_200_application_json_property_data_property_pricing_property_trial_property_length.ex",
+      "mode": "100644",
+      "sha256": "5fd9e03e5e5d3efb23f2d331bca01cc6dc29f6903eddbadd92158700a6cfdc6f"
+    },
+    {
+      "path": "lib/sellapp/replace_product_variant_with_put_response_value_200_application_json_property_data_property_pricing_property_trial_property_length_interval.ex",
+      "mode": "100644",
+      "sha256": "3cbf21bb019a2fc374df8bf39fa2c2702cdc8abb4970b33206741a2d2db2943e"
+    },
+    {
+      "path": "lib/sellapp/replace_product_variant_with_put_response_value_200_application_json_property_data_property_pricing_property_trial_property_price.ex",
+      "mode": "100644",
+      "sha256": "44876c3b135361a2c2cf05a06f203dfa2dc82196319adcfb39857a9aa51440e3"
     },
     {
       "path": "lib/sellapp/replace_product_variant_with_put_response_value_200_application_json_property_data_property_product.ex",
@@ -8387,7 +8862,12 @@
     {
       "path": "lib/sellapp/replace_promotion_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "9ecc16c3e12079b22a10f0b37f2c55a4c2c18e0a362c6678d4408bca09d0615a"
+      "sha256": "a4edb2e589df2037c5c1bd6e093b014e57ebcf2c2eb3b65ef6f70ac488c71936"
+    },
+    {
+      "path": "lib/sellapp/replace_promotion_response_value_200_application_json_property_data_applies_to.ex",
+      "mode": "100644",
+      "sha256": "36e56a3e974e0ef267d40806da8f2a4b17c2acb166ee008130aadc52c2331269"
     },
     {
       "path": "lib/sellapp/replace_promotion_response_value_200_application_json_property_data_property_phases_item.ex",
@@ -8617,22 +9097,22 @@
     {
       "path": "lib/sellapp/replace_webhook_channel_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "c5e0d6091f9f3c1f65b10d25111fe310e44a7274899c426d8b77c771a92c1693"
+      "sha256": "1212caf9883e9022fe7a418ad5a6ad4ac6ca65bd870996e35be9716ecaa8355b"
     },
     {
       "path": "lib/sellapp/replace_webhook_channel_response_value_200_application_json_property_data_allowed_notifications.ex",
       "mode": "100644",
-      "sha256": "3852acca9c49dbc89ba5526c38290792c632e086a5572ab0ec9f567a11cfad7c"
+      "sha256": "ddce8f8d82778448f10bdb8c12654d28dc941207e2e04f8ca3a4ef13984ed7d6"
     },
     {
       "path": "lib/sellapp/replay_webhook_delivery_response_value_201_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "e8a7863660b9c66d9f3fffc1438a7a7b194cb9172d7b004c7d83ed27cc0279c5"
+      "sha256": "9e3bf0ebc371aeec74823349665b00beb11cd1d29ed659a723d0440616fbf8c7"
     },
     {
       "path": "lib/sellapp/replay_webhook_delivery_response_value_201_application_json_property_data_status.ex",
       "mode": "100644",
-      "sha256": "5a602fedd4c3f0287c4bb9b38b7e9e12f40bffb0f89624af295d358c5394ae2d"
+      "sha256": "276b048547a93a1716466081fe0e221e69119368b0ea6475ef60092bfbfb1953"
     },
     {
       "path": "lib/sellapp/reply_to_feedback_response_value_200_application_json_property_data.ex",
@@ -8672,7 +9152,12 @@
     {
       "path": "lib/sellapp/restore_promotion_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "40ac4a9b07705fb8dd1f30051ab9e6fa5d7cdf5cb1ec2f12793aa26c91cb1ec3"
+      "sha256": "cdb9e19a3af440e6d68da250e1764fefac6bf299a78343ac333c9449fa514e34"
+    },
+    {
+      "path": "lib/sellapp/restore_promotion_response_value_200_application_json_property_data_applies_to.ex",
+      "mode": "100644",
+      "sha256": "979fcda9e8d117ac4ef67a4de8bb0917d43ff40ebf9a6e6602dcb83fc7cdd7ac"
     },
     {
       "path": "lib/sellapp/restore_promotion_response_value_200_application_json_property_data_property_phases_item.ex",
@@ -8702,27 +9187,27 @@
     {
       "path": "lib/sellapp/resume_customer_subscription_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "54d6cb5a02c5eb2e1f780833c3f09df869472d74de43acfcd4be36664b14e414"
+      "sha256": "c5f0fb683b1c11e11e7d364bf8228f615ac926b74baa00f3dbdccca2f7f0d10a"
     },
     {
-      "path": "lib/sellapp/resume_customer_subscription_response_value_200_application_json_property_data_property_customer.ex",
+      "path": "lib/sellapp/resume_customer_subscription_response_value_200_application_json_property_data_action.ex",
       "mode": "100644",
-      "sha256": "2c29bc6fb8c14e37d54d279b8f2be76b7cb369d6aaad23841cce1ed3f18ea041"
+      "sha256": "1824022547b49956fc0ec46ace24ded6e80aaa5c734fab36ca080e85446f5cfc"
     },
     {
-      "path": "lib/sellapp/resume_customer_subscription_response_value_200_application_json_property_data_property_customer_property_metadata.ex",
+      "path": "lib/sellapp/resume_customer_subscription_response_value_200_application_json_property_data_status.ex",
       "mode": "100644",
-      "sha256": "76fbba62733aefdb23771ca05299e3eb9a55e16dab95d3d261695080364cb91c"
+      "sha256": "572d29bbbcde5408c0bf51e40084b6d64de0c150e1541549e27b67cb2787baad"
     },
     {
       "path": "lib/sellapp/resume_subscription_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "81fcd49c3fbb1bc4dcadaa9a76443b65d809787863de5102d047ba7c7608f916"
+      "sha256": "c4566affea1f2e64fad9901b71a9ff9a3f79f51684f9606a47c22e1de6bc2c12"
     },
     {
       "path": "lib/sellapp/resume_subscription_response_value_200_application_json_property_data_action.ex",
       "mode": "100644",
-      "sha256": "7edf373d88eec845234b3ef8fd3b080a222b0bd1aa8019d881ca27d895f6f258"
+      "sha256": "1dde30cc6a0f57f27141da36609b6d8f4adb330175d8915d2c25684b6180f5b0"
     },
     {
       "path": "lib/sellapp/resume_subscription_response_value_200_application_json_property_data_status.ex",
@@ -9082,7 +9567,7 @@
     {
       "path": "lib/sellapp/sdk_cancel_customer_subscription_at_period_end_request_application_json.ex",
       "mode": "100644",
-      "sha256": "4b19e6033d36b0e05ad85c8544bf4b55c1ae07ec28e1b71b7805ce7faa4f1933"
+      "sha256": "5e570ffe530f2381cd3f8c92a5c9add1ea53192a6570470c7ee213829c16995e"
     },
     {
       "path": "lib/sellapp/sdk_cancel_customer_subscription_at_period_end_response_value_200_application_json.ex",
@@ -9092,7 +9577,7 @@
     {
       "path": "lib/sellapp/sdk_cancel_customer_subscription_immediately_request_application_json.ex",
       "mode": "100644",
-      "sha256": "e75385bc9ef39289ea93dd8f3cb2f9a62e270d2101c5f52dcf2b53ff15576c42"
+      "sha256": "8843daa9ffe06ce8db43837b5b4f30de1d4985e59eeaa53151fa729afbac8a34"
     },
     {
       "path": "lib/sellapp/sdk_cancel_customer_subscription_immediately_response_value_200_application_json.ex",
@@ -9142,7 +9627,17 @@
     {
       "path": "lib/sellapp/sdk_confirm_customer_subscription_plan_change_request_application_json.ex",
       "mode": "100644",
-      "sha256": "cca30e2f2374c2ad544e8d9642282785290dc7ed607b3f7e4cc48b302deedfb1"
+      "sha256": "b8b3420c2f93ae3c10a33fec616c8a984f227083716bc5ce56472a41cf24fd2d"
+    },
+    {
+      "path": "lib/sellapp/sdk_confirm_customer_subscription_plan_change_request_application_json_effective_timing.ex",
+      "mode": "100644",
+      "sha256": "7486aad5585e0b68c6d57c6b947f9cfc3eac6a92e40dc19520807ed758a42cce"
+    },
+    {
+      "path": "lib/sellapp/sdk_confirm_customer_subscription_plan_change_request_application_json_proration_behavior.ex",
+      "mode": "100644",
+      "sha256": "99021384b3fde38cbddde2f46beb0f8e938979f4eecd136ae5960dc292e87023"
     },
     {
       "path": "lib/sellapp/sdk_confirm_customer_subscription_plan_change_response_value_200_application_json.ex",
@@ -9152,7 +9647,7 @@
     {
       "path": "lib/sellapp/sdk_confirm_customer_subscription_renewal_date_change_request_application_json.ex",
       "mode": "100644",
-      "sha256": "92cabaa7875dee4cab659e965aee0917241fdc362072be52e1a721cde5957429"
+      "sha256": "caa6b1d76ec8ecce0b1e3d39c92aeaba118494f114359788c8575a3e8af18b0f"
     },
     {
       "path": "lib/sellapp/sdk_confirm_customer_subscription_renewal_date_change_response_value_200_application_json.ex",
@@ -9173,6 +9668,11 @@
       "path": "lib/sellapp/sdk_confirm_subscription_plan_change_request_application_json_proration_behavior.ex",
       "mode": "100644",
       "sha256": "2d2298103eaac9faab049ccea1273af2635d679d8b603029a4dce32ac98cf080"
+    },
+    {
+      "path": "lib/sellapp/sdk_confirm_subscription_plan_change_response_value_200_application_json.ex",
+      "mode": "100644",
+      "sha256": "8fa5a5c64996afe30d2737154bc8883077a7fba1e42f0f3203e47b7cf2da1e44"
     },
     {
       "path": "lib/sellapp/sdk_confirm_subscription_renewal_date_change_request_application_json.ex",
@@ -9267,7 +9767,12 @@
     {
       "path": "lib/sellapp/sdk_create_coupon_request_application_json.ex",
       "mode": "100644",
-      "sha256": "d99b53d240c074302e201f5dd3e78d5391aabc2870b79ac94d37d200be3b7e38"
+      "sha256": "308ab959d23c933affcb08c69a526ed8df8be8a8c833b6ceab1231dbfa25c07e"
+    },
+    {
+      "path": "lib/sellapp/sdk_create_coupon_request_application_json_applies_to.ex",
+      "mode": "100644",
+      "sha256": "18de7769bcaa8e11659a5a4ad98da270018cf092f23cf850b46bb2a9ee220d29"
     },
     {
       "path": "lib/sellapp/sdk_create_coupon_request_application_json_type.ex",
@@ -9527,7 +10032,7 @@
     {
       "path": "lib/sellapp/sdk_create_product_variant_request_application_json.ex",
       "mode": "100644",
-      "sha256": "21a40d54a366610d741d9a38b2c5038580e14b2849729bf4c8a4a90c0bedcded"
+      "sha256": "f36453637cc7e75dd3ad05424b86ef96a1db661287f741a00dea2c789b69bcca"
     },
     {
       "path": "lib/sellapp/sdk_create_product_variant_request_application_json_payment_methods.ex",
@@ -9542,7 +10047,12 @@
     {
       "path": "lib/sellapp/sdk_create_promotion_request_application_json.ex",
       "mode": "100644",
-      "sha256": "7cde831dc7a78ef572af3d5e075b6734440afd0d72d2c6e99cee4cfb6375cf3e"
+      "sha256": "7eaadfc3c60c37b45c14315c951b3dce40d6d5b853b0b08ace5e29a8e9f40f75"
+    },
+    {
+      "path": "lib/sellapp/sdk_create_promotion_request_application_json_applies_to.ex",
+      "mode": "100644",
+      "sha256": "3daaab876d9768d1593a900fbad017a15959fbd4c2efdc24e6193706527389e8"
     },
     {
       "path": "lib/sellapp/sdk_create_promotion_request_application_json_status.ex",
@@ -9672,12 +10182,12 @@
     {
       "path": "lib/sellapp/sdk_create_webhook_channel_request_application_json.ex",
       "mode": "100644",
-      "sha256": "82db73e31b33bd0b0fbdbcbfd5ed88a363078f18bac9410bf50d5928f74e9aee"
+      "sha256": "2359202fe819b8322594cfb545075b3dcb1e0d9cf02315c4d0fd46a7d6587d7b"
     },
     {
       "path": "lib/sellapp/sdk_create_webhook_channel_request_application_json_allowed_notifications.ex",
       "mode": "100644",
-      "sha256": "1c857af0faec599353b8e3a80c9c02ca185907457a69d3d1fffac4c77063ffaa"
+      "sha256": "76b1cee69a1c1fa5bb26bca1b71dc5208207713e6672e5b371cdcc4110a973a1"
     },
     {
       "path": "lib/sellapp/sdk_create_webhook_channel_response_value_201_application_json.ex",
@@ -9760,6 +10270,11 @@
       "sha256": "af11ab8a83c585ca18895e46c5dae306fe9ae0d46eac6f60a23a3dcbaa396fe8"
     },
     {
+      "path": "lib/sellapp/sdk_delete_product_variant_request_application_json.ex",
+      "mode": "100644",
+      "sha256": "d696b53d8590c1c2c52fbfbfa311486c85efa2430cf3bfdf1d61f5be7ae76e01"
+    },
+    {
       "path": "lib/sellapp/sdk_delete_product_variant_response_value_200_application_json.ex",
       "mode": "100644",
       "sha256": "fd53ffe6ee3994cfd523f039eb85266ff00ec478bc38ebb0793db6c0e03eb0fe"
@@ -9823,6 +10338,16 @@
       "path": "lib/sellapp/sdk_disconnect_custom_domain_response_value_200_application_json.ex",
       "mode": "100644",
       "sha256": "8351d105b384fc1c556f9309f719fd3db3c5c7032b4fd814a99698856773b18f"
+    },
+    {
+      "path": "lib/sellapp/sdk_dismiss_subscription_action_request_application_json.ex",
+      "mode": "100644",
+      "sha256": "8fcfd7d59f2d038b128fc705e98f94501a2b6ed36bfcfefa3f098ce0612d45fe"
+    },
+    {
+      "path": "lib/sellapp/sdk_dismiss_subscription_action_response_value_200_application_json.ex",
+      "mode": "100644",
+      "sha256": "bcc29b79b0058229edf5461c24349ae66e7498c8820494539a831900233c85aa"
     },
     {
       "path": "lib/sellapp/sdk_enable_or_disable_payment_method_request_application_json.ex",
@@ -9942,7 +10467,7 @@
     {
       "path": "lib/sellapp/sdk_get_customer_portal_subscription_response_value_200_application_json.ex",
       "mode": "100644",
-      "sha256": "49b963e13bbebc42b8a5adca53731f87885f208396648d79adf4c15c0e050ecb"
+      "sha256": "6c1161332e1fb6505c30e58475bd28828ece2d1043ec231ba24e4aa2a92f9f12"
     },
     {
       "path": "lib/sellapp/sdk_get_customer_response_value_200_application_json.ex",
@@ -10105,6 +10630,11 @@
       "sha256": "182983af967773bd6f22c65fcafa0a0fdecc78491f9ffb95fb0ba3c8d860b96c"
     },
     {
+      "path": "lib/sellapp/sdk_get_subscription_action_response_value_200_application_json.ex",
+      "mode": "100644",
+      "sha256": "89ed6358af28ebf76489ccd5bf53ce705c3b37279caa11044b9c02deb7640c91"
+    },
+    {
       "path": "lib/sellapp/sdk_get_subscription_capabilities_response_value_200_application_json.ex",
       "mode": "100644",
       "sha256": "a57ae051798c726d41ae7842f4be144426eca7610c6ecaf72e21ebe377af7907"
@@ -10193,6 +10723,16 @@
       "path": "lib/sellapp/sdk_issue_replacement_for_completed_invoice_response_value_200_application_json.ex",
       "mode": "100644",
       "sha256": "5dbab001dea10c39bd1c88e5f8127482d1bb766db0a764b28ba1a97251302c1e"
+    },
+    {
+      "path": "lib/sellapp/sdk_keep_subscription_request_application_json.ex",
+      "mode": "100644",
+      "sha256": "d107f2f1aaeafb3fbd0684ffc78ae542955cda18eb4d2fbf637f1cf2b1b9567c"
+    },
+    {
+      "path": "lib/sellapp/sdk_keep_subscription_response_value_200_application_json.ex",
+      "mode": "100644",
+      "sha256": "e0c1f1355d1da9f8e3cabb97963eda51448f4210921dcc32f3fdcf6bb58bae36"
     },
     {
       "path": "lib/sellapp/sdk_list_add_on_s_parent_products_response_value_200_application_json.ex",
@@ -10312,7 +10852,7 @@
     {
       "path": "lib/sellapp/sdk_list_customer_portal_subscriptions_response_value_200_application_json.ex",
       "mode": "100644",
-      "sha256": "3a3cd22f7b35065344c774b8724ddedd405d3bd1d906b44f37c8ca78aad71e6f"
+      "sha256": "0ee51613a621ce08eb2b7b25733112d46f6092a4bf901e252ad5e0c32f691874"
     },
     {
       "path": "lib/sellapp/sdk_list_customer_wallets_response_value_200_application_json.ex",
@@ -10480,9 +11020,14 @@
       "sha256": "850701072746d3c1e6b6fcd591110b1acf6ef42fdfb2437b7b8677f57aa9a7ff"
     },
     {
+      "path": "lib/sellapp/sdk_list_subscription_actions_response_value_200_application_json.ex",
+      "mode": "100644",
+      "sha256": "391403958d6fb0a96cab686daba4764cf0abb2fbe05c2eedb71cbf8da200ae3a"
+    },
+    {
       "path": "lib/sellapp/sdk_list_subscriptions_response_value_200_application_json.ex",
       "mode": "100644",
-      "sha256": "b13c7c08a525f7f460124cd6b5a7427a3242f9c89ab492ada964aecdd8488583"
+      "sha256": "880f2e9dcd12008936b5c8d8c3bb2ce8293d5fe38f2bfdeca708b810bbae7186"
     },
     {
       "path": "lib/sellapp/sdk_list_ticket_messages_response_value_200_application_json.ex",
@@ -10572,7 +11117,7 @@
     {
       "path": "lib/sellapp/sdk_pause_customer_subscription_request_application_json.ex",
       "mode": "100644",
-      "sha256": "8f3574a680b693c5188720a4fbb66ebf26356c58504e393a004d680de5864d06"
+      "sha256": "f53139e587cca2d8bf12c425bb113a94aabdc3b0bd4bb0457ca92bba45d784ef"
     },
     {
       "path": "lib/sellapp/sdk_pause_customer_subscription_response_value_200_application_json.ex",
@@ -10607,7 +11152,17 @@
     {
       "path": "lib/sellapp/sdk_preview_customer_subscription_plan_change_request_application_json.ex",
       "mode": "100644",
-      "sha256": "8e266b82d7d5ca541e971e8803e7905e4d58ca0f38f0fd62d0ba9fdbc1910b2e"
+      "sha256": "ac17ad4c49c9d251d5ae2364fe22168a0c3ef757079ac2076f2ed9739a874c75"
+    },
+    {
+      "path": "lib/sellapp/sdk_preview_customer_subscription_plan_change_request_application_json_effective_timing.ex",
+      "mode": "100644",
+      "sha256": "4c060fc5e906b9455df66c836c7bd12522a21f9c7a83e14a8cbcded822cb7ac6"
+    },
+    {
+      "path": "lib/sellapp/sdk_preview_customer_subscription_plan_change_request_application_json_proration_behavior.ex",
+      "mode": "100644",
+      "sha256": "ac6cb93f8d7ccabe5bcec13c1a0c13028f3cb28897bdd2e37491857b34e9bc15"
     },
     {
       "path": "lib/sellapp/sdk_preview_customer_subscription_plan_change_response_value_200_application_json.ex",
@@ -10617,7 +11172,7 @@
     {
       "path": "lib/sellapp/sdk_preview_customer_subscription_renewal_date_change_request_application_json.ex",
       "mode": "100644",
-      "sha256": "32c9a8cf69c3e7338b4f5aaab44b1ef0e46c823147e3ad01a092c096dfa5a380"
+      "sha256": "98b32aecaf1fc5903034e7503c0fd938dadc2c136c3f0e489e335d0bf3c5eccc"
     },
     {
       "path": "lib/sellapp/sdk_preview_customer_subscription_renewal_date_change_response_value_200_application_json.ex",
@@ -10638,6 +11193,11 @@
       "path": "lib/sellapp/sdk_preview_subscription_plan_change_request_application_json_proration_behavior.ex",
       "mode": "100644",
       "sha256": "37ef4470933339411c36d05bc2bb41ddab3ea1a8a968f2e1e811dd7e478613a5"
+    },
+    {
+      "path": "lib/sellapp/sdk_preview_subscription_plan_change_response_value_200_application_json.ex",
+      "mode": "100644",
+      "sha256": "42db6abfbbb1f3c108dfdcbacf44fb649011b1cd13aba68604372864430ed725"
     },
     {
       "path": "lib/sellapp/sdk_preview_subscription_renewal_date_change_request_application_json.ex",
@@ -10822,7 +11382,12 @@
     {
       "path": "lib/sellapp/sdk_replace_coupon_request_application_json.ex",
       "mode": "100644",
-      "sha256": "ee73c909fb015e00ab556ac25ccd92da238873c826435df91ec1a0613266c10b"
+      "sha256": "2f077bfaec25ec2c4e5e9fa97dcda5b3118ad1321cf424cb020a2a196524d677"
+    },
+    {
+      "path": "lib/sellapp/sdk_replace_coupon_request_application_json_applies_to.ex",
+      "mode": "100644",
+      "sha256": "094cab705f9cbfb93e2269dad76513563efbba0ccdeb972f8eae0491a879ef58"
     },
     {
       "path": "lib/sellapp/sdk_replace_coupon_request_application_json_type.ex",
@@ -10992,7 +11557,7 @@
     {
       "path": "lib/sellapp/sdk_replace_product_variant_pricing_request_application_json.ex",
       "mode": "100644",
-      "sha256": "06f293c4f843da6168af1fbdcd96eb85214771d3339f0e4fab10bb87bacc6e99"
+      "sha256": "8d8273cb7933892bf40c97df5a6d9508b3b9d815958d9c55f8e75ae138af7852"
     },
     {
       "path": "lib/sellapp/sdk_replace_product_variant_pricing_request_application_json_payment_methods.ex",
@@ -11007,7 +11572,7 @@
     {
       "path": "lib/sellapp/sdk_replace_product_variant_with_put_request_application_json.ex",
       "mode": "100644",
-      "sha256": "4608c8432313829ab90a66175de17bba0ef2c3b92211ac519fb7f45810e66502"
+      "sha256": "5eea149c5d7c7f56bb7171bb8e5f98bb96ed91dd4b39c23a22ba9b16c9c0ba91"
     },
     {
       "path": "lib/sellapp/sdk_replace_product_variant_with_put_request_application_json_payment_methods.ex",
@@ -11032,7 +11597,12 @@
     {
       "path": "lib/sellapp/sdk_replace_promotion_request_application_json.ex",
       "mode": "100644",
-      "sha256": "2977f82fa1377c4e5c0be84c4a3977d2803339a4b99814f01f05dcd39a44fd91"
+      "sha256": "1b76c887b21db7a096579901701209419b3ff23e1f07a24f68d391ca08b1c11f"
+    },
+    {
+      "path": "lib/sellapp/sdk_replace_promotion_request_application_json_applies_to.ex",
+      "mode": "100644",
+      "sha256": "1c4b96612cfb543f750943281ffdd021a3eafb840e2b561775aaf8c75b60ffa8"
     },
     {
       "path": "lib/sellapp/sdk_replace_promotion_request_application_json_status.ex",
@@ -11197,12 +11767,12 @@
     {
       "path": "lib/sellapp/sdk_replace_webhook_channel_request_application_json.ex",
       "mode": "100644",
-      "sha256": "4f72f82eed51335fd1a44d4a4ea2ac97b8f223ac2852b3e09f9e8baf91ffcab0"
+      "sha256": "9a353ceb676d7ded3daf46735fb05e90ed6cb919a2b3953d0125683d9483a953"
     },
     {
       "path": "lib/sellapp/sdk_replace_webhook_channel_request_application_json_allowed_notifications.ex",
       "mode": "100644",
-      "sha256": "20685f57c54e030e3cb9ace9f9265cbd8c1f1d8adb46603189fbd95348277f20"
+      "sha256": "9a945b08ba020ed73ae77ba108847cccb1210f8570a9f5fb7d0c084a99d0d6cd"
     },
     {
       "path": "lib/sellapp/sdk_replace_webhook_channel_response_value_200_application_json.ex",
@@ -11247,7 +11817,12 @@
     {
       "path": "lib/sellapp/sdk_restore_promotion_request_application_json.ex",
       "mode": "100644",
-      "sha256": "8ed022099d243994e0fcbfaabe2f3571205fff0bcbad61c1c2a3b2d99de95836"
+      "sha256": "5065ae1d8bc05dbf152b5011b0130ffd3a8992d44389d267183ad6f9b87ddbe3"
+    },
+    {
+      "path": "lib/sellapp/sdk_restore_promotion_request_application_json_applies_to.ex",
+      "mode": "100644",
+      "sha256": "6150cbf0654c2177b3d7511559143826ddbd12c0f6ae0c96265e5ce2493c75d7"
     },
     {
       "path": "lib/sellapp/sdk_restore_promotion_request_application_json_status.ex",
@@ -11263,11 +11838,6 @@
       "path": "lib/sellapp/sdk_restore_wallet_bonus_tier_response_value_200_application_json.ex",
       "mode": "100644",
       "sha256": "33db2d6ad1ea8e33c2465e3f35e2e1ab1415d0ecb28c17a9e3973632dacebdb0"
-    },
-    {
-      "path": "lib/sellapp/sdk_resume_customer_subscription_request_application_json.ex",
-      "mode": "100644",
-      "sha256": "97b9c888b78ceb043828e705a26ed8610e96af060bad04f021abfe5961cd70b8"
     },
     {
       "path": "lib/sellapp/sdk_resume_customer_subscription_response_value_200_application_json.ex",
@@ -11547,12 +12117,12 @@
     {
       "path": "lib/sellapp/sdk_search_subscriptions_request_application_json.ex",
       "mode": "100644",
-      "sha256": "da251fd07b7e1bbe9272d009d3cda3f68a77ddc65af5f1fe709e64fb7dd64ebd"
+      "sha256": "4ea4f6f8c65208c6c1da31800f4e62fb12c041b6948d092e3082daf9a6af6c31"
     },
     {
       "path": "lib/sellapp/sdk_search_subscriptions_response_value_200_application_json.ex",
       "mode": "100644",
-      "sha256": "e08ff8657f7ef07e22800d1497e85eac0f9e7fb1ceaf461fe7cd03a611ca00d1"
+      "sha256": "99f6ac707dc2d523768dddfdf52e7c50c6a9b60785d7ed4ebf5a92796a4bbacd"
     },
     {
       "path": "lib/sellapp/sdk_search_ticket_messages_request_application_json.ex",
@@ -11587,7 +12157,7 @@
     {
       "path": "lib/sellapp/sdk_search_webhook_channels_request_application_json.ex",
       "mode": "100644",
-      "sha256": "b6ace2d756eaf389d7c684cd97ac128cc2c58b0d93212000fae698cd4e817f3c"
+      "sha256": "937b6cb16495291b71f15bc2f36a09bf2724421458da069161f2b18ab0ce44e0"
     },
     {
       "path": "lib/sellapp/sdk_search_webhook_channels_response_value_200_application_json.ex",
@@ -11607,12 +12177,12 @@
     {
       "path": "lib/sellapp/sdk_send_test_webhook_request_application_json.ex",
       "mode": "100644",
-      "sha256": "f67e3f27ec4a8f67586fefffa8a003bea098b986d379ea1f5afbdfb6027af815"
+      "sha256": "f4180c3067fb217f804b8973c37f209bcc757b00f0d65348d00175079368827c"
     },
     {
       "path": "lib/sellapp/sdk_send_test_webhook_request_application_json_event.ex",
       "mode": "100644",
-      "sha256": "40edf23c0cd25fe95a037fbccef370a3dc97940f38cf427d687468a0fd2520d6"
+      "sha256": "b3c6ea605bddbdbbdee08256dd57fe4bc2f4d36babc08d1dac0acab6d2f52cd6"
     },
     {
       "path": "lib/sellapp/sdk_send_test_webhook_response_value_200_application_json.ex",
@@ -11747,7 +12317,12 @@
     {
       "path": "lib/sellapp/sdk_update_coupon_request_application_json.ex",
       "mode": "100644",
-      "sha256": "89263f68878526851bc777db236e99dd917d7520f7dce92060f53715e6cdcbd3"
+      "sha256": "25a42c11c3b1b9117fe2af7a402d397fc849f6e701ec71db062a86f2e98480ee"
+    },
+    {
+      "path": "lib/sellapp/sdk_update_coupon_request_application_json_applies_to.ex",
+      "mode": "100644",
+      "sha256": "48498ddcbd4f68932d59954207739ab1f116f031a496a87b344c16aa6b3b5640"
     },
     {
       "path": "lib/sellapp/sdk_update_coupon_request_application_json_type.ex",
@@ -11857,7 +12432,7 @@
     {
       "path": "lib/sellapp/sdk_update_customer_subscription_payment_method_request_application_json.ex",
       "mode": "100644",
-      "sha256": "b8e47637509009d33a44bae7cf88f13982501f9c988d1f98f431d3457739dff9"
+      "sha256": "2b6cb9eaa769e4aa191a50019efe1129090404e8fe5f897bbd0d9f8bf2cd2b94"
     },
     {
       "path": "lib/sellapp/sdk_update_customer_subscription_payment_method_response_value_200_application_json.ex",
@@ -11992,7 +12567,7 @@
     {
       "path": "lib/sellapp/sdk_update_product_variant_pricing_request_application_json.ex",
       "mode": "100644",
-      "sha256": "5f17f2de7fec3139e5631a9fbbbe929954b81358d24440a26be42a7a35768282"
+      "sha256": "7f84b576f9e503df62147e8cb168c17686dd8cd80be0c984cebc692933261733"
     },
     {
       "path": "lib/sellapp/sdk_update_product_variant_pricing_request_application_json_payment_methods.ex",
@@ -12007,7 +12582,7 @@
     {
       "path": "lib/sellapp/sdk_update_product_variant_request_application_json.ex",
       "mode": "100644",
-      "sha256": "a26253613218b02282d952d7608ac9e7280a097ead217d2902b34bb60b809a88"
+      "sha256": "5e5f68b98b74dbc75a0001fe5e7ad1458f3ec1c06cc515b5676640945221f980"
     },
     {
       "path": "lib/sellapp/sdk_update_product_variant_request_application_json_payment_methods.ex",
@@ -12022,7 +12597,12 @@
     {
       "path": "lib/sellapp/sdk_update_promotion_request_application_json.ex",
       "mode": "100644",
-      "sha256": "74c30e2ee5433d23276d389df7049b141885c9e48a0e4850a19dd1eb3eb53089"
+      "sha256": "53a4b15e3c3e1df5290188e534749ecd080515c24d60258b83035ddf98c2466a"
+    },
+    {
+      "path": "lib/sellapp/sdk_update_promotion_request_application_json_applies_to.ex",
+      "mode": "100644",
+      "sha256": "143fa045f9ad9afd78210ca284fb9f6997f9030e80502a48c11b1421aaedef33"
     },
     {
       "path": "lib/sellapp/sdk_update_promotion_request_application_json_status.ex",
@@ -12097,7 +12677,12 @@
     {
       "path": "lib/sellapp/sdk_update_subscription_payment_method_request_application_json.ex",
       "mode": "100644",
-      "sha256": "b1593b05729c5ddcfcf1e134583611587922a8bb6bc0f94a9cf5a3973c6aa90a"
+      "sha256": "c134bd32ad8d481cc8d2413d9d1197b75edd675d02c174e3e292e88c11f609d8"
+    },
+    {
+      "path": "lib/sellapp/sdk_update_subscription_payment_method_response_value_200_application_json.ex",
+      "mode": "100644",
+      "sha256": "9e680ce22217674f1fc81854770db694e4c82ebf0cf1ef7e5c309c0244effc74"
     },
     {
       "path": "lib/sellapp/sdk_update_ticket_request_application_json.ex",
@@ -12167,12 +12752,12 @@
     {
       "path": "lib/sellapp/sdk_update_webhook_channel_request_application_json.ex",
       "mode": "100644",
-      "sha256": "9524c4db9227fd50d9a939c25c2080d9877e5dcd3d7f30077b1b29c841268cb7"
+      "sha256": "4a52c7cf8ae33baafffbe0f6102fc3918541a180bf694e50c576769bd4aa97b2"
     },
     {
       "path": "lib/sellapp/sdk_update_webhook_channel_request_application_json_allowed_notifications.ex",
       "mode": "100644",
-      "sha256": "debd3f39c481d4e9fb90860b2baed04ba72c56578a3e16dffa42b6365377cf00"
+      "sha256": "e3e28b15de21f2c02102a1b7a0f946358f54058d6e2dccd0d7ee31bb510c1865"
     },
     {
       "path": "lib/sellapp/sdk_update_webhook_channel_response_value_200_application_json.ex",
@@ -12277,7 +12862,12 @@
     {
       "path": "lib/sellapp/sdk_v_2_create_coupon_request_application_json.ex",
       "mode": "100644",
-      "sha256": "145dc3731e86bc20e40a152ecc15659d6f5eb72df436e7152b234204df909017"
+      "sha256": "634e5a501d938fc022c781f7b3ff520807a39366179c21e3ac67e9734e8f8dc8"
+    },
+    {
+      "path": "lib/sellapp/sdk_v_2_create_coupon_request_application_json_applies_to.ex",
+      "mode": "100644",
+      "sha256": "93f38d225462c8c3138b943b9cd1d8cb24af0075feca7d3a5ef31f4d077638d1"
     },
     {
       "path": "lib/sellapp/sdk_v_2_create_coupon_request_application_json_type.ex",
@@ -12362,7 +12952,12 @@
     {
       "path": "lib/sellapp/sdk_v_2_replace_coupon_request_application_json.ex",
       "mode": "100644",
-      "sha256": "d1c999486e0c597ce59ff948b0aac6f6befef2837bf8338193126f1a902d4e68"
+      "sha256": "7a30176268ff7c00aa9124c130c16edfbc00a1b558621c6e4ec2f8290a25df63"
+    },
+    {
+      "path": "lib/sellapp/sdk_v_2_replace_coupon_request_application_json_applies_to.ex",
+      "mode": "100644",
+      "sha256": "2356ee8de8b9e3e25423dfd9db3017110b2b275ced98df34748a7b44fdb7faea"
     },
     {
       "path": "lib/sellapp/sdk_v_2_replace_coupon_request_application_json_type.ex",
@@ -12497,7 +13092,12 @@
     {
       "path": "lib/sellapp/sdk_v_2_update_coupon_request_application_json.ex",
       "mode": "100644",
-      "sha256": "00294e8269ef713b95d1138e5833747510ac3aa8f71402f2fe5dc9ee46d6d705"
+      "sha256": "44cab92c176aca5306e3ce117d2f903a84ec06081ec7efe493b86b8a1558f394"
+    },
+    {
+      "path": "lib/sellapp/sdk_v_2_update_coupon_request_application_json_applies_to.ex",
+      "mode": "100644",
+      "sha256": "0d583fc252f88dbab0b90e834fe5d1ce677c804f1696d784849dd80c71cf23b0"
     },
     {
       "path": "lib/sellapp/sdk_v_2_update_coupon_request_application_json_type.ex",
@@ -12667,7 +13267,12 @@
     {
       "path": "lib/sellapp/search_coupons_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "7636021126258a6da232299412e03cd2a34f2413b83d7e88299956c2b3e9c2da"
+      "sha256": "bcf6d80b71b3fff22f250671468016e9c70a773fbed7cd8992c3172979108929"
+    },
+    {
+      "path": "lib/sellapp/search_coupons_response_value_200_application_json_property_data_item_applies_to.ex",
+      "mode": "100644",
+      "sha256": "2c64c11a2799e0d2e5cf78a3fb440f7a2cefaa6b05a39e6e2aee0a37ba37558b"
     },
     {
       "path": "lib/sellapp/search_coupons_response_value_200_application_json_property_data_item_type.ex",
@@ -13027,7 +13632,7 @@
     {
       "path": "lib/sellapp/search_invoices_response_value_200_application_json_property_data_item_property_payment_property_gateway.ex",
       "mode": "100644",
-      "sha256": "86a13f2dab754754406b8a45f64b29310629bee393dab80f0f0fde968c4f2c3a"
+      "sha256": "349d9c73adb073f14f2dbce5979b20d3fe12464bbf1b232dba3ccad8a278c6dc"
     },
     {
       "path": "lib/sellapp/search_invoices_response_value_200_application_json_property_data_item_property_payment_property_gateway_property_data.ex",
@@ -13442,7 +14047,7 @@
     {
       "path": "lib/sellapp/search_product_variants_response_value_200_application_json_property_data_item_property_pricing.ex",
       "mode": "100644",
-      "sha256": "bbed8e4f64b15034432caca75bc09b75692e7b866bf95fd780529c851a3946e3"
+      "sha256": "c6a7605119b0cc4f6736c003cfaf3086b1c8c13a6df34bedf1c7ffb60a9207af"
     },
     {
       "path": "lib/sellapp/search_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_frequency.ex",
@@ -13453,6 +14058,31 @@
       "path": "lib/sellapp/search_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_price.ex",
       "mode": "100644",
       "sha256": "5bad510d80729b28782c9d7f1ab904e5c45b1d721faae23bc97525a4e702c16f"
+    },
+    {
+      "path": "lib/sellapp/search_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial.ex",
+      "mode": "100644",
+      "sha256": "04df423615850dbddd5310783e544663a6120883afdab3234b03b437773d77c7"
+    },
+    {
+      "path": "lib/sellapp/search_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_kind.ex",
+      "mode": "100644",
+      "sha256": "d9df6d1f3ca0dd5ea57f1d73e008c7d3ff464b6e8c4593ee8138caec30de6422"
+    },
+    {
+      "path": "lib/sellapp/search_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_property_length.ex",
+      "mode": "100644",
+      "sha256": "5c6c4a1d0bab9043657c9140646a30657fc912f19d8e898201c2c045aefad734"
+    },
+    {
+      "path": "lib/sellapp/search_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_property_length_interval.ex",
+      "mode": "100644",
+      "sha256": "82e23cd2695c08c94aedd8bba756929b9c6cd4f9f6baab3b8b29eb8de40aab57"
+    },
+    {
+      "path": "lib/sellapp/search_product_variants_response_value_200_application_json_property_data_item_property_pricing_property_trial_property_price.ex",
+      "mode": "100644",
+      "sha256": "49437d5434960cc55b7f28c4c0ea0f771f99572a22a2646de87db990062574da"
     },
     {
       "path": "lib/sellapp/search_product_variants_response_value_200_application_json_property_data_item_property_product.ex",
@@ -13745,19 +14375,39 @@
       "sha256": "2033313433d19bf86c0b8cb28a70265b5544790be442662ac0f194f933ca6e10"
     },
     {
-      "path": "lib/sellapp/search_subscriptions_response_value_200_application_json_property_data_item.ex",
+      "path": "lib/sellapp/search_subscriptions_request_application_json_property_filters_item.ex",
       "mode": "100644",
-      "sha256": "ae74740921429a1321e7df4d3aa11290e53ca6d103ac12f315cf289c0058633b"
+      "sha256": "63f16883a7d063a7c194f47f87a6199a630e3eab55bb69bffe0b05e84812d990"
     },
     {
-      "path": "lib/sellapp/search_subscriptions_response_value_200_application_json_property_data_item_property_customer.ex",
+      "path": "lib/sellapp/search_subscriptions_request_application_json_property_filters_item_property_nested_item.ex",
       "mode": "100644",
-      "sha256": "9cad0b69d32377a1b7624fc5f77b1e771e8e9d8bb2db6b9a7aa90501b8dcbb60"
+      "sha256": "d0d7786dd3ee319e493576e9d04be0ce256bd2489ec4bb91c4d4d70317ec2470"
     },
     {
-      "path": "lib/sellapp/search_subscriptions_response_value_200_application_json_property_data_item_property_customer_property_metadata.ex",
+      "path": "lib/sellapp/search_subscriptions_request_application_json_property_filters_item_type.ex",
       "mode": "100644",
-      "sha256": "b99b15720f26c56ae4fbecf14c51a117ec754869c2119e7d3b8a8330bd157f00"
+      "sha256": "21cb455a59829d30b6d6da6d7f3557255d040ebb3e504a0225b6608d78db3293"
+    },
+    {
+      "path": "lib/sellapp/search_subscriptions_request_application_json_property_includes_item.ex",
+      "mode": "100644",
+      "sha256": "f4be45d76a98864355429281d05f57c621e9ca5c6af3e260b49e6f62950a2f09"
+    },
+    {
+      "path": "lib/sellapp/search_subscriptions_request_application_json_property_search.ex",
+      "mode": "100644",
+      "sha256": "e379dd75c44858b1868fbb10d2d866958be2681ee479759979049f290e5516da"
+    },
+    {
+      "path": "lib/sellapp/search_subscriptions_request_application_json_property_sort_item.ex",
+      "mode": "100644",
+      "sha256": "8f9ab0a1ae1e40fd6d60490dfecef422ca464e05773d9abd23c23d92547d7eb5"
+    },
+    {
+      "path": "lib/sellapp/search_subscriptions_request_application_json_property_sort_item_direction.ex",
+      "mode": "100644",
+      "sha256": "23cd6a75775e0d3c56ce5d5b81f93573db4f1bfb0c6c460abf10794cc20d1df4"
     },
     {
       "path": "lib/sellapp/search_ticket_messages_request_application_json_property_filters_item.ex",
@@ -13907,12 +14557,12 @@
     {
       "path": "lib/sellapp/search_webhook_channels_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "b07d900d6783db09b4d20b8dcbb8c422e84d0e3a2182d29cf6668ddb79dc8b5a"
+      "sha256": "ec744cc663b6c6bd63a7db018a7f76fa7c9031af871998fc662299ff9dfacb38"
     },
     {
       "path": "lib/sellapp/search_webhook_channels_response_value_200_application_json_property_data_item_allowed_notifications.ex",
       "mode": "100644",
-      "sha256": "3e522d4ca9bf8a585209850a011b4c81e62fb499f23ed47b7c0bee683fae423f"
+      "sha256": "736ecf060567231b5d0149629e29f9e1039777b45b200f1f873a0e7a3b1b2dd1"
     },
     {
       "path": "lib/sellapp/sections.ex",
@@ -13972,12 +14622,12 @@
     {
       "path": "lib/sellapp/send_test_webhook_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "5cb7f279b08e51ea10169445e26b6b675f01b24bff6828eab8f8c90f99d9abbd"
+      "sha256": "f588951ac844d70c7acd469ca368038993a6012c9803c4a1733e707bbc57493c"
     },
     {
       "path": "lib/sellapp/send_test_webhook_response_value_200_application_json_property_data_event.ex",
       "mode": "100644",
-      "sha256": "b9b9b4f778d4f011ac366dc88eaad91c7c62fae651bf5f9bd63bb4c6165728d6"
+      "sha256": "b8f269257bee561bad3b5dc12b3b32042c8ad2c1d18ed424f3abb02128e9f319"
     },
     {
       "path": "lib/sellapp/set_booking_date_availability_response_value_201_application_json_property_data_item.ex",
@@ -14040,9 +14690,24 @@
       "sha256": "901e6854d5256e1503287128bb2f100f314a0be5620ae5c24e87f5e1a267b7cb"
     },
     {
+      "path": "lib/sellapp/subscription_plan_change_preview_payload.ex",
+      "mode": "100644",
+      "sha256": "b35f2d6ac8e525cae4902e0071bd055f85b16cf179ad5bc9c5cc45b6c42a9c0b"
+    },
+    {
       "path": "lib/sellapp/subscriptions.ex",
       "mode": "100644",
-      "sha256": "8e1b0d90c05af27348e78681dbfdc2863d0e3e8759df75f24ab8f9546931e673"
+      "sha256": "0313a126e4e2087cf6548c6ef0818470a1362afc541df34fe423bfa66240f930"
+    },
+    {
+      "path": "lib/sellapp/subscriptions_actions.ex",
+      "mode": "100644",
+      "sha256": "c64c2417b7f3e730940f2434ec2b224aa4ef4bafa8e34dd3c4d77a953a2abc49"
+    },
+    {
+      "path": "lib/sellapp/subscriptions_status.ex",
+      "mode": "100644",
+      "sha256": "48d866e61298a0976b9452fbeb7b7547e0f2cc4f0ca0f9fc63e5d9cae03921ff"
     },
     {
       "path": "lib/sellapp/sync_group_products_response_value_200_application_json_property_data.ex",
@@ -14217,7 +14882,12 @@
     {
       "path": "lib/sellapp/update_coupon_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "a6ceab83b7ea2db02259842eba53a9e9863ef9a81c1690a91f45973467336834"
+      "sha256": "12f601937427ce56ffe81ac1bc4e295a70d04b7b5f6082979fbd3aff44a05e14"
+    },
+    {
+      "path": "lib/sellapp/update_coupon_response_value_200_application_json_property_data_applies_to.ex",
+      "mode": "100644",
+      "sha256": "3f700845ad22177c7975d7149d225f745a31a60c91d8f8b3fed1d91e46abf325"
     },
     {
       "path": "lib/sellapp/update_coupon_response_value_200_application_json_property_data_type.ex",
@@ -14567,17 +15237,17 @@
     {
       "path": "lib/sellapp/update_customer_subscription_payment_method_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "ae0de227bc6256eb7fd5c90023e94e33a422d1ae4d2ef09e4d8aff1d45c7a525"
+      "sha256": "232230718468c19d8b12ab347f6e1bb4ca0b66fff70f3da85d8190aa7ee161fe"
     },
     {
-      "path": "lib/sellapp/update_customer_subscription_payment_method_response_value_200_application_json_property_data_property_customer.ex",
+      "path": "lib/sellapp/update_customer_subscription_payment_method_response_value_200_application_json_property_data_action.ex",
       "mode": "100644",
-      "sha256": "19213097bc24a211dbbcf9f861cb5bd69c0982f07afd9e0f528c540dec6dba67"
+      "sha256": "8b4c65e1a80b3a3dd2cae4e4dfa71989fe97f6abf56ceb91539ea31e99760461"
     },
     {
-      "path": "lib/sellapp/update_customer_subscription_payment_method_response_value_200_application_json_property_data_property_customer_property_metadata.ex",
+      "path": "lib/sellapp/update_customer_subscription_payment_method_response_value_200_application_json_property_data_status.ex",
       "mode": "100644",
-      "sha256": "ce0e248510142e621b624f0d719fa279559826d449fd4a07a747e7357d96eaa6"
+      "sha256": "cf7044f16760f1774b11a70141c892f93db838311365cf0ef835b64ca1fc7313"
     },
     {
       "path": "lib/sellapp/update_customer_wallet_status_response_value_200_application_json_property_data.ex",
@@ -14707,7 +15377,7 @@
     {
       "path": "lib/sellapp/update_invoice_status_response_value_200_application_json_property_payment_property_gateway.ex",
       "mode": "100644",
-      "sha256": "e2d2e539489e564d42a4866e39f903f222c09ce766d13ab14f29de9e620d990b"
+      "sha256": "a73eef83a7a6617e78597cced360c5ff51d0c82e028916eadfb2501e962b6684"
     },
     {
       "path": "lib/sellapp/update_invoice_status_response_value_200_application_json_property_payment_property_gateway_property_data.ex",
@@ -14922,7 +15592,7 @@
     {
       "path": "lib/sellapp/update_product_variant_pricing_request_application_json_property_pricing.ex",
       "mode": "100644",
-      "sha256": "5502aabd1de13a212fad3c27bc1c268feafee4b348da4e8eecea02c94db54dbc"
+      "sha256": "313c6785c0d993fdaddc3c45eaad8ce08916344861a299c3b8a179cf7beb30e5"
     },
     {
       "path": "lib/sellapp/update_product_variant_pricing_request_application_json_property_pricing_property_compare_at_price.ex",
@@ -14953,6 +15623,36 @@
       "path": "lib/sellapp/update_product_variant_pricing_request_application_json_property_pricing_property_price_currency.ex",
       "mode": "100644",
       "sha256": "636e67efcf6bf1044212a70a4d13118366ce9b2209b48b62066364667b5b5dfe"
+    },
+    {
+      "path": "lib/sellapp/update_product_variant_pricing_request_application_json_property_pricing_property_trial.ex",
+      "mode": "100644",
+      "sha256": "41a33adf864d8365ab48e6f6a02fc802973ceba819ea5829491c01a3229e7970"
+    },
+    {
+      "path": "lib/sellapp/update_product_variant_pricing_request_application_json_property_pricing_property_trial_kind.ex",
+      "mode": "100644",
+      "sha256": "bae2e9abe70a42f41b165f8acc4d764fb40ac186569a6904ae16cb7dc6cce1f1"
+    },
+    {
+      "path": "lib/sellapp/update_product_variant_pricing_request_application_json_property_pricing_property_trial_value_property_length.ex",
+      "mode": "100644",
+      "sha256": "9918dcab46fdbf257e4ddb11caf0bc73691118cabe5f7b50a81b0cf41c2c3ab0"
+    },
+    {
+      "path": "lib/sellapp/update_product_variant_pricing_request_application_json_property_pricing_property_trial_value_property_length_interval.ex",
+      "mode": "100644",
+      "sha256": "c0f78126ddfe8161cd925de72bcad988faec70ebb45f84059d3381b153a4f582"
+    },
+    {
+      "path": "lib/sellapp/update_product_variant_pricing_request_application_json_property_pricing_property_trial_value_property_price.ex",
+      "mode": "100644",
+      "sha256": "2305649290b6c28bab59f8c34fd8a7c09018308b7154e365caa9382e2b6d8b48"
+    },
+    {
+      "path": "lib/sellapp/update_product_variant_pricing_request_application_json_property_pricing_property_trial_value_property_price_currency.ex",
+      "mode": "100644",
+      "sha256": "e3fdd35d9e16b3e7e276bd626409d539d2548be276215ba5cec03f201345d569"
     },
     {
       "path": "lib/sellapp/update_product_variant_pricing_request_application_json_property_pricing_type.ex",
@@ -14987,7 +15687,7 @@
     {
       "path": "lib/sellapp/update_product_variant_pricing_response_value_200_application_json_property_data_property_pricing.ex",
       "mode": "100644",
-      "sha256": "fd0db3ce33c288bab4ffc2fd678c40e50fe352a6fe18cdfd3ae2a4c4863fb108"
+      "sha256": "a343e7379b0f336c2404e9ce3b6c83eda8ad95868d3c8aab2ab5855f55665e96"
     },
     {
       "path": "lib/sellapp/update_product_variant_pricing_response_value_200_application_json_property_data_property_pricing_property_frequency.ex",
@@ -14998,6 +15698,31 @@
       "path": "lib/sellapp/update_product_variant_pricing_response_value_200_application_json_property_data_property_pricing_property_price.ex",
       "mode": "100644",
       "sha256": "2ac1ac40816cfe4ce08755fee04e0f88740029ab26149ec841b17effa22873db"
+    },
+    {
+      "path": "lib/sellapp/update_product_variant_pricing_response_value_200_application_json_property_data_property_pricing_property_trial.ex",
+      "mode": "100644",
+      "sha256": "a5e32bc8f5a96112032a60758c81edef8966fb6c28144c02e271ffcec29310b2"
+    },
+    {
+      "path": "lib/sellapp/update_product_variant_pricing_response_value_200_application_json_property_data_property_pricing_property_trial_kind.ex",
+      "mode": "100644",
+      "sha256": "3d821e8beb00b88b398f1aa9488f840bb05c09454965e8d2d32626effd961d17"
+    },
+    {
+      "path": "lib/sellapp/update_product_variant_pricing_response_value_200_application_json_property_data_property_pricing_property_trial_property_length.ex",
+      "mode": "100644",
+      "sha256": "8c9573169775d50ef1ce233de14d65a86ecaa13585c968ae09389d0db029e24b"
+    },
+    {
+      "path": "lib/sellapp/update_product_variant_pricing_response_value_200_application_json_property_data_property_pricing_property_trial_property_length_interval.ex",
+      "mode": "100644",
+      "sha256": "d5376d1ef57be70009e732482af564f186a414a7798a561fcd8ca1bbfc6dbf62"
+    },
+    {
+      "path": "lib/sellapp/update_product_variant_pricing_response_value_200_application_json_property_data_property_pricing_property_trial_property_price.ex",
+      "mode": "100644",
+      "sha256": "65a8f75e2d2da499acfead60e75674334eca78c43f1f2d75d0fdf7c016c2698f"
     },
     {
       "path": "lib/sellapp/update_product_variant_pricing_response_value_200_application_json_property_data_property_product.ex",
@@ -15077,7 +15802,7 @@
     {
       "path": "lib/sellapp/update_product_variant_request_application_json_property_pricing.ex",
       "mode": "100644",
-      "sha256": "decc1c9c832c1511e45e7e633183c2e73b23b441d24786d9f9d4d3f777736ba4"
+      "sha256": "c926029ed4585fe37855ed36b4d874cedd089caeb322f9fbbe2351551a644144"
     },
     {
       "path": "lib/sellapp/update_product_variant_request_application_json_property_pricing_property_price.ex",
@@ -15112,7 +15837,7 @@
     {
       "path": "lib/sellapp/update_product_variant_response_value_200_application_json_property_data_property_pricing.ex",
       "mode": "100644",
-      "sha256": "f570d22ea0e0e86e45f4e20973d49a849056215c27f3694e147a8aa63d6a6c85"
+      "sha256": "6c5428c5e94f6ddc1b4a32f3ebe00677b0241306487412f91ec86d633075918e"
     },
     {
       "path": "lib/sellapp/update_product_variant_response_value_200_application_json_property_data_property_pricing_property_frequency.ex",
@@ -15123,6 +15848,31 @@
       "path": "lib/sellapp/update_product_variant_response_value_200_application_json_property_data_property_pricing_property_price.ex",
       "mode": "100644",
       "sha256": "1506acff3546eda5ad3198272bd1efa4098c5db133dc27949a655c7c9576c293"
+    },
+    {
+      "path": "lib/sellapp/update_product_variant_response_value_200_application_json_property_data_property_pricing_property_trial.ex",
+      "mode": "100644",
+      "sha256": "40a0e1641e95d1d100434419d23a99697cc89c136448ae44069c46ff98e87817"
+    },
+    {
+      "path": "lib/sellapp/update_product_variant_response_value_200_application_json_property_data_property_pricing_property_trial_kind.ex",
+      "mode": "100644",
+      "sha256": "307c4920d38fcd47283f679d9db95ccc02ec927df52f8bd644864ae068285ada"
+    },
+    {
+      "path": "lib/sellapp/update_product_variant_response_value_200_application_json_property_data_property_pricing_property_trial_property_length.ex",
+      "mode": "100644",
+      "sha256": "b9c8a02a62ca65b125ea7f570b49d119b6dbe59ded3eb74f79bb558cd8982daa"
+    },
+    {
+      "path": "lib/sellapp/update_product_variant_response_value_200_application_json_property_data_property_pricing_property_trial_property_length_interval.ex",
+      "mode": "100644",
+      "sha256": "9f9b0a0e36b8ca689a626dc4f9dd3b6e4363fb6eb28f44a03cab1cfa28f2638d"
+    },
+    {
+      "path": "lib/sellapp/update_product_variant_response_value_200_application_json_property_data_property_pricing_property_trial_property_price.ex",
+      "mode": "100644",
+      "sha256": "b987d8797ad9110950f34034b83239339e6a5541483156a305b2d513389fa903"
     },
     {
       "path": "lib/sellapp/update_product_variant_response_value_200_application_json_property_data_property_product.ex",
@@ -15147,7 +15897,12 @@
     {
       "path": "lib/sellapp/update_promotion_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "7bc59b788535e86d707657bd2ff8a67c4a1749a8e0efae8318f670cf98b2909d"
+      "sha256": "409b1f8da1d7b81743fa1617b70786da29cc8c6adb58fe82e4667a5ef42f6254"
+    },
+    {
+      "path": "lib/sellapp/update_promotion_response_value_200_application_json_property_data_applies_to.ex",
+      "mode": "100644",
+      "sha256": "05666d8f5207de44bf6028d706f819920de47bd88ec9d84d6e057aa3553e66e5"
     },
     {
       "path": "lib/sellapp/update_promotion_response_value_200_application_json_property_data_property_phases_item.ex",
@@ -15255,6 +16010,21 @@
       "sha256": "4157e6855e563a4f9440b10e7f429be0317e25b27a5a0a583dd88b63965c6a36"
     },
     {
+      "path": "lib/sellapp/update_subscription_payment_method_response_value_200_application_json_property_data.ex",
+      "mode": "100644",
+      "sha256": "48ecec362ef44d6f57a28020327e90ebf1e1e8b9c5806d6dd3ab88b1475d1e9c"
+    },
+    {
+      "path": "lib/sellapp/update_subscription_payment_method_response_value_200_application_json_property_data_action.ex",
+      "mode": "100644",
+      "sha256": "d8b5cfd11174c21a6b6534a47f588f24a17c36d4980a35a93ddeae2d91504053"
+    },
+    {
+      "path": "lib/sellapp/update_subscription_payment_method_response_value_200_application_json_property_data_status.ex",
+      "mode": "100644",
+      "sha256": "9365fb242e6009c39480837b6119acd467b04fe62379cda10da40a4688951cd4"
+    },
+    {
       "path": "lib/sellapp/update_ticket_response_value_200_application_json_property_data.ex",
       "mode": "100644",
       "sha256": "96512130884036c302078977d81d0d8306329577784370b6683e8500d875e260"
@@ -15342,12 +16112,12 @@
     {
       "path": "lib/sellapp/update_webhook_channel_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "9e91763544b44cfb297affdee70345b027f782974907fe4a77d385c902d4cac0"
+      "sha256": "787cfd05e9b55a9cca11a8c5a4cb3204797b81f0cfa7add01ee4eb7013b2cbfa"
     },
     {
       "path": "lib/sellapp/update_webhook_channel_response_value_200_application_json_property_data_allowed_notifications.ex",
       "mode": "100644",
-      "sha256": "147ea8651e9429ab8f2ac62e7cd6f31de7d8ce92d2ae9832432b0b14d62b4b52"
+      "sha256": "38332c07875afa37663491513725d6525e04bd5b3dbe8a8c6860003378c9464e"
     },
     {
       "path": "lib/sellapp/upload_variant_deliverable_file_response_value_201_application_json_property_data.ex",
@@ -15422,7 +16192,12 @@
     {
       "path": "lib/sellapp/v_2_batch_create_coupons_request_application_json_property_resources_item.ex",
       "mode": "100644",
-      "sha256": "597ad2c38a06f3bb0320af30dd5b607d9c4da2b2dbb15988ae494a51b2a2b3d6"
+      "sha256": "1ce73dab7f7cb20cf642780748413481a2d91a357b310f8489818b00f700ec34"
+    },
+    {
+      "path": "lib/sellapp/v_2_batch_create_coupons_request_application_json_property_resources_item_applies_to.ex",
+      "mode": "100644",
+      "sha256": "fa8440102926a0057a041e5b9b5ea23cd83e68c76855dbfe30783cded8b8be2c"
     },
     {
       "path": "lib/sellapp/v_2_batch_create_coupons_request_application_json_property_resources_item_type.ex",
@@ -15432,7 +16207,12 @@
     {
       "path": "lib/sellapp/v_2_batch_create_coupons_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "3907cf85f17e523f7d13756578d823a735c6b0274c03d69c8f2f03408ede96fb"
+      "sha256": "4cdc3e34dc65aa2003af42c24270222e074226ea8153e52487e2063d9446fb71"
+    },
+    {
+      "path": "lib/sellapp/v_2_batch_create_coupons_response_value_200_application_json_property_data_item_applies_to.ex",
+      "mode": "100644",
+      "sha256": "f315837215926fff6b5013dc4179629d99dbc52ea11a945a66959df193eb23c3"
     },
     {
       "path": "lib/sellapp/v_2_batch_create_coupons_response_value_200_application_json_property_data_item_type.ex",
@@ -15442,7 +16222,12 @@
     {
       "path": "lib/sellapp/v_2_batch_create_coupons_response_value_201_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "8e61eeedd3e846e70f3825e4bce49345b5122d4671994e5e019d6762d7c72e03"
+      "sha256": "fa7fff97a72079a737fa582b81fe718c3489f0ab1bc9e239f3072a878dbab9ce"
+    },
+    {
+      "path": "lib/sellapp/v_2_batch_create_coupons_response_value_201_application_json_property_data_item_applies_to.ex",
+      "mode": "100644",
+      "sha256": "5903f06486dc0b75e2dedf8501f164ffc3a27c817b92283d01e55a8e45a0e7a1"
     },
     {
       "path": "lib/sellapp/v_2_batch_create_coupons_response_value_201_application_json_property_data_item_type.ex",
@@ -15487,7 +16272,12 @@
     {
       "path": "lib/sellapp/v_2_batch_delete_coupons_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "c17fd624e400b0a8cb462d81edd4282b2cb0366eb59ff3867dc0d3345b1661f9"
+      "sha256": "ca29f020e51debebc7a5fe428a01e927ea87c0769917c79250b42d48fcb88154"
+    },
+    {
+      "path": "lib/sellapp/v_2_batch_delete_coupons_response_value_200_application_json_property_data_item_applies_to.ex",
+      "mode": "100644",
+      "sha256": "41ede37a4dcf8c8f04793df89769c4664d88702ec67f586dcd627bd71d553cb0"
     },
     {
       "path": "lib/sellapp/v_2_batch_delete_coupons_response_value_200_application_json_property_data_item_type.ex",
@@ -15517,7 +16307,12 @@
     {
       "path": "lib/sellapp/v_2_batch_update_coupons_request_application_json_property_resources_map_value.ex",
       "mode": "100644",
-      "sha256": "f3bedcdc797102746cea7baf9ba99a35fa248f7a6e82a4b85dca5e09bbd18807"
+      "sha256": "f38f371421f829758b6658f060fbfb09bfe92850dfa6e140a34b119fbfb2d1bb"
+    },
+    {
+      "path": "lib/sellapp/v_2_batch_update_coupons_request_application_json_property_resources_map_value_applies_to.ex",
+      "mode": "100644",
+      "sha256": "cd983280c81e801be13de0dc547436cff2af7253718b3a65a64ef0986cc51633"
     },
     {
       "path": "lib/sellapp/v_2_batch_update_coupons_request_application_json_property_resources_map_value_type.ex",
@@ -15527,7 +16322,12 @@
     {
       "path": "lib/sellapp/v_2_batch_update_coupons_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "2f3c234b25d34d1c8b03e4159df548587a070f9dc45c3d26aaadc5adc2d69fb5"
+      "sha256": "999a573aefd64e5ac92b254a2c7544d6305052628c971aa1bb0188fdf809486a"
+    },
+    {
+      "path": "lib/sellapp/v_2_batch_update_coupons_response_value_200_application_json_property_data_item_applies_to.ex",
+      "mode": "100644",
+      "sha256": "6c342f6817bc5cdd008fbf5cc073fac6c7d32c0b1797ba33758632688c9bc29b"
     },
     {
       "path": "lib/sellapp/v_2_batch_update_coupons_response_value_200_application_json_property_data_item_type.ex",
@@ -15562,7 +16362,12 @@
     {
       "path": "lib/sellapp/v_2_create_coupon_response_value_201_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "d7de50601b1202b84f6f6994ae40e36be88f2b413fd1a9f384ea46dc5cf7ea4a"
+      "sha256": "c52ee683293dec0477fcd2fc7d3ba6d687c2ae38d3a1e093be594a964833d4f9"
+    },
+    {
+      "path": "lib/sellapp/v_2_create_coupon_response_value_201_application_json_property_data_applies_to.ex",
+      "mode": "100644",
+      "sha256": "22ea8e1f19622af35da8a8af3da559fa4dbb0a8111ae7719ddbce72f6440ac31"
     },
     {
       "path": "lib/sellapp/v_2_create_coupon_response_value_201_application_json_property_data_type.ex",
@@ -15587,7 +16392,12 @@
     {
       "path": "lib/sellapp/v_2_delete_coupon_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "7e4564ed1aff4577970e7debccf5d6c23704f687cdead671ebef8a801eef84a8"
+      "sha256": "28a2d329fb005b3b0b84d657a72abac9717acff589bdee45d3c948ed8c2a9399"
+    },
+    {
+      "path": "lib/sellapp/v_2_delete_coupon_response_value_200_application_json_property_data_applies_to.ex",
+      "mode": "100644",
+      "sha256": "343a195b8ed085ab5e45792be80cec0dfcc00d30c3e82d2b07e8944ea142d0c7"
     },
     {
       "path": "lib/sellapp/v_2_delete_coupon_response_value_200_application_json_property_data_type.ex",
@@ -15612,7 +16422,12 @@
     {
       "path": "lib/sellapp/v_2_get_coupon_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "eca8fb544f7c4e86527503f2c6900222111b62a3594a1ee8ad3ca69f370580eb"
+      "sha256": "4b21b22c1157b73ae5831075bf37f0607764efa7f95260931ac13d0b497c48a3"
+    },
+    {
+      "path": "lib/sellapp/v_2_get_coupon_response_value_200_application_json_property_data_applies_to.ex",
+      "mode": "100644",
+      "sha256": "14cb35400c1ed5be27169bf66817c08bed7d2f053728a20d7150766b88937c9f"
     },
     {
       "path": "lib/sellapp/v_2_get_coupon_response_value_200_application_json_property_data_type.ex",
@@ -15677,7 +16492,12 @@
     {
       "path": "lib/sellapp/v_2_list_coupons_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "e5b7992017e74fc042f3e9e055f060678afcd0d88c7dceeb5dbf3621cc959d86"
+      "sha256": "ef0fd87df900f6ded2ceabd9994a36f7b81dc088a167aeb8c3e2474d6c3143b6"
+    },
+    {
+      "path": "lib/sellapp/v_2_list_coupons_response_value_200_application_json_property_data_item_applies_to.ex",
+      "mode": "100644",
+      "sha256": "1ac0e1060541538a6177b29ff75515d83fe3bdc46593885e4a53af6671e589eb"
     },
     {
       "path": "lib/sellapp/v_2_list_coupons_response_value_200_application_json_property_data_item_type.ex",
@@ -15782,7 +16602,12 @@
     {
       "path": "lib/sellapp/v_2_replace_coupon_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "0f3dd98123506f33fd1e15e9b65fc7cf6b144cd49e4124a9d54b486ea5c647c6"
+      "sha256": "854838c6e79046410021e346e9a7506359595a78b4c1bf5f091e56399ed9e5bd"
+    },
+    {
+      "path": "lib/sellapp/v_2_replace_coupon_response_value_200_application_json_property_data_applies_to.ex",
+      "mode": "100644",
+      "sha256": "6ca04dfb8df7cad34eb78732878df5571f39d32a332661b64425c49e83c3f20f"
     },
     {
       "path": "lib/sellapp/v_2_replace_coupon_response_value_200_application_json_property_data_type.ex",
@@ -15922,7 +16747,12 @@
     {
       "path": "lib/sellapp/v_2_search_coupons_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "c7f92e4cf2060e09a397a30bdff9db8709ecb53e2bdf7733ee541b37d73706e5"
+      "sha256": "5463e5e666df12b81e3798be8141f706be75165cfa55f2be4bac320671f58505"
+    },
+    {
+      "path": "lib/sellapp/v_2_search_coupons_response_value_200_application_json_property_data_item_applies_to.ex",
+      "mode": "100644",
+      "sha256": "09d82017e043568757ebcafa969d25aa9a9935d0381f0bccc8c68dd9c763cff0"
     },
     {
       "path": "lib/sellapp/v_2_search_coupons_response_value_200_application_json_property_data_item_type.ex",
@@ -16167,7 +16997,12 @@
     {
       "path": "lib/sellapp/v_2_update_coupon_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "44e0293b2a73c3d171e25b27df3e7903d69aa8e071a35ab82cae7ab012535631"
+      "sha256": "94ad4753e75e7a447e67829a3c5e673b5eac7c612cb97efde0b285889d226f77"
+    },
+    {
+      "path": "lib/sellapp/v_2_update_coupon_response_value_200_application_json_property_data_applies_to.ex",
+      "mode": "100644",
+      "sha256": "e207ff0584f23b8d88a647ba30d8a154670dfc5d00068b9c11e9a88535ba494d"
     },
     {
       "path": "lib/sellapp/v_2_update_coupon_response_value_200_application_json_property_data_type.ex",
@@ -16332,12 +17167,12 @@
     {
       "path": "lib/sellapp/webhook_platform.ex",
       "mode": "100644",
-      "sha256": "4fce9ed1235513654433fb66537e83a85799c822c0762400820d2cb49f4da9aa"
+      "sha256": "c861a2a23f40796a003a09c60d59204e84189d4304fcad247160a881c5c9abff"
     },
     {
       "path": "mix.exs",
       "mode": "100644",
-      "sha256": "adfcafa822feda6fa95a12e7ce063af42ff4a967d7cc86705483cc9358fa08d5"
+      "sha256": "813776464531c67920ed0dc86b3c646069e995c4fa0e89959f532d6fa32da0ee"
     },
     {
       "path": "test/operation_contract_test.exs",
@@ -16362,7 +17197,7 @@
     {
       "path": "test/sellapp/add_ons_parent_products_test.exs",
       "mode": "100644",
-      "sha256": "4b1dab2a7f10fad05e4aeb2161b037d228151a7c0e15623898221ba692473c63"
+      "sha256": "5ca05f5742643ffcee8910c6199e55623e2e8f397d225009512974127f61f271"
     },
     {
       "path": "test/sellapp/add_ons_round_trip_test.exs",
@@ -16372,7 +17207,7 @@
     {
       "path": "test/sellapp/add_ons_test.exs",
       "mode": "100644",
-      "sha256": "0ba497c22ef4766a678eb11378188e6adf104b48dad3a2cde2c4f7177f93ee40"
+      "sha256": "f5bf2fe99a2aa053229ec82d9f77aac76d34d787ae15c87247eac4375c543adb"
     },
     {
       "path": "test/sellapp/affiliate_payouts_round_trip_test.exs",
@@ -16382,7 +17217,7 @@
     {
       "path": "test/sellapp/affiliate_payouts_test.exs",
       "mode": "100644",
-      "sha256": "161e9fdd15a3bd5692b81cafadd064786526b4eae72456cb075afd48228392ef"
+      "sha256": "44ad98e54cdd1ebe55c98abc6599f618240dc56171002bbbdab44416275296cb"
     },
     {
       "path": "test/sellapp/affiliate_program_round_trip_test.exs",
@@ -16392,7 +17227,7 @@
     {
       "path": "test/sellapp/affiliate_program_test.exs",
       "mode": "100644",
-      "sha256": "faef924e4482a941f62e47b5078b862bc9a34da374a992553ba1266e9f04f464"
+      "sha256": "c907f3740cb1fce759a8f8aa7cf383674da400a9920e3738963f1bbf98a9a323"
     },
     {
       "path": "test/sellapp/affiliate_referral_sessions_round_trip_test.exs",
@@ -16402,7 +17237,7 @@
     {
       "path": "test/sellapp/affiliate_referral_sessions_test.exs",
       "mode": "100644",
-      "sha256": "6181c2a853f1efab743743605b8d837757a6b16f46dda896d52142196f488612"
+      "sha256": "53f3d2d9f56c333f95b6901171795e896848ab8cc4d44d2a5dd2c5d3e1f2aeab"
     },
     {
       "path": "test/sellapp/affiliate_referrals_round_trip_test.exs",
@@ -16412,7 +17247,7 @@
     {
       "path": "test/sellapp/affiliate_referrals_test.exs",
       "mode": "100644",
-      "sha256": "c9cc645c674420f7b06fd10001bbacc3187c90aec7ba756ac1a82d91d2b3acad"
+      "sha256": "49181b15707a4af679e60f4e446fc7be9d0cdca02a0303c0d1c6189ef7952654"
     },
     {
       "path": "test/sellapp/affiliates_round_trip_test.exs",
@@ -16422,7 +17257,7 @@
     {
       "path": "test/sellapp/affiliates_test.exs",
       "mode": "100644",
-      "sha256": "38e8e4fcf0a287e09949cec66fd1f067ee38594232f38037fdec11fa09cf2e4d"
+      "sha256": "b2917e454cae398ff6cda394d798938cc8f5a83737ff3bc924ed0926a2793025"
     },
     {
       "path": "test/sellapp/blacklists_round_trip_test.exs",
@@ -16432,7 +17267,7 @@
     {
       "path": "test/sellapp/blacklists_test.exs",
       "mode": "100644",
-      "sha256": "7fda03755fda99f7dfeca4530df58a9da00e5683b22a07277c78a35b3916aae7"
+      "sha256": "70b0c6565acfafecdcd78d1f60ec045d4f03a2bb01832e11d153e0133e314df4"
     },
     {
       "path": "test/sellapp/bookings_calendar_events_round_trip_test.exs",
@@ -16442,7 +17277,7 @@
     {
       "path": "test/sellapp/bookings_calendar_events_test.exs",
       "mode": "100644",
-      "sha256": "c9149da4eeac032736954375904ebf2582f3318d44507f8089c196bd609b5af7"
+      "sha256": "65c6c30271dc125d9f8281dde3cb0a4bc171c028ba43b1b8a7280a86f05af9b8"
     },
     {
       "path": "test/sellapp/bookings_round_trip_test.exs",
@@ -16452,17 +17287,17 @@
     {
       "path": "test/sellapp/bookings_test.exs",
       "mode": "100644",
-      "sha256": "0b989601e3895833898fde7ccf4c37facd74be4e4cfe461d815368756291dda5"
+      "sha256": "5c5d8ec2d2d53fd99b9bad7fd261ee7d827446296ffaf9999d27b79ed53a4a1e"
     },
     {
       "path": "test/sellapp/bundle_items_round_trip_test.exs",
       "mode": "100644",
-      "sha256": "f4f0056e1812ce8f002546e0051bdcdeda273239e3287590eec36a9a87fbd74b"
+      "sha256": "85cc78d8f440a36dd2862b2d8579688e23b983d9cfa8445d6920f7053e930a83"
     },
     {
       "path": "test/sellapp/bundle_items_test.exs",
       "mode": "100644",
-      "sha256": "4ce782bd6def7167ecd7bb0f68417205508f281dbcb7cb0c5d2929e00e87c3b8"
+      "sha256": "7c3050616af390428772ce956c52d5919f3751e4b282e2d4c461628efd22660e"
     },
     {
       "path": "test/sellapp/cashback_rules_round_trip_test.exs",
@@ -16482,7 +17317,7 @@
     {
       "path": "test/sellapp/charges_test.exs",
       "mode": "100644",
-      "sha256": "5a8b0455999850e03c76df83c2bf906b37a28769e10fba716e5123ada11ee5a0"
+      "sha256": "b6257fa93157bf17c920a2f2169092a2196fe16707c68d3b98fbd64c259be58a"
     },
     {
       "path": "test/sellapp/community_connections_round_trip_test.exs",
@@ -16492,17 +17327,17 @@
     {
       "path": "test/sellapp/community_connections_test.exs",
       "mode": "100644",
-      "sha256": "166dcb3831f597893aa49c7d3484b9e0a39c4d70c9c34c38f0ae1cfde4e78b4b"
+      "sha256": "5f267edaa93834fb7722c3a81fc38576b26e0ea4ab1512209d2b17a3d8917bda"
     },
     {
       "path": "test/sellapp/coupons_round_trip_test.exs",
       "mode": "100644",
-      "sha256": "123cf5c3a527766c3a31fc35beb8e96a808f8a216689148e9be33b82666cb4dd"
+      "sha256": "99e074ce514540bb9ec9666b0eef630cca79e8ebfe43dead8012e25b22e64bcf"
     },
     {
       "path": "test/sellapp/coupons_test.exs",
       "mode": "100644",
-      "sha256": "6a1926d9a9ba08df3a2b1a2a4196db21b13a490fc91191676f1989e8cf7f4cf6"
+      "sha256": "9a49f2f831ac468244120aa99abba1850a5bdf758ab940d22ab3618984cc619d"
     },
     {
       "path": "test/sellapp/courses_lessons_round_trip_test.exs",
@@ -16532,7 +17367,7 @@
     {
       "path": "test/sellapp/courses_test.exs",
       "mode": "100644",
-      "sha256": "b0574f919fa23a9757b80baaa52000c7a288f129d9ec40e9d492b82cf5752cb1"
+      "sha256": "30c36693233ff45c18c498b252eea2de1e8c2711e41e3ee29237f671ba11d9f0"
     },
     {
       "path": "test/sellapp/credits_balances_round_trip_test.exs",
@@ -16542,7 +17377,7 @@
     {
       "path": "test/sellapp/credits_balances_test.exs",
       "mode": "100644",
-      "sha256": "8f29d478a433386cd3e5c61c35b39989c9edf05d733eae12566e06a4dac41fb6"
+      "sha256": "da5f42307c31d394aa0ac0639623d2d4985ed2141731bd4b3b41ad297e4132c4"
     },
     {
       "path": "test/sellapp/credits_balances_transactions_round_trip_test.exs",
@@ -16552,7 +17387,7 @@
     {
       "path": "test/sellapp/credits_balances_transactions_test.exs",
       "mode": "100644",
-      "sha256": "93709e50a8c5af7617e6e843ae6d307700abbfbc9d6669807ed72b96dd825da3"
+      "sha256": "e0c0a684b448dd8116926435be8825c190a35d7bd3812f058c3bdb12e3df4588"
     },
     {
       "path": "test/sellapp/credits_products_round_trip_test.exs",
@@ -16562,7 +17397,7 @@
     {
       "path": "test/sellapp/credits_products_test.exs",
       "mode": "100644",
-      "sha256": "dd1268b362658130cb2be42437773ae44e51bc265a9a789fb931e4f50ea85a35"
+      "sha256": "60634d3a2a53835042769249aadbd54a1f113bad2fefb5598843de9d18705d56"
     },
     {
       "path": "test/sellapp/credits_round_trip_test.exs",
@@ -16577,12 +17412,12 @@
     {
       "path": "test/sellapp/customer_portal_round_trip_test.exs",
       "mode": "100644",
-      "sha256": "bb3c0e3094f82d739e3bf1b6b627567675d520085f3b60aef4ead6bce056189e"
+      "sha256": "0d8da929dad347fe6d8694cdb0f8973899f61b7c6ed0245f13f53e62832a3034"
     },
     {
       "path": "test/sellapp/customer_portal_test.exs",
       "mode": "100644",
-      "sha256": "481dec571ebdb34d7eac2a45ef153412049880923db10f5b00b64748749cf7f5"
+      "sha256": "77328eb1d3a4237d149865cad59048be011bb4eba0280061dcf1329ee0d22c30"
     },
     {
       "path": "test/sellapp/customer_sessions_round_trip_test.exs",
@@ -16602,7 +17437,7 @@
     {
       "path": "test/sellapp/customers_test.exs",
       "mode": "100644",
-      "sha256": "6cfc0707a6379397688fb8cc67c08dc8b63cac9ea5a1587a28158996aeb7adfe"
+      "sha256": "5f417db426b3c3ac48543ca5fd4317a7a105d18b2123830923c036aeb440a32d"
     },
     {
       "path": "test/sellapp/disputes_round_trip_test.exs",
@@ -16637,7 +17472,7 @@
     {
       "path": "test/sellapp/events_test.exs",
       "mode": "100644",
-      "sha256": "32954302e6554e63bc95c92004d94e0bd7e5d82433d4307ea25717abb9a9d675"
+      "sha256": "779b48d8de4c21ef8b3aedb1215f0d1a30531696ea84295a281a1e6a078bbfa1"
     },
     {
       "path": "test/sellapp/exports_round_trip_test.exs",
@@ -16647,7 +17482,7 @@
     {
       "path": "test/sellapp/exports_test.exs",
       "mode": "100644",
-      "sha256": "e74815dce4fe8e347b18f55bfef2dc6e3c01da1912176959a856869d1658f92a"
+      "sha256": "914a87233e4fd08c87c25f8e6e8fc718809a2ffe0f9b58dd8803ef19b02148fa"
     },
     {
       "path": "test/sellapp/feedback_round_trip_test.exs",
@@ -16657,7 +17492,7 @@
     {
       "path": "test/sellapp/feedback_test.exs",
       "mode": "100644",
-      "sha256": "a9a9d61a67f41b1c283226bec568879bac5274f3309f1649bc0c0acd4dfec9f0"
+      "sha256": "823d3eb922ae11f7684166ba9522ea13af298c41c6c963ad38e706f976f766fb"
     },
     {
       "path": "test/sellapp/groups_products_round_trip_test.exs",
@@ -16667,7 +17502,7 @@
     {
       "path": "test/sellapp/groups_products_test.exs",
       "mode": "100644",
-      "sha256": "d4df36b6a903828890f418f0deabae22a8bdf8ce99b34629caafcd8a1456fe1e"
+      "sha256": "999c1da765762e172d9277847196721d1fbea9e0a65eaeeb3375d2650d286525"
     },
     {
       "path": "test/sellapp/groups_round_trip_test.exs",
@@ -16677,7 +17512,7 @@
     {
       "path": "test/sellapp/groups_test.exs",
       "mode": "100644",
-      "sha256": "3ae7b09fc128da8de8a3687774a6da9b7a0465eac81d628576faae3e6d4da626"
+      "sha256": "975f143be3eae99002ef9a00a568e3847005c26a80292f12396e3f4f42fab5cc"
     },
     {
       "path": "test/sellapp/highlights_media_round_trip_test.exs",
@@ -16697,17 +17532,17 @@
     {
       "path": "test/sellapp/highlights_test.exs",
       "mode": "100644",
-      "sha256": "28037b8651a74beb8b900e746d203f03419aef99b8df95e48b1ae2226e1ab6f9"
+      "sha256": "ad1f1559a6d813fe1c3cdb53f615913a33f9b4a232789097e0254dcab3275659"
     },
     {
       "path": "test/sellapp/invoices_round_trip_test.exs",
       "mode": "100644",
-      "sha256": "a406cf7027a1952c5628b20717411c79c20d977364ebd6e5a2dc6821658f1c31"
+      "sha256": "97bf5d5452cd2a12d30cd7a776d2a57c07743f9ce2c90e0817341fecf890255e"
     },
     {
       "path": "test/sellapp/invoices_test.exs",
       "mode": "100644",
-      "sha256": "321e4651245e534f8b7e76c862ac83143fe6f9711c6c18b15b3a60cefaec73bd"
+      "sha256": "7f484deaf5b75dd91fd1842a7c39b8f31e4d610fd285aa71985e474a0a51ed89"
     },
     {
       "path": "test/sellapp/license_instances_round_trip_test.exs",
@@ -16717,7 +17552,7 @@
     {
       "path": "test/sellapp/license_instances_test.exs",
       "mode": "100644",
-      "sha256": "a76bd0473068db181622cb470a61b6d2aad899dc78e254c56bdba25a05cc1d02"
+      "sha256": "f40b9c5021afb1b4025f1cbe6646a524ce2f0ff3281e6a64790772704540cfca"
     },
     {
       "path": "test/sellapp/licenses_instances_round_trip_test.exs",
@@ -16727,7 +17562,7 @@
     {
       "path": "test/sellapp/licenses_instances_test.exs",
       "mode": "100644",
-      "sha256": "6fd1d522f78a24a023c04407a9e239134231b56b55b5235b046271470bf0b584"
+      "sha256": "d4f05da923603c08af29a9280d6a1d941100ac0c61a89d076c0bdc19626c3a96"
     },
     {
       "path": "test/sellapp/licenses_round_trip_test.exs",
@@ -16737,7 +17572,7 @@
     {
       "path": "test/sellapp/licenses_test.exs",
       "mode": "100644",
-      "sha256": "63740b656224369abe4c2c2a4e9e79febc1e614975adfe3ed811ab8a4a6c62bb"
+      "sha256": "51ef50eb866ecf5989260e7aa0be5f920ab6dfba674a06c400db2b0c3aa75fcc"
     },
     {
       "path": "test/sellapp/line_items_round_trip_test.exs",
@@ -16747,7 +17582,7 @@
     {
       "path": "test/sellapp/line_items_test.exs",
       "mode": "100644",
-      "sha256": "20f67f200a034398e5381dccbfe1886ee77ea7fece14b944c48eaa99849d4616"
+      "sha256": "a40eb9f58921ad8d25648e63aa376632a26a9273c4dfcbc1ed5f81ecdf161c03"
     },
     {
       "path": "test/sellapp/oauth_management_round_trip_test.exs",
@@ -16767,7 +17602,7 @@
     {
       "path": "test/sellapp/oauth_test.exs",
       "mode": "100644",
-      "sha256": "e1ba14e3808d6c0bc55f61d729ce57a775be0ac22fe941446f372e5e88a263b7"
+      "sha256": "3e709ef8e6e90e018052e657c2dee3e6ec300b8dbcd23b692342e51e298438d5"
     },
     {
       "path": "test/sellapp/orders_line_items_round_trip_test.exs",
@@ -16777,7 +17612,7 @@
     {
       "path": "test/sellapp/orders_line_items_test.exs",
       "mode": "100644",
-      "sha256": "0ead03e0f7837dfaeaa606ba101157e42fca7c5221f8ef14b9b363540c66721a"
+      "sha256": "be86d1ba33440579f9efcb04a095fc5972bcf23ca9963ee11beeaaaa5c2ca40f"
     },
     {
       "path": "test/sellapp/orders_round_trip_test.exs",
@@ -16787,7 +17622,7 @@
     {
       "path": "test/sellapp/orders_test.exs",
       "mode": "100644",
-      "sha256": "125f3390b6ee01a36fc6aa59d1dd18568fe19451a20d9441f5e4851b951788cc"
+      "sha256": "2e553f6cb10dddb30c439ed4fc3bddfa8f6955611a451041656b8dd04b3c0883"
     },
     {
       "path": "test/sellapp/payment_methods_custom_round_trip_test.exs",
@@ -16817,27 +17652,27 @@
     {
       "path": "test/sellapp/product_variants_booking_test.exs",
       "mode": "100644",
-      "sha256": "9fb192cb5fe4f5c5c1b32136a64a69289e834b7066fcd4150d50fc0bb2071e58"
+      "sha256": "99e367372edb41b45ec66da2d33ed07f537272307bb645cc3874d9a20f1b7838"
     },
     {
       "path": "test/sellapp/product_variants_pricing_round_trip_test.exs",
       "mode": "100644",
-      "sha256": "4f7331e5f4a7aefb465785df71f0b8c6912e3fe43da1c6df8bfe72232397275f"
+      "sha256": "c81ddf27b1467dc56e0a41c2d0c69740f77d8fd2870a3431581d796d829d22d7"
     },
     {
       "path": "test/sellapp/product_variants_pricing_test.exs",
       "mode": "100644",
-      "sha256": "ed7d9ac20e06564e126b3a859168caadd31627b93e545f9fea94f1ebb20a059d"
+      "sha256": "18dfdf1211d305acc669398b32124b5598067528d539135b9a7ad25769786aa0"
     },
     {
       "path": "test/sellapp/product_variants_round_trip_test.exs",
       "mode": "100644",
-      "sha256": "770311fde5d1ced23e38693c29995860805660b714e934b1166923e8b81905d3"
+      "sha256": "41aa86a2ebb85f5e725b24ed4ff004a44a4f9954482b4897d294d239728b7aef"
     },
     {
       "path": "test/sellapp/product_variants_test.exs",
       "mode": "100644",
-      "sha256": "160441b6b0a86fd2dc19b7c6840013d93cb74281566d2ea7daad1591169029a8"
+      "sha256": "9148085eec2ea00295bd75b34ef58992ad50eee8e3b7bb64b91823484826fd5d"
     },
     {
       "path": "test/sellapp/products_addons_round_trip_test.exs",
@@ -16847,7 +17682,7 @@
     {
       "path": "test/sellapp/products_addons_test.exs",
       "mode": "100644",
-      "sha256": "f20a7577a8227c3454fa23e08b5e12a07db02422d72f387d0e04d429240ca3ba"
+      "sha256": "865b6e430d72db1f4e5febe11dd93111cd9a9cbc1ec742ea7b5726f9c322f731"
     },
     {
       "path": "test/sellapp/products_round_trip_test.exs",
@@ -16857,7 +17692,7 @@
     {
       "path": "test/sellapp/products_test.exs",
       "mode": "100644",
-      "sha256": "0ce9bc691fc4eb23299aaa7fb0ac20f6c2bc21c2d72da119d4d2840317039e2e"
+      "sha256": "b4647525476c050627aa19e964fe9843e3f080b0e2832e2555a773fd5b341225"
     },
     {
       "path": "test/sellapp/promotions_phases_round_trip_test.exs",
@@ -16872,12 +17707,12 @@
     {
       "path": "test/sellapp/promotions_round_trip_test.exs",
       "mode": "100644",
-      "sha256": "7a068edad603f96800aee22557ecf1875844f20ee95ecbf81c6028bd1acdebe1"
+      "sha256": "9251629d5f38058ddb6f0673b3907a39f2cae229b3556a199cc84fa4792d0078"
     },
     {
       "path": "test/sellapp/promotions_test.exs",
       "mode": "100644",
-      "sha256": "ccd2374dc835576293f43c1105d3cbad73dc61bb491b6c2a708fbddd0b5b9690"
+      "sha256": "dd0aabf23a604b63d90ad7a87a49ef98d87bab56d8187d3ba9468fb01076e787"
     },
     {
       "path": "test/sellapp/refunds_round_trip_test.exs",
@@ -16897,7 +17732,7 @@
     {
       "path": "test/sellapp/reward_coupon_templates_test.exs",
       "mode": "100644",
-      "sha256": "ccb9366193dbf6d084d5f3a46777fafc269d2df5da72e654e17020ad640e58c0"
+      "sha256": "9fcbb125390a29e49ee2dbd59f5801bc01985cd7919cb0a679274b81b9d67a44"
     },
     {
       "path": "test/sellapp/reward_grants_round_trip_test.exs",
@@ -16907,7 +17742,7 @@
     {
       "path": "test/sellapp/reward_grants_test.exs",
       "mode": "100644",
-      "sha256": "a7de86d1d94e9267e5b032c36185f2e2590a921ad3e28b62afd78056429c46ed"
+      "sha256": "2ca05454217cf227fca340e646301fe03dcdc0f75a9f4d8dcbed84e5a9cbeefc"
     },
     {
       "path": "test/sellapp/reward_rules_round_trip_test.exs",
@@ -16917,7 +17752,7 @@
     {
       "path": "test/sellapp/reward_rules_test.exs",
       "mode": "100644",
-      "sha256": "e4ac1be0107c4f2f4458a17a0007205f06cd76baa1e2a912981d96ae5eb2fe4d"
+      "sha256": "fff66462fd1b51c06aaf883f43f59a55fe8b121fb6237521c242be73cf2e7b08"
     },
     {
       "path": "test/sellapp/sections_round_trip_test.exs",
@@ -16927,7 +17762,7 @@
     {
       "path": "test/sellapp/sections_test.exs",
       "mode": "100644",
-      "sha256": "e129beb3a0596bc0ba605ea925423112a9fd049304b553d828941710aa75cf08"
+      "sha256": "134186709dfb91c27a37b5d7d6cd662d5c6d66c322cc8495767894bc7042885f"
     },
     {
       "path": "test/sellapp/store_custom_domains_round_trip_test.exs",
@@ -16960,14 +17795,24 @@
       "sha256": "79ff9f2e03e7da28a3bf0ac44233e62ba85d10a99f16b27ca6033dedb21798f1"
     },
     {
+      "path": "test/sellapp/subscriptions_actions_round_trip_test.exs",
+      "mode": "100644",
+      "sha256": "4741b9c4dad541f1237ecb7e2fb6c2e7822f306afc1a00b5eb539e97a8755bb1"
+    },
+    {
+      "path": "test/sellapp/subscriptions_actions_test.exs",
+      "mode": "100644",
+      "sha256": "19422a76cd12e87f97fd3d157a9d025f3d7322e386a5674cd9b2572c30d6466a"
+    },
+    {
       "path": "test/sellapp/subscriptions_round_trip_test.exs",
       "mode": "100644",
-      "sha256": "065b5f97b203fe7255ee814f459f30f4bb1a667f15f8b396603334ef175f3109"
+      "sha256": "405bf7f166e80da755e39f32c1a0e0f18df6876462fc522a03a95c62d7311e62"
     },
     {
       "path": "test/sellapp/subscriptions_test.exs",
       "mode": "100644",
-      "sha256": "6443b1670421ba6d4c5520c0353983eb21c981d412090aea1a6beb468c1e33ba"
+      "sha256": "ad4880de69fb40bbd4d8a58c1b9ecae1af3e17dc538ab1d109f414fa74ca3e45"
     },
     {
       "path": "test/sellapp/tickets_messages_round_trip_test.exs",
@@ -16977,7 +17822,7 @@
     {
       "path": "test/sellapp/tickets_messages_test.exs",
       "mode": "100644",
-      "sha256": "3342e373531e2560ce4a3069c938ad914b1d59179c17770ada31a5278fa042c9"
+      "sha256": "a99733fb04e23b609f48b407f41660cdbe27ac9c685fe56e6990c80329c485c3"
     },
     {
       "path": "test/sellapp/tickets_round_trip_test.exs",
@@ -16987,7 +17832,7 @@
     {
       "path": "test/sellapp/tickets_test.exs",
       "mode": "100644",
-      "sha256": "96fa255a7c885d8d797d3118678f3c4372722590ca157270d8c7693b2aa22143"
+      "sha256": "a3b50f3af48bb54cc8fb6a7410642f006df1a18bc38169cf7fff19c01bf1838c"
     },
     {
       "path": "test/sellapp/upsell_offers_round_trip_test.exs",
@@ -16997,7 +17842,7 @@
     {
       "path": "test/sellapp/upsell_offers_test.exs",
       "mode": "100644",
-      "sha256": "14d05f76fded2b6b5b9317b2a26b5b42af9f8f0708daca561ff93cbf366d9ca4"
+      "sha256": "c54715581191d44304718ee505727c0c725f27600d179913cfb8b61535c7186b"
     },
     {
       "path": "test/sellapp/variant_deliverable_files_round_trip_test.exs",
@@ -17007,7 +17852,7 @@
     {
       "path": "test/sellapp/variant_deliverable_files_test.exs",
       "mode": "100644",
-      "sha256": "31169c1fe74cbba2cb34b2492b99acc4aceea33d94ae83a35410cc909ed421bb"
+      "sha256": "2371b66b62a8d5d6f2899bd60adaca32df5917835cc104011fadbe20015fdb3f"
     },
     {
       "path": "test/sellapp/variant_deliverable_folders_round_trip_test.exs",
@@ -17037,7 +17882,7 @@
     {
       "path": "test/sellapp/variant_serials_test.exs",
       "mode": "100644",
-      "sha256": "5b92e9359d8cae1db5f64a1ec2f837b52fb15f33d94cde510ee739df3791cfa0"
+      "sha256": "db72858696c9d83a2d4fa9941a6676eb4fb986e398287d580b9ccd6490bdd3ec"
     },
     {
       "path": "test/sellapp/wallet_bonus_tiers_round_trip_test.exs",
@@ -17067,7 +17912,7 @@
     {
       "path": "test/sellapp/wallet_test.exs",
       "mode": "100644",
-      "sha256": "6b62c18ae59ae2dec268311bba9791592c78b712a69291fd5f0b29ecfabf9df2"
+      "sha256": "9a03df2c83f5ee19fd2d9f63b17ca0e8cf9a51d82ed2156e67f0f01372374c22"
     },
     {
       "path": "test/sellapp/wallet_topups_round_trip_test.exs",
@@ -17087,7 +17932,7 @@
     {
       "path": "test/sellapp/wallet_transactions_test.exs",
       "mode": "100644",
-      "sha256": "38fa659f68decfed4e6254ac757228ca95505a2e45178b4ca9840aa85108941a"
+      "sha256": "670cf7fc92780f68cb49b3bc5910ac2231253766623a8cd1fbe7a367c1912bfc"
     },
     {
       "path": "test/sellapp/webhook_channels_round_trip_test.exs",
@@ -17097,7 +17942,7 @@
     {
       "path": "test/sellapp/webhook_channels_test.exs",
       "mode": "100644",
-      "sha256": "798b66e124849797b3cb508eeceb52b788c04384bab4956f362b0bd3ebaf5d8e"
+      "sha256": "3814ce0562ef567aba1dec807c1c4fce1886d0cbdba17fcc4dd2b0c1e37ff597"
     },
     {
       "path": "test/sellapp/webhook_platform_round_trip_test.exs",
@@ -17362,12 +18207,12 @@
     {
       "path": "test/support/fixtures/bundle_items/get.json",
       "mode": "100644",
-      "sha256": "d5f0eeeb8dbc51b257e77ebcdda51b40ddca211c29681cbd717822b6c870bf01"
+      "sha256": "dfad7549648fd6329104ad083a6f27070b43a479b6c677aee9251cc54ba30ecd"
     },
     {
       "path": "test/support/fixtures/bundle_items/list.json",
       "mode": "100644",
-      "sha256": "85d5b58ab2696d5cad790a64f32ac9a8c1c3b15e8a20980d974ebee77c12c6f7"
+      "sha256": "70147685e0af370ecd01e43fb367206157e289ab69c8bb994dd9a637ecc6e1e5"
     },
     {
       "path": "test/support/fixtures/cashback_rules/archive.json",
@@ -17457,102 +18302,102 @@
     {
       "path": "test/support/fixtures/coupons/batch_create.json",
       "mode": "100644",
-      "sha256": "00b25d5b113998142294bb10c6c66efb237f86f7987d10f07a4d3d22be69fc61"
+      "sha256": "deab216b9f3807ac7169c395006d61f2216098bdcd46d6c7c271968f66e5e927"
     },
     {
       "path": "test/support/fixtures/coupons/batch_delete.json",
       "mode": "100644",
-      "sha256": "00b25d5b113998142294bb10c6c66efb237f86f7987d10f07a4d3d22be69fc61"
+      "sha256": "deab216b9f3807ac7169c395006d61f2216098bdcd46d6c7c271968f66e5e927"
     },
     {
       "path": "test/support/fixtures/coupons/batch_update.json",
       "mode": "100644",
-      "sha256": "00b25d5b113998142294bb10c6c66efb237f86f7987d10f07a4d3d22be69fc61"
+      "sha256": "deab216b9f3807ac7169c395006d61f2216098bdcd46d6c7c271968f66e5e927"
     },
     {
       "path": "test/support/fixtures/coupons/create.json",
       "mode": "100644",
-      "sha256": "6a294488d01275ab6c56e7678f816e28849cabb165ea671810b118a7fd22c347"
+      "sha256": "3891a676edc53135beefa40110e33d18f9501da2a993a2da5b5991fcb57265b0"
     },
     {
       "path": "test/support/fixtures/coupons/delete.json",
       "mode": "100644",
-      "sha256": "6a294488d01275ab6c56e7678f816e28849cabb165ea671810b118a7fd22c347"
+      "sha256": "3891a676edc53135beefa40110e33d18f9501da2a993a2da5b5991fcb57265b0"
     },
     {
       "path": "test/support/fixtures/coupons/get.json",
       "mode": "100644",
-      "sha256": "6a294488d01275ab6c56e7678f816e28849cabb165ea671810b118a7fd22c347"
+      "sha256": "3891a676edc53135beefa40110e33d18f9501da2a993a2da5b5991fcb57265b0"
     },
     {
       "path": "test/support/fixtures/coupons/list.json",
       "mode": "100644",
-      "sha256": "8b59764197d195754ffd81b3088fb039983f81539ebcff0d4cbf2cd24ec584d8"
+      "sha256": "8b35d12dff0fd213014ba1bf1dfbde2a17dae9e6365cf110a1f52abe031716c7"
     },
     {
       "path": "test/support/fixtures/coupons/replace.json",
       "mode": "100644",
-      "sha256": "6a294488d01275ab6c56e7678f816e28849cabb165ea671810b118a7fd22c347"
+      "sha256": "3891a676edc53135beefa40110e33d18f9501da2a993a2da5b5991fcb57265b0"
     },
     {
       "path": "test/support/fixtures/coupons/search.json",
       "mode": "100644",
-      "sha256": "8b59764197d195754ffd81b3088fb039983f81539ebcff0d4cbf2cd24ec584d8"
+      "sha256": "8b35d12dff0fd213014ba1bf1dfbde2a17dae9e6365cf110a1f52abe031716c7"
     },
     {
       "path": "test/support/fixtures/coupons/update.json",
       "mode": "100644",
-      "sha256": "6a294488d01275ab6c56e7678f816e28849cabb165ea671810b118a7fd22c347"
+      "sha256": "3891a676edc53135beefa40110e33d18f9501da2a993a2da5b5991fcb57265b0"
     },
     {
       "path": "test/support/fixtures/coupons/v2_batch_create_coupons.json",
       "mode": "100644",
-      "sha256": "00b25d5b113998142294bb10c6c66efb237f86f7987d10f07a4d3d22be69fc61"
+      "sha256": "deab216b9f3807ac7169c395006d61f2216098bdcd46d6c7c271968f66e5e927"
     },
     {
       "path": "test/support/fixtures/coupons/v2_batch_delete_coupons.json",
       "mode": "100644",
-      "sha256": "00b25d5b113998142294bb10c6c66efb237f86f7987d10f07a4d3d22be69fc61"
+      "sha256": "deab216b9f3807ac7169c395006d61f2216098bdcd46d6c7c271968f66e5e927"
     },
     {
       "path": "test/support/fixtures/coupons/v2_batch_update_coupons.json",
       "mode": "100644",
-      "sha256": "00b25d5b113998142294bb10c6c66efb237f86f7987d10f07a4d3d22be69fc61"
+      "sha256": "deab216b9f3807ac7169c395006d61f2216098bdcd46d6c7c271968f66e5e927"
     },
     {
       "path": "test/support/fixtures/coupons/v2_create_coupon.json",
       "mode": "100644",
-      "sha256": "6a294488d01275ab6c56e7678f816e28849cabb165ea671810b118a7fd22c347"
+      "sha256": "3891a676edc53135beefa40110e33d18f9501da2a993a2da5b5991fcb57265b0"
     },
     {
       "path": "test/support/fixtures/coupons/v2_delete_coupon.json",
       "mode": "100644",
-      "sha256": "6a294488d01275ab6c56e7678f816e28849cabb165ea671810b118a7fd22c347"
+      "sha256": "3891a676edc53135beefa40110e33d18f9501da2a993a2da5b5991fcb57265b0"
     },
     {
       "path": "test/support/fixtures/coupons/v2_get_coupon.json",
       "mode": "100644",
-      "sha256": "6a294488d01275ab6c56e7678f816e28849cabb165ea671810b118a7fd22c347"
+      "sha256": "3891a676edc53135beefa40110e33d18f9501da2a993a2da5b5991fcb57265b0"
     },
     {
       "path": "test/support/fixtures/coupons/v2_list_coupons.json",
       "mode": "100644",
-      "sha256": "8b59764197d195754ffd81b3088fb039983f81539ebcff0d4cbf2cd24ec584d8"
+      "sha256": "8b35d12dff0fd213014ba1bf1dfbde2a17dae9e6365cf110a1f52abe031716c7"
     },
     {
       "path": "test/support/fixtures/coupons/v2_replace_coupon.json",
       "mode": "100644",
-      "sha256": "6a294488d01275ab6c56e7678f816e28849cabb165ea671810b118a7fd22c347"
+      "sha256": "3891a676edc53135beefa40110e33d18f9501da2a993a2da5b5991fcb57265b0"
     },
     {
       "path": "test/support/fixtures/coupons/v2_search_coupons.json",
       "mode": "100644",
-      "sha256": "8b59764197d195754ffd81b3088fb039983f81539ebcff0d4cbf2cd24ec584d8"
+      "sha256": "8b35d12dff0fd213014ba1bf1dfbde2a17dae9e6365cf110a1f52abe031716c7"
     },
     {
       "path": "test/support/fixtures/coupons/v2_update_coupon.json",
       "mode": "100644",
-      "sha256": "6a294488d01275ab6c56e7678f816e28849cabb165ea671810b118a7fd22c347"
+      "sha256": "3891a676edc53135beefa40110e33d18f9501da2a993a2da5b5991fcb57265b0"
     },
     {
       "path": "test/support/fixtures/courses/get.json",
@@ -17687,22 +18532,22 @@
     {
       "path": "test/support/fixtures/customer_portal/cancel_customer_subscription_at_period_end.json",
       "mode": "100644",
-      "sha256": "d2fbb1c8ce2092d045f935b62a2b02ad24739e51f1c1b419641419a1b31f5768"
+      "sha256": "289e2d0ce576e92792adfad38d7ea20edd8da03966a372a8d440ac7161fb2b94"
     },
     {
       "path": "test/support/fixtures/customer_portal/cancel_customer_subscription_immediately.json",
       "mode": "100644",
-      "sha256": "d2fbb1c8ce2092d045f935b62a2b02ad24739e51f1c1b419641419a1b31f5768"
+      "sha256": "289e2d0ce576e92792adfad38d7ea20edd8da03966a372a8d440ac7161fb2b94"
     },
     {
       "path": "test/support/fixtures/customer_portal/confirm_customer_subscription_plan_change.json",
       "mode": "100644",
-      "sha256": "d2fbb1c8ce2092d045f935b62a2b02ad24739e51f1c1b419641419a1b31f5768"
+      "sha256": "289e2d0ce576e92792adfad38d7ea20edd8da03966a372a8d440ac7161fb2b94"
     },
     {
       "path": "test/support/fixtures/customer_portal/confirm_customer_subscription_renewal_date_change.json",
       "mode": "100644",
-      "sha256": "d2fbb1c8ce2092d045f935b62a2b02ad24739e51f1c1b419641419a1b31f5768"
+      "sha256": "289e2d0ce576e92792adfad38d7ea20edd8da03966a372a8d440ac7161fb2b94"
     },
     {
       "path": "test/support/fixtures/customer_portal/get_customer_portal_order.json",
@@ -17717,12 +18562,12 @@
     {
       "path": "test/support/fixtures/customer_portal/get_customer_portal_subscription.json",
       "mode": "100644",
-      "sha256": "d2fbb1c8ce2092d045f935b62a2b02ad24739e51f1c1b419641419a1b31f5768"
+      "sha256": "82dcd87d16748f86cc08f8021a7c4e10ffa10996a4ec582401da5e3b6110744f"
     },
     {
       "path": "test/support/fixtures/customer_portal/get_customer_portal_subscription_capabilities.json",
       "mode": "100644",
-      "sha256": "e71da2702b2b427a1f8e31148ae6d038c6275331fc6ce87533faaf8403dc7a87"
+      "sha256": "3b6aa84835f494480e5c5c80310a9237bb56f57ca0b58363b89f7fdec420c2df"
     },
     {
       "path": "test/support/fixtures/customer_portal/list_customer_portal_entitlements.json",
@@ -17737,27 +18582,27 @@
     {
       "path": "test/support/fixtures/customer_portal/list_customer_portal_subscriptions.json",
       "mode": "100644",
-      "sha256": "7489c162de6879934c6caa955f73c9db3438238f332c30263f635b64a0dd4012"
+      "sha256": "f8224a9203d8bb4b91a8443a8bd334b7c9aee7faf76487b1c66a2b6df2e03560"
     },
     {
       "path": "test/support/fixtures/customer_portal/pause_customer_subscription.json",
       "mode": "100644",
-      "sha256": "d2fbb1c8ce2092d045f935b62a2b02ad24739e51f1c1b419641419a1b31f5768"
+      "sha256": "289e2d0ce576e92792adfad38d7ea20edd8da03966a372a8d440ac7161fb2b94"
     },
     {
       "path": "test/support/fixtures/customer_portal/preview_customer_subscription_plan_change.json",
       "mode": "100644",
-      "sha256": "d2fbb1c8ce2092d045f935b62a2b02ad24739e51f1c1b419641419a1b31f5768"
+      "sha256": "1389903d42764cfd4ab3dac30446b8a744cd95d9c488d87c70c8092ebdd581f6"
     },
     {
       "path": "test/support/fixtures/customer_portal/preview_customer_subscription_renewal_date_change.json",
       "mode": "100644",
-      "sha256": "d2fbb1c8ce2092d045f935b62a2b02ad24739e51f1c1b419641419a1b31f5768"
+      "sha256": "730ede4a95e640bf530de1dd95242679c3b7c06de0f3fcb156f8603c66e47949"
     },
     {
       "path": "test/support/fixtures/customer_portal/resume_customer_subscription.json",
       "mode": "100644",
-      "sha256": "d2fbb1c8ce2092d045f935b62a2b02ad24739e51f1c1b419641419a1b31f5768"
+      "sha256": "289e2d0ce576e92792adfad38d7ea20edd8da03966a372a8d440ac7161fb2b94"
     },
     {
       "path": "test/support/fixtures/customer_portal/update_customer_portal_profile.json",
@@ -17767,7 +18612,7 @@
     {
       "path": "test/support/fixtures/customer_portal/update_customer_subscription_payment_method.json",
       "mode": "100644",
-      "sha256": "d2fbb1c8ce2092d045f935b62a2b02ad24739e51f1c1b419641419a1b31f5768"
+      "sha256": "289e2d0ce576e92792adfad38d7ea20edd8da03966a372a8d440ac7161fb2b94"
     },
     {
       "path": "test/support/fixtures/customer_sessions/create_customer_session.json",
@@ -18047,17 +18892,17 @@
     {
       "path": "test/support/fixtures/invoices/create.json",
       "mode": "100644",
-      "sha256": "4f38c20881a8f676de877fbb86a650533d2ddfa0bac759eae8e7abda2d9054bc"
+      "sha256": "d658619718b31b3b2a92784aa606103738299bfc866a3809571175419e19f2ff"
     },
     {
       "path": "test/support/fixtures/invoices/create_refund.json",
       "mode": "100644",
-      "sha256": "70621906063872fa6ee3ae4b77f8be0bd140135730a642422c971347e7b9ae3e"
+      "sha256": "f25b6f7e029b127e47db52cdc303228ddb691892b72e6739e759fbe2f3ee4fbc"
     },
     {
       "path": "test/support/fixtures/invoices/get.json",
       "mode": "100644",
-      "sha256": "3697ea8303206fbab866629c07c8510df12811b5fda0d3770dbe3684428b773e"
+      "sha256": "bc3f1315f5e40c26d96bd7928fe75dd1c4e042eebac9b446dc3f2d0d9d0735bc"
     },
     {
       "path": "test/support/fixtures/invoices/get_deliverables.json",
@@ -18067,27 +18912,27 @@
     {
       "path": "test/support/fixtures/invoices/go_to_checkout.json",
       "mode": "100644",
-      "sha256": "0cb312187a7f185df20d26de580c9fcd9d9ff33b8812944ad325ec03682709c8"
+      "sha256": "3b083cdf104eeb67d4330a3e94db14d41a043954f7e858ec3761f241fb4f43bc"
     },
     {
       "path": "test/support/fixtures/invoices/issue_replacement.json",
       "mode": "100644",
-      "sha256": "3b741c47c20d4986abd24a0e88bd5c5b3f4c3b6d7afa070df820cf8659a85135"
+      "sha256": "147ffe9c1f54e9e15101d5a9d03a7686cf2df6e00b1d7ccc54bfac5abec63810"
     },
     {
       "path": "test/support/fixtures/invoices/list.json",
       "mode": "100644",
-      "sha256": "341b0e6c9b2c792ce3b2e7c22d8237d613f714be8dca7e6c346b50d31abc077b"
+      "sha256": "ff3eeddd0bda73d424b2983d256e4845f6b6ebc3bc98ad7b2102969f06ac35b6"
     },
     {
       "path": "test/support/fixtures/invoices/mark_completed.json",
       "mode": "100644",
-      "sha256": "3b741c47c20d4986abd24a0e88bd5c5b3f4c3b6d7afa070df820cf8659a85135"
+      "sha256": "147ffe9c1f54e9e15101d5a9d03a7686cf2df6e00b1d7ccc54bfac5abec63810"
     },
     {
       "path": "test/support/fixtures/invoices/mark_voided.json",
       "mode": "100644",
-      "sha256": "3b741c47c20d4986abd24a0e88bd5c5b3f4c3b6d7afa070df820cf8659a85135"
+      "sha256": "147ffe9c1f54e9e15101d5a9d03a7686cf2df6e00b1d7ccc54bfac5abec63810"
     },
     {
       "path": "test/support/fixtures/invoices/notify_fulfillment.json",
@@ -18107,12 +18952,12 @@
     {
       "path": "test/support/fixtures/invoices/search.json",
       "mode": "100644",
-      "sha256": "341b0e6c9b2c792ce3b2e7c22d8237d613f714be8dca7e6c346b50d31abc077b"
+      "sha256": "ff3eeddd0bda73d424b2983d256e4845f6b6ebc3bc98ad7b2102969f06ac35b6"
     },
     {
       "path": "test/support/fixtures/invoices/update_status.json",
       "mode": "100644",
-      "sha256": "3b741c47c20d4986abd24a0e88bd5c5b3f4c3b6d7afa070df820cf8659a85135"
+      "sha256": "147ffe9c1f54e9e15101d5a9d03a7686cf2df6e00b1d7ccc54bfac5abec63810"
     },
     {
       "path": "test/support/fixtures/license_instances/list.json",
@@ -18337,52 +19182,52 @@
     {
       "path": "test/support/fixtures/product_variants/batch_create.json",
       "mode": "100644",
-      "sha256": "f79a0a6e7119b377a54ceb3f2ca5d62b6d679d45875b680723884d8f358365d9"
+      "sha256": "335802c635a38e89ef0e32ee86831797dfadf301ea0b33561a2d46c9cf0ed566"
     },
     {
       "path": "test/support/fixtures/product_variants/batch_delete.json",
       "mode": "100644",
-      "sha256": "f79a0a6e7119b377a54ceb3f2ca5d62b6d679d45875b680723884d8f358365d9"
+      "sha256": "335802c635a38e89ef0e32ee86831797dfadf301ea0b33561a2d46c9cf0ed566"
     },
     {
       "path": "test/support/fixtures/product_variants/batch_update.json",
       "mode": "100644",
-      "sha256": "f79a0a6e7119b377a54ceb3f2ca5d62b6d679d45875b680723884d8f358365d9"
+      "sha256": "335802c635a38e89ef0e32ee86831797dfadf301ea0b33561a2d46c9cf0ed566"
     },
     {
       "path": "test/support/fixtures/product_variants/create.json",
       "mode": "100644",
-      "sha256": "f8a5904cf75ea5bae44881ea9498dc0a1db660554029488194bbde61460486a6"
+      "sha256": "b649b0591474d69b27817525f5744bce63c26f8c95f10dcdf156b95258924ab7"
     },
     {
       "path": "test/support/fixtures/product_variants/delete.json",
       "mode": "100644",
-      "sha256": "f8a5904cf75ea5bae44881ea9498dc0a1db660554029488194bbde61460486a6"
+      "sha256": "b649b0591474d69b27817525f5744bce63c26f8c95f10dcdf156b95258924ab7"
     },
     {
       "path": "test/support/fixtures/product_variants/get.json",
       "mode": "100644",
-      "sha256": "f8a5904cf75ea5bae44881ea9498dc0a1db660554029488194bbde61460486a6"
+      "sha256": "b649b0591474d69b27817525f5744bce63c26f8c95f10dcdf156b95258924ab7"
     },
     {
       "path": "test/support/fixtures/product_variants/list.json",
       "mode": "100644",
-      "sha256": "a4c439fffb94325e3b2a1353f6762b74b9e8b14eb193d090ff5cb8abb19ec211"
+      "sha256": "96eca8e78762e0d9b3c6a0b72866458e4ee673f2eeb38d551620432f505f9eef"
     },
     {
       "path": "test/support/fixtures/product_variants/replace.json",
       "mode": "100644",
-      "sha256": "f8a5904cf75ea5bae44881ea9498dc0a1db660554029488194bbde61460486a6"
+      "sha256": "b649b0591474d69b27817525f5744bce63c26f8c95f10dcdf156b95258924ab7"
     },
     {
       "path": "test/support/fixtures/product_variants/search.json",
       "mode": "100644",
-      "sha256": "a4c439fffb94325e3b2a1353f6762b74b9e8b14eb193d090ff5cb8abb19ec211"
+      "sha256": "96eca8e78762e0d9b3c6a0b72866458e4ee673f2eeb38d551620432f505f9eef"
     },
     {
       "path": "test/support/fixtures/product_variants/update.json",
       "mode": "100644",
-      "sha256": "f8a5904cf75ea5bae44881ea9498dc0a1db660554029488194bbde61460486a6"
+      "sha256": "b649b0591474d69b27817525f5744bce63c26f8c95f10dcdf156b95258924ab7"
     },
     {
       "path": "test/support/fixtures/product_variants_booking/create_hold.json",
@@ -18417,12 +19262,12 @@
     {
       "path": "test/support/fixtures/product_variants_pricing/replace.json",
       "mode": "100644",
-      "sha256": "f8a5904cf75ea5bae44881ea9498dc0a1db660554029488194bbde61460486a6"
+      "sha256": "b649b0591474d69b27817525f5744bce63c26f8c95f10dcdf156b95258924ab7"
     },
     {
       "path": "test/support/fixtures/product_variants_pricing/update.json",
       "mode": "100644",
-      "sha256": "f8a5904cf75ea5bae44881ea9498dc0a1db660554029488194bbde61460486a6"
+      "sha256": "b649b0591474d69b27817525f5744bce63c26f8c95f10dcdf156b95258924ab7"
     },
     {
       "path": "test/support/fixtures/products/batch_create.json",
@@ -18487,17 +19332,17 @@
     {
       "path": "test/support/fixtures/promotions/create.json",
       "mode": "100644",
-      "sha256": "4af59e6f88f156a883f51f5b435c81a867de6af096ee3dbf371125beed645259"
+      "sha256": "a026138630edfd6cbcb97586ea4666f17985ad65dd366b6f671be4f5c1ec1f52"
     },
     {
       "path": "test/support/fixtures/promotions/delete.json",
       "mode": "100644",
-      "sha256": "4af59e6f88f156a883f51f5b435c81a867de6af096ee3dbf371125beed645259"
+      "sha256": "a026138630edfd6cbcb97586ea4666f17985ad65dd366b6f671be4f5c1ec1f52"
     },
     {
       "path": "test/support/fixtures/promotions/get.json",
       "mode": "100644",
-      "sha256": "4af59e6f88f156a883f51f5b435c81a867de6af096ee3dbf371125beed645259"
+      "sha256": "a026138630edfd6cbcb97586ea4666f17985ad65dd366b6f671be4f5c1ec1f52"
     },
     {
       "path": "test/support/fixtures/promotions/list.json",
@@ -18507,12 +19352,12 @@
     {
       "path": "test/support/fixtures/promotions/replace.json",
       "mode": "100644",
-      "sha256": "4af59e6f88f156a883f51f5b435c81a867de6af096ee3dbf371125beed645259"
+      "sha256": "a026138630edfd6cbcb97586ea4666f17985ad65dd366b6f671be4f5c1ec1f52"
     },
     {
       "path": "test/support/fixtures/promotions/restore.json",
       "mode": "100644",
-      "sha256": "4af59e6f88f156a883f51f5b435c81a867de6af096ee3dbf371125beed645259"
+      "sha256": "a026138630edfd6cbcb97586ea4666f17985ad65dd366b6f671be4f5c1ec1f52"
     },
     {
       "path": "test/support/fixtures/promotions/search.json",
@@ -18522,7 +19367,7 @@
     {
       "path": "test/support/fixtures/promotions/update.json",
       "mode": "100644",
-      "sha256": "4af59e6f88f156a883f51f5b435c81a867de6af096ee3dbf371125beed645259"
+      "sha256": "a026138630edfd6cbcb97586ea4666f17985ad65dd366b6f671be4f5c1ec1f52"
     },
     {
       "path": "test/support/fixtures/promotions_phases/list.json",
@@ -18847,22 +19692,27 @@
     {
       "path": "test/support/fixtures/subscriptions/cancel.json",
       "mode": "100644",
-      "sha256": "e4e19b80aa2363aa30b2e6eec17879c07b10c306238de75c67867fbfacd89da8"
+      "sha256": "2868c448cae6d9a1612acf17a20d022f2f0784084acb3d2976f800cdf444ea4a"
     },
     {
       "path": "test/support/fixtures/subscriptions/cancel_at_period_end.json",
       "mode": "100644",
-      "sha256": "d3eda31eedff08913c1b734eb4d5945b75540c4bfd2ab8ca5fcd376bef6eec04"
+      "sha256": "87f6b13628990b702e1503115d4def033c0296203c2d633c27e410a658fb9544"
     },
     {
       "path": "test/support/fixtures/subscriptions/cancel_immediately.json",
       "mode": "100644",
-      "sha256": "d3eda31eedff08913c1b734eb4d5945b75540c4bfd2ab8ca5fcd376bef6eec04"
+      "sha256": "87f6b13628990b702e1503115d4def033c0296203c2d633c27e410a658fb9544"
+    },
+    {
+      "path": "test/support/fixtures/subscriptions/confirm_plan_change.json",
+      "mode": "100644",
+      "sha256": "3ba7a2b51ee40e1d971f6333d8b16429b2a8926d15a96287323aebacf43fb71a"
     },
     {
       "path": "test/support/fixtures/subscriptions/confirm_renewal_date.json",
       "mode": "100644",
-      "sha256": "d3eda31eedff08913c1b734eb4d5945b75540c4bfd2ab8ca5fcd376bef6eec04"
+      "sha256": "87f6b13628990b702e1503115d4def033c0296203c2d633c27e410a658fb9544"
     },
     {
       "path": "test/support/fixtures/subscriptions/get_capabilities.json",
@@ -18872,17 +19722,27 @@
     {
       "path": "test/support/fixtures/subscriptions/get_subscription.json",
       "mode": "100644",
-      "sha256": "d2fbb1c8ce2092d045f935b62a2b02ad24739e51f1c1b419641419a1b31f5768"
+      "sha256": "e5e04f2737791df255f3685e1c8e275fe5824ade9ddb614cc86e2949ed7bb69a"
+    },
+    {
+      "path": "test/support/fixtures/subscriptions/keep.json",
+      "mode": "100644",
+      "sha256": "87f6b13628990b702e1503115d4def033c0296203c2d633c27e410a658fb9544"
     },
     {
       "path": "test/support/fixtures/subscriptions/list_subscriptions.json",
       "mode": "100644",
-      "sha256": "1147f5d4ffda84e3912b8ba10fa6c6ead8fa96d949273af74626619756526c11"
+      "sha256": "e3c6528bdc4b33280f63a70b1325be157531104a379eb4549a573c161d379815"
     },
     {
       "path": "test/support/fixtures/subscriptions/pause.json",
       "mode": "100644",
-      "sha256": "d3eda31eedff08913c1b734eb4d5945b75540c4bfd2ab8ca5fcd376bef6eec04"
+      "sha256": "87f6b13628990b702e1503115d4def033c0296203c2d633c27e410a658fb9544"
+    },
+    {
+      "path": "test/support/fixtures/subscriptions/preview_plan_change.json",
+      "mode": "100644",
+      "sha256": "f18b97c67c5d99f4194be5cd754d93cd0f749865159b856e35c72c6e0b2cde11"
     },
     {
       "path": "test/support/fixtures/subscriptions/preview_renewal_date.json",
@@ -18892,12 +19752,32 @@
     {
       "path": "test/support/fixtures/subscriptions/resume.json",
       "mode": "100644",
-      "sha256": "d3eda31eedff08913c1b734eb4d5945b75540c4bfd2ab8ca5fcd376bef6eec04"
+      "sha256": "87f6b13628990b702e1503115d4def033c0296203c2d633c27e410a658fb9544"
     },
     {
       "path": "test/support/fixtures/subscriptions/search_subscriptions.json",
       "mode": "100644",
-      "sha256": "1147f5d4ffda84e3912b8ba10fa6c6ead8fa96d949273af74626619756526c11"
+      "sha256": "e3c6528bdc4b33280f63a70b1325be157531104a379eb4549a573c161d379815"
+    },
+    {
+      "path": "test/support/fixtures/subscriptions/update_payment_method.json",
+      "mode": "100644",
+      "sha256": "78ff2e4df84dfd5bd83a740a1ff2b457efc036b535bed26238b084b61c957a61"
+    },
+    {
+      "path": "test/support/fixtures/subscriptions_actions/dismiss.json",
+      "mode": "100644",
+      "sha256": "87f6b13628990b702e1503115d4def033c0296203c2d633c27e410a658fb9544"
+    },
+    {
+      "path": "test/support/fixtures/subscriptions_actions/get.json",
+      "mode": "100644",
+      "sha256": "2f31f377c6f1650dc7f5516a434101347809a3d5ebc9a30b21e8e2d6bd4f5b44"
+    },
+    {
+      "path": "test/support/fixtures/subscriptions_actions/list.json",
+      "mode": "100644",
+      "sha256": "e3c6528bdc4b33280f63a70b1325be157531104a379eb4549a573c161d379815"
     },
     {
       "path": "test/support/fixtures/tickets/get.json",

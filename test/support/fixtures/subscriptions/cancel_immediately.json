@@ -6,6 +6,8 @@
     "action": "pause",
     "status": "pending",
     "provider": "provider",
+    "proration_order_id": null,
+    "error": null,
     "customer_message": null,
     "confirmed_at": null,
     "failed_at": null,

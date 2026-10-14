@@ -39,7 +39,10 @@ defmodule SellApp.GetWebhookDeliveryResponseValue200ApplicationJsonPropertyData 
       "event_type" => %{required: true, schema: %{kind: :string}},
       "status" => %{
         required: true,
-        schema: %{kind: :enum, values: ["pending", "delivering", "succeeded", "failed"]}
+        schema: %{
+          kind: :enum,
+          values: ["pending", "delivering", "retrying", "succeeded", "failed", "disabled"]
+        }
       },
       "destination_origin" => %{required: true, schema: %{kind: :string, format: "uri"}},
       "attempts" => %{required: true, schema: %{kind: :integer}},

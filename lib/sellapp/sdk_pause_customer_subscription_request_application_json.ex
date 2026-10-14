@@ -6,20 +6,14 @@ defmodule SellApp.SdkPauseCustomerSubscriptionRequestApplicationJson do
   """
 
   defstruct [
-    :preview_id,
-    :product_variant_id,
-    :renewal_date,
-    :return_url,
+    :resume_at,
     :reason,
     __additional_properties__: %{},
     __present_fields__: []
   ]
 
   @type t :: %__MODULE__{
-          preview_id: String.t() | nil,
-          product_variant_id: integer() | nil,
-          renewal_date: String.t() | nil,
-          return_url: String.t() | nil,
+          resume_at: String.t() | nil,
           reason: String.t() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
@@ -28,11 +22,14 @@ defmodule SellApp.SdkPauseCustomerSubscriptionRequestApplicationJson do
   @schema %{
     name: "SdkPauseCustomerSubscriptionRequestApplicationJson",
     properties: %{
-      "preview_id" => %{required: false, schema: %{kind: :string}},
-      "product_variant_id" => %{required: false, schema: %{kind: :integer}},
-      "renewal_date" => %{required: false, schema: %{kind: :string, format: "date"}},
-      "return_url" => %{required: false, schema: %{kind: :string, format: "uri"}},
-      "reason" => %{required: false, schema: %{kind: :string}}
+      "resume_at" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :string, format: "date-time"}}
+      },
+      "reason" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :string, max_length: 500}}
+      }
     },
     additional_properties: true
   }
@@ -45,13 +42,9 @@ defmodule SellApp.SdkPauseCustomerSubscriptionRequestApplicationJson do
     SellApp.Schema.validate_model!(map, @schema, :response)
 
     %__MODULE__{
-      preview_id: map["preview_id"],
-      product_variant_id: map["product_variant_id"],
-      renewal_date: map["renewal_date"],
-      return_url: map["return_url"],
+      resume_at: map["resume_at"],
       reason: map["reason"],
-      __additional_properties__:
-        Map.drop(map, ["preview_id", "product_variant_id", "renewal_date", "return_url", "reason"]),
+      __additional_properties__: Map.drop(map, ["resume_at", "reason"]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -62,10 +55,7 @@ defmodule SellApp.SdkPauseCustomerSubscriptionRequestApplicationJson do
     known =
       SellApp.Cast.keep_present(
         %{
-          "preview_id" => struct.preview_id,
-          "product_variant_id" => struct.product_variant_id,
-          "renewal_date" => struct.renewal_date,
-          "return_url" => struct.return_url,
+          "resume_at" => struct.resume_at,
           "reason" => struct.reason
         },
         [],

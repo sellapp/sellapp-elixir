@@ -15,6 +15,8 @@ defmodule SellApp.SdkV2UpdateCouponRequestApplicationJson do
     :limit,
     :expires_at,
     :minimum_amount,
+    :applies_to,
+    :subscription_payments,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -29,6 +31,8 @@ defmodule SellApp.SdkV2UpdateCouponRequestApplicationJson do
           limit: integer() | nil,
           expires_at: String.t() | nil,
           minimum_amount: number() | String.t() | nil,
+          applies_to: SellApp.SdkV2UpdateCouponRequestApplicationJsonAppliesTo.t() | nil,
+          subscription_payments: integer() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -74,6 +78,14 @@ defmodule SellApp.SdkV2UpdateCouponRequestApplicationJson do
             ]
           }
         }
+      },
+      "applies_to" => %{
+        required: false,
+        schema: %{kind: :enum, values: ["one_time", "subscriptions"]}
+      },
+      "subscription_payments" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :integer, minimum: 1, maximum: 36}}
       }
     },
     additional_properties: true
@@ -100,6 +112,12 @@ defmodule SellApp.SdkV2UpdateCouponRequestApplicationJson do
       limit: map["limit"],
       expires_at: map["expires_at"],
       minimum_amount: map["minimum_amount"],
+      applies_to:
+        SellApp.Cast.enum(
+          map["applies_to"],
+          &SellApp.SdkV2UpdateCouponRequestApplicationJsonAppliesTo.cast/1
+        ),
+      subscription_payments: map["subscription_payments"],
       __additional_properties__:
         Map.drop(map, [
           "code",
@@ -110,7 +128,9 @@ defmodule SellApp.SdkV2UpdateCouponRequestApplicationJson do
           "product_variants",
           "limit",
           "expires_at",
-          "minimum_amount"
+          "minimum_amount",
+          "applies_to",
+          "subscription_payments"
         ]),
       __present_fields__: Map.keys(map)
     }
@@ -134,7 +154,13 @@ defmodule SellApp.SdkV2UpdateCouponRequestApplicationJson do
           "product_variants" => struct.product_variants,
           "limit" => struct.limit,
           "expires_at" => struct.expires_at,
-          "minimum_amount" => SellApp.Cast.dump_union(struct.minimum_amount)
+          "minimum_amount" => SellApp.Cast.dump_union(struct.minimum_amount),
+          "applies_to" =>
+            SellApp.Cast.enum(
+              struct.applies_to,
+              &SellApp.SdkV2UpdateCouponRequestApplicationJsonAppliesTo.dump/1
+            ),
+          "subscription_payments" => struct.subscription_payments
         },
         [],
         struct.__present_fields__

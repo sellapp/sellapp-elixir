@@ -445,7 +445,7 @@
     "operationId": "deleteProductVariant",
     "mountTarget": "ProductVariants",
     "methodName": "delete",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.ProductVariants.delete(client, 1, 2)\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.ProductVariants.delete(client, 1, 2, %{})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -530,6 +530,30 @@
   {
     "language": "elixir",
     "fileExtension": "exs",
+    "operationId": "listSubscriptions",
+    "mountTarget": "Subscriptions",
+    "methodName": "list_subscriptions",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Subscriptions.list_subscriptions(client, %{})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "searchSubscriptions",
+    "mountTarget": "Subscriptions",
+    "methodName": "search_subscriptions",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Subscriptions.search_subscriptions(client, %{\"filters\" => [%{\"field\" => \"status\", \"operator\" => \"=\", \"value\" => \"ACTIVE\"}], \"search\" => %{\"value\" => \"maya.chen@example.com\"}})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getSubscription",
+    "mountTarget": "Subscriptions",
+    "methodName": "get_subscription",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Subscriptions.get_subscription(client, 123)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
     "operationId": "getSubscriptionCapabilities",
     "mountTarget": "Subscriptions",
     "methodName": "get_capabilities",
@@ -554,6 +578,14 @@
   {
     "language": "elixir",
     "fileExtension": "exs",
+    "operationId": "keepSubscription",
+    "mountTarget": "Subscriptions",
+    "methodName": "keep",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Subscriptions.keep(client, 55, %{})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
     "operationId": "pauseSubscription",
     "mountTarget": "Subscriptions",
     "methodName": "pause",
@@ -573,7 +605,7 @@
     "operationId": "updateSubscriptionPaymentMethod",
     "mountTarget": "Subscriptions",
     "methodName": "update_payment_method",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Subscriptions.update_payment_method(client, 1, %{})\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Subscriptions.update_payment_method(client, 55, %{\"return_url\" => \"https://store.example.com/billing/updated\"})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -589,7 +621,7 @@
     "operationId": "confirmSubscriptionPlanChange",
     "mountTarget": "Subscriptions",
     "methodName": "confirm_plan_change",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Subscriptions.confirm_plan_change(client, 1, %{\"target_variant_id\" => 4321, \"preview_token\" => \"subprev_9c4b2f\"})\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Subscriptions.confirm_plan_change(client, 55, %{\"target_variant_id\" => 4321, \"preview_token\" => \"subprev_9c4b2f\"})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -610,26 +642,26 @@
   {
     "language": "elixir",
     "fileExtension": "exs",
-    "operationId": "listSubscriptions",
-    "mountTarget": "Subscriptions",
-    "methodName": "list_subscriptions",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Subscriptions.list_subscriptions(client, %{})\nIO.inspect(result)\n"
+    "operationId": "listSubscriptionActions",
+    "mountTarget": "SubscriptionsActions",
+    "methodName": "list",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SubscriptionsActions.list(client, 124, %{})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
     "fileExtension": "exs",
-    "operationId": "searchSubscriptions",
-    "mountTarget": "Subscriptions",
-    "methodName": "search_subscriptions",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Subscriptions.search_subscriptions(client, %{\"search\" => \"maya.chen@example.com\", \"status\" => \"active\"})\nIO.inspect(result)\n"
+    "operationId": "getSubscriptionAction",
+    "mountTarget": "SubscriptionsActions",
+    "methodName": "get",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SubscriptionsActions.get(client, 124, 4192)\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
     "fileExtension": "exs",
-    "operationId": "getSubscription",
-    "mountTarget": "Subscriptions",
-    "methodName": "get_subscription",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Subscriptions.get_subscription(client, 991)\nIO.inspect(result)\n"
+    "operationId": "dismissSubscriptionAction",
+    "mountTarget": "SubscriptionsActions",
+    "methodName": "dismiss",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SubscriptionsActions.dismiss(client, 124, 4207, %{\"note\" => \"Confirmed with the customer that they no longer want the upgrade.\"})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -2573,7 +2605,7 @@
     "operationId": "listCustomerPortalSubscriptions",
     "mountTarget": "CustomerPortal",
     "methodName": "list_customer_portal_subscriptions",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.list_customer_portal_subscriptions(client)\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.list_customer_portal_subscriptions(client, %{})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -2605,7 +2637,7 @@
     "operationId": "cancelCustomerSubscriptionAtPeriodEnd",
     "mountTarget": "CustomerPortal",
     "methodName": "cancel_customer_subscription_at_period_end",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.cancel_customer_subscription_at_period_end(client, 42, %{\"reason\" => \"Customer requested this change\"}, idempotency_key: \"example-mutation-001\")\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.cancel_customer_subscription_at_period_end(client, 42, %{\"reason\" => \"Taking a break over the summer.\"})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -2613,7 +2645,7 @@
     "operationId": "cancelCustomerSubscriptionImmediately",
     "mountTarget": "CustomerPortal",
     "methodName": "cancel_customer_subscription_immediately",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.cancel_customer_subscription_immediately(client, 42, %{\"reason\" => \"Customer requested this change\"}, idempotency_key: \"example-mutation-001\")\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.cancel_customer_subscription_immediately(client, 42, %{\"reason\" => \"No longer needed.\"})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -2621,7 +2653,7 @@
     "operationId": "pauseCustomerSubscription",
     "mountTarget": "CustomerPortal",
     "methodName": "pause_customer_subscription",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.pause_customer_subscription(client, 42, %{\"reason\" => \"Customer requested this change\"}, idempotency_key: \"example-mutation-001\")\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.pause_customer_subscription(client, 42, %{\"resume_at\" => \"2026-11-01T00:00:00Z\"})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -2629,7 +2661,7 @@
     "operationId": "resumeCustomerSubscription",
     "mountTarget": "CustomerPortal",
     "methodName": "resume_customer_subscription",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.resume_customer_subscription(client, 42, %{\"reason\" => \"Customer requested this change\"}, idempotency_key: \"example-mutation-001\")\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.resume_customer_subscription(client, 42)\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -2637,7 +2669,7 @@
     "operationId": "updateCustomerSubscriptionPaymentMethod",
     "mountTarget": "CustomerPortal",
     "methodName": "update_customer_subscription_payment_method",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.update_customer_subscription_payment_method(client, 42, %{\"reason\" => \"Customer requested this change\"}, idempotency_key: \"example-mutation-001\")\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.update_customer_subscription_payment_method(client, 42, %{\"return_url\" => \"https://acme.sell.app/customer-portal/subscriptions/991\"})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -2645,7 +2677,7 @@
     "operationId": "previewCustomerSubscriptionPlanChange",
     "mountTarget": "CustomerPortal",
     "methodName": "preview_customer_subscription_plan_change",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.preview_customer_subscription_plan_change(client, 42, %{\"product_variant_id\" => 84}, idempotency_key: \"example-mutation-001\")\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.preview_customer_subscription_plan_change(client, 42, %{\"target_variant_id\" => 97})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -2653,7 +2685,7 @@
     "operationId": "confirmCustomerSubscriptionPlanChange",
     "mountTarget": "CustomerPortal",
     "methodName": "confirm_customer_subscription_plan_change",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.confirm_customer_subscription_plan_change(client, 42, %{\"preview_id\" => \"preview_01K4\"}, idempotency_key: \"example-mutation-001\")\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.confirm_customer_subscription_plan_change(client, 42, %{\"target_variant_id\" => 97, \"preview_token\" => \"subprev_portal_991\"})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -2661,7 +2693,7 @@
     "operationId": "previewCustomerSubscriptionRenewalDateChange",
     "mountTarget": "CustomerPortal",
     "methodName": "preview_customer_subscription_renewal_date_change",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.preview_customer_subscription_renewal_date_change(client, 42, %{\"renewal_date\" => \"2026-10-15\"}, idempotency_key: \"example-mutation-001\")\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.preview_customer_subscription_renewal_date_change(client, 42, %{\"renewal_date\" => \"2026-10-15T00:00:00Z\"})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -2669,7 +2701,7 @@
     "operationId": "confirmCustomerSubscriptionRenewalDateChange",
     "mountTarget": "CustomerPortal",
     "methodName": "confirm_customer_subscription_renewal_date_change",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.confirm_customer_subscription_renewal_date_change(client, 42, %{\"preview_id\" => \"preview_01K4\"}, idempotency_key: \"example-mutation-001\")\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  customer_session: System.fetch_env!(\"SELLAPP_CUSTOMER_SESSION\"),\n  store: \"\"\n)\n\n{:ok, result} = SellApp.CustomerPortal.confirm_customer_subscription_renewal_date_change(client, 42, %{\"renewal_date\" => \"2026-10-15T00:00:00Z\", \"preview_token\" => \"subprev_portal_renewal_991\"})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",

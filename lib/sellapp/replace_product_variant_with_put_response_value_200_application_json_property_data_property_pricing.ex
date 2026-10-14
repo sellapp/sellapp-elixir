@@ -10,6 +10,7 @@ defmodule SellApp.ReplaceProductVariantWithPutResponseValue200ApplicationJsonPro
     :frequency,
     :type,
     :price,
+    :trial,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -21,6 +22,9 @@ defmodule SellApp.ReplaceProductVariantWithPutResponseValue200ApplicationJsonPro
           type: String.t(),
           price:
             SellApp.ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPrice.t(),
+          trial:
+            SellApp.ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrial.t()
+            | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -45,6 +49,14 @@ defmodule SellApp.ReplaceProductVariantWithPutResponseValue200ApplicationJsonPro
           kind: :model,
           module:
             SellApp.ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPrice
+        }
+      },
+      "trial" => %{
+        required: false,
+        schema: %{
+          kind: :model,
+          module:
+            SellApp.ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrial
         }
       }
     },
@@ -71,7 +83,12 @@ defmodule SellApp.ReplaceProductVariantWithPutResponseValue200ApplicationJsonPro
           map["price"],
           &SellApp.ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPrice.from_map/1
         ),
-      __additional_properties__: Map.drop(map, ["humble", "frequency", "type", "price"]),
+      trial:
+        SellApp.Cast.nested(
+          map["trial"],
+          &SellApp.ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrial.from_map/1
+        ),
+      __additional_properties__: Map.drop(map, ["humble", "frequency", "type", "price", "trial"]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -93,6 +110,11 @@ defmodule SellApp.ReplaceProductVariantWithPutResponseValue200ApplicationJsonPro
             SellApp.Cast.dump_struct(
               struct.price,
               &SellApp.ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPrice.to_map/1
+            ),
+          "trial" =>
+            SellApp.Cast.dump_struct(
+              struct.trial,
+              &SellApp.ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrial.to_map/1
             )
         },
         ["humble", "frequency", "type", "price"],

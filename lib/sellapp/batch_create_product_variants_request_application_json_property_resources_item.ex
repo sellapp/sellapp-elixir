@@ -14,6 +14,7 @@ defmodule SellApp.BatchCreateProductVariantsRequestApplicationJsonPropertyResour
     :minimum_purchase_quantity,
     :maximum_purchase_quantity,
     :bulk_discount,
+    :custom_payment_method_ids,
     :other_settings,
     :expected_updated_at,
     __additional_properties__: %{},
@@ -37,6 +38,7 @@ defmodule SellApp.BatchCreateProductVariantsRequestApplicationJsonPropertyResour
               SellApp.BatchCreateProductVariantsRequestApplicationJsonPropertyResourcesItemPropertyBulkDiscountItem.t()
             ]
             | nil,
+          custom_payment_method_ids: [String.t()] | nil,
           other_settings:
             SellApp.BatchCreateProductVariantsRequestApplicationJsonPropertyResourcesItemPropertyOtherSettings.t()
             | nil,
@@ -131,6 +133,13 @@ defmodule SellApp.BatchCreateProductVariantsRequestApplicationJsonPropertyResour
           }
         }
       },
+      "custom_payment_method_ids" => %{
+        required: false,
+        schema: %{
+          kind: :array,
+          items: %{kind: :string, pattern: "^[0-9A-HJKMNP-TV-Za-hjkmnp-tv-z]{26}$"}
+        }
+      },
       "other_settings" => %{
         required: false,
         schema: %{
@@ -176,6 +185,7 @@ defmodule SellApp.BatchCreateProductVariantsRequestApplicationJsonPropertyResour
           map["bulk_discount"],
           &SellApp.BatchCreateProductVariantsRequestApplicationJsonPropertyResourcesItemPropertyBulkDiscountItem.from_map/1
         ),
+      custom_payment_method_ids: map["custom_payment_method_ids"],
       other_settings:
         SellApp.Cast.nested(
           map["other_settings"],
@@ -192,6 +202,7 @@ defmodule SellApp.BatchCreateProductVariantsRequestApplicationJsonPropertyResour
           "minimum_purchase_quantity",
           "maximum_purchase_quantity",
           "bulk_discount",
+          "custom_payment_method_ids",
           "other_settings",
           "expected_updated_at"
         ]),
@@ -231,6 +242,7 @@ defmodule SellApp.BatchCreateProductVariantsRequestApplicationJsonPropertyResour
                 &SellApp.BatchCreateProductVariantsRequestApplicationJsonPropertyResourcesItemPropertyBulkDiscountItem.to_map/1
               )
             end),
+          "custom_payment_method_ids" => struct.custom_payment_method_ids,
           "other_settings" =>
             SellApp.Cast.dump_struct(
               struct.other_settings,

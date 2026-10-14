@@ -105,8 +105,22 @@ defmodule SellApp.CustomerPortalTest do
       )
     end)
 
-    assert {:ok, %SellApp.SdkListCustomerPortalSubscriptionsResponseValue200ApplicationJson{}} =
+    assert {:ok,
+            %SellApp.Page{
+              data: [%SellApp.CustomerPortalSubscription{id: 1, cancel_at_period_end: true} | _]
+            }} = SellApp.CustomerPortal.list_customer_portal_subscriptions(client)
+  end
+
+  test "list_customer_portal_subscriptions handles an empty page", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      Req.Test.json(conn, %{"data" => [], "list_metadata" => %{"after" => nil}})
+    end)
+
+    assert {:ok, %SellApp.Page{data: []} = page} =
              SellApp.CustomerPortal.list_customer_portal_subscriptions(client)
+
+    refute SellApp.Page.has_more?(page)
+    assert page |> SellApp.Page.stream() |> Enum.to_list() == []
   end
 
   test "get_customer_portal_subscription succeeds", %{client: client} do
@@ -188,13 +202,7 @@ defmodule SellApp.CustomerPortalTest do
              SellApp.CustomerPortal.cancel_customer_subscription_at_period_end(
                client,
                "test_product_subscription",
-               %{
-                 "preview_id" => "preview_id",
-                 "product_variant_id" => 1,
-                 "renewal_date" => "2024-01-01",
-                 "return_url" => "return_url",
-                 "reason" => "reason"
-               }
+               %{"reason" => nil}
              )
   end
 
@@ -218,13 +226,7 @@ defmodule SellApp.CustomerPortalTest do
              SellApp.CustomerPortal.cancel_customer_subscription_immediately(
                client,
                "test_product_subscription",
-               %{
-                 "preview_id" => "preview_id",
-                 "product_variant_id" => 1,
-                 "renewal_date" => "2024-01-01",
-                 "return_url" => "return_url",
-                 "reason" => "reason"
-               }
+               %{"reason" => nil}
              )
   end
 
@@ -247,13 +249,7 @@ defmodule SellApp.CustomerPortalTest do
              SellApp.CustomerPortal.pause_customer_subscription(
                client,
                "test_product_subscription",
-               %{
-                 "preview_id" => "preview_id",
-                 "product_variant_id" => 1,
-                 "renewal_date" => "2024-01-01",
-                 "return_url" => "return_url",
-                 "reason" => "reason"
-               }
+               %{"resume_at" => nil, "reason" => nil}
              )
   end
 
@@ -275,14 +271,7 @@ defmodule SellApp.CustomerPortalTest do
     assert {:ok, %SellApp.SdkResumeCustomerSubscriptionResponseValue200ApplicationJson{}} =
              SellApp.CustomerPortal.resume_customer_subscription(
                client,
-               "test_product_subscription",
-               %{
-                 "preview_id" => "preview_id",
-                 "product_variant_id" => 1,
-                 "renewal_date" => "2024-01-01",
-                 "return_url" => "return_url",
-                 "reason" => "reason"
-               }
+               "test_product_subscription"
              )
   end
 
@@ -308,13 +297,7 @@ defmodule SellApp.CustomerPortalTest do
              SellApp.CustomerPortal.update_customer_subscription_payment_method(
                client,
                "test_product_subscription",
-               %{
-                 "preview_id" => "preview_id",
-                 "product_variant_id" => 1,
-                 "renewal_date" => "2024-01-01",
-                 "return_url" => "return_url",
-                 "reason" => "reason"
-               }
+               %{"return_url" => nil}
              )
   end
 
@@ -339,11 +322,10 @@ defmodule SellApp.CustomerPortalTest do
                client,
                "test_product_subscription",
                %{
-                 "preview_id" => "preview_id",
-                 "product_variant_id" => 1,
-                 "renewal_date" => "2024-01-01",
-                 "return_url" => "return_url",
-                 "reason" => "reason"
+                 "target_variant_id" => 1,
+                 "effective_timing" => "immediate",
+                 "proration_behavior" => "invoice_now",
+                 "metadata" => %{}
                }
              )
   end
@@ -369,11 +351,11 @@ defmodule SellApp.CustomerPortalTest do
                client,
                "test_product_subscription",
                %{
-                 "preview_id" => "preview_id",
-                 "product_variant_id" => 1,
-                 "renewal_date" => "2024-01-01",
-                 "return_url" => "return_url",
-                 "reason" => "reason"
+                 "target_variant_id" => 1,
+                 "preview_token" => "preview_token",
+                 "effective_timing" => "immediate",
+                 "proration_behavior" => "invoice_now",
+                 "metadata" => %{}
                }
              )
   end
@@ -400,13 +382,7 @@ defmodule SellApp.CustomerPortalTest do
              SellApp.CustomerPortal.preview_customer_subscription_renewal_date_change(
                client,
                "test_product_subscription",
-               %{
-                 "preview_id" => "preview_id",
-                 "product_variant_id" => 1,
-                 "renewal_date" => "2024-01-01",
-                 "return_url" => "return_url",
-                 "reason" => "reason"
-               }
+               %{"renewal_date" => "2024-01-01T00:00:00.000Z", "reason" => nil, "metadata" => %{}}
              )
   end
 
@@ -433,11 +409,10 @@ defmodule SellApp.CustomerPortalTest do
                client,
                "test_product_subscription",
                %{
-                 "preview_id" => "preview_id",
-                 "product_variant_id" => 1,
-                 "renewal_date" => "2024-01-01",
-                 "return_url" => "return_url",
-                 "reason" => "reason"
+                 "renewal_date" => "2024-01-01T00:00:00.000Z",
+                 "preview_token" => nil,
+                 "reason" => nil,
+                 "metadata" => %{}
                }
              )
   end

@@ -3,36 +3,30 @@
 defmodule SellApp.UpdateCustomerSubscriptionPaymentMethodResponseValue200ApplicationJsonPropertyData do
   @moduledoc """
   UpdateCustomerSubscriptionPaymentMethodResponseValue200ApplicationJsonPropertyData model.
-
-  ## Deprecated fields
-
-    * `:subscription_id`
-    * `:customer_id`
   """
 
   defstruct [
     :id,
-    :status,
-    :provider_subscription_id,
-    :provider_customer_id,
-    :customer,
     :subscription_id,
-    :customer_id,
-    :product_variant_id,
+    :action,
+    :status,
+    :customer_message,
+    :redirect_url,
+    :created_at,
     __additional_properties__: %{},
     __present_fields__: []
   ]
 
   @type t :: %__MODULE__{
           id: integer(),
-          status: String.t(),
-          provider_subscription_id: String.t() | nil,
-          provider_customer_id: String.t() | nil,
-          customer:
-            SellApp.UpdateCustomerSubscriptionPaymentMethodResponseValue200ApplicationJsonPropertyDataPropertyCustomer.t(),
-          subscription_id: String.t() | nil,
-          customer_id: String.t() | nil,
-          product_variant_id: integer() | nil,
+          subscription_id: integer(),
+          action:
+            SellApp.UpdateCustomerSubscriptionPaymentMethodResponseValue200ApplicationJsonPropertyDataAction.t(),
+          status:
+            SellApp.UpdateCustomerSubscriptionPaymentMethodResponseValue200ApplicationJsonPropertyDataStatus.t(),
+          customer_message: String.t() | nil,
+          redirect_url: String.t() | nil,
+          created_at: String.t() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -41,26 +35,37 @@ defmodule SellApp.UpdateCustomerSubscriptionPaymentMethodResponseValue200Applica
     name: "UpdateCustomerSubscriptionPaymentMethodResponseValue200ApplicationJsonPropertyData",
     properties: %{
       "id" => %{required: true, schema: %{kind: :integer}},
-      "status" => %{required: true, schema: %{kind: :string}},
-      "provider_subscription_id" => %{
-        required: true,
-        schema: %{kind: :nullable, inner: %{kind: :string}}
-      },
-      "provider_customer_id" => %{
-        required: true,
-        schema: %{kind: :nullable, inner: %{kind: :string}}
-      },
-      "customer" => %{
+      "subscription_id" => %{required: true, schema: %{kind: :integer}},
+      "action" => %{
         required: true,
         schema: %{
-          kind: :model,
-          module:
-            SellApp.UpdateCustomerSubscriptionPaymentMethodResponseValue200ApplicationJsonPropertyDataPropertyCustomer
+          kind: :enum,
+          values: [
+            "pause",
+            "resume",
+            "cancel_at_period_end",
+            "cancel_immediately",
+            "keep_subscription",
+            "update_payment_method",
+            "change_plan",
+            "shift_billing_date",
+            "set_auto_renew"
+          ]
         }
       },
-      "subscription_id" => %{required: false, schema: %{kind: :nullable, inner: %{kind: :string}}},
-      "customer_id" => %{required: false, schema: %{kind: :nullable, inner: %{kind: :string}}},
-      "product_variant_id" => %{required: false, schema: %{kind: :integer}}
+      "status" => %{
+        required: true,
+        schema: %{kind: :enum, values: ["pending", "confirmed", "failed", "expired", "dismissed"]}
+      },
+      "customer_message" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}},
+      "redirect_url" => %{
+        required: true,
+        schema: %{kind: :nullable, inner: %{kind: :string, format: "uri"}}
+      },
+      "created_at" => %{
+        required: true,
+        schema: %{kind: :nullable, inner: %{kind: :string, format: "date-time"}}
+      }
     },
     additional_properties: true
   }
@@ -74,27 +79,29 @@ defmodule SellApp.UpdateCustomerSubscriptionPaymentMethodResponseValue200Applica
 
     %__MODULE__{
       id: map["id"],
-      status: map["status"],
-      provider_subscription_id: map["provider_subscription_id"],
-      provider_customer_id: map["provider_customer_id"],
-      customer:
-        SellApp.Cast.nested(
-          map["customer"],
-          &SellApp.UpdateCustomerSubscriptionPaymentMethodResponseValue200ApplicationJsonPropertyDataPropertyCustomer.from_map/1
-        ),
       subscription_id: map["subscription_id"],
-      customer_id: map["customer_id"],
-      product_variant_id: map["product_variant_id"],
+      action:
+        SellApp.Cast.enum(
+          map["action"],
+          &SellApp.UpdateCustomerSubscriptionPaymentMethodResponseValue200ApplicationJsonPropertyDataAction.cast/1
+        ),
+      status:
+        SellApp.Cast.enum(
+          map["status"],
+          &SellApp.UpdateCustomerSubscriptionPaymentMethodResponseValue200ApplicationJsonPropertyDataStatus.cast/1
+        ),
+      customer_message: map["customer_message"],
+      redirect_url: map["redirect_url"],
+      created_at: map["created_at"],
       __additional_properties__:
         Map.drop(map, [
           "id",
-          "status",
-          "provider_subscription_id",
-          "provider_customer_id",
-          "customer",
           "subscription_id",
-          "customer_id",
-          "product_variant_id"
+          "action",
+          "status",
+          "customer_message",
+          "redirect_url",
+          "created_at"
         ]),
       __present_fields__: Map.keys(map)
     }
@@ -107,19 +114,30 @@ defmodule SellApp.UpdateCustomerSubscriptionPaymentMethodResponseValue200Applica
       SellApp.Cast.keep_present(
         %{
           "id" => struct.id,
-          "status" => struct.status,
-          "provider_subscription_id" => struct.provider_subscription_id,
-          "provider_customer_id" => struct.provider_customer_id,
-          "customer" =>
-            SellApp.Cast.dump_struct(
-              struct.customer,
-              &SellApp.UpdateCustomerSubscriptionPaymentMethodResponseValue200ApplicationJsonPropertyDataPropertyCustomer.to_map/1
-            ),
           "subscription_id" => struct.subscription_id,
-          "customer_id" => struct.customer_id,
-          "product_variant_id" => struct.product_variant_id
+          "action" =>
+            SellApp.Cast.enum(
+              struct.action,
+              &SellApp.UpdateCustomerSubscriptionPaymentMethodResponseValue200ApplicationJsonPropertyDataAction.dump/1
+            ),
+          "status" =>
+            SellApp.Cast.enum(
+              struct.status,
+              &SellApp.UpdateCustomerSubscriptionPaymentMethodResponseValue200ApplicationJsonPropertyDataStatus.dump/1
+            ),
+          "customer_message" => struct.customer_message,
+          "redirect_url" => struct.redirect_url,
+          "created_at" => struct.created_at
         },
-        ["id", "status", "provider_subscription_id", "provider_customer_id", "customer"],
+        [
+          "id",
+          "subscription_id",
+          "action",
+          "status",
+          "customer_message",
+          "redirect_url",
+          "created_at"
+        ],
         struct.__present_fields__
       )
 

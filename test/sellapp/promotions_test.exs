@@ -55,6 +55,11 @@ defmodule SellApp.PromotionsTest do
                "priority" => 1,
                "is_stackable" => true,
                "max_redemptions" => nil,
+               "applies_to" => "one_time",
+               "subscription_payments" => nil,
+               "store_wide" => true,
+               "products" => [1],
+               "product_variants" => [1],
                "phases" => [
                  %{
                    "discount_type" => "percentage",
@@ -146,6 +151,11 @@ defmodule SellApp.PromotionsTest do
                "priority" => 1,
                "is_stackable" => true,
                "max_redemptions" => nil,
+               "applies_to" => "one_time",
+               "subscription_payments" => nil,
+               "store_wide" => true,
+               "products" => [1],
+               "product_variants" => [1],
                "phases" => [
                  %{
                    "discount_type" => "percentage",
@@ -174,6 +184,11 @@ defmodule SellApp.PromotionsTest do
                "priority" => 1,
                "is_stackable" => true,
                "max_redemptions" => nil,
+               "applies_to" => "one_time",
+               "subscription_payments" => nil,
+               "store_wide" => true,
+               "products" => [1],
+               "product_variants" => [1],
                "phases" => [
                  %{
                    "discount_type" => "percentage",
@@ -213,6 +228,11 @@ defmodule SellApp.PromotionsTest do
                "priority" => 1,
                "is_stackable" => true,
                "max_redemptions" => nil,
+               "applies_to" => "one_time",
+               "subscription_payments" => nil,
+               "store_wide" => true,
+               "products" => [1],
+               "product_variants" => [1],
                "phases" => [
                  %{
                    "discount_type" => "percentage",
@@ -227,7 +247,8 @@ defmodule SellApp.PromotionsTest do
 
   test "list encodes query parameters", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
-      params = Plug.Conn.fetch_query_params(conn).query_params
+      pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()
+      params = Map.new(pairs)
       assert params["limit"] == "hello world&x"
       refute Map.has_key?(params, "page")
       Req.Test.json(conn, SellApp.TestFixtures.fixture("promotions/list"))

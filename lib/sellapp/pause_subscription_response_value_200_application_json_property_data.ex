@@ -12,6 +12,8 @@ defmodule SellApp.PauseSubscriptionResponseValue200ApplicationJsonPropertyData d
     :action,
     :status,
     :provider,
+    :proration_order_id,
+    :error,
     :customer_message,
     :confirmed_at,
     :failed_at,
@@ -30,6 +32,8 @@ defmodule SellApp.PauseSubscriptionResponseValue200ApplicationJsonPropertyData d
           status:
             SellApp.PauseSubscriptionResponseValue200ApplicationJsonPropertyDataStatus.t() | nil,
           provider: String.t() | nil,
+          proration_order_id: integer() | nil,
+          error: String.t() | nil,
           customer_message: String.t() | nil,
           confirmed_at: String.t() | nil,
           failed_at: String.t() | nil,
@@ -54,9 +58,11 @@ defmodule SellApp.PauseSubscriptionResponseValue200ApplicationJsonPropertyData d
             "resume",
             "cancel_at_period_end",
             "cancel_immediately",
+            "keep_subscription",
             "update_payment_method",
             "change_plan",
-            "shift_billing_date"
+            "shift_billing_date",
+            "set_auto_renew"
           ]
         }
       },
@@ -68,6 +74,11 @@ defmodule SellApp.PauseSubscriptionResponseValue200ApplicationJsonPropertyData d
         }
       },
       "provider" => %{required: false, schema: %{kind: :string}},
+      "proration_order_id" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :integer}}
+      },
+      "error" => %{required: false, schema: %{kind: :nullable, inner: %{kind: :string}}},
       "customer_message" => %{
         required: false,
         schema: %{kind: :nullable, inner: %{kind: :string}}
@@ -108,6 +119,8 @@ defmodule SellApp.PauseSubscriptionResponseValue200ApplicationJsonPropertyData d
           &SellApp.PauseSubscriptionResponseValue200ApplicationJsonPropertyDataStatus.cast/1
         ),
       provider: map["provider"],
+      proration_order_id: map["proration_order_id"],
+      error: map["error"],
       customer_message: map["customer_message"],
       confirmed_at: map["confirmed_at"],
       failed_at: map["failed_at"],
@@ -121,6 +134,8 @@ defmodule SellApp.PauseSubscriptionResponseValue200ApplicationJsonPropertyData d
           "action",
           "status",
           "provider",
+          "proration_order_id",
+          "error",
           "customer_message",
           "confirmed_at",
           "failed_at",
@@ -151,6 +166,8 @@ defmodule SellApp.PauseSubscriptionResponseValue200ApplicationJsonPropertyData d
               &SellApp.PauseSubscriptionResponseValue200ApplicationJsonPropertyDataStatus.dump/1
             ),
           "provider" => struct.provider,
+          "proration_order_id" => struct.proration_order_id,
+          "error" => struct.error,
           "customer_message" => struct.customer_message,
           "confirmed_at" => struct.confirmed_at,
           "failed_at" => struct.failed_at,

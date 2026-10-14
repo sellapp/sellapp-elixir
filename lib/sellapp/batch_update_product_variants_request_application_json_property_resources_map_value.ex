@@ -14,8 +14,10 @@ defmodule SellApp.BatchUpdateProductVariantsRequestApplicationJsonPropertyResour
     :maximum_purchase_quantity,
     :bulk_discount,
     :payment_methods,
+    :custom_payment_method_ids,
     :other_settings,
     :expected_updated_at,
+    :stock,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -41,10 +43,12 @@ defmodule SellApp.BatchUpdateProductVariantsRequestApplicationJsonPropertyResour
               SellApp.BatchUpdateProductVariantsRequestApplicationJsonPropertyResourcesMapValuePaymentMethods.t()
             ]
             | nil,
+          custom_payment_method_ids: [String.t()] | nil,
           other_settings:
             SellApp.BatchUpdateProductVariantsRequestApplicationJsonPropertyResourcesMapValuePropertyOtherSettings.t()
             | nil,
           expected_updated_at: String.t() | nil,
+          stock: integer() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -135,6 +139,13 @@ defmodule SellApp.BatchUpdateProductVariantsRequestApplicationJsonPropertyResour
           min_items: 1
         }
       },
+      "custom_payment_method_ids" => %{
+        required: false,
+        schema: %{
+          kind: :array,
+          items: %{kind: :string, pattern: "^[0-9A-HJKMNP-TV-Za-hjkmnp-tv-z]{26}$"}
+        }
+      },
       "other_settings" => %{
         required: false,
         schema: %{
@@ -143,7 +154,11 @@ defmodule SellApp.BatchUpdateProductVariantsRequestApplicationJsonPropertyResour
             SellApp.BatchUpdateProductVariantsRequestApplicationJsonPropertyResourcesMapValuePropertyOtherSettings
         }
       },
-      "expected_updated_at" => %{required: false, schema: %{kind: :string, format: "date-time"}}
+      "expected_updated_at" => %{required: false, schema: %{kind: :string, format: "date-time"}},
+      "stock" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :integer, minimum: 0, maximum: 2_147_483_647}}
+      }
     },
     additional_properties: true
   }
@@ -180,12 +195,14 @@ defmodule SellApp.BatchUpdateProductVariantsRequestApplicationJsonPropertyResour
           map["payment_methods"],
           &SellApp.BatchUpdateProductVariantsRequestApplicationJsonPropertyResourcesMapValuePaymentMethods.cast/1
         ),
+      custom_payment_method_ids: map["custom_payment_method_ids"],
       other_settings:
         SellApp.Cast.nested(
           map["other_settings"],
           &SellApp.BatchUpdateProductVariantsRequestApplicationJsonPropertyResourcesMapValuePropertyOtherSettings.from_map/1
         ),
       expected_updated_at: map["expected_updated_at"],
+      stock: map["stock"],
       __additional_properties__:
         Map.drop(map, [
           "title",
@@ -196,8 +213,10 @@ defmodule SellApp.BatchUpdateProductVariantsRequestApplicationJsonPropertyResour
           "maximum_purchase_quantity",
           "bulk_discount",
           "payment_methods",
+          "custom_payment_method_ids",
           "other_settings",
-          "expected_updated_at"
+          "expected_updated_at",
+          "stock"
         ]),
       __present_fields__: Map.keys(map)
     }
@@ -235,12 +254,14 @@ defmodule SellApp.BatchUpdateProductVariantsRequestApplicationJsonPropertyResour
               struct.payment_methods,
               &SellApp.BatchUpdateProductVariantsRequestApplicationJsonPropertyResourcesMapValuePaymentMethods.dump/1
             ),
+          "custom_payment_method_ids" => struct.custom_payment_method_ids,
           "other_settings" =>
             SellApp.Cast.dump_struct(
               struct.other_settings,
               &SellApp.BatchUpdateProductVariantsRequestApplicationJsonPropertyResourcesMapValuePropertyOtherSettings.to_map/1
             ),
-          "expected_updated_at" => struct.expected_updated_at
+          "expected_updated_at" => struct.expected_updated_at,
+          "stock" => struct.stock
         },
         [],
         struct.__present_fields__

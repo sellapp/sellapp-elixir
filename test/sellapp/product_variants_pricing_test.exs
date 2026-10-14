@@ -36,7 +36,8 @@ defmodule SellApp.ProductVariantsPricingTest do
                  "price" => %{"price" => 1, "currency" => "AUD"},
                  "compare_at_price" => nil,
                  "humble" => true,
-                 "frequency" => %{"value" => 1, "interval" => "DAY"}
+                 "frequency" => %{"value" => 1, "interval" => "DAY"},
+                 "trial" => nil
                },
                "payment_methods" => ["AUTHNET"],
                "custom_payment_method_ids" => ["00000000000000000000000000"],
@@ -64,7 +65,8 @@ defmodule SellApp.ProductVariantsPricingTest do
                  "price" => %{"price" => 1, "currency" => "AUD"},
                  "compare_at_price" => nil,
                  "humble" => true,
-                 "frequency" => %{"value" => 1, "interval" => "DAY"}
+                 "frequency" => %{"value" => 1, "interval" => "DAY"},
+                 "trial" => nil
                },
                "payment_methods" => ["AUTHNET"],
                "custom_payment_method_ids" => ["00000000000000000000000000"],
@@ -90,7 +92,8 @@ defmodule SellApp.ProductVariantsPricingTest do
           "price" => %{"price" => 1, "currency" => "AUD"},
           "compare_at_price" => nil,
           "humble" => true,
-          "frequency" => %{"value" => 1, "interval" => "DAY"}
+          "frequency" => %{"value" => 1, "interval" => "DAY"},
+          "trial" => nil
         },
         "payment_methods" => ["AUTHNET"],
         "custom_payment_method_ids" => ["00000000000000000000000000"],
@@ -116,7 +119,8 @@ defmodule SellApp.ProductVariantsPricingTest do
                  "price" => %{"price" => 1, "currency" => "AUD"},
                  "compare_at_price" => nil,
                  "humble" => true,
-                 "frequency" => %{"value" => 1, "interval" => "DAY"}
+                 "frequency" => %{"value" => 1, "interval" => "DAY"},
+                 "trial" => nil
                },
                "payment_methods" => ["AUTHNET"],
                "custom_payment_method_ids" => ["00000000000000000000000000"],

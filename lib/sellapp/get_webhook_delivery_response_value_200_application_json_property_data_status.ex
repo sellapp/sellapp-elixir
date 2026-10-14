@@ -5,25 +5,29 @@ defmodule SellApp.GetWebhookDeliveryResponseValue200ApplicationJsonPropertyDataS
   GetWebhookDeliveryResponseValue200ApplicationJsonPropertyDataStatus enum.
   """
 
-  @type t :: :pending | :delivering | :succeeded | :failed
+  @type t :: :pending | :delivering | :retrying | :succeeded | :failed | :disabled
 
   @doc "All known values."
   @spec values() :: [t()]
-  def values, do: [:pending, :delivering, :succeeded, :failed]
+  def values, do: [:pending, :delivering, :retrying, :succeeded, :failed, :disabled]
 
   @doc "Casts a wire string to its atom; unknown values pass through unchanged."
   @spec cast(String.t() | nil) :: t() | String.t() | nil
   def cast("pending"), do: :pending
   def cast("delivering"), do: :delivering
+  def cast("retrying"), do: :retrying
   def cast("succeeded"), do: :succeeded
   def cast("failed"), do: :failed
+  def cast("disabled"), do: :disabled
   def cast(other), do: other
 
   @doc "Dumps an atom back to its wire string."
   @spec dump(t() | String.t()) :: String.t()
   def dump(:pending), do: "pending"
   def dump(:delivering), do: "delivering"
+  def dump(:retrying), do: "retrying"
   def dump(:succeeded), do: "succeeded"
   def dump(:failed), do: "failed"
+  def dump(:disabled), do: "disabled"
   def dump(other) when is_binary(other), do: other
 end

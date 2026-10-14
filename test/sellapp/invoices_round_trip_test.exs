@@ -14,7 +14,7 @@ defmodule SellApp.InvoicesRoundTripTest do
           "vat" => 1,
           "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
         },
-        "gateway" => %{"data" => %{}, "type" => "type"},
+        "gateway" => %{"data" => %{}, "type" => nil},
         "subtotal" => %{
           "base" => "base",
           "currency" => "currency",
@@ -101,7 +101,7 @@ defmodule SellApp.InvoicesRoundTripTest do
             "vat" => 1,
             "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
           },
-          "gateway" => %{"data" => %{}, "type" => "type"},
+          "gateway" => %{"data" => %{}, "type" => nil},
           "subtotal" => %{
             "base" => "base",
             "currency" => "currency",
@@ -126,7 +126,13 @@ defmodule SellApp.InvoicesRoundTripTest do
           }
         },
         "status" => %{
-          "history" => ["history"],
+          "history" => [
+            %{
+              "setAt" => "2024-01-01T00:00:00.000Z",
+              "status" => "status",
+              "updatedAt" => "2024-01-01T00:00:00.000Z"
+            }
+          ],
           "status" => %{
             "setAt" => "2024-01-01T00:00:00.000Z",
             "status" => "status",
@@ -230,7 +236,7 @@ defmodule SellApp.InvoicesRoundTripTest do
               "vat" => 1,
               "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
             },
-            "gateway" => %{"data" => %{}, "type" => "type"},
+            "gateway" => %{"data" => %{}, "type" => nil},
             "subtotal" => %{
               "base" => "base",
               "currency" => "currency",
@@ -325,7 +331,7 @@ defmodule SellApp.InvoicesRoundTripTest do
             "vat" => 1,
             "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
           },
-          "gateway" => %{"data" => %{}, "type" => "type"},
+          "gateway" => %{"data" => %{}, "type" => nil},
           "subtotal" => %{
             "base" => "base",
             "currency" => "currency",
@@ -446,7 +452,7 @@ defmodule SellApp.InvoicesRoundTripTest do
             "vat" => 1,
             "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
           },
-          "gateway" => %{"data" => %{}, "type" => "type"},
+          "gateway" => %{"data" => %{}, "type" => nil},
           "subtotal" => %{
             "base" => "base",
             "currency" => "currency",
@@ -530,7 +536,7 @@ defmodule SellApp.InvoicesRoundTripTest do
           "vat" => 1,
           "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
         },
-        "gateway" => %{"data" => %{}, "type" => "type"},
+        "gateway" => %{"data" => %{}, "type" => nil},
         "subtotal" => %{
           "base" => "base",
           "currency" => "currency",
@@ -616,7 +622,7 @@ defmodule SellApp.InvoicesRoundTripTest do
               "vat" => 1,
               "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
             },
-            "gateway" => %{"data" => %{}, "type" => "type"},
+            "gateway" => %{"data" => %{}, "type" => nil},
             "subtotal" => %{
               "base" => "base",
               "currency" => "currency",
@@ -705,7 +711,7 @@ defmodule SellApp.InvoicesRoundTripTest do
           "vat" => 1,
           "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
         },
-        "gateway" => %{"data" => %{}, "type" => "type"},
+        "gateway" => %{"data" => %{}, "type" => nil},
         "subtotal" => %{
           "base" => "base",
           "currency" => "currency",
@@ -789,7 +795,7 @@ defmodule SellApp.InvoicesRoundTripTest do
           "vat" => 1,
           "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
         },
-        "gateway" => %{"data" => %{}, "type" => "type"},
+        "gateway" => %{"data" => %{}, "type" => nil},
         "subtotal" => %{
           "base" => "base",
           "currency" => "currency",
@@ -875,7 +881,7 @@ defmodule SellApp.InvoicesRoundTripTest do
               "vat" => 1,
               "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
             },
-            "gateway" => %{"data" => %{}, "type" => "type"},
+            "gateway" => %{"data" => %{}, "type" => nil},
             "subtotal" => %{
               "base" => "base",
               "currency" => "currency",
@@ -964,7 +970,7 @@ defmodule SellApp.InvoicesRoundTripTest do
           "vat" => 1,
           "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
         },
-        "gateway" => %{"data" => %{}, "type" => "type"},
+        "gateway" => %{"data" => %{}, "type" => nil},
         "subtotal" => %{
           "base" => "base",
           "currency" => "currency",
@@ -1047,7 +1053,7 @@ defmodule SellApp.InvoicesRoundTripTest do
           "vat" => 1,
           "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
         },
-        "gateway" => %{"data" => %{}, "type" => "type"},
+        "gateway" => %{"data" => %{}, "type" => nil},
         "subtotal" => %{
           "base" => "base",
           "currency" => "currency",

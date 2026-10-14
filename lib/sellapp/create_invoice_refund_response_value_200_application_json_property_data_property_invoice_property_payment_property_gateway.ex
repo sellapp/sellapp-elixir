@@ -15,7 +15,7 @@ defmodule SellApp.CreateInvoiceRefundResponseValue200ApplicationJsonPropertyData
   @type t :: %__MODULE__{
           data:
             SellApp.CreateInvoiceRefundResponseValue200ApplicationJsonPropertyDataPropertyInvoicePropertyPaymentPropertyGatewayPropertyData.t(),
-          type: String.t(),
+          type: String.t() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -32,7 +32,7 @@ defmodule SellApp.CreateInvoiceRefundResponseValue200ApplicationJsonPropertyData
             SellApp.CreateInvoiceRefundResponseValue200ApplicationJsonPropertyDataPropertyInvoicePropertyPaymentPropertyGatewayPropertyData
         }
       },
-      "type" => %{required: true, schema: %{kind: :string}}
+      "type" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}}
     },
     additional_properties: true
   }

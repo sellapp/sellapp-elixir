@@ -64,7 +64,8 @@ defmodule SellApp.AffiliateReferralSessionsTest do
 
   test "list encodes query parameters", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
-      params = Plug.Conn.fetch_query_params(conn).query_params
+      pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()
+      params = Map.new(pairs)
       assert params["affiliate_id"] == "hello world&x"
       refute Map.has_key?(params, "active")
       Req.Test.json(conn, SellApp.TestFixtures.fixture("affiliate_referral_sessions/list"))

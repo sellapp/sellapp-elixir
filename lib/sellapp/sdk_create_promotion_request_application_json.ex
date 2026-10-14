@@ -14,6 +14,11 @@ defmodule SellApp.SdkCreatePromotionRequestApplicationJson do
     :starts_at,
     :ends_at,
     :max_redemptions,
+    :applies_to,
+    :subscription_payments,
+    :store_wide,
+    :products,
+    :product_variants,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -27,6 +32,11 @@ defmodule SellApp.SdkCreatePromotionRequestApplicationJson do
           starts_at: String.t() | nil,
           ends_at: String.t() | nil,
           max_redemptions: integer() | nil,
+          applies_to: SellApp.SdkCreatePromotionRequestApplicationJsonAppliesTo.t() | nil,
+          subscription_payments: integer() | nil,
+          store_wide: boolean() | nil,
+          products: [integer()] | nil,
+          product_variants: [integer()] | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -63,7 +73,18 @@ defmodule SellApp.SdkCreatePromotionRequestApplicationJson do
       "max_redemptions" => %{
         required: false,
         schema: %{kind: :nullable, inner: %{kind: :integer, minimum: 1, maximum: 4_294_967_295}}
-      }
+      },
+      "applies_to" => %{
+        required: false,
+        schema: %{kind: :enum, values: ["one_time", "subscriptions"]}
+      },
+      "subscription_payments" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :integer, minimum: 1, maximum: 36}}
+      },
+      "store_wide" => %{required: false, schema: %{kind: :boolean}},
+      "products" => %{required: false, schema: %{kind: :array, items: %{kind: :integer}}},
+      "product_variants" => %{required: false, schema: %{kind: :array, items: %{kind: :integer}}}
     },
     additional_properties: true
   }
@@ -92,6 +113,15 @@ defmodule SellApp.SdkCreatePromotionRequestApplicationJson do
       starts_at: map["starts_at"],
       ends_at: map["ends_at"],
       max_redemptions: map["max_redemptions"],
+      applies_to:
+        SellApp.Cast.enum(
+          map["applies_to"],
+          &SellApp.SdkCreatePromotionRequestApplicationJsonAppliesTo.cast/1
+        ),
+      subscription_payments: map["subscription_payments"],
+      store_wide: map["store_wide"],
+      products: map["products"],
+      product_variants: map["product_variants"],
       __additional_properties__:
         Map.drop(map, [
           "name",
@@ -101,7 +131,12 @@ defmodule SellApp.SdkCreatePromotionRequestApplicationJson do
           "phases",
           "starts_at",
           "ends_at",
-          "max_redemptions"
+          "max_redemptions",
+          "applies_to",
+          "subscription_payments",
+          "store_wide",
+          "products",
+          "product_variants"
         ]),
       __present_fields__: Map.keys(map)
     }
@@ -130,7 +165,16 @@ defmodule SellApp.SdkCreatePromotionRequestApplicationJson do
             end),
           "starts_at" => struct.starts_at,
           "ends_at" => struct.ends_at,
-          "max_redemptions" => struct.max_redemptions
+          "max_redemptions" => struct.max_redemptions,
+          "applies_to" =>
+            SellApp.Cast.enum(
+              struct.applies_to,
+              &SellApp.SdkCreatePromotionRequestApplicationJsonAppliesTo.dump/1
+            ),
+          "subscription_payments" => struct.subscription_payments,
+          "store_wide" => struct.store_wide,
+          "products" => struct.products,
+          "product_variants" => struct.product_variants
         },
         ["name", "status", "priority", "is_stackable", "phases"],
         struct.__present_fields__

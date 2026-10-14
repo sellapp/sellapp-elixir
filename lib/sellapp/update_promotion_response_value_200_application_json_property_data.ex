@@ -11,6 +11,11 @@ defmodule SellApp.UpdatePromotionResponseValue200ApplicationJsonPropertyData do
     :status,
     :priority,
     :is_stackable,
+    :applies_to,
+    :subscription_payments,
+    :store_wide,
+    :products,
+    :product_variants,
     :phases,
     :starts_at,
     :ends_at,
@@ -28,6 +33,12 @@ defmodule SellApp.UpdatePromotionResponseValue200ApplicationJsonPropertyData do
           status: SellApp.UpdatePromotionResponseValue200ApplicationJsonPropertyDataStatus.t(),
           priority: integer(),
           is_stackable: boolean(),
+          applies_to:
+            SellApp.UpdatePromotionResponseValue200ApplicationJsonPropertyDataAppliesTo.t(),
+          subscription_payments: integer() | nil,
+          store_wide: boolean(),
+          products: [integer()],
+          product_variants: [integer()],
           phases: [
             SellApp.UpdatePromotionResponseValue200ApplicationJsonPropertyDataPropertyPhasesItem.t()
           ],
@@ -49,6 +60,17 @@ defmodule SellApp.UpdatePromotionResponseValue200ApplicationJsonPropertyData do
       "status" => %{required: true, schema: %{kind: :enum, values: ["active", "disabled"]}},
       "priority" => %{required: true, schema: %{kind: :integer, minimum: 0}},
       "is_stackable" => %{required: true, schema: %{kind: :boolean}},
+      "applies_to" => %{
+        required: true,
+        schema: %{kind: :enum, values: ["one_time", "subscriptions"]}
+      },
+      "subscription_payments" => %{
+        required: true,
+        schema: %{kind: :nullable, inner: %{kind: :integer}}
+      },
+      "store_wide" => %{required: true, schema: %{kind: :boolean}},
+      "products" => %{required: true, schema: %{kind: :array, items: %{kind: :integer}}},
+      "product_variants" => %{required: true, schema: %{kind: :array, items: %{kind: :integer}}},
       "phases" => %{
         required: true,
         schema: %{
@@ -105,6 +127,15 @@ defmodule SellApp.UpdatePromotionResponseValue200ApplicationJsonPropertyData do
         ),
       priority: map["priority"],
       is_stackable: map["is_stackable"],
+      applies_to:
+        SellApp.Cast.enum(
+          map["applies_to"],
+          &SellApp.UpdatePromotionResponseValue200ApplicationJsonPropertyDataAppliesTo.cast/1
+        ),
+      subscription_payments: map["subscription_payments"],
+      store_wide: map["store_wide"],
+      products: map["products"],
+      product_variants: map["product_variants"],
       phases:
         SellApp.Cast.list(
           map["phases"],
@@ -123,6 +154,11 @@ defmodule SellApp.UpdatePromotionResponseValue200ApplicationJsonPropertyData do
           "status",
           "priority",
           "is_stackable",
+          "applies_to",
+          "subscription_payments",
+          "store_wide",
+          "products",
+          "product_variants",
           "phases",
           "starts_at",
           "ends_at",
@@ -150,6 +186,15 @@ defmodule SellApp.UpdatePromotionResponseValue200ApplicationJsonPropertyData do
             ),
           "priority" => struct.priority,
           "is_stackable" => struct.is_stackable,
+          "applies_to" =>
+            SellApp.Cast.enum(
+              struct.applies_to,
+              &SellApp.UpdatePromotionResponseValue200ApplicationJsonPropertyDataAppliesTo.dump/1
+            ),
+          "subscription_payments" => struct.subscription_payments,
+          "store_wide" => struct.store_wide,
+          "products" => struct.products,
+          "product_variants" => struct.product_variants,
           "phases" =>
             SellApp.Cast.list(struct.phases, fn item ->
               SellApp.Cast.dump_struct(
@@ -164,7 +209,19 @@ defmodule SellApp.UpdatePromotionResponseValue200ApplicationJsonPropertyData do
           "updated_at" => struct.updated_at,
           "deleted_at" => struct.deleted_at
         },
-        ["id", "name", "status", "priority", "is_stackable", "phases"],
+        [
+          "id",
+          "name",
+          "status",
+          "priority",
+          "is_stackable",
+          "applies_to",
+          "subscription_payments",
+          "store_wide",
+          "products",
+          "product_variants",
+          "phases"
+        ],
         struct.__present_fields__
       )
 

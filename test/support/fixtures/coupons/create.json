@@ -13,6 +13,8 @@
     "store_id": 1,
     "deleted_at": null,
     "maximum_discount_amount": null,
+    "applies_to": "one_time",
+    "subscription_payments": null,
     "products": [
       1
     ],

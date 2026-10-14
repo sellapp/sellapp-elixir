@@ -1,19 +1,14 @@
 {
   "data": {
-    "id": 1,
-    "status": "status",
-    "subscription_id": null,
-    "customer_id": null,
-    "provider_subscription_id": null,
-    "provider_customer_id": null,
-    "customer": {
-      "id": 1,
-      "email": "email",
-      "external_id": null,
-      "name": null,
-      "locale": null,
-      "metadata": {}
+    "preview_token": null,
+    "expires_at": null,
+    "preview": {
+      "provider": "provider",
+      "payment_required": true,
+      "renewal_date": null,
+      "amount_due": 1,
+      "discount_warning": "discount_warning"
     },
-    "product_variant_id": 1
+    "customer_message": null
   }
 }

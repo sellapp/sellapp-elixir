@@ -22,8 +22,7 @@ defmodule SellApp.GetSubscriptionResponseValue200ApplicationJsonPropertyDataProp
           external_id: String.t() | nil,
           name: String.t() | nil,
           locale: String.t() | nil,
-          metadata:
-            SellApp.GetSubscriptionResponseValue200ApplicationJsonPropertyDataPropertyCustomerPropertyMetadata.t(),
+          metadata: %{optional(String.t()) => SellApp.ScalarMetadataValue.t()},
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -51,9 +50,9 @@ defmodule SellApp.GetSubscriptionResponseValue200ApplicationJsonPropertyDataProp
       "metadata" => %{
         required: true,
         schema: %{
-          kind: :model,
-          module:
-            SellApp.GetSubscriptionResponseValue200ApplicationJsonPropertyDataPropertyCustomerPropertyMetadata
+          kind: :map,
+          values: %{kind: :model, module: SellApp.ScalarMetadataValue},
+          max_properties: 50
         }
       }
     },
@@ -73,11 +72,7 @@ defmodule SellApp.GetSubscriptionResponseValue200ApplicationJsonPropertyDataProp
       external_id: map["external_id"],
       name: map["name"],
       locale: map["locale"],
-      metadata:
-        SellApp.Cast.nested(
-          map["metadata"],
-          &SellApp.GetSubscriptionResponseValue200ApplicationJsonPropertyDataPropertyCustomerPropertyMetadata.from_map/1
-        ),
+      metadata: SellApp.Cast.map_values(map["metadata"], &SellApp.ScalarMetadataValue.from_map/1),
       __additional_properties__:
         Map.drop(map, ["id", "email", "external_id", "name", "locale", "metadata"]),
       __present_fields__: Map.keys(map)
@@ -96,10 +91,9 @@ defmodule SellApp.GetSubscriptionResponseValue200ApplicationJsonPropertyDataProp
           "name" => struct.name,
           "locale" => struct.locale,
           "metadata" =>
-            SellApp.Cast.dump_struct(
-              struct.metadata,
-              &SellApp.GetSubscriptionResponseValue200ApplicationJsonPropertyDataPropertyCustomerPropertyMetadata.to_map/1
-            )
+            SellApp.Cast.map_values(struct.metadata, fn item ->
+              SellApp.Cast.dump_struct(item, &SellApp.ScalarMetadataValue.to_map/1)
+            end)
         },
         ["id", "email", "external_id", "name", "locale", "metadata"],
         struct.__present_fields__

@@ -15,7 +15,7 @@ defmodule SellApp.UpdateInvoiceStatusResponseValue200ApplicationJsonPropertyPaym
   @type t :: %__MODULE__{
           data:
             SellApp.UpdateInvoiceStatusResponseValue200ApplicationJsonPropertyPaymentPropertyGatewayPropertyData.t(),
-          type: String.t(),
+          type: String.t() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -31,7 +31,7 @@ defmodule SellApp.UpdateInvoiceStatusResponseValue200ApplicationJsonPropertyPaym
             SellApp.UpdateInvoiceStatusResponseValue200ApplicationJsonPropertyPaymentPropertyGatewayPropertyData
         }
       },
-      "type" => %{required: true, schema: %{kind: :string}}
+      "type" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}}
     },
     additional_properties: true
   }

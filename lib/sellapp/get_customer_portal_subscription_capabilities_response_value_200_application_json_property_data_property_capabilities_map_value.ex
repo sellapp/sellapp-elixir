@@ -6,15 +6,18 @@ defmodule SellApp.GetCustomerPortalSubscriptionCapabilitiesResponseValue200Appli
   """
 
   defstruct [
-    :available,
-    :reason,
+    :status,
+    :customer_reason,
+    :seller_reason,
     __additional_properties__: %{},
     __present_fields__: []
   ]
 
   @type t :: %__MODULE__{
-          available: boolean(),
-          reason: String.t() | nil,
+          status:
+            SellApp.GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyDataPropertyCapabilitiesMapValueStatus.t(),
+          customer_reason: String.t() | nil,
+          seller_reason: String.t() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -23,8 +26,22 @@ defmodule SellApp.GetCustomerPortalSubscriptionCapabilitiesResponseValue200Appli
     name:
       "GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyDataPropertyCapabilitiesMapValue",
     properties: %{
-      "available" => %{required: true, schema: %{kind: :boolean}},
-      "reason" => %{required: false, schema: %{kind: :string}}
+      "status" => %{
+        required: true,
+        schema: %{
+          kind: :enum,
+          values: [
+            "available",
+            "requires_redirect",
+            "seller_only",
+            "customer_only",
+            "manual_proration",
+            "unsupported"
+          ]
+        }
+      },
+      "customer_reason" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}},
+      "seller_reason" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}}
     },
     additional_properties: true
   }
@@ -37,9 +54,14 @@ defmodule SellApp.GetCustomerPortalSubscriptionCapabilitiesResponseValue200Appli
     SellApp.Schema.validate_model!(map, @schema, :response)
 
     %__MODULE__{
-      available: map["available"],
-      reason: map["reason"],
-      __additional_properties__: Map.drop(map, ["available", "reason"]),
+      status:
+        SellApp.Cast.enum(
+          map["status"],
+          &SellApp.GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyDataPropertyCapabilitiesMapValueStatus.cast/1
+        ),
+      customer_reason: map["customer_reason"],
+      seller_reason: map["seller_reason"],
+      __additional_properties__: Map.drop(map, ["status", "customer_reason", "seller_reason"]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -50,10 +72,15 @@ defmodule SellApp.GetCustomerPortalSubscriptionCapabilitiesResponseValue200Appli
     known =
       SellApp.Cast.keep_present(
         %{
-          "available" => struct.available,
-          "reason" => struct.reason
+          "status" =>
+            SellApp.Cast.enum(
+              struct.status,
+              &SellApp.GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyDataPropertyCapabilitiesMapValueStatus.dump/1
+            ),
+          "customer_reason" => struct.customer_reason,
+          "seller_reason" => struct.seller_reason
         },
-        ["available"],
+        ["status", "customer_reason", "seller_reason"],
         struct.__present_fields__
       )
 

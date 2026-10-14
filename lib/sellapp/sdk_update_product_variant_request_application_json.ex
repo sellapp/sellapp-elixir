@@ -14,8 +14,10 @@ defmodule SellApp.SdkUpdateProductVariantRequestApplicationJson do
     :maximum_purchase_quantity,
     :bulk_discount,
     :payment_methods,
+    :custom_payment_method_ids,
     :other_settings,
     :expected_updated_at,
+    :stock,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -32,9 +34,11 @@ defmodule SellApp.SdkUpdateProductVariantRequestApplicationJson do
             [SellApp.UpdateProductVariantRequestApplicationJsonPropertyBulkDiscountItem.t()] | nil,
           payment_methods:
             [SellApp.SdkUpdateProductVariantRequestApplicationJsonPaymentMethods.t()] | nil,
+          custom_payment_method_ids: [String.t()] | nil,
           other_settings:
             SellApp.UpdateProductVariantRequestApplicationJsonPropertyOtherSettings.t() | nil,
           expected_updated_at: String.t() | nil,
+          stock: integer() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -122,6 +126,13 @@ defmodule SellApp.SdkUpdateProductVariantRequestApplicationJson do
           min_items: 1
         }
       },
+      "custom_payment_method_ids" => %{
+        required: false,
+        schema: %{
+          kind: :array,
+          items: %{kind: :string, pattern: "^[0-9A-HJKMNP-TV-Za-hjkmnp-tv-z]{26}$"}
+        }
+      },
       "other_settings" => %{
         required: false,
         schema: %{
@@ -129,7 +140,11 @@ defmodule SellApp.SdkUpdateProductVariantRequestApplicationJson do
           module: SellApp.UpdateProductVariantRequestApplicationJsonPropertyOtherSettings
         }
       },
-      "expected_updated_at" => %{required: false, schema: %{kind: :string, format: "date-time"}}
+      "expected_updated_at" => %{required: false, schema: %{kind: :string, format: "date-time"}},
+      "stock" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :integer, minimum: 0, maximum: 2_147_483_647}}
+      }
     },
     additional_properties: true
   }
@@ -166,12 +181,14 @@ defmodule SellApp.SdkUpdateProductVariantRequestApplicationJson do
           map["payment_methods"],
           &SellApp.SdkUpdateProductVariantRequestApplicationJsonPaymentMethods.cast/1
         ),
+      custom_payment_method_ids: map["custom_payment_method_ids"],
       other_settings:
         SellApp.Cast.nested(
           map["other_settings"],
           &SellApp.UpdateProductVariantRequestApplicationJsonPropertyOtherSettings.from_map/1
         ),
       expected_updated_at: map["expected_updated_at"],
+      stock: map["stock"],
       __additional_properties__:
         Map.drop(map, [
           "title",
@@ -182,8 +199,10 @@ defmodule SellApp.SdkUpdateProductVariantRequestApplicationJson do
           "maximum_purchase_quantity",
           "bulk_discount",
           "payment_methods",
+          "custom_payment_method_ids",
           "other_settings",
-          "expected_updated_at"
+          "expected_updated_at",
+          "stock"
         ]),
       __present_fields__: Map.keys(map)
     }
@@ -221,12 +240,14 @@ defmodule SellApp.SdkUpdateProductVariantRequestApplicationJson do
               struct.payment_methods,
               &SellApp.SdkUpdateProductVariantRequestApplicationJsonPaymentMethods.dump/1
             ),
+          "custom_payment_method_ids" => struct.custom_payment_method_ids,
           "other_settings" =>
             SellApp.Cast.dump_struct(
               struct.other_settings,
               &SellApp.UpdateProductVariantRequestApplicationJsonPropertyOtherSettings.to_map/1
             ),
-          "expected_updated_at" => struct.expected_updated_at
+          "expected_updated_at" => struct.expected_updated_at,
+          "stock" => struct.stock
         },
         [],
         struct.__present_fields__

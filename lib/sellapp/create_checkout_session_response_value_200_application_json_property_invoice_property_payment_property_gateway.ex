@@ -15,7 +15,7 @@ defmodule SellApp.CreateCheckoutSessionResponseValue200ApplicationJsonPropertyIn
   @type t :: %__MODULE__{
           data:
             SellApp.CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPaymentPropertyGatewayPropertyData.t(),
-          type: String.t(),
+          type: String.t() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -32,7 +32,7 @@ defmodule SellApp.CreateCheckoutSessionResponseValue200ApplicationJsonPropertyIn
             SellApp.CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPaymentPropertyGatewayPropertyData
         }
       },
-      "type" => %{required: true, schema: %{kind: :string}}
+      "type" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}}
     },
     additional_properties: true
   }

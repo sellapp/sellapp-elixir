@@ -10,9 +10,11 @@ defmodule SellApp.PauseSubscriptionResponseValue200ApplicationJsonPropertyDataAc
           | :resume
           | :cancel_at_period_end
           | :cancel_immediately
+          | :keep_subscription
           | :update_payment_method
           | :change_plan
           | :shift_billing_date
+          | :set_auto_renew
 
   @doc "All known values."
   @spec values() :: [t()]
@@ -22,9 +24,11 @@ defmodule SellApp.PauseSubscriptionResponseValue200ApplicationJsonPropertyDataAc
       :resume,
       :cancel_at_period_end,
       :cancel_immediately,
+      :keep_subscription,
       :update_payment_method,
       :change_plan,
-      :shift_billing_date
+      :shift_billing_date,
+      :set_auto_renew
     ]
 
   @doc "Casts a wire string to its atom; unknown values pass through unchanged."
@@ -33,9 +37,11 @@ defmodule SellApp.PauseSubscriptionResponseValue200ApplicationJsonPropertyDataAc
   def cast("resume"), do: :resume
   def cast("cancel_at_period_end"), do: :cancel_at_period_end
   def cast("cancel_immediately"), do: :cancel_immediately
+  def cast("keep_subscription"), do: :keep_subscription
   def cast("update_payment_method"), do: :update_payment_method
   def cast("change_plan"), do: :change_plan
   def cast("shift_billing_date"), do: :shift_billing_date
+  def cast("set_auto_renew"), do: :set_auto_renew
   def cast(other), do: other
 
   @doc "Dumps an atom back to its wire string."
@@ -44,8 +50,10 @@ defmodule SellApp.PauseSubscriptionResponseValue200ApplicationJsonPropertyDataAc
   def dump(:resume), do: "resume"
   def dump(:cancel_at_period_end), do: "cancel_at_period_end"
   def dump(:cancel_immediately), do: "cancel_immediately"
+  def dump(:keep_subscription), do: "keep_subscription"
   def dump(:update_payment_method), do: "update_payment_method"
   def dump(:change_plan), do: "change_plan"
   def dump(:shift_billing_date), do: "shift_billing_date"
+  def dump(:set_auto_renew), do: "set_auto_renew"
   def dump(other) when is_binary(other), do: other
 end

@@ -11,6 +11,7 @@ defmodule SellApp.UpdateProductVariantPricingRequestApplicationJsonPropertyPrici
     :compare_at_price,
     :humble,
     :frequency,
+    :trial,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -27,6 +28,9 @@ defmodule SellApp.UpdateProductVariantPricingRequestApplicationJsonPropertyPrici
           humble: boolean() | nil,
           frequency:
             SellApp.UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyFrequency.t()
+            | nil,
+          trial:
+            SellApp.UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyTrial.t()
             | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
@@ -66,6 +70,17 @@ defmodule SellApp.UpdateProductVariantPricingRequestApplicationJsonPropertyPrici
           module:
             SellApp.UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyFrequency
         }
+      },
+      "trial" => %{
+        required: false,
+        schema: %{
+          kind: :nullable,
+          inner: %{
+            kind: :model,
+            module:
+              SellApp.UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyTrial
+          }
+        }
       }
     },
     additional_properties: true
@@ -100,8 +115,13 @@ defmodule SellApp.UpdateProductVariantPricingRequestApplicationJsonPropertyPrici
           map["frequency"],
           &SellApp.UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyFrequency.from_map/1
         ),
+      trial:
+        SellApp.Cast.nested(
+          map["trial"],
+          &SellApp.UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyTrial.from_map/1
+        ),
       __additional_properties__:
-        Map.drop(map, ["type", "price", "compare_at_price", "humble", "frequency"]),
+        Map.drop(map, ["type", "price", "compare_at_price", "humble", "frequency", "trial"]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -132,6 +152,11 @@ defmodule SellApp.UpdateProductVariantPricingRequestApplicationJsonPropertyPrici
             SellApp.Cast.dump_struct(
               struct.frequency,
               &SellApp.UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyFrequency.to_map/1
+            ),
+          "trial" =>
+            SellApp.Cast.dump_struct(
+              struct.trial,
+              &SellApp.UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyTrial.to_map/1
             )
         },
         [],

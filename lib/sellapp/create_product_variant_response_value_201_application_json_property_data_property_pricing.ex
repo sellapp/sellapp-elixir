@@ -10,6 +10,7 @@ defmodule SellApp.CreateProductVariantResponseValue201ApplicationJsonPropertyDat
     :frequency,
     :type,
     :price,
+    :trial,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -21,6 +22,9 @@ defmodule SellApp.CreateProductVariantResponseValue201ApplicationJsonPropertyDat
           type: String.t(),
           price:
             SellApp.CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyPrice.t(),
+          trial:
+            SellApp.CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyTrial.t()
+            | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -44,6 +48,14 @@ defmodule SellApp.CreateProductVariantResponseValue201ApplicationJsonPropertyDat
           kind: :model,
           module:
             SellApp.CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyPrice
+        }
+      },
+      "trial" => %{
+        required: false,
+        schema: %{
+          kind: :model,
+          module:
+            SellApp.CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyTrial
         }
       }
     },
@@ -70,7 +82,12 @@ defmodule SellApp.CreateProductVariantResponseValue201ApplicationJsonPropertyDat
           map["price"],
           &SellApp.CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyPrice.from_map/1
         ),
-      __additional_properties__: Map.drop(map, ["humble", "frequency", "type", "price"]),
+      trial:
+        SellApp.Cast.nested(
+          map["trial"],
+          &SellApp.CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyTrial.from_map/1
+        ),
+      __additional_properties__: Map.drop(map, ["humble", "frequency", "type", "price", "trial"]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -92,6 +109,11 @@ defmodule SellApp.CreateProductVariantResponseValue201ApplicationJsonPropertyDat
             SellApp.Cast.dump_struct(
               struct.price,
               &SellApp.CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyPrice.to_map/1
+            ),
+          "trial" =>
+            SellApp.Cast.dump_struct(
+              struct.trial,
+              &SellApp.CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyTrial.to_map/1
             )
         },
         ["humble", "frequency", "type", "price"],

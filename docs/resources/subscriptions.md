@@ -54,6 +54,159 @@ Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API r
 
 [Response access, transport controls, pagination, and typed errors](../usage.md)
 
+## list_subscriptions
+
+List subscriptions
+
+[API reference](https://sell.app/docs/api/subscriptions/read-subscriptions) · Effect: **read**
+
+```elixir
+def list_subscriptions(client, params \\ %{}, opts \\ [])
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| client | `any` | Yes |
+| params | `any` | Yes |
+| opts | `any` | Yes |
+
+Returns: `any`.
+
+```exs
+client = SellApp.Client.new(
+  base_url: System.fetch_env!("SELLAPP_API_BASE_URL"),
+  api_key: System.fetch_env!("SELLAPP_API_KEY"),
+  store: System.fetch_env!("SELLAPP_STORE")
+)
+
+{:ok, result} = SellApp.Subscriptions.list_subscriptions(client, %{})
+IO.inspect(result)
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 200, 400, 401, 403, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
+## search_subscriptions
+
+Search subscriptions
+
+[API reference](https://sell.app/docs/api/subscriptions/read-subscriptions) · Effect: **read**
+
+```elixir
+def search_subscriptions(client, params \\ %{}, opts \\ [])
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| client | `any` | Yes |
+| params | `any` | Yes |
+| opts | `any` | Yes |
+
+Returns: `any`.
+
+```exs
+client = SellApp.Client.new(
+  base_url: System.fetch_env!("SELLAPP_API_BASE_URL"),
+  api_key: System.fetch_env!("SELLAPP_API_KEY"),
+  store: System.fetch_env!("SELLAPP_STORE")
+)
+
+{:ok, result} = SellApp.Subscriptions.search_subscriptions(client, %{"filters" => [%{"field" => "status", "operator" => "=", "value" => "ACTIVE"}], "search" => %{"value" => "maya.chen@example.com"}})
+IO.inspect(result)
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 200, 400, 401, 403, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
+## get_subscription
+
+Retrieve a subscription
+
+[API reference](https://sell.app/docs/api/subscriptions/read-subscriptions) · Effect: **read**
+
+```elixir
+def get_subscription(client, product_subscription, opts \\ [])
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| client | `any` | Yes |
+| product_subscription | `any` | Yes |
+| opts | `any` | Yes |
+
+Returns: `any`.
+
+```exs
+client = SellApp.Client.new(
+  base_url: System.fetch_env!("SELLAPP_API_BASE_URL"),
+  api_key: System.fetch_env!("SELLAPP_API_KEY"),
+  store: System.fetch_env!("SELLAPP_STORE")
+)
+
+{:ok, result} = SellApp.Subscriptions.get_subscription(client, 123)
+IO.inspect(result)
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
 ## get_capabilities
 
 View subscription capabilities
@@ -209,6 +362,58 @@ Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API r
 
 [Response access, transport controls, pagination, and typed errors](../usage.md)
 
+## keep
+
+Keep a subscription
+
+[API reference](https://sell.app/docs/api/subscriptions/keep-a-subscription) · Effect: **consequential**
+
+```elixir
+def keep(client, product_subscription, params \\ %{}, opts \\ [])
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| client | `any` | Yes |
+| product_subscription | `any` | Yes |
+| params | `any` | Yes |
+| opts | `any` | Yes |
+
+Returns: `any`.
+
+```exs
+client = SellApp.Client.new(
+  base_url: System.fetch_env!("SELLAPP_API_BASE_URL"),
+  api_key: System.fetch_env!("SELLAPP_API_KEY"),
+  store: System.fetch_env!("SELLAPP_STORE")
+)
+
+{:ok, result} = SellApp.Subscriptions.keep(client, 55, %{})
+IO.inspect(result)
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
 ## pause
 
 Pause a subscription
@@ -339,7 +544,7 @@ client = SellApp.Client.new(
   store: System.fetch_env!("SELLAPP_STORE")
 )
 
-{:ok, result} = SellApp.Subscriptions.update_payment_method(client, 1, %{})
+{:ok, result} = SellApp.Subscriptions.update_payment_method(client, 55, %{"return_url" => "https://store.example.com/billing/updated"})
 IO.inspect(result)
 ```
 
@@ -361,7 +566,7 @@ Supported credential alternatives (each object is one alternative):
 ]
 ```
 
-Documented HTTP responses: 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
+Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
 
 [Response access, transport controls, pagination, and typed errors](../usage.md)
 
@@ -413,7 +618,7 @@ Supported credential alternatives (each object is one alternative):
 ]
 ```
 
-Documented HTTP responses: 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
+Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
 
 [Response access, transport controls, pagination, and typed errors](../usage.md)
 
@@ -443,7 +648,7 @@ client = SellApp.Client.new(
   store: System.fetch_env!("SELLAPP_STORE")
 )
 
-{:ok, result} = SellApp.Subscriptions.confirm_plan_change(client, 1, %{"target_variant_id" => 4321, "preview_token" => "subprev_9c4b2f"})
+{:ok, result} = SellApp.Subscriptions.confirm_plan_change(client, 55, %{"target_variant_id" => 4321, "preview_token" => "subprev_9c4b2f"})
 IO.inspect(result)
 ```
 
@@ -465,7 +670,7 @@ Supported credential alternatives (each object is one alternative):
 ]
 ```
 
-Documented HTTP responses: 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
+Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
 
 [Response access, transport controls, pagination, and typed errors](../usage.md)
 
@@ -570,159 +775,6 @@ Supported credential alternatives (each object is one alternative):
 ```
 
 Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
-
-[Response access, transport controls, pagination, and typed errors](../usage.md)
-
-## list_subscriptions
-
-List subscriptions
-
-[API reference](https://sell.app/docs/api/subscriptions/read-subscriptions) · Effect: **read**
-
-```elixir
-def list_subscriptions(client, params \\ %{}, opts \\ [])
-```
-
-| Argument | Native type | Required |
-| --- | --- | --- |
-| client | `any` | Yes |
-| params | `any` | Yes |
-| opts | `any` | Yes |
-
-Returns: `any`.
-
-```exs
-client = SellApp.Client.new(
-  base_url: System.fetch_env!("SELLAPP_API_BASE_URL"),
-  api_key: System.fetch_env!("SELLAPP_API_KEY"),
-  store: System.fetch_env!("SELLAPP_STORE")
-)
-
-{:ok, result} = SellApp.Subscriptions.list_subscriptions(client, %{})
-IO.inspect(result)
-```
-
-### Authentication and errors
-
-Supported credential alternatives (each object is one alternative):
-
-```json
-[
-  {
-    "bearerAuth": []
-  },
-  {
-    "oauthAccessToken": [
-      "admin"
-    ],
-    "storeAuth": []
-  }
-]
-```
-
-Documented HTTP responses: 200, 400, 401, 403, 404, 409, 410, 422, 429, 500. See the API reference for field-level validation and consequences.
-
-[Response access, transport controls, pagination, and typed errors](../usage.md)
-
-## search_subscriptions
-
-Search subscriptions
-
-[API reference](https://sell.app/docs/api/subscriptions/read-subscriptions) · Effect: **read**
-
-```elixir
-def search_subscriptions(client, params \\ %{}, opts \\ [])
-```
-
-| Argument | Native type | Required |
-| --- | --- | --- |
-| client | `any` | Yes |
-| params | `any` | Yes |
-| opts | `any` | Yes |
-
-Returns: `any`.
-
-```exs
-client = SellApp.Client.new(
-  base_url: System.fetch_env!("SELLAPP_API_BASE_URL"),
-  api_key: System.fetch_env!("SELLAPP_API_KEY"),
-  store: System.fetch_env!("SELLAPP_STORE")
-)
-
-{:ok, result} = SellApp.Subscriptions.search_subscriptions(client, %{"search" => "maya.chen@example.com", "status" => "active"})
-IO.inspect(result)
-```
-
-### Authentication and errors
-
-Supported credential alternatives (each object is one alternative):
-
-```json
-[
-  {
-    "bearerAuth": []
-  },
-  {
-    "oauthAccessToken": [
-      "admin"
-    ],
-    "storeAuth": []
-  }
-]
-```
-
-Documented HTTP responses: 200, 400, 401, 403, 404, 409, 410, 422, 429, 500. See the API reference for field-level validation and consequences.
-
-[Response access, transport controls, pagination, and typed errors](../usage.md)
-
-## get_subscription
-
-Retrieve a subscription
-
-[API reference](https://sell.app/docs/api/subscriptions/read-subscriptions) · Effect: **read**
-
-```elixir
-def get_subscription(client, product_subscription, opts \\ [])
-```
-
-| Argument | Native type | Required |
-| --- | --- | --- |
-| client | `any` | Yes |
-| product_subscription | `any` | Yes |
-| opts | `any` | Yes |
-
-Returns: `any`.
-
-```exs
-client = SellApp.Client.new(
-  base_url: System.fetch_env!("SELLAPP_API_BASE_URL"),
-  api_key: System.fetch_env!("SELLAPP_API_KEY"),
-  store: System.fetch_env!("SELLAPP_STORE")
-)
-
-{:ok, result} = SellApp.Subscriptions.get_subscription(client, 991)
-IO.inspect(result)
-```
-
-### Authentication and errors
-
-Supported credential alternatives (each object is one alternative):
-
-```json
-[
-  {
-    "bearerAuth": []
-  },
-  {
-    "oauthAccessToken": [
-      "admin"
-    ],
-    "storeAuth": []
-  }
-]
-```
-
-Documented HTTP responses: 200, 400, 401, 403, 404, 409, 410, 422, 429, 500. See the API reference for field-level validation and consequences.
 
 [Response access, transport controls, pagination, and typed errors](../usage.md)
 

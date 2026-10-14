@@ -6,14 +6,14 @@ defmodule SellApp.GetCustomerPortalSubscriptionCapabilitiesResponseValue200Appli
   """
 
   defstruct [
-    :subscription_id,
+    :id,
     :capabilities,
     __additional_properties__: %{},
     __present_fields__: []
   ]
 
   @type t :: %__MODULE__{
-          subscription_id: integer(),
+          id: integer(),
           capabilities:
             SellApp.GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyDataPropertyCapabilities.t(),
           __additional_properties__: map(),
@@ -23,7 +23,7 @@ defmodule SellApp.GetCustomerPortalSubscriptionCapabilitiesResponseValue200Appli
   @schema %{
     name: "GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyData",
     properties: %{
-      "subscription_id" => %{required: true, schema: %{kind: :integer}},
+      "id" => %{required: true, schema: %{kind: :integer}},
       "capabilities" => %{
         required: true,
         schema: %{
@@ -44,13 +44,13 @@ defmodule SellApp.GetCustomerPortalSubscriptionCapabilitiesResponseValue200Appli
     SellApp.Schema.validate_model!(map, @schema, :response)
 
     %__MODULE__{
-      subscription_id: map["subscription_id"],
+      id: map["id"],
       capabilities:
         SellApp.Cast.nested(
           map["capabilities"],
           &SellApp.GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyDataPropertyCapabilities.from_map/1
         ),
-      __additional_properties__: Map.drop(map, ["subscription_id", "capabilities"]),
+      __additional_properties__: Map.drop(map, ["id", "capabilities"]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -61,14 +61,14 @@ defmodule SellApp.GetCustomerPortalSubscriptionCapabilitiesResponseValue200Appli
     known =
       SellApp.Cast.keep_present(
         %{
-          "subscription_id" => struct.subscription_id,
+          "id" => struct.id,
           "capabilities" =>
             SellApp.Cast.dump_struct(
               struct.capabilities,
               &SellApp.GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyDataPropertyCapabilities.to_map/1
             )
         },
-        ["subscription_id", "capabilities"],
+        ["id", "capabilities"],
         struct.__present_fields__
       )
 

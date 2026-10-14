@@ -197,41 +197,45 @@ defmodule SellApp.CustomerPortal do
   @doc """
   List customer subscriptions
 
-  List subscriptions belonging to the customer session.
+  List subscriptions belonging to the customer session, newest first, 15 per page. `trial_ends_at` is only set while a subscription is `TRIALING`.
 
   ## Parameters
 
+    * `params` — query parameters
     * `opts` — per-request options (see `SellApp.Client.request/5`)
   """
-  @spec list_customer_portal_subscriptions(SellApp.Client.t(), keyword()) ::
-          {:ok, SellApp.SdkListCustomerPortalSubscriptionsResponseValue200ApplicationJson.t()}
+  @spec list_customer_portal_subscriptions(SellApp.Client.t(), map(), keyword()) ::
+          {:ok, SellApp.Page.t(SellApp.CustomerPortalSubscription.t())}
           | {:error, SellApp.Error.error()}
-  def list_customer_portal_subscriptions(client, opts \\ []) do
+  def list_customer_portal_subscriptions(client, params \\ %{}, opts \\ []) do
     with {:ok, body} <-
            SellApp.Client.request(
              client,
              :get,
              "/v2/customer-portal/subscriptions",
-             %{},
+             params,
              Keyword.put(opts, :operation_id, "listCustomerPortalSubscriptions")
            ) do
       raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
       body = if raw_response, do: raw_response.data, else: body
 
-      SellApp.Schema.validate_value!(
-        body,
-        %{
-          kind: :model,
-          module: SellApp.SdkListCustomerPortalSubscriptionsResponseValue200ApplicationJson
-        },
-        :response,
-        "$response"
-      )
+      fetch_next = fn cursor ->
+        list_customer_portal_subscriptions(
+          client,
+          SellApp.Page.next_params(params, "after", cursor),
+          Keyword.delete(opts, :with_response)
+        )
+      end
 
       result =
-        SellApp.Cast.nested(
+        SellApp.Page.from_map(
           body,
-          &SellApp.SdkListCustomerPortalSubscriptionsResponseValue200ApplicationJson.from_map/1
+          "data",
+          &SellApp.CustomerPortalSubscription.from_map/1,
+          fetch_next,
+          base_url: client.base_url,
+          path: "/v2/customer-portal/subscriptions",
+          pagination_param: "after"
         )
 
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
@@ -286,7 +290,7 @@ defmodule SellApp.CustomerPortal do
   @doc """
   Retrieve subscription capabilities
 
-  Read immediately before displaying lifecycle controls.
+  Read immediately before displaying lifecycle controls. Each of the nine actions (`pause`, `resume`, `cancel_at_period_end`, `cancel_immediately`, `keep_subscription`, `update_payment_method`, `change_plan`, `shift_billing_date`, and `set_auto_renew`) reports a status and the reason to show the customer when it is not available. While a Stripe, PayPal, or Razorpay subscription has a payment still owed, every action except `cancel_immediately` and, on Razorpay, `update_payment_method`, is `unsupported`. `resume` is `unsupported` on a subscription on hold for an unpaid renewal, which the customer pays and resumes on the store's customer portal page. The example is abbreviated to three of the actions.
 
   ## Parameters
 
@@ -377,7 +381,7 @@ defmodule SellApp.CustomerPortal do
   @doc """
   Cancel at period end
 
-  Cancel at period end. Read capabilities first; state conflicts return 409.
+  Schedule the subscription to end when the current period ends. The customer keeps access until then. Read capabilities first. A refusal returns 422 with the sentence to show the customer under `errors.subscription`.
 
   ## Parameters
 
@@ -448,7 +452,7 @@ defmodule SellApp.CustomerPortal do
   @doc """
   Cancel immediately
 
-  Cancel immediately. Read capabilities first; state conflicts return 409.
+  End the subscription now. A customer session cannot request a refund. It is the one action left on a Stripe or PayPal subscription with a payment still owed, and one of two left on a Razorpay one alongside a payment method update. Read capabilities first. A refusal returns 422 with the sentence to show the customer under `errors.subscription`.
 
   ## Parameters
 
@@ -514,7 +518,7 @@ defmodule SellApp.CustomerPortal do
   @doc """
   Pause a subscription
 
-  Pause a subscription. Read capabilities first; state conflicts return 409.
+  Pause billing, optionally until `resume_at`. Read capabilities first. A refusal returns 422 with the sentence to show the customer under `errors.subscription`.
 
   ## Parameters
 
@@ -571,33 +575,25 @@ defmodule SellApp.CustomerPortal do
   @doc """
   Resume a subscription
 
-  Resume a subscription. Read capabilities first; state conflicts return 409.
+  Resume a paused subscription. A subscription the store bills in house that is on hold for an unpaid renewal comes back only when the customer pays that renewal on the store's customer portal page, so it is refused. Read capabilities first. A refusal returns 422 with the sentence to show the customer under `errors.subscription`.
 
   ## Parameters
 
     * `product_subscription` — The productSubscription identifier.
-    * `params` — request body map
     * `opts` — per-request options (see `SellApp.Client.request/5`)
   """
-  @spec resume_customer_subscription(SellApp.Client.t(), String.t(), map(), keyword()) ::
+  @spec resume_customer_subscription(SellApp.Client.t(), String.t(), keyword()) ::
           {:ok, SellApp.SdkResumeCustomerSubscriptionResponseValue200ApplicationJson.t()}
           | {:error, SellApp.Error.error()}
-  def resume_customer_subscription(client, product_subscription, params \\ %{}, opts \\ []) do
-    SellApp.Schema.validate_value!(
-      params,
-      %{kind: :model, module: SellApp.SdkResumeCustomerSubscriptionRequestApplicationJson},
-      :request,
-      "$request.body"
-    )
-
+  def resume_customer_subscription(client, product_subscription, opts \\ []) do
     with {:ok, body} <-
            SellApp.Client.request(
              client,
              :post,
              "/v2/customer-portal/subscriptions/#{URI.encode(product_subscription, &URI.char_unreserved?/1)}/actions/resume",
-             params,
+             %{},
              Keyword.put(
-               Keyword.put(Keyword.put(opts, :idempotency_supported, true), :request_body, true),
+               Keyword.put(opts, :idempotency_supported, true),
                :operation_id,
                "resumeCustomerSubscription"
              )
@@ -628,7 +624,7 @@ defmodule SellApp.CustomerPortal do
   @doc """
   Update payment method
 
-  Update payment method. Read capabilities first; state conflicts return 409.
+  Start a payment method update. Send the customer to `redirect_url` to finish it with the provider. Read capabilities first. A refusal returns 422 with the sentence to show the customer under `errors.subscription`.
 
   ## Parameters
 
@@ -700,7 +696,7 @@ defmodule SellApp.CustomerPortal do
   @doc """
   Preview a plan change
 
-  Preview a plan change. Read capabilities first; state conflicts return 409.
+  Preview a plan change before confirming it. On Stripe and in-house subscriptions, `preview.payment_required` says whether confirming charges `amount_due` today or leaves any amount to the next invoice, and `preview.renewal_date` says when the subscription renews next. A plan change during a trial never charges today. Read capabilities first. A refusal returns 422 with the sentence to show the customer under `errors.subscription`.
 
   ## Parameters
 
@@ -740,7 +736,7 @@ defmodule SellApp.CustomerPortal do
              "/v2/customer-portal/subscriptions/#{URI.encode(product_subscription, &URI.char_unreserved?/1)}/actions/change-plan/preview",
              params,
              Keyword.put(
-               Keyword.put(Keyword.put(opts, :idempotency_supported, true), :request_body, true),
+               Keyword.put(opts, :request_body, true),
                :operation_id,
                "previewCustomerSubscriptionPlanChange"
              )
@@ -771,7 +767,7 @@ defmodule SellApp.CustomerPortal do
   @doc """
   Confirm a plan change
 
-  Confirm a plan change. Read capabilities first; state conflicts return 409.
+  Confirm a previewed plan change, sending back its `preview_token`. When the change still needs the customer to approve it with the provider or pay for it, the action is `pending` and `redirect_url` says where. Read capabilities first. A refusal returns 422 with the sentence to show the customer under `errors.subscription`.
 
   ## Parameters
 
@@ -842,7 +838,7 @@ defmodule SellApp.CustomerPortal do
   @doc """
   Preview a renewal-date change
 
-  Preview a renewal-date change. Read capabilities first; state conflicts return 409.
+  Preview moving the next renewal to `renewal_date`. `preview` is the provider's own preview, so its keys differ per provider. Read capabilities first. A refusal returns 422 with the sentence to show the customer under `errors.subscription`.
 
   ## Parameters
 
@@ -882,7 +878,7 @@ defmodule SellApp.CustomerPortal do
              "/v2/customer-portal/subscriptions/#{URI.encode(product_subscription, &URI.char_unreserved?/1)}/actions/change-renewal-date/preview",
              params,
              Keyword.put(
-               Keyword.put(Keyword.put(opts, :idempotency_supported, true), :request_body, true),
+               Keyword.put(opts, :request_body, true),
                :operation_id,
                "previewCustomerSubscriptionRenewalDateChange"
              )
@@ -914,7 +910,7 @@ defmodule SellApp.CustomerPortal do
   @doc """
   Confirm a renewal-date change
 
-  Confirm a renewal-date change. Read capabilities first; state conflicts return 409.
+  Confirm a renewal-date change, sending the `preview_token` when the plan requires a preview. Read capabilities first. A refusal returns 422 with the sentence to show the customer under `errors.subscription`.
 
   ## Parameters
 

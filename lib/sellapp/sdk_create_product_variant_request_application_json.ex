@@ -14,6 +14,7 @@ defmodule SellApp.SdkCreateProductVariantRequestApplicationJson do
     :minimum_purchase_quantity,
     :maximum_purchase_quantity,
     :bulk_discount,
+    :custom_payment_method_ids,
     :other_settings,
     :expected_updated_at,
     __additional_properties__: %{},
@@ -32,6 +33,7 @@ defmodule SellApp.SdkCreateProductVariantRequestApplicationJson do
           maximum_purchase_quantity: integer() | nil,
           bulk_discount:
             [SellApp.CreateProductVariantRequestApplicationJsonPropertyBulkDiscountItem.t()] | nil,
+          custom_payment_method_ids: [String.t()] | nil,
           other_settings:
             SellApp.CreateProductVariantRequestApplicationJsonPropertyOtherSettings.t() | nil,
           expected_updated_at: String.t() | nil,
@@ -122,6 +124,13 @@ defmodule SellApp.SdkCreateProductVariantRequestApplicationJson do
           }
         }
       },
+      "custom_payment_method_ids" => %{
+        required: false,
+        schema: %{
+          kind: :array,
+          items: %{kind: :string, pattern: "^[0-9A-HJKMNP-TV-Za-hjkmnp-tv-z]{26}$"}
+        }
+      },
       "other_settings" => %{
         required: false,
         schema: %{
@@ -166,6 +175,7 @@ defmodule SellApp.SdkCreateProductVariantRequestApplicationJson do
           map["bulk_discount"],
           &SellApp.CreateProductVariantRequestApplicationJsonPropertyBulkDiscountItem.from_map/1
         ),
+      custom_payment_method_ids: map["custom_payment_method_ids"],
       other_settings:
         SellApp.Cast.nested(
           map["other_settings"],
@@ -182,6 +192,7 @@ defmodule SellApp.SdkCreateProductVariantRequestApplicationJson do
           "minimum_purchase_quantity",
           "maximum_purchase_quantity",
           "bulk_discount",
+          "custom_payment_method_ids",
           "other_settings",
           "expected_updated_at"
         ]),
@@ -221,6 +232,7 @@ defmodule SellApp.SdkCreateProductVariantRequestApplicationJson do
                 &SellApp.CreateProductVariantRequestApplicationJsonPropertyBulkDiscountItem.to_map/1
               )
             end),
+          "custom_payment_method_ids" => struct.custom_payment_method_ids,
           "other_settings" =>
             SellApp.Cast.dump_struct(
               struct.other_settings,

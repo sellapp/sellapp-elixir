@@ -159,7 +159,7 @@ defmodule SellApp.ProductVariants do
   @doc """
   Update a product variant with PUT
 
-  Update a product variant using the PUT compatibility method. Fields remain partial for backward compatibility. Requires a token with the listing ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Update a product variant using the PUT compatibility method. Fields remain partial for backward compatibility. Bundle products only support one-time pricing. Adding the bundle deliverable type to a subscription variant is refused with a `422` carrying that sentence on `deliverable.types`. Requires a token with the listing ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -217,7 +217,7 @@ defmodule SellApp.ProductVariants do
   @doc """
   Update a product variant
 
-  Updates a product variant's details. Requires a token with the listing ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Updates a product variant's details. Bundle products only support one-time pricing. Adding the bundle deliverable type to a subscription variant is refused with a `422` carrying that sentence on `deliverable.types`. Requires a token with the listing ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -272,25 +272,37 @@ defmodule SellApp.ProductVariants do
   @doc """
   Delete a product variant
 
-  Deletes a product variant. This will permanently delete the product variant and all of its details, including the sensitive deliverables, will no longer be retrievable. Requires a token with the listing ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Soft-delete a variant in the authenticated store. Variants referenced by non-terminal subscriptions cannot be deleted. Send expected_updated_at from the latest variant response to reject a stale deletion with 422. Requires a token with the listing ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
     * `product` — The product path parameter.
     * `variant` — The variant path parameter.
+    * `params` — request body map
     * `opts` — per-request options (see `SellApp.Client.request/5`)
   """
-  @spec delete(SellApp.Client.t(), String.t(), String.t(), keyword()) ::
+  @spec delete(SellApp.Client.t(), String.t(), String.t(), map(), keyword()) ::
           {:ok, SellApp.SdkDeleteProductVariantResponseValue200ApplicationJson.t()}
           | {:error, SellApp.Error.error()}
-  def delete(client, product, variant, opts \\ []) do
+  def delete(client, product, variant, params \\ %{}, opts \\ []) do
+    SellApp.Schema.validate_value!(
+      params,
+      %{kind: :model, module: SellApp.SdkDeleteProductVariantRequestApplicationJson},
+      :request,
+      "$request.body"
+    )
+
     with {:ok, body} <-
            SellApp.Client.request(
              client,
              :delete,
              "/v2/products/#{URI.encode(product, &URI.char_unreserved?/1)}/variants/#{URI.encode(variant, &URI.char_unreserved?/1)}",
-             %{},
-             Keyword.put(opts, :operation_id, "deleteProductVariant")
+             params,
+             Keyword.put(
+               Keyword.put(opts, :request_body, true),
+               :operation_id,
+               "deleteProductVariant"
+             )
            ) do
       raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
       body = if raw_response, do: raw_response.data, else: body

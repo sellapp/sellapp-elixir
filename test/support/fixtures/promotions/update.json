@@ -8,6 +8,15 @@
     "priority": 1,
     "is_stackable": true,
     "max_redemptions": null,
+    "applies_to": "one_time",
+    "subscription_payments": null,
+    "store_wide": true,
+    "products": [
+      1
+    ],
+    "product_variants": [
+      1
+    ],
     "phases": [
       {
         "id": 1,

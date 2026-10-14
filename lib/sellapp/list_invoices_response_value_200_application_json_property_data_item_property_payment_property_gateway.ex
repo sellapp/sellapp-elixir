@@ -15,7 +15,7 @@ defmodule SellApp.ListInvoicesResponseValue200ApplicationJsonPropertyDataItemPro
   @type t :: %__MODULE__{
           data:
             SellApp.ListInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyGatewayPropertyData.t(),
-          type: String.t(),
+          type: String.t() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -32,7 +32,7 @@ defmodule SellApp.ListInvoicesResponseValue200ApplicationJsonPropertyDataItemPro
             SellApp.ListInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyGatewayPropertyData
         }
       },
-      "type" => %{required: true, schema: %{kind: :string}}
+      "type" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}}
     },
     additional_properties: true
   }

@@ -188,12 +188,13 @@ List customer subscriptions
 [API reference](https://sell.app/docs/api/customer-portal) · Effect: **read**
 
 ```elixir
-def list_customer_portal_subscriptions(client, opts \\ [])
+def list_customer_portal_subscriptions(client, params \\ %{}, opts \\ [])
 ```
 
 | Argument | Native type | Required |
 | --- | --- | --- |
 | client | `any` | Yes |
+| params | `any` | Yes |
 | opts | `any` | Yes |
 
 Returns: `any`.
@@ -205,7 +206,7 @@ client = SellApp.Client.new(
   store: ""
 )
 
-{:ok, result} = SellApp.CustomerPortal.list_customer_portal_subscriptions(client)
+{:ok, result} = SellApp.CustomerPortal.list_customer_portal_subscriptions(client, %{})
 IO.inspect(result)
 ```
 
@@ -390,7 +391,7 @@ client = SellApp.Client.new(
   store: ""
 )
 
-{:ok, result} = SellApp.CustomerPortal.cancel_customer_subscription_at_period_end(client, 42, %{"reason" => "Customer requested this change"}, idempotency_key: "example-mutation-001")
+{:ok, result} = SellApp.CustomerPortal.cancel_customer_subscription_at_period_end(client, 42, %{"reason" => "Taking a break over the summer."})
 IO.inspect(result)
 ```
 
@@ -441,7 +442,7 @@ client = SellApp.Client.new(
   store: ""
 )
 
-{:ok, result} = SellApp.CustomerPortal.cancel_customer_subscription_immediately(client, 42, %{"reason" => "Customer requested this change"}, idempotency_key: "example-mutation-001")
+{:ok, result} = SellApp.CustomerPortal.cancel_customer_subscription_immediately(client, 42, %{"reason" => "No longer needed."})
 IO.inspect(result)
 ```
 
@@ -487,7 +488,7 @@ client = SellApp.Client.new(
   store: ""
 )
 
-{:ok, result} = SellApp.CustomerPortal.pause_customer_subscription(client, 42, %{"reason" => "Customer requested this change"}, idempotency_key: "example-mutation-001")
+{:ok, result} = SellApp.CustomerPortal.pause_customer_subscription(client, 42, %{"resume_at" => "2026-11-01T00:00:00Z"})
 IO.inspect(result)
 ```
 
@@ -514,14 +515,13 @@ Resume a subscription
 [API reference](https://sell.app/docs/api/customer-portal) · Effect: **consequential**
 
 ```elixir
-def resume_customer_subscription(client, product_subscription, params \\ %{}, opts \\ [])
+def resume_customer_subscription(client, product_subscription, opts \\ [])
 ```
 
 | Argument | Native type | Required |
 | --- | --- | --- |
 | client | `any` | Yes |
 | product_subscription | `any` | Yes |
-| params | `any` | Yes |
 | opts | `any` | Yes |
 
 Returns: `any`.
@@ -533,7 +533,7 @@ client = SellApp.Client.new(
   store: ""
 )
 
-{:ok, result} = SellApp.CustomerPortal.resume_customer_subscription(client, 42, %{"reason" => "Customer requested this change"}, idempotency_key: "example-mutation-001")
+{:ok, result} = SellApp.CustomerPortal.resume_customer_subscription(client, 42)
 IO.inspect(result)
 ```
 
@@ -584,7 +584,7 @@ client = SellApp.Client.new(
   store: ""
 )
 
-{:ok, result} = SellApp.CustomerPortal.update_customer_subscription_payment_method(client, 42, %{"reason" => "Customer requested this change"}, idempotency_key: "example-mutation-001")
+{:ok, result} = SellApp.CustomerPortal.update_customer_subscription_payment_method(client, 42, %{"return_url" => "https://acme.sell.app/customer-portal/subscriptions/991"})
 IO.inspect(result)
 ```
 
@@ -635,7 +635,7 @@ client = SellApp.Client.new(
   store: ""
 )
 
-{:ok, result} = SellApp.CustomerPortal.preview_customer_subscription_plan_change(client, 42, %{"product_variant_id" => 84}, idempotency_key: "example-mutation-001")
+{:ok, result} = SellApp.CustomerPortal.preview_customer_subscription_plan_change(client, 42, %{"target_variant_id" => 97})
 IO.inspect(result)
 ```
 
@@ -686,7 +686,7 @@ client = SellApp.Client.new(
   store: ""
 )
 
-{:ok, result} = SellApp.CustomerPortal.confirm_customer_subscription_plan_change(client, 42, %{"preview_id" => "preview_01K4"}, idempotency_key: "example-mutation-001")
+{:ok, result} = SellApp.CustomerPortal.confirm_customer_subscription_plan_change(client, 42, %{"target_variant_id" => 97, "preview_token" => "subprev_portal_991"})
 IO.inspect(result)
 ```
 
@@ -737,7 +737,7 @@ client = SellApp.Client.new(
   store: ""
 )
 
-{:ok, result} = SellApp.CustomerPortal.preview_customer_subscription_renewal_date_change(client, 42, %{"renewal_date" => "2026-10-15"}, idempotency_key: "example-mutation-001")
+{:ok, result} = SellApp.CustomerPortal.preview_customer_subscription_renewal_date_change(client, 42, %{"renewal_date" => "2026-10-15T00:00:00Z"})
 IO.inspect(result)
 ```
 
@@ -788,7 +788,7 @@ client = SellApp.Client.new(
   store: ""
 )
 
-{:ok, result} = SellApp.CustomerPortal.confirm_customer_subscription_renewal_date_change(client, 42, %{"preview_id" => "preview_01K4"}, idempotency_key: "example-mutation-001")
+{:ok, result} = SellApp.CustomerPortal.confirm_customer_subscription_renewal_date_change(client, 42, %{"renewal_date" => "2026-10-15T00:00:00Z", "preview_token" => "subprev_portal_renewal_991"})
 IO.inspect(result)
 ```
 

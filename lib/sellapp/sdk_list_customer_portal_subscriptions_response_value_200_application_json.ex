@@ -7,14 +7,16 @@ defmodule SellApp.SdkListCustomerPortalSubscriptionsResponseValue200ApplicationJ
 
   defstruct [
     :data,
+    :links,
+    :meta,
     __additional_properties__: %{},
     __present_fields__: []
   ]
 
   @type t :: %__MODULE__{
-          data: [
-            SellApp.ListCustomerPortalSubscriptionsResponseValue200ApplicationJsonPropertyDataItem.t()
-          ],
+          data: [SellApp.CustomerPortalSubscription.t()],
+          links: SellApp.PaginationLinks.t(),
+          meta: SellApp.PaginationMeta.t(),
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -26,13 +28,11 @@ defmodule SellApp.SdkListCustomerPortalSubscriptionsResponseValue200ApplicationJ
         required: true,
         schema: %{
           kind: :array,
-          items: %{
-            kind: :model,
-            module:
-              SellApp.ListCustomerPortalSubscriptionsResponseValue200ApplicationJsonPropertyDataItem
-          }
+          items: %{kind: :model, module: SellApp.CustomerPortalSubscription}
         }
-      }
+      },
+      "links" => %{required: true, schema: %{kind: :model, module: SellApp.PaginationLinks}},
+      "meta" => %{required: true, schema: %{kind: :model, module: SellApp.PaginationMeta}}
     },
     additional_properties: true
   }
@@ -45,12 +45,10 @@ defmodule SellApp.SdkListCustomerPortalSubscriptionsResponseValue200ApplicationJ
     SellApp.Schema.validate_model!(map, @schema, :response)
 
     %__MODULE__{
-      data:
-        SellApp.Cast.list(
-          map["data"],
-          &SellApp.ListCustomerPortalSubscriptionsResponseValue200ApplicationJsonPropertyDataItem.from_map/1
-        ),
-      __additional_properties__: Map.drop(map, ["data"]),
+      data: SellApp.Cast.list(map["data"], &SellApp.CustomerPortalSubscription.from_map/1),
+      links: SellApp.Cast.nested(map["links"], &SellApp.PaginationLinks.from_map/1),
+      meta: SellApp.Cast.nested(map["meta"], &SellApp.PaginationMeta.from_map/1),
+      __additional_properties__: Map.drop(map, ["data", "links", "meta"]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -63,13 +61,12 @@ defmodule SellApp.SdkListCustomerPortalSubscriptionsResponseValue200ApplicationJ
         %{
           "data" =>
             SellApp.Cast.list(struct.data, fn item ->
-              SellApp.Cast.dump_struct(
-                item,
-                &SellApp.ListCustomerPortalSubscriptionsResponseValue200ApplicationJsonPropertyDataItem.to_map/1
-              )
-            end)
+              SellApp.Cast.dump_struct(item, &SellApp.CustomerPortalSubscription.to_map/1)
+            end),
+          "links" => SellApp.Cast.dump_struct(struct.links, &SellApp.PaginationLinks.to_map/1),
+          "meta" => SellApp.Cast.dump_struct(struct.meta, &SellApp.PaginationMeta.to_map/1)
         },
-        ["data"],
+        ["data", "links", "meta"],
         struct.__present_fields__
       )
 

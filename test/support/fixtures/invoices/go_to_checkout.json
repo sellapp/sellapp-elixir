@@ -16,7 +16,7 @@
       },
       "gateway": {
         "data": {},
-        "type": "type"
+        "type": null
       },
       "subtotal": {
         "base": "base",
@@ -52,7 +52,11 @@
     },
     "status": {
       "history": [
-        "history"
+        {
+          "setAt": "2024-01-01T00:00:00.000Z",
+          "status": "status",
+          "updatedAt": "2024-01-01T00:00:00.000Z"
+        }
       ],
       "status": {
         "setAt": "2024-01-01T00:00:00.000Z",

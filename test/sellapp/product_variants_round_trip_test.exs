@@ -22,7 +22,12 @@ defmodule SellApp.ProductVariantsRoundTripTest do
         "humble" => true,
         "frequency" => %{"value" => 1, "interval" => "interval"},
         "type" => "type",
-        "price" => %{"price" => "price", "currency" => "currency"}
+        "price" => %{"price" => "price", "currency" => "currency"},
+        "trial" => %{
+          "kind" => "free",
+          "length" => %{"value" => 1, "interval" => "DAY"},
+          "price" => %{"price" => "price", "currency" => "currency"}
+        }
       },
       "minimum_purchase_quantity" => 1,
       "maximum_purchase_quantity" => nil,
@@ -75,7 +80,12 @@ defmodule SellApp.ProductVariantsRoundTripTest do
             "humble" => true,
             "frequency" => %{"value" => 1, "interval" => "interval"},
             "type" => "type",
-            "price" => %{"price" => "price", "currency" => "currency"}
+            "price" => %{"price" => "price", "currency" => "currency"},
+            "trial" => %{
+              "kind" => "free",
+              "length" => %{"value" => 1, "interval" => "DAY"},
+              "price" => %{"price" => "price", "currency" => "currency"}
+            }
           },
           "minimum_purchase_quantity" => 1,
           "maximum_purchase_quantity" => nil,
@@ -130,7 +140,12 @@ defmodule SellApp.ProductVariantsRoundTripTest do
             "humble" => true,
             "frequency" => %{"value" => 1, "interval" => "interval"},
             "type" => "type",
-            "price" => %{"price" => "price", "currency" => "currency"}
+            "price" => %{"price" => "price", "currency" => "currency"},
+            "trial" => %{
+              "kind" => "free",
+              "length" => %{"value" => 1, "interval" => "DAY"},
+              "price" => %{"price" => "price", "currency" => "currency"}
+            }
           },
           "minimum_purchase_quantity" => 1,
           "maximum_purchase_quantity" => nil,
@@ -185,7 +200,12 @@ defmodule SellApp.ProductVariantsRoundTripTest do
             "humble" => true,
             "frequency" => %{"value" => 1, "interval" => "interval"},
             "type" => "type",
-            "price" => %{"price" => "price", "currency" => "currency"}
+            "price" => %{"price" => "price", "currency" => "currency"},
+            "trial" => %{
+              "kind" => "free",
+              "length" => %{"value" => 1, "interval" => "DAY"},
+              "price" => %{"price" => "price", "currency" => "currency"}
+            }
           },
           "minimum_purchase_quantity" => 1,
           "maximum_purchase_quantity" => nil,
@@ -239,7 +259,12 @@ defmodule SellApp.ProductVariantsRoundTripTest do
           "humble" => true,
           "frequency" => %{"value" => 1, "interval" => "interval"},
           "type" => "type",
-          "price" => %{"price" => "price", "currency" => "currency"}
+          "price" => %{"price" => "price", "currency" => "currency"},
+          "trial" => %{
+            "kind" => "free",
+            "length" => %{"value" => 1, "interval" => "DAY"},
+            "price" => %{"price" => "price", "currency" => "currency"}
+          }
         },
         "minimum_purchase_quantity" => 1,
         "maximum_purchase_quantity" => nil,
@@ -292,7 +317,12 @@ defmodule SellApp.ProductVariantsRoundTripTest do
           "humble" => true,
           "frequency" => %{"value" => 1, "interval" => "interval"},
           "type" => "type",
-          "price" => %{"price" => "price", "currency" => "currency"}
+          "price" => %{"price" => "price", "currency" => "currency"},
+          "trial" => %{
+            "kind" => "free",
+            "length" => %{"value" => 1, "interval" => "DAY"},
+            "price" => %{"price" => "price", "currency" => "currency"}
+          }
         },
         "minimum_purchase_quantity" => 1,
         "maximum_purchase_quantity" => nil,
@@ -345,7 +375,12 @@ defmodule SellApp.ProductVariantsRoundTripTest do
           "humble" => true,
           "frequency" => %{"value" => 1, "interval" => "interval"},
           "type" => "type",
-          "price" => %{"price" => "price", "currency" => "currency"}
+          "price" => %{"price" => "price", "currency" => "currency"},
+          "trial" => %{
+            "kind" => "free",
+            "length" => %{"value" => 1, "interval" => "DAY"},
+            "price" => %{"price" => "price", "currency" => "currency"}
+          }
         },
         "minimum_purchase_quantity" => 1,
         "maximum_purchase_quantity" => nil,
@@ -397,7 +432,12 @@ defmodule SellApp.ProductVariantsRoundTripTest do
             "humble" => true,
             "frequency" => %{"value" => 1, "interval" => "interval"},
             "type" => "type",
-            "price" => %{"price" => "price", "currency" => "currency"}
+            "price" => %{"price" => "price", "currency" => "currency"},
+            "trial" => %{
+              "kind" => "free",
+              "length" => %{"value" => 1, "interval" => "DAY"},
+              "price" => %{"price" => "price", "currency" => "currency"}
+            }
           },
           "minimum_purchase_quantity" => 1,
           "maximum_purchase_quantity" => nil,
@@ -452,7 +492,12 @@ defmodule SellApp.ProductVariantsRoundTripTest do
           "humble" => true,
           "frequency" => %{"value" => 1, "interval" => "interval"},
           "type" => "type",
-          "price" => %{"price" => "price", "currency" => "currency"}
+          "price" => %{"price" => "price", "currency" => "currency"},
+          "trial" => %{
+            "kind" => "free",
+            "length" => %{"value" => 1, "interval" => "DAY"},
+            "price" => %{"price" => "price", "currency" => "currency"}
+          }
         },
         "minimum_purchase_quantity" => 1,
         "maximum_purchase_quantity" => nil,
@@ -505,7 +550,12 @@ defmodule SellApp.ProductVariantsRoundTripTest do
             "humble" => true,
             "frequency" => %{"value" => 1, "interval" => "interval"},
             "type" => "type",
-            "price" => %{"price" => "price", "currency" => "currency"}
+            "price" => %{"price" => "price", "currency" => "currency"},
+            "trial" => %{
+              "kind" => "free",
+              "length" => %{"value" => 1, "interval" => "DAY"},
+              "price" => %{"price" => "price", "currency" => "currency"}
+            }
           },
           "minimum_purchase_quantity" => 1,
           "maximum_purchase_quantity" => nil,
@@ -561,7 +611,12 @@ defmodule SellApp.ProductVariantsRoundTripTest do
           "humble" => true,
           "frequency" => %{"value" => 1, "interval" => "interval"},
           "type" => "type",
-          "price" => %{"price" => "price", "currency" => "currency"}
+          "price" => %{"price" => "price", "currency" => "currency"},
+          "trial" => %{
+            "kind" => "free",
+            "length" => %{"value" => 1, "interval" => "DAY"},
+            "price" => %{"price" => "price", "currency" => "currency"}
+          }
         },
         "minimum_purchase_quantity" => 1,
         "maximum_purchase_quantity" => nil,
@@ -612,7 +667,12 @@ defmodule SellApp.ProductVariantsRoundTripTest do
         "humble" => true,
         "frequency" => %{"value" => 1, "interval" => "interval"},
         "type" => "type",
-        "price" => %{"price" => "price", "currency" => "currency"}
+        "price" => %{"price" => "price", "currency" => "currency"},
+        "trial" => %{
+          "kind" => "free",
+          "length" => %{"value" => 1, "interval" => "DAY"},
+          "price" => %{"price" => "price", "currency" => "currency"}
+        }
       },
       "minimum_purchase_quantity" => 1,
       "maximum_purchase_quantity" => nil,

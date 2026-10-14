@@ -6,7 +6,7 @@ defmodule SellApp.MixProject do
   def project do
     [
       app: :sellapp,
-      version: "0.1.1",
+      version: "0.2.0",
       elixir: "~> 1.15",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -17,7 +17,7 @@ defmodule SellApp.MixProject do
       homepage_url: "https://sell.app",
       docs: [
         main: "readme",
-        source_ref: "v0.1.1",
+        source_ref: "v0.2.0",
         extras:
           [
             {"README.md", [filename: "readme"]},

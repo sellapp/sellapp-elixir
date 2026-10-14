@@ -15,7 +15,7 @@ defmodule SellApp.MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropert
   @type t :: %__MODULE__{
           data:
             SellApp.MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPaymentPropertyGatewayPropertyData.t(),
-          type: String.t(),
+          type: String.t() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -31,7 +31,7 @@ defmodule SellApp.MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropert
             SellApp.MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPaymentPropertyGatewayPropertyData
         }
       },
-      "type" => %{required: true, schema: %{kind: :string}}
+      "type" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}}
     },
     additional_properties: true
   }

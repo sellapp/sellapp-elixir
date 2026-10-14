@@ -94,7 +94,7 @@ defmodule SellApp.SdkReplaceProductVariantPricingRequestApplicationJson do
         required: false,
         schema: %{
           kind: :array,
-          items: %{kind: :string, pattern: "^[0-9A-HJKMNP-TV-Z]{26}$"},
+          items: %{kind: :string, pattern: "^[0-9A-HJKMNP-TV-Za-hjkmnp-tv-z]{26}$"},
           unique_items: true
         }
       },

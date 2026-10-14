@@ -35,24 +35,43 @@ defmodule SellApp.CustomerPortalRoundTripTest do
            |> SellApp.CustomerPortalOrder.to_map() == serialized
   end
 
+  test "CustomerPortalSubscription round-trips between wire and struct" do
+    data = %{
+      "id" => 1,
+      "status" => "ACTIVE",
+      "cancel_at_period_end" => true,
+      "current_period_start" => nil,
+      "current_period_end" => nil,
+      "trial_ends_at" => nil,
+      "paused_at" => nil,
+      "pause_resumes_at" => nil,
+      "plan" => nil,
+      "created_at" => nil,
+      "updated_at" => nil
+    }
+
+    serialized =
+      data
+      |> SellApp.CustomerPortalSubscription.from_map()
+      |> SellApp.CustomerPortalSubscription.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.CustomerPortalSubscription.from_map()
+           |> SellApp.CustomerPortalSubscription.to_map() == serialized
+  end
+
   test "SdkCancelCustomerSubscriptionAtPeriodEndResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{
         "id" => 1,
-        "status" => "status",
-        "subscription_id" => nil,
-        "customer_id" => nil,
-        "provider_subscription_id" => nil,
-        "provider_customer_id" => nil,
-        "customer" => %{
-          "id" => 1,
-          "email" => "email",
-          "external_id" => nil,
-          "name" => nil,
-          "locale" => nil,
-          "metadata" => %{}
-        },
-        "product_variant_id" => 1
+        "subscription_id" => 1,
+        "action" => "pause",
+        "status" => "pending",
+        "customer_message" => nil,
+        "redirect_url" => nil,
+        "created_at" => nil
       }
     }
 
@@ -73,20 +92,12 @@ defmodule SellApp.CustomerPortalRoundTripTest do
     data = %{
       "data" => %{
         "id" => 1,
-        "status" => "status",
-        "subscription_id" => nil,
-        "customer_id" => nil,
-        "provider_subscription_id" => nil,
-        "provider_customer_id" => nil,
-        "customer" => %{
-          "id" => 1,
-          "email" => "email",
-          "external_id" => nil,
-          "name" => nil,
-          "locale" => nil,
-          "metadata" => %{}
-        },
-        "product_variant_id" => 1
+        "subscription_id" => 1,
+        "action" => "pause",
+        "status" => "pending",
+        "customer_message" => nil,
+        "redirect_url" => nil,
+        "created_at" => nil
       }
     }
 
@@ -107,20 +118,12 @@ defmodule SellApp.CustomerPortalRoundTripTest do
     data = %{
       "data" => %{
         "id" => 1,
-        "status" => "status",
-        "subscription_id" => nil,
-        "customer_id" => nil,
-        "provider_subscription_id" => nil,
-        "provider_customer_id" => nil,
-        "customer" => %{
-          "id" => 1,
-          "email" => "email",
-          "external_id" => nil,
-          "name" => nil,
-          "locale" => nil,
-          "metadata" => %{}
-        },
-        "product_variant_id" => 1
+        "subscription_id" => 1,
+        "action" => "pause",
+        "status" => "pending",
+        "customer_message" => nil,
+        "redirect_url" => nil,
+        "created_at" => nil
       }
     }
 
@@ -141,20 +144,12 @@ defmodule SellApp.CustomerPortalRoundTripTest do
     data = %{
       "data" => %{
         "id" => 1,
-        "status" => "status",
-        "subscription_id" => nil,
-        "customer_id" => nil,
-        "provider_subscription_id" => nil,
-        "provider_customer_id" => nil,
-        "customer" => %{
-          "id" => 1,
-          "email" => "email",
-          "external_id" => nil,
-          "name" => nil,
-          "locale" => nil,
-          "metadata" => %{}
-        },
-        "product_variant_id" => 1
+        "subscription_id" => 1,
+        "action" => "pause",
+        "status" => "pending",
+        "customer_message" => nil,
+        "redirect_url" => nil,
+        "created_at" => nil
       }
     }
 
@@ -234,7 +229,7 @@ defmodule SellApp.CustomerPortalRoundTripTest do
   end
 
   test "SdkGetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJson round-trips between wire and struct" do
-    data = %{"data" => %{"subscription_id" => 1, "capabilities" => %{}}}
+    data = %{"data" => %{"id" => 1, "capabilities" => %{}}}
 
     serialized =
       data
@@ -253,20 +248,16 @@ defmodule SellApp.CustomerPortalRoundTripTest do
     data = %{
       "data" => %{
         "id" => 1,
-        "status" => "status",
-        "subscription_id" => nil,
-        "customer_id" => nil,
-        "provider_subscription_id" => nil,
-        "provider_customer_id" => nil,
-        "customer" => %{
-          "id" => 1,
-          "email" => "email",
-          "external_id" => nil,
-          "name" => nil,
-          "locale" => nil,
-          "metadata" => %{}
-        },
-        "product_variant_id" => 1
+        "status" => "ACTIVE",
+        "cancel_at_period_end" => true,
+        "current_period_start" => nil,
+        "current_period_end" => nil,
+        "trial_ends_at" => nil,
+        "paused_at" => nil,
+        "pause_resumes_at" => nil,
+        "plan" => nil,
+        "created_at" => nil,
+        "updated_at" => nil
       }
     }
 
@@ -364,22 +355,29 @@ defmodule SellApp.CustomerPortalRoundTripTest do
       "data" => [
         %{
           "id" => 1,
-          "status" => "status",
-          "subscription_id" => nil,
-          "customer_id" => nil,
-          "provider_subscription_id" => nil,
-          "provider_customer_id" => nil,
-          "customer" => %{
-            "id" => 1,
-            "email" => "email",
-            "external_id" => nil,
-            "name" => nil,
-            "locale" => nil,
-            "metadata" => %{}
-          },
-          "product_variant_id" => 1
+          "status" => "ACTIVE",
+          "cancel_at_period_end" => true,
+          "current_period_start" => nil,
+          "current_period_end" => nil,
+          "trial_ends_at" => nil,
+          "paused_at" => nil,
+          "pause_resumes_at" => nil,
+          "plan" => nil,
+          "created_at" => nil,
+          "updated_at" => nil
         }
-      ]
+      ],
+      "links" => %{"first" => "first", "last" => "last", "prev" => nil, "next" => nil},
+      "meta" => %{
+        "current_page" => 1,
+        "from" => nil,
+        "last_page" => 1,
+        "links" => [%{"url" => nil, "label" => "label", "active" => true}],
+        "path" => "path",
+        "per_page" => 1,
+        "to" => nil,
+        "total" => 1
+      }
     }
 
     serialized =
@@ -399,20 +397,12 @@ defmodule SellApp.CustomerPortalRoundTripTest do
     data = %{
       "data" => %{
         "id" => 1,
-        "status" => "status",
-        "subscription_id" => nil,
-        "customer_id" => nil,
-        "provider_subscription_id" => nil,
-        "provider_customer_id" => nil,
-        "customer" => %{
-          "id" => 1,
-          "email" => "email",
-          "external_id" => nil,
-          "name" => nil,
-          "locale" => nil,
-          "metadata" => %{}
-        },
-        "product_variant_id" => 1
+        "subscription_id" => 1,
+        "action" => "pause",
+        "status" => "pending",
+        "customer_message" => nil,
+        "redirect_url" => nil,
+        "created_at" => nil
       }
     }
 
@@ -432,21 +422,16 @@ defmodule SellApp.CustomerPortalRoundTripTest do
   test "SdkPreviewCustomerSubscriptionPlanChangeResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{
-        "id" => 1,
-        "status" => "status",
-        "subscription_id" => nil,
-        "customer_id" => nil,
-        "provider_subscription_id" => nil,
-        "provider_customer_id" => nil,
-        "customer" => %{
-          "id" => 1,
-          "email" => "email",
-          "external_id" => nil,
-          "name" => nil,
-          "locale" => nil,
-          "metadata" => %{}
+        "preview_token" => nil,
+        "expires_at" => nil,
+        "preview" => %{
+          "provider" => "provider",
+          "payment_required" => true,
+          "renewal_date" => nil,
+          "amount_due" => 1,
+          "discount_warning" => "discount_warning"
         },
-        "product_variant_id" => 1
+        "customer_message" => nil
       }
     }
 
@@ -466,21 +451,10 @@ defmodule SellApp.CustomerPortalRoundTripTest do
   test "SdkPreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{
-        "id" => 1,
-        "status" => "status",
-        "subscription_id" => nil,
-        "customer_id" => nil,
-        "provider_subscription_id" => nil,
-        "provider_customer_id" => nil,
-        "customer" => %{
-          "id" => 1,
-          "email" => "email",
-          "external_id" => nil,
-          "name" => nil,
-          "locale" => nil,
-          "metadata" => %{}
-        },
-        "product_variant_id" => 1
+        "preview_token" => nil,
+        "expires_at" => nil,
+        "preview" => %{},
+        "customer_message" => nil
       }
     }
 
@@ -501,20 +475,12 @@ defmodule SellApp.CustomerPortalRoundTripTest do
     data = %{
       "data" => %{
         "id" => 1,
-        "status" => "status",
-        "subscription_id" => nil,
-        "customer_id" => nil,
-        "provider_subscription_id" => nil,
-        "provider_customer_id" => nil,
-        "customer" => %{
-          "id" => 1,
-          "email" => "email",
-          "external_id" => nil,
-          "name" => nil,
-          "locale" => nil,
-          "metadata" => %{}
-        },
-        "product_variant_id" => 1
+        "subscription_id" => 1,
+        "action" => "pause",
+        "status" => "pending",
+        "customer_message" => nil,
+        "redirect_url" => nil,
+        "created_at" => nil
       }
     }
 
@@ -560,20 +526,12 @@ defmodule SellApp.CustomerPortalRoundTripTest do
     data = %{
       "data" => %{
         "id" => 1,
-        "status" => "status",
-        "subscription_id" => nil,
-        "customer_id" => nil,
-        "provider_subscription_id" => nil,
-        "provider_customer_id" => nil,
-        "customer" => %{
-          "id" => 1,
-          "email" => "email",
-          "external_id" => nil,
-          "name" => nil,
-          "locale" => nil,
-          "metadata" => %{}
-        },
-        "product_variant_id" => 1
+        "subscription_id" => 1,
+        "action" => "pause",
+        "status" => "pending",
+        "customer_message" => nil,
+        "redirect_url" => nil,
+        "created_at" => nil
       }
     }
 

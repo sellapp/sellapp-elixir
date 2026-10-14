@@ -19,6 +19,8 @@ defmodule SellApp.V2BatchCreateCouponsResponseValue201ApplicationJsonPropertyDat
     :store_id,
     :deleted_at,
     :maximum_discount_amount,
+    :applies_to,
+    :subscription_payments,
     :products,
     :product_variants,
     __additional_properties__: %{},
@@ -40,6 +42,9 @@ defmodule SellApp.V2BatchCreateCouponsResponseValue201ApplicationJsonPropertyDat
           store_id: integer(),
           deleted_at: String.t() | nil,
           maximum_discount_amount: String.t() | nil,
+          applies_to:
+            SellApp.V2BatchCreateCouponsResponseValue201ApplicationJsonPropertyDataItemAppliesTo.t(),
+          subscription_payments: integer() | nil,
           products: [integer()],
           product_variants: [integer()],
           __additional_properties__: map(),
@@ -67,6 +72,14 @@ defmodule SellApp.V2BatchCreateCouponsResponseValue201ApplicationJsonPropertyDat
       "maximum_discount_amount" => %{
         required: true,
         schema: %{kind: :nullable, inner: %{kind: :string}}
+      },
+      "applies_to" => %{
+        required: true,
+        schema: %{kind: :enum, values: ["one_time", "subscriptions"]}
+      },
+      "subscription_payments" => %{
+        required: true,
+        schema: %{kind: :nullable, inner: %{kind: :integer}}
       },
       "products" => %{required: true, schema: %{kind: :array, items: %{kind: :integer}}},
       "product_variants" => %{required: true, schema: %{kind: :array, items: %{kind: :integer}}}
@@ -99,6 +112,12 @@ defmodule SellApp.V2BatchCreateCouponsResponseValue201ApplicationJsonPropertyDat
       store_id: map["store_id"],
       deleted_at: map["deleted_at"],
       maximum_discount_amount: map["maximum_discount_amount"],
+      applies_to:
+        SellApp.Cast.enum(
+          map["applies_to"],
+          &SellApp.V2BatchCreateCouponsResponseValue201ApplicationJsonPropertyDataItemAppliesTo.cast/1
+        ),
+      subscription_payments: map["subscription_payments"],
       products: map["products"],
       product_variants: map["product_variants"],
       __additional_properties__:
@@ -116,6 +135,8 @@ defmodule SellApp.V2BatchCreateCouponsResponseValue201ApplicationJsonPropertyDat
           "store_id",
           "deleted_at",
           "maximum_discount_amount",
+          "applies_to",
+          "subscription_payments",
           "products",
           "product_variants"
         ]),
@@ -146,6 +167,12 @@ defmodule SellApp.V2BatchCreateCouponsResponseValue201ApplicationJsonPropertyDat
           "store_id" => struct.store_id,
           "deleted_at" => struct.deleted_at,
           "maximum_discount_amount" => struct.maximum_discount_amount,
+          "applies_to" =>
+            SellApp.Cast.enum(
+              struct.applies_to,
+              &SellApp.V2BatchCreateCouponsResponseValue201ApplicationJsonPropertyDataItemAppliesTo.dump/1
+            ),
+          "subscription_payments" => struct.subscription_payments,
           "products" => struct.products,
           "product_variants" => struct.product_variants
         },
@@ -163,6 +190,8 @@ defmodule SellApp.V2BatchCreateCouponsResponseValue201ApplicationJsonPropertyDat
           "store_id",
           "deleted_at",
           "maximum_discount_amount",
+          "applies_to",
+          "subscription_payments",
           "products",
           "product_variants"
         ],

@@ -3,38 +3,6 @@
 defmodule SellApp.SubscriptionsRoundTripTest do
   use ExUnit.Case, async: true
 
-  test "ListSubscriptionsResponseValue200ApplicationJsonPropertyDataItem round-trips between wire and struct" do
-    data = %{
-      "id" => 1,
-      "status" => "status",
-      "subscription_id" => nil,
-      "customer_id" => nil,
-      "provider_subscription_id" => nil,
-      "provider_customer_id" => nil,
-      "customer" => %{
-        "id" => 1,
-        "email" => "email",
-        "external_id" => nil,
-        "name" => nil,
-        "locale" => nil,
-        "metadata" => %{}
-      },
-      "product_variant_id" => 1
-    }
-
-    serialized =
-      data
-      |> SellApp.ListSubscriptionsResponseValue200ApplicationJsonPropertyDataItem.from_map()
-      |> SellApp.ListSubscriptionsResponseValue200ApplicationJsonPropertyDataItem.to_map()
-
-    assert serialized == data
-
-    assert serialized
-           |> SellApp.ListSubscriptionsResponseValue200ApplicationJsonPropertyDataItem.from_map()
-           |> SellApp.ListSubscriptionsResponseValue200ApplicationJsonPropertyDataItem.to_map() ==
-             serialized
-  end
-
   test "SdkCancelSubscriptionAtPeriodEndResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{
@@ -44,6 +12,8 @@ defmodule SellApp.SubscriptionsRoundTripTest do
         "action" => "pause",
         "status" => "pending",
         "provider" => "provider",
+        "proration_order_id" => nil,
+        "error" => nil,
         "customer_message" => nil,
         "confirmed_at" => nil,
         "failed_at" => nil,
@@ -75,6 +45,8 @@ defmodule SellApp.SubscriptionsRoundTripTest do
         "action" => "pause",
         "status" => "pending",
         "provider" => "provider",
+        "proration_order_id" => nil,
+        "error" => nil,
         "customer_message" => nil,
         "confirmed_at" => nil,
         "failed_at" => nil,
@@ -102,17 +74,28 @@ defmodule SellApp.SubscriptionsRoundTripTest do
       "data" => %{
         "id" => 1,
         "invoice_id" => nil,
-        "provider" => "provider",
-        "subscription_id" => "subscription_id",
-        "customer_id" => "customer_id",
-        "customer_email" => "customer_email",
-        "status" => "status",
-        "current_period_start" => "2024-01-01T00:00:00.000Z",
-        "current_period_end" => "2024-01-01T00:00:00.000Z",
+        "provider" => nil,
+        "subscription_id" => nil,
+        "customer_id" => nil,
+        "provider_subscription_id" => nil,
+        "provider_customer_id" => nil,
+        "customer" => nil,
+        "customer_email" => nil,
+        "status" => "ACTIVE",
+        "current_period_start" => nil,
+        "current_period_end" => nil,
+        "trial_ends_at" => nil,
         "cancel_at_period_end" => true,
         "cancellation_in_progress" => true,
-        "store_id" => 1,
-        "product_variant_id" => 1,
+        "store_id" => nil,
+        "product_variant_id" => nil,
+        "current_plan_variant_id" => nil,
+        "auto_renew" => true,
+        "paused_at" => nil,
+        "pause_resumes_at" => nil,
+        "canceled_immediately_at" => nil,
+        "payment_method_updated_at" => nil,
+        "last_customer_action_at" => nil,
         "created_at" => "2024-01-01T00:00:00.000Z",
         "updated_at" => "2024-01-01T00:00:00.000Z"
       },
@@ -131,6 +114,40 @@ defmodule SellApp.SubscriptionsRoundTripTest do
            |> SellApp.SdkCancelSubscriptionResponseValue200ApplicationJson.to_map() == serialized
   end
 
+  test "SdkConfirmSubscriptionPlanChangeResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "id" => 1,
+        "product_subscription_id" => 1,
+        "subscription_id" => nil,
+        "action" => "pause",
+        "status" => "pending",
+        "provider" => "provider",
+        "proration_order_id" => nil,
+        "error" => nil,
+        "customer_message" => nil,
+        "confirmed_at" => nil,
+        "failed_at" => nil,
+        "created_at" => "2024-01-01T00:00:00.000Z",
+        "updated_at" => "2024-01-01T00:00:00.000Z"
+      },
+      "message" => "message",
+      "approval_url" => "approval_url"
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkConfirmSubscriptionPlanChangeResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkConfirmSubscriptionPlanChangeResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkConfirmSubscriptionPlanChangeResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkConfirmSubscriptionPlanChangeResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
   test "SdkConfirmSubscriptionRenewalDateChangeResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{
@@ -140,6 +157,8 @@ defmodule SellApp.SubscriptionsRoundTripTest do
         "action" => "pause",
         "status" => "pending",
         "provider" => "provider",
+        "proration_order_id" => nil,
+        "error" => nil,
         "customer_message" => nil,
         "confirmed_at" => nil,
         "failed_at" => nil,
@@ -182,20 +201,31 @@ defmodule SellApp.SubscriptionsRoundTripTest do
     data = %{
       "data" => %{
         "id" => 1,
-        "status" => "status",
+        "invoice_id" => nil,
+        "provider" => nil,
         "subscription_id" => nil,
         "customer_id" => nil,
         "provider_subscription_id" => nil,
         "provider_customer_id" => nil,
-        "customer" => %{
-          "id" => 1,
-          "email" => "email",
-          "external_id" => nil,
-          "name" => nil,
-          "locale" => nil,
-          "metadata" => %{}
-        },
-        "product_variant_id" => 1
+        "customer" => nil,
+        "customer_email" => nil,
+        "status" => "ACTIVE",
+        "current_period_start" => nil,
+        "current_period_end" => nil,
+        "trial_ends_at" => nil,
+        "cancel_at_period_end" => true,
+        "cancellation_in_progress" => true,
+        "store_id" => nil,
+        "product_variant_id" => nil,
+        "current_plan_variant_id" => nil,
+        "auto_renew" => true,
+        "paused_at" => nil,
+        "pause_resumes_at" => nil,
+        "canceled_immediately_at" => nil,
+        "payment_method_updated_at" => nil,
+        "last_customer_action_at" => nil,
+        "created_at" => "2024-01-01T00:00:00.000Z",
+        "updated_at" => "2024-01-01T00:00:00.000Z"
       }
     }
 
@@ -211,50 +241,36 @@ defmodule SellApp.SubscriptionsRoundTripTest do
            |> SellApp.SdkGetSubscriptionResponseValue200ApplicationJson.to_map() == serialized
   end
 
-  test "SdkListSubscriptionsResponseValue200ApplicationJson round-trips between wire and struct" do
+  test "SdkKeepSubscriptionResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
-      "data" => [
-        %{
-          "id" => 1,
-          "status" => "status",
-          "subscription_id" => nil,
-          "customer_id" => nil,
-          "provider_subscription_id" => nil,
-          "provider_customer_id" => nil,
-          "customer" => %{
-            "id" => 1,
-            "email" => "email",
-            "external_id" => nil,
-            "name" => nil,
-            "locale" => nil,
-            "metadata" => %{}
-          },
-          "product_variant_id" => 1
-        }
-      ],
-      "links" => %{"first" => "first", "last" => "last", "prev" => nil, "next" => nil},
-      "meta" => %{
-        "current_page" => 1,
-        "from" => nil,
-        "last_page" => 1,
-        "links" => [%{"url" => nil, "label" => "label", "active" => true}],
-        "path" => "path",
-        "per_page" => 1,
-        "to" => nil,
-        "total" => 1
-      }
+      "data" => %{
+        "id" => 1,
+        "product_subscription_id" => 1,
+        "subscription_id" => nil,
+        "action" => "pause",
+        "status" => "pending",
+        "provider" => "provider",
+        "proration_order_id" => nil,
+        "error" => nil,
+        "customer_message" => nil,
+        "confirmed_at" => nil,
+        "failed_at" => nil,
+        "created_at" => "2024-01-01T00:00:00.000Z",
+        "updated_at" => "2024-01-01T00:00:00.000Z"
+      },
+      "message" => "message"
     }
 
     serialized =
       data
-      |> SellApp.SdkListSubscriptionsResponseValue200ApplicationJson.from_map()
-      |> SellApp.SdkListSubscriptionsResponseValue200ApplicationJson.to_map()
+      |> SellApp.SdkKeepSubscriptionResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkKeepSubscriptionResponseValue200ApplicationJson.to_map()
 
     assert serialized == data
 
     assert serialized
-           |> SellApp.SdkListSubscriptionsResponseValue200ApplicationJson.from_map()
-           |> SellApp.SdkListSubscriptionsResponseValue200ApplicationJson.to_map() == serialized
+           |> SellApp.SdkKeepSubscriptionResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkKeepSubscriptionResponseValue200ApplicationJson.to_map() == serialized
   end
 
   test "SdkPauseSubscriptionResponseValue200ApplicationJson round-trips between wire and struct" do
@@ -266,6 +282,8 @@ defmodule SellApp.SubscriptionsRoundTripTest do
         "action" => "pause",
         "status" => "pending",
         "provider" => "provider",
+        "proration_order_id" => nil,
+        "error" => nil,
         "customer_message" => nil,
         "confirmed_at" => nil,
         "failed_at" => nil,
@@ -285,6 +303,38 @@ defmodule SellApp.SubscriptionsRoundTripTest do
     assert serialized
            |> SellApp.SdkPauseSubscriptionResponseValue200ApplicationJson.from_map()
            |> SellApp.SdkPauseSubscriptionResponseValue200ApplicationJson.to_map() == serialized
+  end
+
+  test "SdkPreviewSubscriptionPlanChangeResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "preview_token" => nil,
+        "expires_at" => nil,
+        "preview_payload" => %{
+          "provider" => "provider",
+          "payment_required" => true,
+          "renewal_date" => nil,
+          "amount_due" => 1,
+          "discount_warning" => "discount_warning"
+        },
+        "request_payload" => %{},
+        "customer_message" => nil,
+        "seller_message" => nil
+      },
+      "message" => "message"
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkPreviewSubscriptionPlanChangeResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkPreviewSubscriptionPlanChangeResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkPreviewSubscriptionPlanChangeResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkPreviewSubscriptionPlanChangeResponseValue200ApplicationJson.to_map() ==
+             serialized
   end
 
   test "SdkPreviewSubscriptionRenewalDateChangeResponseValue200ApplicationJson round-trips between wire and struct" do
@@ -322,6 +372,8 @@ defmodule SellApp.SubscriptionsRoundTripTest do
         "action" => "pause",
         "status" => "pending",
         "provider" => "provider",
+        "proration_order_id" => nil,
+        "error" => nil,
         "customer_message" => nil,
         "confirmed_at" => nil,
         "failed_at" => nil,
@@ -343,81 +395,37 @@ defmodule SellApp.SubscriptionsRoundTripTest do
            |> SellApp.SdkResumeSubscriptionResponseValue200ApplicationJson.to_map() == serialized
   end
 
-  test "SdkSearchSubscriptionsResponseValue200ApplicationJson round-trips between wire and struct" do
+  test "SdkUpdateSubscriptionPaymentMethodResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
-      "data" => [
-        %{
-          "id" => 1,
-          "status" => "status",
-          "subscription_id" => nil,
-          "customer_id" => nil,
-          "provider_subscription_id" => nil,
-          "provider_customer_id" => nil,
-          "customer" => %{
-            "id" => 1,
-            "email" => "email",
-            "external_id" => nil,
-            "name" => nil,
-            "locale" => nil,
-            "metadata" => %{}
-          },
-          "product_variant_id" => 1
-        }
-      ],
-      "links" => %{"first" => "first", "last" => "last", "prev" => nil, "next" => nil},
-      "meta" => %{
-        "current_page" => 1,
-        "from" => nil,
-        "last_page" => 1,
-        "links" => [%{"url" => nil, "label" => "label", "active" => true}],
-        "path" => "path",
-        "per_page" => 1,
-        "to" => nil,
-        "total" => 1
-      }
-    }
-
-    serialized =
-      data
-      |> SellApp.SdkSearchSubscriptionsResponseValue200ApplicationJson.from_map()
-      |> SellApp.SdkSearchSubscriptionsResponseValue200ApplicationJson.to_map()
-
-    assert serialized == data
-
-    assert serialized
-           |> SellApp.SdkSearchSubscriptionsResponseValue200ApplicationJson.from_map()
-           |> SellApp.SdkSearchSubscriptionsResponseValue200ApplicationJson.to_map() == serialized
-  end
-
-  test "SearchSubscriptionsResponseValue200ApplicationJsonPropertyDataItem round-trips between wire and struct" do
-    data = %{
-      "id" => 1,
-      "status" => "status",
-      "subscription_id" => nil,
-      "customer_id" => nil,
-      "provider_subscription_id" => nil,
-      "provider_customer_id" => nil,
-      "customer" => %{
+      "data" => %{
         "id" => 1,
-        "email" => "email",
-        "external_id" => nil,
-        "name" => nil,
-        "locale" => nil,
-        "metadata" => %{}
+        "product_subscription_id" => 1,
+        "subscription_id" => nil,
+        "action" => "pause",
+        "status" => "pending",
+        "provider" => "provider",
+        "proration_order_id" => nil,
+        "error" => nil,
+        "customer_message" => nil,
+        "confirmed_at" => nil,
+        "failed_at" => nil,
+        "created_at" => "2024-01-01T00:00:00.000Z",
+        "updated_at" => "2024-01-01T00:00:00.000Z"
       },
-      "product_variant_id" => 1
+      "message" => "message",
+      "redirect_url" => nil
     }
 
     serialized =
       data
-      |> SellApp.SearchSubscriptionsResponseValue200ApplicationJsonPropertyDataItem.from_map()
-      |> SellApp.SearchSubscriptionsResponseValue200ApplicationJsonPropertyDataItem.to_map()
+      |> SellApp.SdkUpdateSubscriptionPaymentMethodResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkUpdateSubscriptionPaymentMethodResponseValue200ApplicationJson.to_map()
 
     assert serialized == data
 
     assert serialized
-           |> SellApp.SearchSubscriptionsResponseValue200ApplicationJsonPropertyDataItem.from_map()
-           |> SellApp.SearchSubscriptionsResponseValue200ApplicationJsonPropertyDataItem.to_map() ==
+           |> SellApp.SdkUpdateSubscriptionPaymentMethodResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkUpdateSubscriptionPaymentMethodResponseValue200ApplicationJson.to_map() ==
              serialized
   end
 end
