@@ -1,0 +1,7 @@
+{
+  "data": {
+    "vat_enabled": true,
+    "vat_inclusive_pricing": true,
+    "collect_billing_details": true
+  }
+}

@@ -208,9 +208,7 @@ defmodule SellApp.InvoicesTest do
               id: 1,
               created_at: "2024-01-01T00:00:00.000Z"
             }} =
-             SellApp.Invoices.issue_replacement(client, "test_invoice", %{
-               "product_variants" => %{}
-             })
+             SellApp.Invoices.issue_replacement(client, "test_invoice", %{"product_variants" => 1})
   end
 
   test "update_status succeeds", %{client: client} do
@@ -239,7 +237,10 @@ defmodule SellApp.InvoicesTest do
     end)
 
     assert {:ok, %SellApp.SdkCreateInvoiceRefundResponseValue200ApplicationJson{}} =
-             SellApp.Invoices.create_refund(client, "test_invoice", %{"amount" => nil})
+             SellApp.Invoices.create_refund(client, "test_invoice", %{
+               "amount" => nil,
+               "expected_refunded_total_cents" => nil
+             })
   end
 
   test "retry_fulfillment succeeds", %{client: client} do

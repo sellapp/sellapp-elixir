@@ -8,6 +8,7 @@ defmodule SellApp.SdkUpdateTicketRequestApplicationJson do
   defstruct [
     :status,
     :archived,
+    :outcome,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -15,6 +16,7 @@ defmodule SellApp.SdkUpdateTicketRequestApplicationJson do
   @type t :: %__MODULE__{
           status: SellApp.SdkUpdateTicketRequestApplicationJsonStatus.t() | nil,
           archived: boolean() | nil,
+          outcome: SellApp.SdkUpdateTicketRequestApplicationJsonOutcome.t() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -23,7 +25,14 @@ defmodule SellApp.SdkUpdateTicketRequestApplicationJson do
     name: "SdkUpdateTicketRequestApplicationJson",
     properties: %{
       "status" => %{required: false, schema: %{kind: :enum, values: ["OPEN", "CLOSED"]}},
-      "archived" => %{required: false, schema: %{kind: :boolean}}
+      "archived" => %{required: false, schema: %{kind: :boolean}},
+      "outcome" => %{
+        required: false,
+        schema: %{
+          kind: :enum,
+          values: ["refunded", "refunded_partial", "delivered", "no_action", "duplicate", "other"]
+        }
+      }
     },
     additional_properties: true
   }
@@ -42,7 +51,12 @@ defmodule SellApp.SdkUpdateTicketRequestApplicationJson do
           &SellApp.SdkUpdateTicketRequestApplicationJsonStatus.cast/1
         ),
       archived: map["archived"],
-      __additional_properties__: Map.drop(map, ["status", "archived"]),
+      outcome:
+        SellApp.Cast.enum(
+          map["outcome"],
+          &SellApp.SdkUpdateTicketRequestApplicationJsonOutcome.cast/1
+        ),
+      __additional_properties__: Map.drop(map, ["status", "archived", "outcome"]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -58,7 +72,12 @@ defmodule SellApp.SdkUpdateTicketRequestApplicationJson do
               struct.status,
               &SellApp.SdkUpdateTicketRequestApplicationJsonStatus.dump/1
             ),
-          "archived" => struct.archived
+          "archived" => struct.archived,
+          "outcome" =>
+            SellApp.Cast.enum(
+              struct.outcome,
+              &SellApp.SdkUpdateTicketRequestApplicationJsonOutcome.dump/1
+            )
         },
         [],
         struct.__present_fields__

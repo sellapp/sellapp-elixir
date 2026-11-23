@@ -10,6 +10,7 @@ defmodule SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDa
     :line_item_id,
     :type,
     :status,
+    :delivered_product_id,
     :product_variant_id,
     :quantity,
     :deliverable,
@@ -24,6 +25,7 @@ defmodule SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDa
           type: String.t(),
           status:
             SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemStatus.t(),
+          delivered_product_id: integer() | nil,
           product_variant_id: integer() | nil,
           quantity: integer(),
           deliverable:
@@ -42,6 +44,10 @@ defmodule SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDa
       "line_item_id" => %{required: true, schema: %{kind: :integer}},
       "type" => %{required: true, schema: %{kind: :string}},
       "status" => %{required: true, schema: %{kind: :enum, values: ["pending", "delivered"]}},
+      "delivered_product_id" => %{
+        required: true,
+        schema: %{kind: :nullable, inner: %{kind: :integer}}
+      },
       "product_variant_id" => %{
         required: true,
         schema: %{kind: :nullable, inner: %{kind: :integer}}
@@ -86,6 +92,7 @@ defmodule SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDa
           map["status"],
           &SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemStatus.cast/1
         ),
+      delivered_product_id: map["delivered_product_id"],
       product_variant_id: map["product_variant_id"],
       quantity: map["quantity"],
       deliverable:
@@ -104,6 +111,7 @@ defmodule SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDa
           "line_item_id",
           "type",
           "status",
+          "delivered_product_id",
           "product_variant_id",
           "quantity",
           "deliverable",
@@ -127,6 +135,7 @@ defmodule SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDa
               struct.status,
               &SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemStatus.dump/1
             ),
+          "delivered_product_id" => struct.delivered_product_id,
           "product_variant_id" => struct.product_variant_id,
           "quantity" => struct.quantity,
           "deliverable" =>
@@ -147,6 +156,7 @@ defmodule SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDa
           "line_item_id",
           "type",
           "status",
+          "delivered_product_id",
           "product_variant_id",
           "quantity",
           "deliverable",

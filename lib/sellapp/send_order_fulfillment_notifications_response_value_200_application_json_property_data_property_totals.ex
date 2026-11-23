@@ -12,6 +12,8 @@ defmodule SellApp.SendOrderFulfillmentNotificationsResponseValue200ApplicationJs
     :total_cents,
     :total_exclusive_usd_cents,
     :total_usd_cents,
+    :refund_currency,
+    :refunded_total_cents,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -23,6 +25,8 @@ defmodule SellApp.SendOrderFulfillmentNotificationsResponseValue200ApplicationJs
           total_cents: integer(),
           total_exclusive_usd_cents: integer() | nil,
           total_usd_cents: integer() | nil,
+          refund_currency: String.t() | nil,
+          refunded_total_cents: integer(),
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -42,7 +46,9 @@ defmodule SellApp.SendOrderFulfillmentNotificationsResponseValue200ApplicationJs
       "total_usd_cents" => %{
         required: true,
         schema: %{kind: :nullable, inner: %{kind: :integer, minimum: 0}}
-      }
+      },
+      "refund_currency" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}},
+      "refunded_total_cents" => %{required: true, schema: %{kind: :integer, minimum: 0}}
     },
     additional_properties: true
   }
@@ -61,6 +67,8 @@ defmodule SellApp.SendOrderFulfillmentNotificationsResponseValue200ApplicationJs
       total_cents: map["total_cents"],
       total_exclusive_usd_cents: map["total_exclusive_usd_cents"],
       total_usd_cents: map["total_usd_cents"],
+      refund_currency: map["refund_currency"],
+      refunded_total_cents: map["refunded_total_cents"],
       __additional_properties__:
         Map.drop(map, [
           "currency",
@@ -68,7 +76,9 @@ defmodule SellApp.SendOrderFulfillmentNotificationsResponseValue200ApplicationJs
           "total_exclusive_cents",
           "total_cents",
           "total_exclusive_usd_cents",
-          "total_usd_cents"
+          "total_usd_cents",
+          "refund_currency",
+          "refunded_total_cents"
         ]),
       __present_fields__: Map.keys(map)
     }
@@ -85,7 +95,9 @@ defmodule SellApp.SendOrderFulfillmentNotificationsResponseValue200ApplicationJs
           "total_exclusive_cents" => struct.total_exclusive_cents,
           "total_cents" => struct.total_cents,
           "total_exclusive_usd_cents" => struct.total_exclusive_usd_cents,
-          "total_usd_cents" => struct.total_usd_cents
+          "total_usd_cents" => struct.total_usd_cents,
+          "refund_currency" => struct.refund_currency,
+          "refunded_total_cents" => struct.refunded_total_cents
         },
         [
           "currency",
@@ -93,7 +105,9 @@ defmodule SellApp.SendOrderFulfillmentNotificationsResponseValue200ApplicationJs
           "total_exclusive_cents",
           "total_cents",
           "total_exclusive_usd_cents",
-          "total_usd_cents"
+          "total_usd_cents",
+          "refund_currency",
+          "refunded_total_cents"
         ],
         struct.__present_fields__
       )

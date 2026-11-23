@@ -2,7 +2,7 @@
 
 defmodule SellApp.ListWebhookChannelsResponseValue200ApplicationJsonPropertyDataItem do
   @moduledoc """
-  A seller-configured outbound webhook destination. IDs are stable UUIDs and are not reused when another channel is deleted.
+  A seller-configured outbound webhook destination. IDs are stable UUIDs and are not reused when another channel is deleted. List and search results also report how deliveries to the destination are going.
   """
 
   defstruct [
@@ -11,6 +11,8 @@ defmodule SellApp.ListWebhookChannelsResponseValue200ApplicationJsonPropertyData
     :url,
     :allowed_notifications,
     :signing_secret_configured,
+    :health,
+    :last_delivery,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -23,6 +25,11 @@ defmodule SellApp.ListWebhookChannelsResponseValue200ApplicationJsonPropertyData
             SellApp.ListWebhookChannelsResponseValue200ApplicationJsonPropertyDataItemAllowedNotifications.t()
           ],
           signing_secret_configured: boolean(),
+          health:
+            SellApp.ListWebhookChannelsResponseValue200ApplicationJsonPropertyDataItemPropertyHealth.t(),
+          last_delivery:
+            SellApp.ListWebhookChannelsResponseValue200ApplicationJsonPropertyDataItemPropertyLastDelivery.t()
+            | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -74,7 +81,26 @@ defmodule SellApp.ListWebhookChannelsResponseValue200ApplicationJsonPropertyData
           unique_items: true
         }
       },
-      "signing_secret_configured" => %{required: true, schema: %{kind: :boolean}}
+      "signing_secret_configured" => %{required: true, schema: %{kind: :boolean}},
+      "health" => %{
+        required: true,
+        schema: %{
+          kind: :model,
+          module:
+            SellApp.ListWebhookChannelsResponseValue200ApplicationJsonPropertyDataItemPropertyHealth
+        }
+      },
+      "last_delivery" => %{
+        required: true,
+        schema: %{
+          kind: :nullable,
+          inner: %{
+            kind: :model,
+            module:
+              SellApp.ListWebhookChannelsResponseValue200ApplicationJsonPropertyDataItemPropertyLastDelivery
+          }
+        }
+      }
     },
     additional_properties: true
   }
@@ -96,8 +122,26 @@ defmodule SellApp.ListWebhookChannelsResponseValue200ApplicationJsonPropertyData
           &SellApp.ListWebhookChannelsResponseValue200ApplicationJsonPropertyDataItemAllowedNotifications.cast/1
         ),
       signing_secret_configured: map["signing_secret_configured"],
+      health:
+        SellApp.Cast.nested(
+          map["health"],
+          &SellApp.ListWebhookChannelsResponseValue200ApplicationJsonPropertyDataItemPropertyHealth.from_map/1
+        ),
+      last_delivery:
+        SellApp.Cast.nested(
+          map["last_delivery"],
+          &SellApp.ListWebhookChannelsResponseValue200ApplicationJsonPropertyDataItemPropertyLastDelivery.from_map/1
+        ),
       __additional_properties__:
-        Map.drop(map, ["id", "name", "url", "allowed_notifications", "signing_secret_configured"]),
+        Map.drop(map, [
+          "id",
+          "name",
+          "url",
+          "allowed_notifications",
+          "signing_secret_configured",
+          "health",
+          "last_delivery"
+        ]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -116,9 +160,27 @@ defmodule SellApp.ListWebhookChannelsResponseValue200ApplicationJsonPropertyData
               struct.allowed_notifications,
               &SellApp.ListWebhookChannelsResponseValue200ApplicationJsonPropertyDataItemAllowedNotifications.dump/1
             ),
-          "signing_secret_configured" => struct.signing_secret_configured
+          "signing_secret_configured" => struct.signing_secret_configured,
+          "health" =>
+            SellApp.Cast.dump_struct(
+              struct.health,
+              &SellApp.ListWebhookChannelsResponseValue200ApplicationJsonPropertyDataItemPropertyHealth.to_map/1
+            ),
+          "last_delivery" =>
+            SellApp.Cast.dump_struct(
+              struct.last_delivery,
+              &SellApp.ListWebhookChannelsResponseValue200ApplicationJsonPropertyDataItemPropertyLastDelivery.to_map/1
+            )
         },
-        ["id", "name", "url", "allowed_notifications", "signing_secret_configured"],
+        [
+          "id",
+          "name",
+          "url",
+          "allowed_notifications",
+          "signing_secret_configured",
+          "health",
+          "last_delivery"
+        ],
         struct.__present_fields__
       )
 

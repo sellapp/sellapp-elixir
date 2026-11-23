@@ -337,7 +337,7 @@ client = SellApp.Client.new(
   store: System.fetch_env!("SELLAPP_STORE")
 )
 
-{:ok, result} = SellApp.Products.search(client, %{"filters" => [%{"field" => "id", "operator" => "=", "value" => 1}], "sort" => [%{"field" => "created_at", "direction" => "desc"}]})
+{:ok, result} = SellApp.Products.search(client, %{"search" => %{"value" => "launch"}, "max_price" => 2500, "stock" => "in_stock", "visibility" => ["PUBLIC"], "has_sales" => true})
 IO.inspect(result)
 ```
 
@@ -513,6 +513,161 @@ Supported credential alternatives (each object is one alternative):
 ```
 
 Documented HTTP responses: 200, 400, 401, 403, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
+## publish
+
+Publish a product
+
+[API reference](https://sell.app/docs/api/products/publish-a-product) · Effect: **consequential**
+
+```elixir
+def publish(client, product, params \\ %{}, opts \\ [])
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| client | `any` | Yes |
+| product | `any` | Yes |
+| params | `any` | Yes |
+| opts | `any` | Yes |
+
+Returns: `any`.
+
+```exs
+client = SellApp.Client.new(
+  base_url: System.fetch_env!("SELLAPP_API_BASE_URL"),
+  api_key: System.fetch_env!("SELLAPP_API_KEY"),
+  store: System.fetch_env!("SELLAPP_STORE")
+)
+
+{:ok, result} = SellApp.Products.publish(client, 1, %{"variant_ids" => [2]})
+IO.inspect(result)
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
+## duplicate
+
+Duplicate a product
+
+[API reference](https://sell.app/docs/api/products/duplicate-a-product) · Effect: **write**
+
+```elixir
+def duplicate(client, product, opts \\ [])
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| client | `any` | Yes |
+| product | `any` | Yes |
+| opts | `any` | Yes |
+
+Returns: `any`.
+
+```exs
+client = SellApp.Client.new(
+  base_url: System.fetch_env!("SELLAPP_API_BASE_URL"),
+  api_key: System.fetch_env!("SELLAPP_API_KEY"),
+  store: System.fetch_env!("SELLAPP_STORE")
+)
+
+{:ok, result} = SellApp.Products.duplicate(client, 1)
+IO.inspect(result)
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 201, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
+## move
+
+Move a product
+
+[API reference](https://sell.app/docs/api/products/move-a-product) · Effect: **write**
+
+```elixir
+def move(client, product, params \\ %{}, opts \\ [])
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| client | `any` | Yes |
+| product | `any` | Yes |
+| params | `any` | Yes |
+| opts | `any` | Yes |
+
+Returns: `any`.
+
+```exs
+client = SellApp.Client.new(
+  base_url: System.fetch_env!("SELLAPP_API_BASE_URL"),
+  api_key: System.fetch_env!("SELLAPP_API_KEY"),
+  store: System.fetch_env!("SELLAPP_STORE")
+)
+
+{:ok, result} = SellApp.Products.move(client, 1, %{"position" => 1, "expected_position" => 3})
+IO.inspect(result)
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
 
 [Response access, transport controls, pagination, and typed errors](../usage.md)
 

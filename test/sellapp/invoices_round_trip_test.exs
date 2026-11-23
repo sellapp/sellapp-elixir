@@ -36,7 +36,9 @@ defmodule SellApp.InvoicesRoundTripTest do
           "units" => 1,
           "vat" => 1,
           "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
-        }
+        },
+        "refund_currency" => nil,
+        "refunded_total_cents" => 1
       },
       "status" => %{
         "history" => [
@@ -123,7 +125,9 @@ defmodule SellApp.InvoicesRoundTripTest do
             "units" => 1,
             "vat" => 1,
             "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
-          }
+          },
+          "refund_currency" => nil,
+          "refunded_total_cents" => 1
         },
         "status" => %{
           "history" => [
@@ -258,7 +262,9 @@ defmodule SellApp.InvoicesRoundTripTest do
               "units" => 1,
               "vat" => 1,
               "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
-            }
+            },
+            "refund_currency" => nil,
+            "refunded_total_cents" => 1
           },
           "status" => %{
             "history" => [
@@ -353,7 +359,9 @@ defmodule SellApp.InvoicesRoundTripTest do
             "units" => 1,
             "vat" => 1,
             "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
-          }
+          },
+          "refund_currency" => nil,
+          "refunded_total_cents" => 1
         },
         "status" => %{
           "history" => [
@@ -474,7 +482,9 @@ defmodule SellApp.InvoicesRoundTripTest do
             "units" => 1,
             "vat" => 1,
             "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
-          }
+          },
+          "refund_currency" => nil,
+          "refunded_total_cents" => 1
         },
         "status" => %{
           "history" => [
@@ -558,7 +568,9 @@ defmodule SellApp.InvoicesRoundTripTest do
           "units" => 1,
           "vat" => 1,
           "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
-        }
+        },
+        "refund_currency" => nil,
+        "refunded_total_cents" => 1
       },
       "status" => %{
         "history" => [
@@ -644,7 +656,9 @@ defmodule SellApp.InvoicesRoundTripTest do
               "units" => 1,
               "vat" => 1,
               "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
-            }
+            },
+            "refund_currency" => nil,
+            "refunded_total_cents" => 1
           },
           "status" => %{
             "history" => [
@@ -733,7 +747,9 @@ defmodule SellApp.InvoicesRoundTripTest do
           "units" => 1,
           "vat" => 1,
           "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
-        }
+        },
+        "refund_currency" => nil,
+        "refunded_total_cents" => 1
       },
       "status" => %{
         "history" => [
@@ -817,7 +833,9 @@ defmodule SellApp.InvoicesRoundTripTest do
           "units" => 1,
           "vat" => 1,
           "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
-        }
+        },
+        "refund_currency" => nil,
+        "refunded_total_cents" => 1
       },
       "status" => %{
         "history" => [
@@ -903,7 +921,9 @@ defmodule SellApp.InvoicesRoundTripTest do
               "units" => 1,
               "vat" => 1,
               "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
-            }
+            },
+            "refund_currency" => nil,
+            "refunded_total_cents" => 1
           },
           "status" => %{
             "history" => [
@@ -992,7 +1012,9 @@ defmodule SellApp.InvoicesRoundTripTest do
           "units" => 1,
           "vat" => 1,
           "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
-        }
+        },
+        "refund_currency" => nil,
+        "refunded_total_cents" => 1
       },
       "status" => %{
         "history" => [
@@ -1075,7 +1097,9 @@ defmodule SellApp.InvoicesRoundTripTest do
           "units" => 1,
           "vat" => 1,
           "total" => %{"exclusive" => "exclusive", "inclusive" => "inclusive"}
-        }
+        },
+        "refund_currency" => nil,
+        "refunded_total_cents" => 1
       },
       "status" => %{
         "history" => [

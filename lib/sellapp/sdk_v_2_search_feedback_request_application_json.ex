@@ -10,6 +10,7 @@ defmodule SellApp.SdkV2SearchFeedbackRequestApplicationJson do
     :sort,
     :search,
     :includes,
+    :reply_state,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -20,6 +21,7 @@ defmodule SellApp.SdkV2SearchFeedbackRequestApplicationJson do
           search: SellApp.V2SearchFeedbackRequestApplicationJsonPropertySearch.t() | nil,
           includes:
             [SellApp.V2SearchFeedbackRequestApplicationJsonPropertyIncludesItem.t()] | nil,
+          reply_state: SellApp.ReplyState.t() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -63,6 +65,13 @@ defmodule SellApp.SdkV2SearchFeedbackRequestApplicationJson do
             module: SellApp.V2SearchFeedbackRequestApplicationJsonPropertyIncludesItem
           }
         }
+      },
+      "reply_state" => %{
+        required: false,
+        schema: %{
+          kind: :nullable,
+          inner: %{kind: :enum, values: ["all", "replied", "unreplied", "null"]}
+        }
       }
     },
     additional_properties: true
@@ -96,7 +105,9 @@ defmodule SellApp.SdkV2SearchFeedbackRequestApplicationJson do
           map["includes"],
           &SellApp.V2SearchFeedbackRequestApplicationJsonPropertyIncludesItem.from_map/1
         ),
-      __additional_properties__: Map.drop(map, ["filters", "sort", "search", "includes"]),
+      reply_state: SellApp.Cast.enum(map["reply_state"], &SellApp.ReplyState.cast/1),
+      __additional_properties__:
+        Map.drop(map, ["filters", "sort", "search", "includes", "reply_state"]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -132,7 +143,8 @@ defmodule SellApp.SdkV2SearchFeedbackRequestApplicationJson do
                 item,
                 &SellApp.V2SearchFeedbackRequestApplicationJsonPropertyIncludesItem.to_map/1
               )
-            end)
+            end),
+          "reply_state" => SellApp.Cast.enum(struct.reply_state, &SellApp.ReplyState.dump/1)
         },
         [],
         struct.__present_fields__

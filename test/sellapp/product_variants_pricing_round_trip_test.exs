@@ -44,7 +44,8 @@ defmodule SellApp.ProductVariantsPricingRoundTripTest do
           "additional_information" => [
             %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
           ]
-        }
+        },
+        "is_draft" => true
       }
     }
 
@@ -102,7 +103,8 @@ defmodule SellApp.ProductVariantsPricingRoundTripTest do
           "additional_information" => [
             %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
           ]
-        }
+        },
+        "is_draft" => true
       }
     }
 

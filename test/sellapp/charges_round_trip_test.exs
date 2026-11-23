@@ -63,6 +63,47 @@ defmodule SellApp.ChargesRoundTripTest do
            |> SellApp.SdkGetChargeResponseValue200ApplicationJson.to_map() == serialized
   end
 
+  test "SdkGetChargeSummaryResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "period" => %{
+          "preset" => "preset",
+          "start_date" => "2024-01-01",
+          "end_date" => "2024-01-01",
+          "timezone" => "timezone",
+          "currency" => "currency"
+        },
+        "compared_with" => %{"start_date" => "2024-01-01", "end_date" => "2024-01-01"},
+        "revenue" => %{
+          "currency" => "currency",
+          "total_cents" => 1,
+          "previous_total_cents" => 1,
+          "formatted" => "formatted",
+          "previous_formatted" => "previous_formatted",
+          "trend" => "trend",
+          "trend_up" => true
+        },
+        "completed_charges" => %{
+          "count" => 1,
+          "previous_count" => 1,
+          "trend" => "trend",
+          "trend_up" => true
+        }
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkGetChargeSummaryResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkGetChargeSummaryResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkGetChargeSummaryResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkGetChargeSummaryResponseValue200ApplicationJson.to_map() == serialized
+  end
+
   test "SdkListChargesResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => [

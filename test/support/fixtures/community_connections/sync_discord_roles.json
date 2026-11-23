@@ -1,0 +1,18 @@
+{
+  "data": {
+    "platform": "discord",
+    "synced_servers": [
+      {
+        "id": "id",
+        "name": "name",
+        "synced": true,
+        "roles_synced": 1,
+        "hierarchy": "healthy",
+        "bot_can_assign": 1,
+        "total_roles": 1,
+        "error": "error"
+      }
+    ],
+    "failed_count": 1
+  }
+}

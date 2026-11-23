@@ -7,7 +7,15 @@ defmodule SellApp.VariantDeliverablesRoundTripTest do
     data = %{
       "data" => %{
         "types" => ["DOWNLOADABLE"],
-        "data" => %{},
+        "data" => %{
+          "comment" => nil,
+          "licenseLength" => nil,
+          "licenseLengthUnit" => nil,
+          "isLicenseLengthUnlimited" => true,
+          "licenseLimit" => nil,
+          "isLicenseLimitUnlimited" => true,
+          "licensePrefix" => nil
+        },
         "webhook_configured" => true,
         "updated_at" => "2024-01-01T00:00:00.000Z"
       }
@@ -26,11 +34,67 @@ defmodule SellApp.VariantDeliverablesRoundTripTest do
              serialized
   end
 
+  test "SdkNotifyVariantBuyersResponseValue202ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "status" => "queued",
+        "product_id" => 1,
+        "variant_id" => 1,
+        "order_count" => 1,
+        "email_count" => 1
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkNotifyVariantBuyersResponseValue202ApplicationJson.from_map()
+      |> SellApp.SdkNotifyVariantBuyersResponseValue202ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkNotifyVariantBuyersResponseValue202ApplicationJson.from_map()
+           |> SellApp.SdkNotifyVariantBuyersResponseValue202ApplicationJson.to_map() == serialized
+  end
+
+  test "SdkPreviewVariantBuyerNotificationResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "product_id" => 1,
+        "variant_id" => 1,
+        "file_count" => 1,
+        "order_count" => 1,
+        "email_count" => 1,
+        "has_upload_in_progress" => true
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkPreviewVariantBuyerNotificationResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkPreviewVariantBuyerNotificationResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkPreviewVariantBuyerNotificationResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkPreviewVariantBuyerNotificationResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
   test "SdkReplaceVariantDeliverableConfigurationResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{
         "types" => ["DOWNLOADABLE"],
-        "data" => %{},
+        "data" => %{
+          "comment" => nil,
+          "licenseLength" => nil,
+          "licenseLengthUnit" => nil,
+          "isLicenseLengthUnlimited" => true,
+          "licenseLimit" => nil,
+          "isLicenseLimitUnlimited" => true,
+          "licensePrefix" => nil
+        },
         "webhook_configured" => true,
         "updated_at" => "2024-01-01T00:00:00.000Z"
       }

@@ -106,6 +106,40 @@ defmodule SellApp.CommunityConnectionsTest do
              SellApp.CommunityConnections.disconnect(client, "test_platform")
   end
 
+  test "list_failed_grant_reasons succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "GET"
+
+      assert String.ends_with?(
+               conn.request_path,
+               "/v2/community-connections/failed-grant-reasons"
+             )
+
+      Req.Test.json(
+        conn,
+        SellApp.TestFixtures.fixture("community_connections/list_failed_grant_reasons")
+      )
+    end)
+
+    assert {:ok, %SellApp.SdkListCommunityFailedGrantReasonsResponseValue200ApplicationJson{}} =
+             SellApp.CommunityConnections.list_failed_grant_reasons(client)
+  end
+
+  test "sync_discord_roles succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "POST"
+      assert String.ends_with?(conn.request_path, "/v2/community-connections/discord/sync-roles")
+
+      Req.Test.json(
+        conn,
+        SellApp.TestFixtures.fixture("community_connections/sync_discord_roles")
+      )
+    end)
+
+    assert {:ok, %SellApp.SdkSyncDiscordRolesResponseValue200ApplicationJson{}} =
+             SellApp.CommunityConnections.sync_discord_roles(client, %{"server_id" => nil})
+  end
+
   test "poll encodes query parameters", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()

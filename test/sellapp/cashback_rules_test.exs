@@ -98,6 +98,29 @@ defmodule SellApp.CashbackRulesTest do
              SellApp.CashbackRules.restore(client, "test_cashback_rule")
   end
 
+  test "quote_ succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "GET"
+      assert String.ends_with?(conn.request_path, "/v2/cashback-rules/quote")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("cashback_rules/quote_"))
+    end)
+
+    assert {:ok, %SellApp.SdkQuoteCashbackRuleResponseValue200ApplicationJson{}} =
+             SellApp.CashbackRules.quote_(client)
+  end
+
+  test "quote_ encodes query parameters", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()
+      params = Map.new(pairs)
+      assert params["product_id"] == "hello world&x"
+      refute Map.has_key?(params, "purchase_cents")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("cashback_rules/quote_"))
+    end)
+
+    assert {:ok, _} = SellApp.CashbackRules.quote_(client, %{product_id: "hello world&x"})
+  end
+
   test "list honors per-request options", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       assert Plug.Conn.get_req_header(conn, "x-custom") == ["value"]

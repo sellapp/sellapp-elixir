@@ -1,0 +1,17 @@
+{
+  "data": {
+    "platform": "discord",
+    "id": "id",
+    "name": "name",
+    "type": null,
+    "is_last": true,
+    "affected_variants": [
+      {
+        "product_id": 1,
+        "product": "product",
+        "variant_id": 1,
+        "variant": "variant"
+      }
+    ]
+  }
+}

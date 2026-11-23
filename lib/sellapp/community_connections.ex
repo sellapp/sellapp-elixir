@@ -298,4 +298,101 @@ defmodule SellApp.CommunityConnections do
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
     end
   end
+
+  @doc """
+  List community failed grant reasons
+
+  List why community access grants failed across all platforms, with how many grants failed for each reason and what you can do about it, most frequent first. A grant is the access a purchase gives a customer, such as a Discord role or a place in a Telegram group. Only reasons that still need attention or are retried are counted; failures nobody can act on, such as a customer who left the server, are not. Only SellApp's records are read; no platform is contacted. An empty `data` array means no grant is failing. Requires the `community` API-key ability and the `community` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec list_failed_grant_reasons(SellApp.Client.t(), keyword()) ::
+          {:ok, SellApp.SdkListCommunityFailedGrantReasonsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def list_failed_grant_reasons(client, opts \\ []) do
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :get,
+             "/v2/community-connections/failed-grant-reasons",
+             %{},
+             Keyword.put(opts, :operation_id, "listCommunityFailedGrantReasons")
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{
+          kind: :model,
+          module: SellApp.SdkListCommunityFailedGrantReasonsResponseValue200ApplicationJson
+        },
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkListCommunityFailedGrantReasonsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Sync Discord roles
+
+  Read the role list of the store's Discord servers from Discord again and check the bot's role position, which tells whether the bot can give the roles your products sell. Syncs every connected server, or only `server_id`. A server Discord refuses is reported on its own row with `synced: false`, and the others still sync; `failed_count` counts those rows. Nothing is given to or taken from a member, so repeating the request is safe. `422` on `platform` when no Discord server is connected, and on `server_id` when that server is not connected to this store. Requires the `community` API-key ability and the `community` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `params` — request body map
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec sync_discord_roles(SellApp.Client.t(), map(), keyword()) ::
+          {:ok, SellApp.SdkSyncDiscordRolesResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def sync_discord_roles(client, params \\ %{}, opts \\ []) do
+    SellApp.Schema.validate_value!(
+      params,
+      %{kind: :model, module: SellApp.SdkSyncDiscordRolesRequestApplicationJson},
+      :request,
+      "$request.body"
+    )
+
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :post,
+             "/v2/community-connections/discord/sync-roles",
+             params,
+             Keyword.put(
+               Keyword.put(opts, :request_body, true),
+               :operation_id,
+               "syncDiscordRoles"
+             )
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{kind: :model, module: SellApp.SdkSyncDiscordRolesResponseValue200ApplicationJson},
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkSyncDiscordRolesResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
 end

@@ -68,7 +68,8 @@ defmodule SellApp.WalletTest do
              SellApp.Wallet.adjust(client, "test_customer", %{
                "amount_cents" => 1,
                "idempotency_key" => "idempotency_key",
-               "note" => "note"
+               "note" => "note",
+               "expected_balance_cents" => 1
              })
   end
 

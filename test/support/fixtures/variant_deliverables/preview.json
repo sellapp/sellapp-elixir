@@ -1,0 +1,10 @@
+{
+  "data": {
+    "product_id": 1,
+    "variant_id": 1,
+    "file_count": 1,
+    "order_count": 1,
+    "email_count": 1,
+    "has_upload_in_progress": true
+  }
+}

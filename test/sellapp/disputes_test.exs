@@ -57,6 +57,18 @@ defmodule SellApp.DisputesTest do
              SellApp.Disputes.get_dispute(client, "test_dispute")
   end
 
+  test "list_disputes encodes query parameters", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()
+      params = Map.new(pairs)
+      assert params["page"] == "hello world&x"
+      refute Map.has_key?(params, "provider")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("disputes/list_disputes"))
+    end)
+
+    assert {:ok, _} = SellApp.Disputes.list_disputes(client, %{page: "hello world&x"})
+  end
+
   test "list_disputes honors per-request options", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       assert Plug.Conn.get_req_header(conn, "x-custom") == ["value"]

@@ -83,6 +83,30 @@ defmodule SellApp.CashbackRulesRoundTripTest do
            |> SellApp.SdkListCashbackRulesResponseValue200ApplicationJson.to_map() == serialized
   end
 
+  test "SdkQuoteCashbackRuleResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "product_id" => nil,
+        "purchase_cents" => nil,
+        "eligible" => true,
+        "cashback_cents" => nil,
+        "reason" => "reason",
+        "matching_rule" => nil
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkQuoteCashbackRuleResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkQuoteCashbackRuleResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkQuoteCashbackRuleResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkQuoteCashbackRuleResponseValue200ApplicationJson.to_map() == serialized
+  end
+
   test "SdkReplaceCashbackRuleResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{

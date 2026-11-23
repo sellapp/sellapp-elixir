@@ -649,7 +649,7 @@ defmodule SellApp.Coupons do
       fetch_next = fn cursor ->
         v2_search_coupons(
           client,
-          SellApp.Page.next_params(params, "after", cursor),
+          SellApp.Page.next_params(params, "page", cursor),
           Keyword.delete(opts, :with_response)
         )
       end
@@ -662,7 +662,7 @@ defmodule SellApp.Coupons do
           fetch_next,
           base_url: client.base_url,
           path: "/v2/coupons/search",
-          pagination_param: "after"
+          pagination_param: "page"
         )
 
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
@@ -1008,6 +1008,48 @@ defmodule SellApp.Coupons do
         SellApp.Cast.nested(
           body,
           &SellApp.SdkV2BatchDeleteCouponsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Retrieve coupon usage
+
+  Count the completed orders that used a coupon, over the coupon's whole life. Only orders whose status is `COMPLETED` count; pending, failed, and refunded orders do not. A coupon from another store, a deleted coupon, and a coupon issued by a reward return `404`. Requires the `coupon` API-key ability and the coupon permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `coupon` — The coupon ID.
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec v2_get_coupon_usage(SellApp.Client.t(), String.t(), keyword()) ::
+          {:ok, SellApp.SdkV2GetCouponUsageResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def v2_get_coupon_usage(client, coupon, opts \\ []) do
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :get,
+             "/v2/coupons/#{URI.encode(coupon, &URI.char_unreserved?/1)}/usage",
+             %{},
+             Keyword.put(opts, :operation_id, "v2GetCouponUsage")
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{kind: :model, module: SellApp.SdkV2GetCouponUsageResponseValue200ApplicationJson},
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkV2GetCouponUsageResponseValue200ApplicationJson.from_map/1
         )
 
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}

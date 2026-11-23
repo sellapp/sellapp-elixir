@@ -170,6 +170,40 @@
     "sourceFile": "lib/sellapp/charges.ex"
   },
   {
+    "operationId": "getChargeSummary",
+    "resource": "charges",
+    "method": "get_summary",
+    "nativeSignature": "def get_summary(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get_summary",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/charges.ex"
+  },
+  {
     "operationId": "listGroups",
     "resource": "groups",
     "method": "list",
@@ -1832,6 +1866,268 @@
     "sourceFile": "lib/sellapp/products.ex"
   },
   {
+    "operationId": "publishProduct",
+    "resource": "products",
+    "method": "publish",
+    "nativeSignature": "def publish(client, product, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "publish",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/products.ex"
+  },
+  {
+    "operationId": "duplicateProduct",
+    "resource": "products",
+    "method": "duplicate",
+    "nativeSignature": "def duplicate(client, product, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "duplicate",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/products.ex"
+  },
+  {
+    "operationId": "moveProduct",
+    "resource": "products",
+    "method": "move",
+    "nativeSignature": "def move(client, product, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "move",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/products.ex"
+  },
+  {
+    "operationId": "getProductFeaturedVariant",
+    "resource": "products_featured_variant",
+    "method": "get",
+    "nativeSignature": "def get(client, product, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/products_featured_variant.ex"
+  },
+  {
+    "operationId": "replaceProductFeaturedVariant",
+    "resource": "products_featured_variant",
+    "method": "replace",
+    "nativeSignature": "def replace(client, product, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/products_featured_variant.ex"
+  },
+  {
+    "operationId": "listProductSimilarProducts",
+    "resource": "products_similar_products",
+    "method": "list",
+    "nativeSignature": "def list(client, product, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "list",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/products_similar_products.ex"
+  },
+  {
+    "operationId": "replaceProductSimilarProducts",
+    "resource": "products_similar_products",
+    "method": "replace",
+    "nativeSignature": "def replace(client, product, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/products_similar_products.ex"
+  },
+  {
     "operationId": "listProductVariants",
     "resource": "product_variants",
     "method": "list",
@@ -2484,6 +2780,258 @@
       }
     ],
     "sourceFile": "lib/sellapp/product_variants.ex"
+  },
+  {
+    "operationId": "publishProductVariant",
+    "resource": "product_variants",
+    "method": "publish",
+    "nativeSignature": "def publish(client, product, variant, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "publish",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "variant",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/product_variants.ex"
+  },
+  {
+    "operationId": "duplicateProductVariant",
+    "resource": "product_variants",
+    "method": "duplicate",
+    "nativeSignature": "def duplicate(client, product, variant, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "duplicate",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "variant",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/product_variants.ex"
+  },
+  {
+    "operationId": "reorderProductVariants",
+    "resource": "product_variants",
+    "method": "reorder",
+    "nativeSignature": "def reorder(client, product, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "reorder",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/product_variants.ex"
+  },
+  {
+    "operationId": "getVariantSubscriptionSettings",
+    "resource": "product_variants_subscription_settings",
+    "method": "get",
+    "nativeSignature": "def get(client, product, variant, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "variant",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/product_variants_subscription_settings.ex"
+  },
+  {
+    "operationId": "updateVariantSubscriptionSettings",
+    "resource": "product_variants_subscription_settings",
+    "method": "update",
+    "nativeSignature": "def update(client, product, variant, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "update",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "variant",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/product_variants_subscription_settings.ex"
+  },
+  {
+    "operationId": "replaceVariantCommunityAccess",
+    "resource": "product_variants_community_access",
+    "method": "replace",
+    "nativeSignature": "def replace(client, product, variant, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "variant",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/product_variants_community_access.ex"
   },
   {
     "operationId": "cancelSubscription",
@@ -3570,6 +4118,40 @@
     "sourceFile": "lib/sellapp/bookings_calendar_events.ex"
   },
   {
+    "operationId": "createBookingProduct",
+    "resource": "bookings",
+    "method": "create",
+    "nativeSignature": "def create(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "create",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/bookings.ex"
+  },
+  {
     "operationId": "getBundleItem",
     "resource": "bundle_items",
     "method": "get",
@@ -3728,6 +4310,172 @@
       }
     ],
     "sourceFile": "lib/sellapp/bundle_items.ex"
+  },
+  {
+    "operationId": "previewVariantBuyerNotification",
+    "resource": "variant_deliverables",
+    "method": "preview",
+    "nativeSignature": "def preview(client, product, variant, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "preview",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "variant",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/variant_deliverables.ex"
+  },
+  {
+    "operationId": "notifyVariantBuyers",
+    "resource": "variant_deliverables",
+    "method": "notify",
+    "nativeSignature": "def notify(client, product, variant, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "notify",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "variant",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/variant_deliverables.ex"
+  },
+  {
+    "operationId": "getVariantDeliverableConfiguration",
+    "resource": "variant_deliverables",
+    "method": "get",
+    "nativeSignature": "def get(client, product, variant, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "variant",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/variant_deliverables.ex"
+  },
+  {
+    "operationId": "replaceVariantDeliverableConfiguration",
+    "resource": "variant_deliverables",
+    "method": "replace",
+    "nativeSignature": "def replace(client, product, variant, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "product",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "variant",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/variant_deliverables.ex"
   },
   {
     "operationId": "listPromotions",
@@ -4092,6 +4840,46 @@
       }
     ],
     "sourceFile": "lib/sellapp/promotions_phases.ex"
+  },
+  {
+    "operationId": "getPromotionUsage",
+    "resource": "promotions",
+    "method": "get_usage",
+    "nativeSignature": "def get_usage(client, promotion, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get_usage",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "promotion",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/promotions.ex"
   },
   {
     "operationId": "listAddOns",
@@ -5410,6 +6198,960 @@
     "sourceFile": "lib/sellapp/webhook_channels.ex"
   },
   {
+    "operationId": "listSupportReplyTemplates",
+    "resource": "support_reply_templates",
+    "method": "list",
+    "nativeSignature": "def list(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "list",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_reply_templates.ex"
+  },
+  {
+    "operationId": "createSupportReplyTemplate",
+    "resource": "support_reply_templates",
+    "method": "create",
+    "nativeSignature": "def create(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "create",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_reply_templates.ex"
+  },
+  {
+    "operationId": "getSupportReplyTemplate",
+    "resource": "support_reply_templates",
+    "method": "get",
+    "nativeSignature": "def get(client, support_reply_template, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "support_reply_template",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_reply_templates.ex"
+  },
+  {
+    "operationId": "replaceSupportReplyTemplate",
+    "resource": "support_reply_templates",
+    "method": "replace",
+    "nativeSignature": "def replace(client, support_reply_template, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "support_reply_template",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_reply_templates.ex"
+  },
+  {
+    "operationId": "updateSupportReplyTemplate",
+    "resource": "support_reply_templates",
+    "method": "update",
+    "nativeSignature": "def update(client, support_reply_template, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "update",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "support_reply_template",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_reply_templates.ex"
+  },
+  {
+    "operationId": "deleteSupportReplyTemplate",
+    "resource": "support_reply_templates",
+    "method": "delete",
+    "nativeSignature": "def delete(client, support_reply_template, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "delete",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "support_reply_template",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_reply_templates.ex"
+  },
+  {
+    "operationId": "renderSupportReplyTemplate",
+    "resource": "support_reply_templates",
+    "method": "render",
+    "nativeSignature": "def render(client, support_reply_template, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "render",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "support_reply_template",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_reply_templates.ex"
+  },
+  {
+    "operationId": "reorderSupportReplyTemplates",
+    "resource": "support_reply_templates",
+    "method": "reorder",
+    "nativeSignature": "def reorder(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "reorder",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_reply_templates.ex"
+  },
+  {
+    "operationId": "getSupportReplyTemplateOptions",
+    "resource": "support_reply_templates",
+    "method": "get_options",
+    "nativeSignature": "def get_options(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get_options",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_reply_templates.ex"
+  },
+  {
+    "operationId": "listSupportReasons",
+    "resource": "support_reasons",
+    "method": "list",
+    "nativeSignature": "def list(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "list",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_reasons.ex"
+  },
+  {
+    "operationId": "createSupportReason",
+    "resource": "support_reasons",
+    "method": "create",
+    "nativeSignature": "def create(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "create",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_reasons.ex"
+  },
+  {
+    "operationId": "getSupportReason",
+    "resource": "support_reasons",
+    "method": "get",
+    "nativeSignature": "def get(client, support_reason, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "support_reason",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_reasons.ex"
+  },
+  {
+    "operationId": "replaceSupportReason",
+    "resource": "support_reasons",
+    "method": "replace",
+    "nativeSignature": "def replace(client, support_reason, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "support_reason",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_reasons.ex"
+  },
+  {
+    "operationId": "updateSupportReason",
+    "resource": "support_reasons",
+    "method": "update",
+    "nativeSignature": "def update(client, support_reason, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "update",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "support_reason",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_reasons.ex"
+  },
+  {
+    "operationId": "deleteSupportReason",
+    "resource": "support_reasons",
+    "method": "delete",
+    "nativeSignature": "def delete(client, support_reason, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "delete",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "support_reason",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_reasons.ex"
+  },
+  {
+    "operationId": "getSupportReasonOptions",
+    "resource": "support_reasons",
+    "method": "get_options",
+    "nativeSignature": "def get_options(client, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get_options",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_reasons.ex"
+  },
+  {
+    "operationId": "listSupportAutomationRules",
+    "resource": "support_automation_rules",
+    "method": "list",
+    "nativeSignature": "def list(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "list",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_automation_rules.ex"
+  },
+  {
+    "operationId": "createSupportAutomationRule",
+    "resource": "support_automation_rules",
+    "method": "create",
+    "nativeSignature": "def create(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "create",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_automation_rules.ex"
+  },
+  {
+    "operationId": "getSupportAutomationRule",
+    "resource": "support_automation_rules",
+    "method": "get",
+    "nativeSignature": "def get(client, support_automation_rule, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "support_automation_rule",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_automation_rules.ex"
+  },
+  {
+    "operationId": "replaceSupportAutomationRule",
+    "resource": "support_automation_rules",
+    "method": "replace",
+    "nativeSignature": "def replace(client, support_automation_rule, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "support_automation_rule",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_automation_rules.ex"
+  },
+  {
+    "operationId": "updateSupportAutomationRule",
+    "resource": "support_automation_rules",
+    "method": "update",
+    "nativeSignature": "def update(client, support_automation_rule, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "update",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "support_automation_rule",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_automation_rules.ex"
+  },
+  {
+    "operationId": "updateSupportAutomationRuleState",
+    "resource": "support_automation_rules",
+    "method": "update_state",
+    "nativeSignature": "def update_state(client, support_automation_rule, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "update_state",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "support_automation_rule",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_automation_rules.ex"
+  },
+  {
+    "operationId": "reorderSupportAutomationRules",
+    "resource": "support_automation_rules",
+    "method": "reorder",
+    "nativeSignature": "def reorder(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "reorder",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_automation_rules.ex"
+  },
+  {
+    "operationId": "dryRunSupportAutomationRules",
+    "resource": "support_automation_rules",
+    "method": "dry_run",
+    "nativeSignature": "def dry_run(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "dry_run",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_automation_rules.ex"
+  },
+  {
+    "operationId": "getSupportAutomationSettings",
+    "resource": "support_automation_settings",
+    "method": "get",
+    "nativeSignature": "def get(client, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_automation_settings.ex"
+  },
+  {
+    "operationId": "replaceSupportAutomationSettings",
+    "resource": "support_automation_settings",
+    "method": "replace",
+    "nativeSignature": "def replace(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_automation_settings.ex"
+  },
+  {
+    "operationId": "updateSupportAutomationSettings",
+    "resource": "support_automation_settings",
+    "method": "update",
+    "nativeSignature": "def update(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "update",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/support_automation_settings.ex"
+  },
+  {
     "operationId": "listCustomers",
     "resource": "customers",
     "method": "list",
@@ -6116,6 +7858,46 @@
     "sourceFile": "lib/sellapp/orders.ex"
   },
   {
+    "operationId": "regenerateOrderTelegramInvite",
+    "resource": "orders",
+    "method": "regenerate_telegram_invite",
+    "nativeSignature": "def regenerate_telegram_invite(client, order, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "regenerate_telegram_invite",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "order",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/orders.ex"
+  },
+  {
     "operationId": "listOrderDeliverables",
     "resource": "orders",
     "method": "list_deliverables",
@@ -6444,92 +8226,6 @@
       }
     ],
     "sourceFile": "lib/sellapp/orders_line_items.ex"
-  },
-  {
-    "operationId": "getVariantDeliverableConfiguration",
-    "resource": "variant_deliverables",
-    "method": "get",
-    "nativeSignature": "def get(client, product, variant, opts \\\\ [])",
-    "signatures": [
-      {
-        "name": "get",
-        "params": [
-          {
-            "name": "client",
-            "type": "any",
-            "optional": false,
-            "passingStyle": "positional"
-          },
-          {
-            "name": "product",
-            "type": "any",
-            "optional": false,
-            "passingStyle": "positional"
-          },
-          {
-            "name": "variant",
-            "type": "any",
-            "optional": false,
-            "passingStyle": "positional"
-          },
-          {
-            "name": "opts",
-            "type": "any",
-            "optional": false,
-            "passingStyle": "keyword"
-          }
-        ],
-        "returnType": "any",
-        "async": false
-      }
-    ],
-    "sourceFile": "lib/sellapp/variant_deliverables.ex"
-  },
-  {
-    "operationId": "replaceVariantDeliverableConfiguration",
-    "resource": "variant_deliverables",
-    "method": "replace",
-    "nativeSignature": "def replace(client, product, variant, params \\\\ %{}, opts \\\\ [])",
-    "signatures": [
-      {
-        "name": "replace",
-        "params": [
-          {
-            "name": "client",
-            "type": "any",
-            "optional": false,
-            "passingStyle": "positional"
-          },
-          {
-            "name": "product",
-            "type": "any",
-            "optional": false,
-            "passingStyle": "positional"
-          },
-          {
-            "name": "variant",
-            "type": "any",
-            "optional": false,
-            "passingStyle": "positional"
-          },
-          {
-            "name": "params",
-            "type": "any",
-            "optional": false,
-            "passingStyle": "positional"
-          },
-          {
-            "name": "opts",
-            "type": "any",
-            "optional": false,
-            "passingStyle": "keyword"
-          }
-        ],
-        "returnType": "any",
-        "async": false
-      }
-    ],
-    "sourceFile": "lib/sellapp/variant_deliverables.ex"
   },
   {
     "operationId": "listVariantDeliverableFiles",
@@ -7462,6 +9158,40 @@
     "sourceFile": "lib/sellapp/affiliate_program.ex"
   },
   {
+    "operationId": "resendAffiliateInvitation",
+    "resource": "affiliate_program",
+    "method": "resend",
+    "nativeSignature": "def resend(client, invitation, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "resend",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "invitation",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/affiliate_program.ex"
+  },
+  {
     "operationId": "listRewardRules",
     "resource": "reward_rules",
     "method": "list",
@@ -8280,6 +10010,46 @@
     "sourceFile": "lib/sellapp/upsell_offers.ex"
   },
   {
+    "operationId": "getUpsellOfferPerformance",
+    "resource": "upsell_offers",
+    "method": "get_performance",
+    "nativeSignature": "def get_performance(client, upsell_offer, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get_performance",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "upsell_offer",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/upsell_offers.ex"
+  },
+  {
     "operationId": "listCommunityConnections",
     "resource": "community_connections",
     "method": "list",
@@ -8496,6 +10266,250 @@
     "sourceFile": "lib/sellapp/community_connections.ex"
   },
   {
+    "operationId": "listCommunityFailedGrantReasons",
+    "resource": "community_connections",
+    "method": "list_failed_grant_reasons",
+    "nativeSignature": "def list_failed_grant_reasons(client, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "list_failed_grant_reasons",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/community_connections.ex"
+  },
+  {
+    "operationId": "getCommunityServer",
+    "resource": "community_connections_servers",
+    "method": "get",
+    "nativeSignature": "def get(client, platform, server, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "platform",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "server",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/community_connections_servers.ex"
+  },
+  {
+    "operationId": "removeCommunityServer",
+    "resource": "community_connections_servers",
+    "method": "remove",
+    "nativeSignature": "def remove(client, platform, server, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "remove",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "platform",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "server",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/community_connections_servers.ex"
+  },
+  {
+    "operationId": "syncDiscordRoles",
+    "resource": "community_connections",
+    "method": "sync_discord_roles",
+    "nativeSignature": "def sync_discord_roles(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "sync_discord_roles",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/community_connections.ex"
+  },
+  {
+    "operationId": "listSlackAvailableChannels",
+    "resource": "community_connections_slack",
+    "method": "list_channels",
+    "nativeSignature": "def list_channels(client, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "list_channels",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/community_connections_slack.ex"
+  },
+  {
+    "operationId": "addSlackChannel",
+    "resource": "community_connections_slack",
+    "method": "add_channel",
+    "nativeSignature": "def add_channel(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "add_channel",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/community_connections_slack.ex"
+  },
+  {
+    "operationId": "replaceSlackWorkspaceInviteLink",
+    "resource": "community_connections_slack",
+    "method": "replace_invite_link",
+    "nativeSignature": "def replace_invite_link(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "replace_invite_link",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/community_connections_slack.ex"
+  },
+  {
     "operationId": "getWalletSettings",
     "resource": "wallet_settings",
     "method": "get",
@@ -8704,6 +10718,120 @@
       }
     ],
     "sourceFile": "lib/sellapp/wallet.ex"
+  },
+  {
+    "operationId": "reverseWalletTransaction",
+    "resource": "wallet_transactions",
+    "method": "reverse",
+    "nativeSignature": "def reverse(client, customer, transaction, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "reverse",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "customer",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "transaction",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/wallet_transactions.ex"
+  },
+  {
+    "operationId": "listStoreWalletTransactions",
+    "resource": "wallet_ledger",
+    "method": "list",
+    "nativeSignature": "def list(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "list",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/wallet_ledger.ex"
+  },
+  {
+    "operationId": "getWalletOverview",
+    "resource": "wallet_overview",
+    "method": "get",
+    "nativeSignature": "def get(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/wallet_overview.ex"
   },
   {
     "operationId": "listWalletTransactions",
@@ -8996,6 +11124,40 @@
     "sourceFile": "lib/sellapp/cashback_rules.ex"
   },
   {
+    "operationId": "quoteCashbackRule",
+    "resource": "cashback_rules",
+    "method": "quote_",
+    "nativeSignature": "def quote_(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "quote_",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/cashback_rules.ex"
+  },
+  {
     "operationId": "listWalletBonusTiers",
     "resource": "wallet_bonus_tiers",
     "method": "list",
@@ -9206,6 +11368,40 @@
     "sourceFile": "lib/sellapp/wallet_bonus_tiers.ex"
   },
   {
+    "operationId": "quoteWalletBonusTier",
+    "resource": "wallet_bonus_tiers",
+    "method": "quote_",
+    "nativeSignature": "def quote_(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "quote_",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/wallet_bonus_tiers.ex"
+  },
+  {
     "operationId": "listCourses",
     "resource": "courses",
     "method": "list",
@@ -9213,6 +11409,40 @@
     "signatures": [
       {
         "name": "list",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/courses.ex"
+  },
+  {
+    "operationId": "createCourse",
+    "resource": "courses",
+    "method": "create",
+    "nativeSignature": "def create(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "create",
         "params": [
           {
             "name": "client",
@@ -9364,6 +11594,40 @@
           },
           {
             "name": "course",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/courses.ex"
+  },
+  {
+    "operationId": "getCourseStudentSummary",
+    "resource": "courses",
+    "method": "get_student_summary",
+    "nativeSignature": "def get_student_summary(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get_student_summary",
+        "params": [
+          {
+            "name": "client",
             "type": "any",
             "optional": false,
             "passingStyle": "positional"
@@ -9818,6 +12082,268 @@
     "sourceFile": "lib/sellapp/courses_lessons.ex"
   },
   {
+    "operationId": "listCheckoutFieldTemplates",
+    "resource": "checkout_field_templates",
+    "method": "list",
+    "nativeSignature": "def list(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "list",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/checkout_field_templates.ex"
+  },
+  {
+    "operationId": "createCheckoutFieldTemplate",
+    "resource": "checkout_field_templates",
+    "method": "create",
+    "nativeSignature": "def create(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "create",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/checkout_field_templates.ex"
+  },
+  {
+    "operationId": "getCheckoutFieldTemplate",
+    "resource": "checkout_field_templates",
+    "method": "get",
+    "nativeSignature": "def get(client, checkout_field_template, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "checkout_field_template",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/checkout_field_templates.ex"
+  },
+  {
+    "operationId": "replaceCheckoutFieldTemplate",
+    "resource": "checkout_field_templates",
+    "method": "replace",
+    "nativeSignature": "def replace(client, checkout_field_template, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "checkout_field_template",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/checkout_field_templates.ex"
+  },
+  {
+    "operationId": "updateCheckoutFieldTemplate",
+    "resource": "checkout_field_templates",
+    "method": "update",
+    "nativeSignature": "def update(client, checkout_field_template, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "update",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "checkout_field_template",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/checkout_field_templates.ex"
+  },
+  {
+    "operationId": "deleteCheckoutFieldTemplate",
+    "resource": "checkout_field_templates",
+    "method": "delete",
+    "nativeSignature": "def delete(client, checkout_field_template, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "delete",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "checkout_field_template",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/checkout_field_templates.ex"
+  },
+  {
+    "operationId": "duplicateCheckoutFieldTemplate",
+    "resource": "checkout_field_templates",
+    "method": "duplicate",
+    "nativeSignature": "def duplicate(client, checkout_field_template, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "duplicate",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "checkout_field_template",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/checkout_field_templates.ex"
+  },
+  {
     "operationId": "listPaymentMethods",
     "resource": "payment_methods",
     "method": "list",
@@ -9992,6 +12518,80 @@
       }
     ],
     "sourceFile": "lib/sellapp/payment_methods.ex"
+  },
+  {
+    "operationId": "getPaymentMethodModifier",
+    "resource": "payment_methods_modifier",
+    "method": "get",
+    "nativeSignature": "def get(client, payment_method, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "payment_method",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/payment_methods_modifier.ex"
+  },
+  {
+    "operationId": "replacePaymentMethodModifier",
+    "resource": "payment_methods_modifier",
+    "method": "replace",
+    "nativeSignature": "def replace(client, payment_method, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "payment_method",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/payment_methods_modifier.ex"
   },
   {
     "operationId": "listCustomPaymentMethods",
@@ -10436,6 +13036,752 @@
     "sourceFile": "lib/sellapp/store_settings.ex"
   },
   {
+    "operationId": "getCheckoutSettings",
+    "resource": "store_settings",
+    "method": "get_checkout",
+    "nativeSignature": "def get_checkout(client, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get_checkout",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_settings.ex"
+  },
+  {
+    "operationId": "replaceCheckoutSettings",
+    "resource": "store_settings",
+    "method": "replace_checkout",
+    "nativeSignature": "def replace_checkout(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "replace_checkout",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_settings.ex"
+  },
+  {
+    "operationId": "updateCheckoutSettings",
+    "resource": "store_settings",
+    "method": "update_checkout",
+    "nativeSignature": "def update_checkout(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "update_checkout",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_settings.ex"
+  },
+  {
+    "operationId": "getTaxSettings",
+    "resource": "store_settings",
+    "method": "get_taxes",
+    "nativeSignature": "def get_taxes(client, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get_taxes",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_settings.ex"
+  },
+  {
+    "operationId": "replaceTaxSettings",
+    "resource": "store_settings",
+    "method": "replace_taxes",
+    "nativeSignature": "def replace_taxes(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "replace_taxes",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_settings.ex"
+  },
+  {
+    "operationId": "updateTaxSettings",
+    "resource": "store_settings",
+    "method": "update_taxes",
+    "nativeSignature": "def update_taxes(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "update_taxes",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_settings.ex"
+  },
+  {
+    "operationId": "getCustomerEmailSettings",
+    "resource": "store_settings",
+    "method": "get_customer_emails",
+    "nativeSignature": "def get_customer_emails(client, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get_customer_emails",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_settings.ex"
+  },
+  {
+    "operationId": "replaceCustomerEmailSettings",
+    "resource": "store_settings",
+    "method": "replace_customer_emails",
+    "nativeSignature": "def replace_customer_emails(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "replace_customer_emails",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_settings.ex"
+  },
+  {
+    "operationId": "updateCustomerEmailSettings",
+    "resource": "store_settings",
+    "method": "update_customer_emails",
+    "nativeSignature": "def update_customer_emails(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "update_customer_emails",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_settings.ex"
+  },
+  {
+    "operationId": "getStoreAlertSettings",
+    "resource": "store_settings",
+    "method": "get_store_alerts",
+    "nativeSignature": "def get_store_alerts(client, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get_store_alerts",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_settings.ex"
+  },
+  {
+    "operationId": "replaceStoreAlertSettings",
+    "resource": "store_settings",
+    "method": "replace_store_alerts",
+    "nativeSignature": "def replace_store_alerts(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "replace_store_alerts",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_settings.ex"
+  },
+  {
+    "operationId": "updateStoreAlertSettings",
+    "resource": "store_settings",
+    "method": "update_store_alerts",
+    "nativeSignature": "def update_store_alerts(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "update_store_alerts",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_settings.ex"
+  },
+  {
+    "operationId": "getPersonalizationSettings",
+    "resource": "store_settings",
+    "method": "get_personalization",
+    "nativeSignature": "def get_personalization(client, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get_personalization",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_settings.ex"
+  },
+  {
+    "operationId": "replacePersonalizationSettings",
+    "resource": "store_settings",
+    "method": "replace_personalization",
+    "nativeSignature": "def replace_personalization(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "replace_personalization",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_settings.ex"
+  },
+  {
+    "operationId": "updatePersonalizationSettings",
+    "resource": "store_settings",
+    "method": "update_personalization",
+    "nativeSignature": "def update_personalization(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "update_personalization",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_settings.ex"
+  },
+  {
+    "operationId": "replaceCryptoCheckoutSettings",
+    "resource": "store_settings",
+    "method": "replace_crypto_checkout",
+    "nativeSignature": "def replace_crypto_checkout(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "replace_crypto_checkout",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_settings.ex"
+  },
+  {
+    "operationId": "updateCryptoCheckoutSettings",
+    "resource": "store_settings",
+    "method": "update_crypto_checkout",
+    "nativeSignature": "def update_crypto_checkout(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "update_crypto_checkout",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_settings.ex"
+  },
+  {
+    "operationId": "getSenderEmail",
+    "resource": "store_sender_email",
+    "method": "get",
+    "nativeSignature": "def get(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_sender_email.ex"
+  },
+  {
+    "operationId": "setSenderEmail",
+    "resource": "store_sender_email",
+    "method": "set",
+    "nativeSignature": "def set(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "set",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_sender_email.ex"
+  },
+  {
+    "operationId": "deleteSenderEmail",
+    "resource": "store_sender_email",
+    "method": "delete",
+    "nativeSignature": "def delete(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "delete",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_sender_email.ex"
+  },
+  {
+    "operationId": "sendSenderEmailVerification",
+    "resource": "store_sender_email",
+    "method": "send_verification",
+    "nativeSignature": "def send_verification(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "send_verification",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_sender_email.ex"
+  },
+  {
+    "operationId": "getStoreIntegrations",
+    "resource": "store_integrations",
+    "method": "get",
+    "nativeSignature": "def get(client, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_integrations.ex"
+  },
+  {
+    "operationId": "disconnectGoogleCalendar",
+    "resource": "store_integrations",
+    "method": "disconnect_google_calendar",
+    "nativeSignature": "def disconnect_google_calendar(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "disconnect_google_calendar",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/store_integrations.ex"
+  },
+  {
     "operationId": "listNotificationChannels",
     "resource": "store_notification_channels",
     "method": "list",
@@ -10808,6 +14154,74 @@
       }
     ],
     "sourceFile": "lib/sellapp/store_custom_domains.ex"
+  },
+  {
+    "operationId": "listNotifications",
+    "resource": "notifications",
+    "method": "list",
+    "nativeSignature": "def list(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "list",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/notifications.ex"
+  },
+  {
+    "operationId": "markNotificationsSeen",
+    "resource": "notifications",
+    "method": "mark",
+    "nativeSignature": "def mark(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "mark",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/notifications.ex"
   },
   {
     "operationId": "listCreditsProducts",
@@ -11328,6 +14742,188 @@
     "sourceFile": "lib/sellapp/affiliates.ex"
   },
   {
+    "operationId": "getAffiliateProducts",
+    "resource": "affiliates_products",
+    "method": "get",
+    "nativeSignature": "def get(client, affiliate, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "affiliate",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/affiliates_products.ex"
+  },
+  {
+    "operationId": "updateAffiliateProducts",
+    "resource": "affiliates_products",
+    "method": "update",
+    "nativeSignature": "def update(client, affiliate, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "update",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "affiliate",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/affiliates_products.ex"
+  },
+  {
+    "operationId": "getAffiliateCoupon",
+    "resource": "affiliates_coupon",
+    "method": "get",
+    "nativeSignature": "def get(client, affiliate, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "affiliate",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/affiliates_coupon.ex"
+  },
+  {
+    "operationId": "saveAffiliateCoupon",
+    "resource": "affiliates_coupon",
+    "method": "save",
+    "nativeSignature": "def save(client, affiliate, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "save",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "affiliate",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/affiliates_coupon.ex"
+  },
+  {
+    "operationId": "disableAffiliateCoupon",
+    "resource": "affiliates_coupon",
+    "method": "disable",
+    "nativeSignature": "def disable(client, affiliate, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "disable",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "affiliate",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/affiliates_coupon.ex"
+  },
+  {
     "operationId": "listAffiliateReferrals",
     "resource": "affiliate_referrals",
     "method": "list",
@@ -11622,6 +15218,40 @@
           },
           {
             "name": "payout",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/affiliate_payouts.ex"
+  },
+  {
+    "operationId": "markAffiliatePayoutsPaid",
+    "resource": "affiliate_payouts",
+    "method": "mark_paid",
+    "nativeSignature": "def mark_paid(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "mark_paid",
+        "params": [
+          {
+            "name": "client",
             "type": "any",
             "optional": false,
             "passingStyle": "positional"
@@ -15082,6 +18712,40 @@
     "sourceFile": "lib/sellapp/coupons.ex"
   },
   {
+    "operationId": "v2GetCouponUsage",
+    "resource": "coupons",
+    "method": "v2_get_coupon_usage",
+    "nativeSignature": "def v2_get_coupon_usage(client, coupon, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "v2_get_coupon_usage",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "coupon",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/coupons.ex"
+  },
+  {
     "operationId": "v2ListFeedback",
     "resource": "feedback",
     "method": "v2_list_feedback",
@@ -16030,6 +19694,262 @@
       }
     ],
     "sourceFile": "lib/sellapp/tickets_messages.ex"
+  },
+  {
+    "operationId": "batchUpdateTickets",
+    "resource": "tickets",
+    "method": "batch_update",
+    "nativeSignature": "def batch_update(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "batch_update",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/tickets.ex"
+  },
+  {
+    "operationId": "v2GetTicketContext",
+    "resource": "tickets",
+    "method": "get_context",
+    "nativeSignature": "def get_context(client, ticket, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get_context",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "ticket",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/tickets.ex"
+  },
+  {
+    "operationId": "v2ListTicketWalletRefundOptions",
+    "resource": "tickets_wallet_refunds",
+    "method": "list_options",
+    "nativeSignature": "def list_options(client, ticket, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "list_options",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "ticket",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/tickets_wallet_refunds.ex"
+  },
+  {
+    "operationId": "v2ListTicketWalletRefunds",
+    "resource": "tickets_wallet_refunds",
+    "method": "list",
+    "nativeSignature": "def list(client, ticket, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "list",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "ticket",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/tickets_wallet_refunds.ex"
+  },
+  {
+    "operationId": "v2RefundTicketToWallet",
+    "resource": "tickets_wallet_refunds",
+    "method": "create",
+    "nativeSignature": "def create(client, ticket, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "create",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "ticket",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/tickets_wallet_refunds.ex"
+  },
+  {
+    "operationId": "v2ReverseTicketWalletRefund",
+    "resource": "tickets_wallet_refunds",
+    "method": "reverse",
+    "nativeSignature": "def reverse(client, ticket, wallet_refund, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "reverse",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "ticket",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "wallet_refund",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/tickets_wallet_refunds.ex"
+  },
+  {
+    "operationId": "getSupportAnalytics",
+    "resource": "tickets_analytics",
+    "method": "get",
+    "nativeSignature": "def get(client, params \\\\ %{}, opts \\\\ [])",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "params",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "positional"
+          },
+          {
+            "name": "opts",
+            "type": "any",
+            "optional": false,
+            "passingStyle": "keyword"
+          }
+        ],
+        "returnType": "any",
+        "async": false
+      }
+    ],
+    "sourceFile": "lib/sellapp/tickets_analytics.ex"
   },
   {
     "operationId": "getOAuthAuthorizationServerMetadata",

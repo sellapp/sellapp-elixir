@@ -8,11 +8,11 @@ defmodule SellApp.Disputes do
   @doc """
   List disputes
 
-  Read-only, redacted, store-scoped disputes that may reference an Order or Charge. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  List your store's payment disputes, most recently opened first, 50 per page. Each dispute is read-only and redacted, and may reference an order or a standalone charge. Filter by `status`, `provider`, or the day a dispute was opened; filters combine, and the date filters read whole days in the store's time zone and include both ends. An unknown `status`, a date that cannot be read, or an `opened_before` earlier than `opened_after` returns `422` on that parameter. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
-    * `params` — query parameters
+    * `params` — query parameters: `:page`, `:status`, `:provider`, `:opened_after`, `:opened_before`
     * `opts` — per-request options (see `SellApp.Client.request/5`)
   """
   @spec list_disputes(SellApp.Client.t(), map(), keyword()) ::

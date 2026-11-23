@@ -52,7 +52,11 @@
           "title": "title"
         }
       ],
-      "url": "url"
+      "url": "url",
+      "price_range": null,
+      "stock": null,
+      "sales": 1,
+      "sold_out": true
     }
   ],
   "list_metadata": {

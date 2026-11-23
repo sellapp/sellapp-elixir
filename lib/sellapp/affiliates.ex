@@ -8,11 +8,11 @@ defmodule SellApp.Affiliates do
   @doc """
   List affiliates
 
-  List store affiliate memberships, approved profile details, referral counts, and integer USD-cent balances. Requires the `affiliate` ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  List store affiliate memberships, approved profile details, referral counts, and integer USD-cent balances, newest first, 15 per page by default. Requires the `affiliate` ability. Filter by `status`, `search`, `custom_rates_only`, and `payout_method`, and send `sort=-earnings` to list the top earners first. A `status`, `custom_rates_only`, or `payout_method` value the API does not know returns `422`; an unknown `sort` value is ignored. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
-    * `params` — query parameters: `:status`, `:search`, `:limit`, `:page`
+    * `params` — query parameters: `:status`, `:search`, `:custom_rates_only`, `:payout_method`, `:sort`, `:limit`, `:page`
     * `opts` — per-request options (see `SellApp.Client.request/5`)
   """
   @spec list(SellApp.Client.t(), map(), keyword()) ::

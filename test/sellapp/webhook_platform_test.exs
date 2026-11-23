@@ -93,6 +93,23 @@ defmodule SellApp.WebhookPlatformTest do
              SellApp.WebhookPlatform.replay_webhook_delivery(client, "test_delivery", %{})
   end
 
+  test "list_webhook_deliveries encodes query parameters", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()
+      params = Map.new(pairs)
+      assert params["page"] == "hello world&x"
+      refute Map.has_key?(params, "limit")
+
+      Req.Test.json(
+        conn,
+        SellApp.TestFixtures.fixture("webhook_platform/list_webhook_deliveries")
+      )
+    end)
+
+    assert {:ok, _} =
+             SellApp.WebhookPlatform.list_webhook_deliveries(client, %{page: "hello world&x"})
+  end
+
   test "list_webhook_event_types honors per-request options", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       assert Plug.Conn.get_req_header(conn, "x-custom") == ["value"]

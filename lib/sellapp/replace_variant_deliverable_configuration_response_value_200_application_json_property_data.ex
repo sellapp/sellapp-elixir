@@ -19,7 +19,8 @@ defmodule SellApp.ReplaceVariantDeliverableConfigurationResponseValue200Applicat
             SellApp.ReplaceVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyDataTypes.t()
           ],
           data:
-            SellApp.ReplaceVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyDataPropertyData.t(),
+            SellApp.ReplaceVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyDataPropertyDataAnyOfValue1.t()
+            | [term()],
           webhook_configured: boolean(),
           updated_at: String.t(),
           __additional_properties__: map(),
@@ -51,9 +52,16 @@ defmodule SellApp.ReplaceVariantDeliverableConfigurationResponseValue200Applicat
       "data" => %{
         required: true,
         schema: %{
-          kind: :model,
-          module:
-            SellApp.ReplaceVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyDataPropertyData
+          kind: :union,
+          variants: [
+            %{
+              kind: :model,
+              module:
+                SellApp.ReplaceVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyDataPropertyDataAnyOfValue1
+            },
+            %{kind: :array, items: %{kind: :any}, max_items: 0}
+          ],
+          composition: :anyOf
         }
       },
       "webhook_configured" => %{required: true, schema: %{kind: :boolean}},
@@ -75,11 +83,7 @@ defmodule SellApp.ReplaceVariantDeliverableConfigurationResponseValue200Applicat
           map["types"],
           &SellApp.ReplaceVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyDataTypes.cast/1
         ),
-      data:
-        SellApp.Cast.nested(
-          map["data"],
-          &SellApp.ReplaceVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyDataPropertyData.from_map/1
-        ),
+      data: map["data"],
       webhook_configured: map["webhook_configured"],
       updated_at: map["updated_at"],
       __additional_properties__:
@@ -99,11 +103,7 @@ defmodule SellApp.ReplaceVariantDeliverableConfigurationResponseValue200Applicat
               struct.types,
               &SellApp.ReplaceVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyDataTypes.dump/1
             ),
-          "data" =>
-            SellApp.Cast.dump_struct(
-              struct.data,
-              &SellApp.ReplaceVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyDataPropertyData.to_map/1
-            ),
+          "data" => SellApp.Cast.dump_union(struct.data),
           "webhook_configured" => struct.webhook_configured,
           "updated_at" => struct.updated_at
         },

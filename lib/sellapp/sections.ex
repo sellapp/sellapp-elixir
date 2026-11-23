@@ -811,7 +811,7 @@ defmodule SellApp.Sections do
       fetch_next = fn cursor ->
         v2_search_sections(
           client,
-          SellApp.Page.next_params(params, "after", cursor),
+          SellApp.Page.next_params(params, "page", cursor),
           Keyword.delete(opts, :with_response)
         )
       end
@@ -824,7 +824,7 @@ defmodule SellApp.Sections do
           fetch_next,
           base_url: client.base_url,
           path: "/v2/sections/search",
-          pagination_param: "after"
+          pagination_param: "page"
         )
 
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}

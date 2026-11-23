@@ -1,0 +1,16 @@
+{
+  "data": {
+    "support_email": null,
+    "trustpilot_email": null,
+    "sender_name": null,
+    "sender_email": null,
+    "store_address": null,
+    "store_city": null,
+    "store_state": null,
+    "store_zip": null,
+    "store_country": null,
+    "store_tax": null,
+    "back_link_label": null,
+    "back_link_url": null
+  }
+}

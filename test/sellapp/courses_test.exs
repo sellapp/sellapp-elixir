@@ -39,6 +39,35 @@ defmodule SellApp.CoursesTest do
     assert page |> SellApp.Page.stream() |> Enum.to_list() == []
   end
 
+  test "create succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "POST"
+      assert String.ends_with?(conn.request_path, "/v2/courses")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("courses/create"))
+    end)
+
+    assert {:ok, %SellApp.SdkCreateCourseResponseValue201ApplicationJson{}} =
+             SellApp.Courses.create(client, %{
+               "category" => nil,
+               "level" => "all_levels",
+               "language" => "language",
+               "subtitle" => nil,
+               "author" => nil,
+               "subcategory" => nil,
+               "what_you_learn" => ["what_you_learn"],
+               "requirements" => ["requirements"],
+               "certificate_enabled" => true,
+               "access_type" => "lifetime",
+               "access_duration_days" => nil,
+               "enrollment_limit" => nil,
+               "delivery_text" => nil,
+               "title" => "title",
+               "slug" => "slug",
+               "description" => nil,
+               "visibility" => "PUBLIC"
+             })
+  end
+
   test "search succeeds", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       assert conn.method == "POST"
@@ -123,7 +152,10 @@ defmodule SellApp.CoursesTest do
                "enrollment_limit" => nil,
                "delivery_text" => nil,
                "visibility" => "PUBLIC",
-               "expected_updated_at" => "2024-01-01T00:00:00.000Z"
+               "expected_updated_at" => "2024-01-01T00:00:00.000Z",
+               "title" => "title",
+               "slug" => "slug",
+               "description" => nil
              })
   end
 
@@ -150,8 +182,22 @@ defmodule SellApp.CoursesTest do
                "enrollment_limit" => nil,
                "delivery_text" => nil,
                "visibility" => "PUBLIC",
-               "expected_updated_at" => "2024-01-01T00:00:00.000Z"
+               "expected_updated_at" => "2024-01-01T00:00:00.000Z",
+               "title" => "title",
+               "slug" => "slug",
+               "description" => nil
              })
+  end
+
+  test "get_student_summary succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "GET"
+      assert String.ends_with?(conn.request_path, "/v2/course-students")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("courses/get_student_summary"))
+    end)
+
+    assert {:ok, %SellApp.SdkGetCourseStudentSummaryResponseValue200ApplicationJson{}} =
+             SellApp.Courses.get_student_summary(client)
   end
 
   test "list encodes query parameters", %{client: client} do

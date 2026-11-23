@@ -19,7 +19,7 @@ defmodule SellApp.SearchProductsRequestApplicationJsonPropertyIncludesItem do
 
   @schema %{
     name: "SearchProductsRequestApplicationJsonPropertyIncludesItem",
-    properties: %{"relation" => %{required: true, schema: %{kind: :string}}},
+    properties: %{"relation" => %{required: true, schema: %{kind: :literal, value: "variants"}}},
     additional_properties: true
   }
   @doc false

@@ -31,7 +31,9 @@
         "total_exclusive_cents": 1,
         "total_cents": 1,
         "total_exclusive_usd_cents": null,
-        "total_usd_cents": null
+        "total_usd_cents": null,
+        "refund_currency": null,
+        "refunded_total_cents": 1
       },
       "coupon_id": null,
       "line_items": [

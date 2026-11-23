@@ -150,6 +150,21 @@ defmodule SellApp.PromotionsRoundTripTest do
            |> SellApp.SdkGetPromotionResponseValue200ApplicationJson.to_map() == serialized
   end
 
+  test "SdkGetPromotionUsageResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{"data" => %{"promotion_id" => 1, "uses" => 1, "recent_order_ids" => [1]}}
+
+    serialized =
+      data
+      |> SellApp.SdkGetPromotionUsageResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkGetPromotionUsageResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkGetPromotionUsageResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkGetPromotionUsageResponseValue200ApplicationJson.to_map() == serialized
+  end
+
   test "SdkReplacePromotionResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{

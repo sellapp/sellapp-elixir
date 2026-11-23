@@ -1,0 +1,33 @@
+{
+  "data": {
+    "product_id": 1,
+    "variant_id": 1,
+    "pause_policy": {
+      "max_pause_days": 1,
+      "min_active_days_between_pauses": 1,
+      "max_pauses_per_period": 1,
+      "requires_resume_date": true
+    },
+    "billing_date_policy": {
+      "max_shift_days": 1,
+      "max_changes_per_period": 1,
+      "allowed_day_min": null,
+      "allowed_day_max": null,
+      "preview_required": true
+    },
+    "renewal_policy": {
+      "redeliver_on_renewal": true
+    },
+    "change_paths": [
+      {
+        "target_variant_id": 1,
+        "target_title": null,
+        "effective_timing": "immediate",
+        "proration_behavior": "invoice_now",
+        "customer_label": null,
+        "is_active": true
+      }
+    ],
+    "state": "statexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  }
+}

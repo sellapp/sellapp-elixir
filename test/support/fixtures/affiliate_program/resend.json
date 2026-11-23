@@ -1,0 +1,10 @@
+{
+  "data": {
+    "id": 1,
+    "email": "email",
+    "status": "pending",
+    "invited_at": null,
+    "application_submitted_at": null,
+    "created_at": null
+  }
+}

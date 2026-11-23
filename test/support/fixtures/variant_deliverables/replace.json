@@ -3,7 +3,15 @@
     "types": [
       "DOWNLOADABLE"
     ],
-    "data": {},
+    "data": {
+      "comment": null,
+      "licenseLength": null,
+      "licenseLengthUnit": null,
+      "isLicenseLengthUnlimited": true,
+      "licenseLimit": null,
+      "isLicenseLimitUnlimited": true,
+      "licensePrefix": null
+    },
     "webhook_configured": true,
     "updated_at": "2024-01-01T00:00:00.000Z"
   }

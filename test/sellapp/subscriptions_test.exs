@@ -82,7 +82,15 @@ defmodule SellApp.SubscriptionsTest do
                ],
                "sort" => [%{"field" => "field", "direction" => "asc"}],
                "search" => %{"value" => nil, "case_sensitive" => true},
-               "includes" => [%{"relation" => "relation"}]
+               "includes" => [%{"relation" => "relation"}],
+               "order_id" => nil,
+               "product_id" => nil,
+               "renews_after" => nil,
+               "renews_before" => nil,
+               "cancelled_after" => nil,
+               "cancelled_before" => nil,
+               "scheduled_to_cancel" => nil,
+               "paused" => nil
              })
   end
 
@@ -104,7 +112,15 @@ defmodule SellApp.SubscriptionsTest do
                ],
                "sort" => [%{"field" => "field", "direction" => "asc"}],
                "search" => %{"value" => nil, "case_sensitive" => true},
-               "includes" => [%{"relation" => "relation"}]
+               "includes" => [%{"relation" => "relation"}],
+               "order_id" => nil,
+               "product_id" => nil,
+               "renews_after" => nil,
+               "renews_before" => nil,
+               "cancelled_after" => nil,
+               "cancelled_before" => nil,
+               "scheduled_to_cancel" => nil,
+               "paused" => nil
              })
 
     refute SellApp.Page.has_more?(page)

@@ -2,19 +2,17 @@
 
 defmodule SellApp.SearchProductsRequestApplicationJsonPropertySearch do
   @moduledoc """
-  SearchProductsRequestApplicationJsonPropertySearch model.
+  Matches products whose title contains `value`.
   """
 
   defstruct [
     :value,
-    :case_sensitive,
     __additional_properties__: %{},
     __present_fields__: []
   ]
 
   @type t :: %__MODULE__{
           value: String.t() | nil,
-          case_sensitive: boolean() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -22,8 +20,7 @@ defmodule SellApp.SearchProductsRequestApplicationJsonPropertySearch do
   @schema %{
     name: "SearchProductsRequestApplicationJsonPropertySearch",
     properties: %{
-      "value" => %{required: false, schema: %{kind: :nullable, inner: %{kind: :string}}},
-      "case_sensitive" => %{required: false, schema: %{kind: :boolean}}
+      "value" => %{required: false, schema: %{kind: :nullable, inner: %{kind: :string}}}
     },
     additional_properties: true
   }
@@ -37,8 +34,7 @@ defmodule SellApp.SearchProductsRequestApplicationJsonPropertySearch do
 
     %__MODULE__{
       value: map["value"],
-      case_sensitive: map["case_sensitive"],
-      __additional_properties__: Map.drop(map, ["value", "case_sensitive"]),
+      __additional_properties__: Map.drop(map, ["value"]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -49,8 +45,7 @@ defmodule SellApp.SearchProductsRequestApplicationJsonPropertySearch do
     known =
       SellApp.Cast.keep_present(
         %{
-          "value" => struct.value,
-          "case_sensitive" => struct.case_sensitive
+          "value" => struct.value
         },
         [],
         struct.__present_fields__

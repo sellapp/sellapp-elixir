@@ -277,8 +277,15 @@ defmodule SellApp.ProductsTest do
                  }
                ],
                "sort" => [%{"field" => "field", "direction" => "asc"}],
-               "search" => %{"value" => nil, "case_sensitive" => true},
-               "includes" => [%{"relation" => "relation"}]
+               "search" => %{"value" => nil},
+               "includes" => [%{"relation" => "variants"}],
+               "min_price" => nil,
+               "max_price" => nil,
+               "stock" => nil,
+               "visibility" => ["PUBLIC"],
+               "has_sales" => nil,
+               "with_drafts" => true,
+               "only_drafts" => true
              })
   end
 
@@ -299,8 +306,15 @@ defmodule SellApp.ProductsTest do
                  }
                ],
                "sort" => [%{"field" => "field", "direction" => "asc"}],
-               "search" => %{"value" => nil, "case_sensitive" => true},
-               "includes" => [%{"relation" => "relation"}]
+               "search" => %{"value" => nil},
+               "includes" => [%{"relation" => "variants"}],
+               "min_price" => nil,
+               "max_price" => nil,
+               "stock" => nil,
+               "visibility" => ["PUBLIC"],
+               "has_sales" => nil,
+               "with_drafts" => true,
+               "only_drafts" => true
              })
 
     refute SellApp.Page.has_more?(page)
@@ -371,16 +385,57 @@ defmodule SellApp.ProductsTest do
              SellApp.Products.batch_delete(client, %{"resources" => [1]})
   end
 
+  test "publish succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "POST"
+      assert String.ends_with?(conn.request_path, "/v2/products/test_product/publish")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("products/publish"))
+    end)
+
+    assert {:ok, %SellApp.SdkPublishProductResponseValue200ApplicationJson{}} =
+             SellApp.Products.publish(client, "test_product", %{
+               "visibility" => "PUBLIC",
+               "variant_ids" => nil
+             })
+  end
+
+  test "duplicate succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "POST"
+      assert String.ends_with?(conn.request_path, "/v2/products/test_product/duplicate")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("products/duplicate"))
+    end)
+
+    assert {:ok, %SellApp.SdkDuplicateProductResponseValue201ApplicationJson{}} =
+             SellApp.Products.duplicate(client, "test_product")
+  end
+
+  test "move succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "PUT"
+      assert String.ends_with?(conn.request_path, "/v2/products/test_product/position")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("products/move"))
+    end)
+
+    assert {:ok, %SellApp.SdkMoveProductResponseValue200ApplicationJson{}} =
+             SellApp.Products.move(client, "test_product", %{
+               "position" => 1,
+               "expected_position" => nil
+             })
+  end
+
   test "list encodes query parameters", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()
       params = Map.new(pairs)
       assert params["limit"] == "hello world&x"
+      assert for({"visibility[]", value} <- pairs, do: value) == ["a", "b"]
       refute Map.has_key?(params, "page")
       Req.Test.json(conn, SellApp.TestFixtures.fixture("products/list"))
     end)
 
-    assert {:ok, _} = SellApp.Products.list(client, %{limit: "hello world&x"})
+    assert {:ok, _} =
+             SellApp.Products.list(client, %{limit: "hello world&x", visibility: ["a", "b"]})
   end
 
   test "list honors per-request options", %{client: client} do

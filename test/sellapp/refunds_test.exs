@@ -57,6 +57,18 @@ defmodule SellApp.RefundsTest do
              SellApp.Refunds.get_refund(client, "test_refund")
   end
 
+  test "list_refunds encodes query parameters", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()
+      params = Map.new(pairs)
+      assert params["page"] == "hello world&x"
+      refute Map.has_key?(params, "limit")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("refunds/list_refunds"))
+    end)
+
+    assert {:ok, _} = SellApp.Refunds.list_refunds(client, %{page: "hello world&x"})
+  end
+
   test "list_refunds honors per-request options", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       assert Plug.Conn.get_req_header(conn, "x-custom") == ["value"]

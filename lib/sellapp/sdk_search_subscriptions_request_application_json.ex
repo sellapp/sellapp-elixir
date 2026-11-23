@@ -10,6 +10,14 @@ defmodule SellApp.SdkSearchSubscriptionsRequestApplicationJson do
     :sort,
     :search,
     :includes,
+    :order_id,
+    :product_id,
+    :renews_after,
+    :renews_before,
+    :cancelled_after,
+    :cancelled_before,
+    :scheduled_to_cancel,
+    :paused,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -21,6 +29,14 @@ defmodule SellApp.SdkSearchSubscriptionsRequestApplicationJson do
           search: SellApp.SearchSubscriptionsRequestApplicationJsonPropertySearch.t() | nil,
           includes:
             [SellApp.SearchSubscriptionsRequestApplicationJsonPropertyIncludesItem.t()] | nil,
+          order_id: integer() | nil,
+          product_id: integer() | nil,
+          renews_after: String.t() | nil,
+          renews_before: String.t() | nil,
+          cancelled_after: String.t() | nil,
+          cancelled_before: String.t() | nil,
+          scheduled_to_cancel: boolean() | nil,
+          paused: boolean() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -64,7 +80,36 @@ defmodule SellApp.SdkSearchSubscriptionsRequestApplicationJson do
             module: SellApp.SearchSubscriptionsRequestApplicationJsonPropertyIncludesItem
           }
         }
-      }
+      },
+      "order_id" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :integer, minimum: 1}}
+      },
+      "product_id" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :integer, minimum: 1}}
+      },
+      "renews_after" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :string, max_length: 64}}
+      },
+      "renews_before" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :string, max_length: 64}}
+      },
+      "cancelled_after" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :string, max_length: 64}}
+      },
+      "cancelled_before" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :string, max_length: 64}}
+      },
+      "scheduled_to_cancel" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :boolean}}
+      },
+      "paused" => %{required: false, schema: %{kind: :nullable, inner: %{kind: :boolean}}}
     },
     additional_properties: true
   }
@@ -97,7 +142,29 @@ defmodule SellApp.SdkSearchSubscriptionsRequestApplicationJson do
           map["includes"],
           &SellApp.SearchSubscriptionsRequestApplicationJsonPropertyIncludesItem.from_map/1
         ),
-      __additional_properties__: Map.drop(map, ["filters", "sort", "search", "includes"]),
+      order_id: map["order_id"],
+      product_id: map["product_id"],
+      renews_after: map["renews_after"],
+      renews_before: map["renews_before"],
+      cancelled_after: map["cancelled_after"],
+      cancelled_before: map["cancelled_before"],
+      scheduled_to_cancel: map["scheduled_to_cancel"],
+      paused: map["paused"],
+      __additional_properties__:
+        Map.drop(map, [
+          "filters",
+          "sort",
+          "search",
+          "includes",
+          "order_id",
+          "product_id",
+          "renews_after",
+          "renews_before",
+          "cancelled_after",
+          "cancelled_before",
+          "scheduled_to_cancel",
+          "paused"
+        ]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -133,7 +200,15 @@ defmodule SellApp.SdkSearchSubscriptionsRequestApplicationJson do
                 item,
                 &SellApp.SearchSubscriptionsRequestApplicationJsonPropertyIncludesItem.to_map/1
               )
-            end)
+            end),
+          "order_id" => struct.order_id,
+          "product_id" => struct.product_id,
+          "renews_after" => struct.renews_after,
+          "renews_before" => struct.renews_before,
+          "cancelled_after" => struct.cancelled_after,
+          "cancelled_before" => struct.cancelled_before,
+          "scheduled_to_cancel" => struct.scheduled_to_cancel,
+          "paused" => struct.paused
         },
         [],
         struct.__present_fields__

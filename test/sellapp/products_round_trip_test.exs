@@ -41,7 +41,11 @@ defmodule SellApp.ProductsRoundTripTest do
       "section_order" => nil,
       "is_discoverable" => true,
       "variants" => [%{"id" => 1, "title" => "title"}],
-      "url" => "url"
+      "url" => "url",
+      "price_range" => nil,
+      "stock" => nil,
+      "sales" => 1,
+      "sold_out" => true
     }
 
     serialized =
@@ -338,6 +342,61 @@ defmodule SellApp.ProductsRoundTripTest do
            |> SellApp.SdkDeleteProductResponseValue200ApplicationJson.to_map() == serialized
   end
 
+  test "SdkDuplicateProductResponseValue201ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "id" => 1,
+        "title" => "title",
+        "slug" => "slug",
+        "description" => "description",
+        "images" => [
+          %{
+            "path" => "path",
+            "metadata" => %{
+              "size" => 1,
+              "filename" => "filename",
+              "extension" => "extension",
+              "mime_type" => "mime_type"
+            }
+          }
+        ],
+        "order" => nil,
+        "visibility" => "visibility",
+        "delivery_text" => nil,
+        "additional_information" => [
+          %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
+        ],
+        "other_settings" => %{
+          "faq" => [%{"question" => "question", "answer" => "answer"}],
+          "video_url" => "video_url",
+          "redirect_url" => "redirect_url",
+          "product_title" => "product_title",
+          "product_description" => "product_description"
+        },
+        "deleted_at" => nil,
+        "created_at" => "2024-01-01T00:00:00.000Z",
+        "updated_at" => "2024-01-01T00:00:00.000Z",
+        "store_id" => 1,
+        "section_id" => nil,
+        "section_order" => nil,
+        "is_discoverable" => true,
+        "variants" => [%{"id" => 1, "title" => "title"}],
+        "url" => "url"
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkDuplicateProductResponseValue201ApplicationJson.from_map()
+      |> SellApp.SdkDuplicateProductResponseValue201ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkDuplicateProductResponseValue201ApplicationJson.from_map()
+           |> SellApp.SdkDuplicateProductResponseValue201ApplicationJson.to_map() == serialized
+  end
+
   test "SdkGetProductResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{
@@ -433,7 +492,11 @@ defmodule SellApp.ProductsRoundTripTest do
           "section_order" => nil,
           "is_discoverable" => true,
           "variants" => [%{"id" => 1, "title" => "title"}],
-          "url" => "url"
+          "url" => "url",
+          "price_range" => nil,
+          "stock" => nil,
+          "sales" => 1,
+          "sold_out" => true
         }
       ],
       "links" => %{"first" => "first", "last" => "last", "prev" => nil, "next" => nil},
@@ -459,6 +522,116 @@ defmodule SellApp.ProductsRoundTripTest do
     assert serialized
            |> SellApp.SdkListProductsResponseValue200ApplicationJson.from_map()
            |> SellApp.SdkListProductsResponseValue200ApplicationJson.to_map() == serialized
+  end
+
+  test "SdkMoveProductResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "id" => 1,
+        "title" => "title",
+        "slug" => "slug",
+        "description" => "description",
+        "images" => [
+          %{
+            "path" => "path",
+            "metadata" => %{
+              "size" => 1,
+              "filename" => "filename",
+              "extension" => "extension",
+              "mime_type" => "mime_type"
+            }
+          }
+        ],
+        "order" => nil,
+        "visibility" => "visibility",
+        "delivery_text" => nil,
+        "additional_information" => [
+          %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
+        ],
+        "other_settings" => %{
+          "faq" => [%{"question" => "question", "answer" => "answer"}],
+          "video_url" => "video_url",
+          "redirect_url" => "redirect_url",
+          "product_title" => "product_title",
+          "product_description" => "product_description"
+        },
+        "deleted_at" => nil,
+        "created_at" => "2024-01-01T00:00:00.000Z",
+        "updated_at" => "2024-01-01T00:00:00.000Z",
+        "store_id" => 1,
+        "section_id" => nil,
+        "section_order" => nil,
+        "is_discoverable" => true,
+        "variants" => [%{"id" => 1, "title" => "title"}],
+        "url" => "url"
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkMoveProductResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkMoveProductResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkMoveProductResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkMoveProductResponseValue200ApplicationJson.to_map() == serialized
+  end
+
+  test "SdkPublishProductResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "id" => 1,
+        "title" => "title",
+        "slug" => "slug",
+        "description" => "description",
+        "images" => [
+          %{
+            "path" => "path",
+            "metadata" => %{
+              "size" => 1,
+              "filename" => "filename",
+              "extension" => "extension",
+              "mime_type" => "mime_type"
+            }
+          }
+        ],
+        "order" => nil,
+        "visibility" => "visibility",
+        "delivery_text" => nil,
+        "additional_information" => [
+          %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
+        ],
+        "other_settings" => %{
+          "faq" => [%{"question" => "question", "answer" => "answer"}],
+          "video_url" => "video_url",
+          "redirect_url" => "redirect_url",
+          "product_title" => "product_title",
+          "product_description" => "product_description"
+        },
+        "deleted_at" => nil,
+        "created_at" => "2024-01-01T00:00:00.000Z",
+        "updated_at" => "2024-01-01T00:00:00.000Z",
+        "store_id" => 1,
+        "section_id" => nil,
+        "section_order" => nil,
+        "is_discoverable" => true,
+        "variants" => [%{"id" => 1, "title" => "title"}],
+        "url" => "url"
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkPublishProductResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkPublishProductResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkPublishProductResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkPublishProductResponseValue200ApplicationJson.to_map() == serialized
   end
 
   test "SdkReplaceProductResponseValue200ApplicationJson round-trips between wire and struct" do
@@ -537,7 +710,7 @@ defmodule SellApp.ProductsRoundTripTest do
           ],
           "order" => nil,
           "visibility" => "visibility",
-          "delivery_text" => "delivery_text",
+          "delivery_text" => nil,
           "additional_information" => [
             %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
           ],
@@ -556,11 +729,24 @@ defmodule SellApp.ProductsRoundTripTest do
           "section_order" => nil,
           "is_discoverable" => true,
           "variants" => [%{"id" => 1, "title" => "title"}],
-          "url" => "url"
+          "url" => "url",
+          "price_range" => nil,
+          "stock" => nil,
+          "sales" => 1,
+          "sold_out" => true
         }
       ],
-      "links" => %{},
-      "meta" => %{}
+      "links" => %{"first" => "first", "last" => "last", "prev" => nil, "next" => nil},
+      "meta" => %{
+        "current_page" => 1,
+        "from" => nil,
+        "last_page" => 1,
+        "links" => [%{"url" => nil, "label" => "label", "active" => true}],
+        "path" => "path",
+        "per_page" => 1,
+        "to" => nil,
+        "total" => 1
+      }
     }
 
     serialized =
@@ -649,7 +835,7 @@ defmodule SellApp.ProductsRoundTripTest do
       ],
       "order" => nil,
       "visibility" => "visibility",
-      "delivery_text" => "delivery_text",
+      "delivery_text" => nil,
       "additional_information" => [
         %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
       ],
@@ -668,7 +854,11 @@ defmodule SellApp.ProductsRoundTripTest do
       "section_order" => nil,
       "is_discoverable" => true,
       "variants" => [%{"id" => 1, "title" => "title"}],
-      "url" => "url"
+      "url" => "url",
+      "price_range" => nil,
+      "stock" => nil,
+      "sales" => 1,
+      "sold_out" => true
     }
 
     serialized =

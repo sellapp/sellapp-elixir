@@ -73,7 +73,7 @@ defmodule SellApp.AffiliatesTest do
       pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()
       params = Map.new(pairs)
       assert params["search"] == "hello world&x"
-      refute Map.has_key?(params, "limit")
+      refute Map.has_key?(params, "custom_rates_only")
       Req.Test.json(conn, SellApp.TestFixtures.fixture("affiliates/list"))
     end)
 

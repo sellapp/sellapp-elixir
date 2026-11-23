@@ -1,0 +1,21 @@
+{
+  "data": {
+    "affiliate_id": 1,
+    "enable_specific_products": true,
+    "products": [
+      {
+        "id": 1,
+        "product_id": 1,
+        "product_title": "product_title",
+        "variant_title": "variant_title",
+        "enabled": true,
+        "commission": {
+          "type": "percentage",
+          "percentage": null,
+          "amount_usd_cents": null
+        }
+      }
+    ],
+    "updated_at": "2024-01-01T00:00:00.000Z"
+  }
+}

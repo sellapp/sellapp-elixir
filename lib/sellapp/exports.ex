@@ -8,11 +8,11 @@ defmodule SellApp.Exports do
   @doc """
   List exports
 
-  List permitted exports, 50 per page. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request. Sales, tax and customer reports require invoice store permission. Affiliate payout reports require affiliate and affiliate:payout permissions. The category selects the applicable permission checks; listing returns only authorized categories.
+  List permitted exports, newest first, 50 per page. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request. Sales, tax and customer reports require invoice store permission. Affiliate payout reports require affiliate and affiliate:payout permissions. The category selects the applicable permission checks; listing returns only authorized categories.
 
   ## Parameters
 
-    * `params` — query parameters
+    * `params` — query parameters: `:page`
     * `opts` — per-request options (see `SellApp.Client.request/5`)
   """
   @spec list_exports(SellApp.Client.t(), map(), keyword()) ::

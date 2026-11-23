@@ -111,6 +111,30 @@ defmodule SellApp.UpsellOffersRoundTripTest do
            |> SellApp.SdkDeleteUpsellOfferResponseValue200ApplicationJson.to_map() == serialized
   end
 
+  test "SdkGetUpsellOfferPerformanceResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "upsell_offer_id" => 1,
+        "impressions" => 1,
+        "checkout_starts" => 1,
+        "accepts" => 1,
+        "revenue_usd_cents" => 1
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkGetUpsellOfferPerformanceResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkGetUpsellOfferPerformanceResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkGetUpsellOfferPerformanceResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkGetUpsellOfferPerformanceResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
   test "SdkGetUpsellOfferResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{

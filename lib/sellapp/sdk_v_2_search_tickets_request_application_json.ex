@@ -10,6 +10,9 @@ defmodule SellApp.SdkV2SearchTicketsRequestApplicationJson do
     :sort,
     :search,
     :includes,
+    :waiting_on,
+    :reason,
+    :customer_email,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -19,6 +22,9 @@ defmodule SellApp.SdkV2SearchTicketsRequestApplicationJson do
           sort: [SellApp.V2SearchTicketsRequestApplicationJsonPropertySortItem.t()] | nil,
           search: SellApp.V2SearchTicketsRequestApplicationJsonPropertySearch.t() | nil,
           includes: [SellApp.V2SearchTicketsRequestApplicationJsonPropertyIncludesItem.t()] | nil,
+          waiting_on: SellApp.WaitingOn.t() | nil,
+          reason: String.t() | nil,
+          customer_email: String.t() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -62,6 +68,18 @@ defmodule SellApp.SdkV2SearchTicketsRequestApplicationJson do
             module: SellApp.V2SearchTicketsRequestApplicationJsonPropertyIncludesItem
           }
         }
+      },
+      "waiting_on" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :enum, values: ["store", "customer", "null"]}}
+      },
+      "reason" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :string, max_length: 150}}
+      },
+      "customer_email" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :string, max_length: 255}}
       }
     },
     additional_properties: true
@@ -95,7 +113,19 @@ defmodule SellApp.SdkV2SearchTicketsRequestApplicationJson do
           map["includes"],
           &SellApp.V2SearchTicketsRequestApplicationJsonPropertyIncludesItem.from_map/1
         ),
-      __additional_properties__: Map.drop(map, ["filters", "sort", "search", "includes"]),
+      waiting_on: SellApp.Cast.enum(map["waiting_on"], &SellApp.WaitingOn.cast/1),
+      reason: map["reason"],
+      customer_email: map["customer_email"],
+      __additional_properties__:
+        Map.drop(map, [
+          "filters",
+          "sort",
+          "search",
+          "includes",
+          "waiting_on",
+          "reason",
+          "customer_email"
+        ]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -131,7 +161,10 @@ defmodule SellApp.SdkV2SearchTicketsRequestApplicationJson do
                 item,
                 &SellApp.V2SearchTicketsRequestApplicationJsonPropertyIncludesItem.to_map/1
               )
-            end)
+            end),
+          "waiting_on" => SellApp.Cast.enum(struct.waiting_on, &SellApp.WaitingOn.dump/1),
+          "reason" => struct.reason,
+          "customer_email" => struct.customer_email
         },
         [],
         struct.__present_fields__

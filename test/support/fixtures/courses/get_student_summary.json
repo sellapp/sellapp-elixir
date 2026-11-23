@@ -1,0 +1,46 @@
+{
+  "data": {
+    "period": {
+      "start_date": "2024-01-01",
+      "end_date": "2024-01-01",
+      "timezone": "timezone",
+      "currency": "currency"
+    },
+    "summary": {
+      "students_count": 1,
+      "multi_course_students_count": null,
+      "course_purchases_count": 1,
+      "course_units_count": 1,
+      "course_orders_count": 1,
+      "courses_sold_count": null
+    },
+    "students": [
+      {
+        "customer_id": null,
+        "email": null,
+        "courses_count": 1,
+        "course_purchases_count": 1,
+        "course_units_count": 1,
+        "orders_count": 1,
+        "latest_purchase_at": null,
+        "courses": [
+          {
+            "course_id": 1,
+            "title": "title",
+            "purchases_count": 1
+          }
+        ]
+      }
+    ],
+    "courses": [
+      {
+        "course_id": 1,
+        "title": "title",
+        "students_count": 1,
+        "course_purchases_count": 1,
+        "course_units_count": 1,
+        "orders_count": 1
+      }
+    ]
+  }
+}

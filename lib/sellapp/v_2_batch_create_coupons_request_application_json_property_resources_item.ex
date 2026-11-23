@@ -17,6 +17,7 @@ defmodule SellApp.V2BatchCreateCouponsRequestApplicationJsonPropertyResourcesIte
     :minimum_amount,
     :applies_to,
     :subscription_payments,
+    :maximum_discount_amount,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -35,6 +36,7 @@ defmodule SellApp.V2BatchCreateCouponsRequestApplicationJsonPropertyResourcesIte
             SellApp.V2BatchCreateCouponsRequestApplicationJsonPropertyResourcesItemAppliesTo.t()
             | nil,
           subscription_payments: integer() | nil,
+          maximum_discount_amount: number() | String.t() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -55,10 +57,7 @@ defmodule SellApp.V2BatchCreateCouponsRequestApplicationJsonPropertyResourcesIte
         }
       },
       "store_wide" => %{required: true, schema: %{kind: :boolean}},
-      "products" => %{
-        required: false,
-        schema: %{kind: :array, items: %{kind: :integer}, min_items: 1}
-      },
+      "products" => %{required: false, schema: %{kind: :array, items: %{kind: :integer}}},
       "product_variants" => %{required: false, schema: %{kind: :array, items: %{kind: :integer}}},
       "limit" => %{
         required: false,
@@ -88,6 +87,19 @@ defmodule SellApp.V2BatchCreateCouponsRequestApplicationJsonPropertyResourcesIte
       "subscription_payments" => %{
         required: false,
         schema: %{kind: :nullable, inner: %{kind: :integer, minimum: 1, maximum: 36}}
+      },
+      "maximum_discount_amount" => %{
+        required: false,
+        schema: %{
+          kind: :nullable,
+          inner: %{
+            kind: :union,
+            variants: [
+              %{kind: :number, minimum: 1, max_length: 255},
+              %{kind: :string, minimum: 1, max_length: 255}
+            ]
+          }
+        }
       }
     },
     additional_properties: true
@@ -120,6 +132,7 @@ defmodule SellApp.V2BatchCreateCouponsRequestApplicationJsonPropertyResourcesIte
           &SellApp.V2BatchCreateCouponsRequestApplicationJsonPropertyResourcesItemAppliesTo.cast/1
         ),
       subscription_payments: map["subscription_payments"],
+      maximum_discount_amount: map["maximum_discount_amount"],
       __additional_properties__:
         Map.drop(map, [
           "code",
@@ -132,7 +145,8 @@ defmodule SellApp.V2BatchCreateCouponsRequestApplicationJsonPropertyResourcesIte
           "expires_at",
           "minimum_amount",
           "applies_to",
-          "subscription_payments"
+          "subscription_payments",
+          "maximum_discount_amount"
         ]),
       __present_fields__: Map.keys(map)
     }
@@ -162,7 +176,8 @@ defmodule SellApp.V2BatchCreateCouponsRequestApplicationJsonPropertyResourcesIte
               struct.applies_to,
               &SellApp.V2BatchCreateCouponsRequestApplicationJsonPropertyResourcesItemAppliesTo.dump/1
             ),
-          "subscription_payments" => struct.subscription_payments
+          "subscription_payments" => struct.subscription_payments,
+          "maximum_discount_amount" => SellApp.Cast.dump_union(struct.maximum_discount_amount)
         },
         ["code", "type", "discount", "store_wide"],
         struct.__present_fields__

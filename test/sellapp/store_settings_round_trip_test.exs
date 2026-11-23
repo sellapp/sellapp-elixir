@@ -3,6 +3,99 @@
 defmodule SellApp.StoreSettingsRoundTripTest do
   use ExUnit.Case, async: true
 
+  test "SdkGetCheckoutSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "shopping_cart_enabled" => true,
+        "customer_email_required" => true,
+        "allow_vpn_purchases" => true,
+        "blacklist_on_dispute" => true,
+        "minimum_spend" => nil,
+        "billing_descriptor" => nil,
+        "attempts_per_customer" => 1,
+        "attempts_per_ip" => nil,
+        "attempts_per_email" => nil,
+        "attempts_per_fingerprint" => nil,
+        "rate_limit_window_seconds" => 60,
+        "crypto" => nil
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkGetCheckoutSettingsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkGetCheckoutSettingsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkGetCheckoutSettingsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkGetCheckoutSettingsResponseValue200ApplicationJson.to_map() == serialized
+  end
+
+  test "SdkGetCustomerEmailSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{"data" => %{"send_delivery_email" => true, "send_payment_failure_email" => true}}
+
+    serialized =
+      data
+      |> SellApp.SdkGetCustomerEmailSettingsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkGetCustomerEmailSettingsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkGetCustomerEmailSettingsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkGetCustomerEmailSettingsResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
+  test "SdkGetPersonalizationSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "support_email" => nil,
+        "trustpilot_email" => nil,
+        "sender_name" => nil,
+        "sender_email" => nil,
+        "store_address" => nil,
+        "store_city" => nil,
+        "store_state" => nil,
+        "store_zip" => nil,
+        "store_country" => nil,
+        "store_tax" => nil,
+        "back_link_label" => nil,
+        "back_link_url" => nil
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkGetPersonalizationSettingsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkGetPersonalizationSettingsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkGetPersonalizationSettingsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkGetPersonalizationSettingsResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
+  test "SdkGetStoreAlertSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{"data" => %{"sale_emails_enabled" => true}}
+
+    serialized =
+      data
+      |> SellApp.SdkGetStoreAlertSettingsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkGetStoreAlertSettingsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkGetStoreAlertSettingsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkGetStoreAlertSettingsResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
   test "SdkGetStoreSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{
@@ -38,6 +131,27 @@ defmodule SellApp.StoreSettingsRoundTripTest do
            |> SellApp.SdkGetStoreSettingsResponseValue200ApplicationJson.to_map() == serialized
   end
 
+  test "SdkGetTaxSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "vat_enabled" => true,
+        "vat_inclusive_pricing" => true,
+        "collect_billing_details" => true
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkGetTaxSettingsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkGetTaxSettingsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkGetTaxSettingsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkGetTaxSettingsResponseValue200ApplicationJson.to_map() == serialized
+  end
+
   test "SdkReplaceAnalyticsSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{
@@ -71,6 +185,84 @@ defmodule SellApp.StoreSettingsRoundTripTest do
     assert serialized
            |> SellApp.SdkReplaceAnalyticsSettingsResponseValue200ApplicationJson.from_map()
            |> SellApp.SdkReplaceAnalyticsSettingsResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
+  test "SdkReplaceCheckoutSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "shopping_cart_enabled" => true,
+        "customer_email_required" => true,
+        "allow_vpn_purchases" => true,
+        "blacklist_on_dispute" => true,
+        "minimum_spend" => nil,
+        "billing_descriptor" => nil,
+        "attempts_per_customer" => 1,
+        "attempts_per_ip" => nil,
+        "attempts_per_email" => nil,
+        "attempts_per_fingerprint" => nil,
+        "rate_limit_window_seconds" => 60,
+        "crypto" => nil
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkReplaceCheckoutSettingsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkReplaceCheckoutSettingsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkReplaceCheckoutSettingsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkReplaceCheckoutSettingsResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
+  test "SdkReplaceCryptoCheckoutSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "shopping_cart_enabled" => true,
+        "customer_email_required" => true,
+        "allow_vpn_purchases" => true,
+        "blacklist_on_dispute" => true,
+        "minimum_spend" => nil,
+        "billing_descriptor" => nil,
+        "attempts_per_customer" => 1,
+        "attempts_per_ip" => nil,
+        "attempts_per_email" => nil,
+        "attempts_per_fingerprint" => nil,
+        "rate_limit_window_seconds" => 60,
+        "crypto" => nil
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkReplaceCryptoCheckoutSettingsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkReplaceCryptoCheckoutSettingsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkReplaceCryptoCheckoutSettingsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkReplaceCryptoCheckoutSettingsResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
+  test "SdkReplaceCustomerEmailSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{"data" => %{"send_delivery_email" => true, "send_payment_failure_email" => true}}
+
+    serialized =
+      data
+      |> SellApp.SdkReplaceCustomerEmailSettingsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkReplaceCustomerEmailSettingsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkReplaceCustomerEmailSettingsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkReplaceCustomerEmailSettingsResponseValue200ApplicationJson.to_map() ==
              serialized
   end
 
@@ -146,6 +338,74 @@ defmodule SellApp.StoreSettingsRoundTripTest do
              serialized
   end
 
+  test "SdkReplacePersonalizationSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "support_email" => nil,
+        "trustpilot_email" => nil,
+        "sender_name" => nil,
+        "sender_email" => nil,
+        "store_address" => nil,
+        "store_city" => nil,
+        "store_state" => nil,
+        "store_zip" => nil,
+        "store_country" => nil,
+        "store_tax" => nil,
+        "back_link_label" => nil,
+        "back_link_url" => nil
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkReplacePersonalizationSettingsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkReplacePersonalizationSettingsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkReplacePersonalizationSettingsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkReplacePersonalizationSettingsResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
+  test "SdkReplaceStoreAlertSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{"data" => %{"sale_emails_enabled" => true}}
+
+    serialized =
+      data
+      |> SellApp.SdkReplaceStoreAlertSettingsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkReplaceStoreAlertSettingsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkReplaceStoreAlertSettingsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkReplaceStoreAlertSettingsResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
+  test "SdkReplaceTaxSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "vat_enabled" => true,
+        "vat_inclusive_pricing" => true,
+        "collect_billing_details" => true
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkReplaceTaxSettingsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkReplaceTaxSettingsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkReplaceTaxSettingsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkReplaceTaxSettingsResponseValue200ApplicationJson.to_map() == serialized
+  end
+
   test "SdkUpdateAnalyticsSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{
@@ -179,6 +439,84 @@ defmodule SellApp.StoreSettingsRoundTripTest do
     assert serialized
            |> SellApp.SdkUpdateAnalyticsSettingsResponseValue200ApplicationJson.from_map()
            |> SellApp.SdkUpdateAnalyticsSettingsResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
+  test "SdkUpdateCheckoutSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "shopping_cart_enabled" => true,
+        "customer_email_required" => true,
+        "allow_vpn_purchases" => true,
+        "blacklist_on_dispute" => true,
+        "minimum_spend" => nil,
+        "billing_descriptor" => nil,
+        "attempts_per_customer" => 1,
+        "attempts_per_ip" => nil,
+        "attempts_per_email" => nil,
+        "attempts_per_fingerprint" => nil,
+        "rate_limit_window_seconds" => 60,
+        "crypto" => nil
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkUpdateCheckoutSettingsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkUpdateCheckoutSettingsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkUpdateCheckoutSettingsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkUpdateCheckoutSettingsResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
+  test "SdkUpdateCryptoCheckoutSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "shopping_cart_enabled" => true,
+        "customer_email_required" => true,
+        "allow_vpn_purchases" => true,
+        "blacklist_on_dispute" => true,
+        "minimum_spend" => nil,
+        "billing_descriptor" => nil,
+        "attempts_per_customer" => 1,
+        "attempts_per_ip" => nil,
+        "attempts_per_email" => nil,
+        "attempts_per_fingerprint" => nil,
+        "rate_limit_window_seconds" => 60,
+        "crypto" => nil
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkUpdateCryptoCheckoutSettingsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkUpdateCryptoCheckoutSettingsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkUpdateCryptoCheckoutSettingsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkUpdateCryptoCheckoutSettingsResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
+  test "SdkUpdateCustomerEmailSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{"data" => %{"send_delivery_email" => true, "send_payment_failure_email" => true}}
+
+    serialized =
+      data
+      |> SellApp.SdkUpdateCustomerEmailSettingsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkUpdateCustomerEmailSettingsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkUpdateCustomerEmailSettingsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkUpdateCustomerEmailSettingsResponseValue200ApplicationJson.to_map() ==
              serialized
   end
 
@@ -252,5 +590,73 @@ defmodule SellApp.StoreSettingsRoundTripTest do
            |> SellApp.SdkUpdateMarketingSettingsResponseValue200ApplicationJson.from_map()
            |> SellApp.SdkUpdateMarketingSettingsResponseValue200ApplicationJson.to_map() ==
              serialized
+  end
+
+  test "SdkUpdatePersonalizationSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "support_email" => nil,
+        "trustpilot_email" => nil,
+        "sender_name" => nil,
+        "sender_email" => nil,
+        "store_address" => nil,
+        "store_city" => nil,
+        "store_state" => nil,
+        "store_zip" => nil,
+        "store_country" => nil,
+        "store_tax" => nil,
+        "back_link_label" => nil,
+        "back_link_url" => nil
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkUpdatePersonalizationSettingsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkUpdatePersonalizationSettingsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkUpdatePersonalizationSettingsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkUpdatePersonalizationSettingsResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
+  test "SdkUpdateStoreAlertSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{"data" => %{"sale_emails_enabled" => true}}
+
+    serialized =
+      data
+      |> SellApp.SdkUpdateStoreAlertSettingsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkUpdateStoreAlertSettingsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkUpdateStoreAlertSettingsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkUpdateStoreAlertSettingsResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
+  test "SdkUpdateTaxSettingsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "vat_enabled" => true,
+        "vat_inclusive_pricing" => true,
+        "collect_billing_details" => true
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkUpdateTaxSettingsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkUpdateTaxSettingsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkUpdateTaxSettingsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkUpdateTaxSettingsResponseValue200ApplicationJson.to_map() == serialized
   end
 end

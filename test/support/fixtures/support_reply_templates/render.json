@@ -1,0 +1,14 @@
+{
+  "data": {
+    "template_id": 1,
+    "template_label": "template_label",
+    "ticket_id": 1,
+    "text": "text",
+    "filled_from_ticket": [
+      "filled_from_ticket"
+    ],
+    "filled_from_values": [
+      "filled_from_values"
+    ]
+  }
+}

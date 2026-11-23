@@ -130,7 +130,7 @@ client = SellApp.Client.new(
   store: System.fetch_env!("SELLAPP_STORE")
 )
 
-{:ok, result} = SellApp.Wallet.adjust(client, 1, %{"amount_cents" => 2500, "idempotency_key" => "wallet-adjustment-01992a65", "note" => "Launch-day account credit"})
+{:ok, result} = SellApp.Wallet.adjust(client, 1, %{"amount_cents" => 2500, "idempotency_key" => "wallet-adjustment-01992a65", "note" => "Launch-day account credit", "expected_balance_cents" => 0})
 IO.inspect(result)
 ```
 

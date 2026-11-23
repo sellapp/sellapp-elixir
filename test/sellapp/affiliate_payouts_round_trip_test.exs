@@ -129,6 +129,26 @@ defmodule SellApp.AffiliatePayoutsRoundTripTest do
              serialized
   end
 
+  test "SdkMarkAffiliatePayoutsPaidResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => [
+        %{"payout_id" => 1, "outcome" => "paid", "message" => "message", "payout" => nil}
+      ]
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkMarkAffiliatePayoutsPaidResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkMarkAffiliatePayoutsPaidResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkMarkAffiliatePayoutsPaidResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkMarkAffiliatePayoutsPaidResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
   test "SdkUpdateAffiliatePayoutStatusResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{

@@ -14,7 +14,7 @@ defmodule SellApp.SearchOrdersRequestApplicationJsonPropertyFiltersItem do
   ]
 
   @type t :: %__MODULE__{
-          field: String.t(),
+          field: SellApp.SearchOrdersRequestApplicationJsonPropertyFiltersItemField.t(),
           operator: SellApp.SearchOrdersRequestApplicationJsonPropertyFiltersItemOperator.t(),
           value: term(),
           __additional_properties__: map(),
@@ -24,8 +24,35 @@ defmodule SellApp.SearchOrdersRequestApplicationJsonPropertyFiltersItem do
   @schema %{
     name: "SearchOrdersRequestApplicationJsonPropertyFiltersItem",
     properties: %{
-      "field" => %{required: true, schema: %{kind: :string}},
-      "operator" => %{required: true, schema: %{kind: :enum, values: ["eq", "contains", "in"]}},
+      "field" => %{
+        required: true,
+        schema: %{
+          kind: :enum,
+          values: [
+            "id",
+            "customer_email",
+            "transaction_id",
+            "serial_code",
+            "additional_information",
+            "line_item_title",
+            "discord_user_id",
+            "discord_username",
+            "blockchain_txid",
+            "crypto_address",
+            "coupon_code",
+            "status",
+            "payment_method",
+            "product_id",
+            "currency",
+            "created_at",
+            "total"
+          ]
+        }
+      },
+      "operator" => %{
+        required: true,
+        schema: %{kind: :enum, values: ["eq", "contains", "in", "gte", "lte"]}
+      },
       "value" => %{required: true, schema: %{kind: :any}}
     },
     additional_properties: false
@@ -39,7 +66,11 @@ defmodule SellApp.SearchOrdersRequestApplicationJsonPropertyFiltersItem do
     SellApp.Schema.validate_model!(map, @schema, :response)
 
     %__MODULE__{
-      field: map["field"],
+      field:
+        SellApp.Cast.enum(
+          map["field"],
+          &SellApp.SearchOrdersRequestApplicationJsonPropertyFiltersItemField.cast/1
+        ),
       operator:
         SellApp.Cast.enum(
           map["operator"],
@@ -57,7 +88,11 @@ defmodule SellApp.SearchOrdersRequestApplicationJsonPropertyFiltersItem do
     known =
       SellApp.Cast.keep_present(
         %{
-          "field" => struct.field,
+          "field" =>
+            SellApp.Cast.enum(
+              struct.field,
+              &SellApp.SearchOrdersRequestApplicationJsonPropertyFiltersItemField.dump/1
+            ),
           "operator" =>
             SellApp.Cast.enum(
               struct.operator,

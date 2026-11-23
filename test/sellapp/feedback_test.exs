@@ -184,7 +184,8 @@ defmodule SellApp.FeedbackTest do
                ],
                "sort" => [%{"field" => "field", "direction" => "asc"}],
                "search" => %{"value" => nil, "case_sensitive" => true},
-               "includes" => [%{"relation" => "relation"}]
+               "includes" => [%{"relation" => "relation"}],
+               "reply_state" => nil
              })
   end
 
@@ -206,7 +207,8 @@ defmodule SellApp.FeedbackTest do
                ],
                "sort" => [%{"field" => "field", "direction" => "asc"}],
                "search" => %{"value" => nil, "case_sensitive" => true},
-               "includes" => [%{"relation" => "relation"}]
+               "includes" => [%{"relation" => "relation"}],
+               "reply_state" => nil
              })
 
     refute SellApp.Page.has_more?(page)

@@ -518,7 +518,7 @@ defmodule SellApp.Invoices do
   @doc """
   Create invoice refund
 
-  Request a full or partial provider refund using the same idempotent refund ledger as the dashboard. Amounts are decimal currency strings, never floating-point numbers. Requires the `invoice` token ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Request a full or partial provider refund using the same idempotent refund ledger as the dashboard. This sends real money back to the customer. Amounts are decimal currency strings, never floating-point numbers. Send the invoice's `payment.refunded_total_cents` unchanged as `expected_refunded_total_cents` so that a repeated or concurrent request is refused instead of refunding twice: the refund goes out only while the refunded total is still the amount you sent. A changed total returns `422` on `expected_refunded_total_cents`; read the invoice again before deciding whether to refund. Other refusals return `422` on `refund`, including, when you send `expected_refunded_total_cents`, a refund still pending on the order. Requires the `invoice` token ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 

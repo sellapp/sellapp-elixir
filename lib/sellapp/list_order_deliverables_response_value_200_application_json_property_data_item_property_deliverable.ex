@@ -15,7 +15,8 @@ defmodule SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDa
   @type t :: %__MODULE__{
           types: [String.t()],
           data:
-            SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverablePropertyData.t(),
+            SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverablePropertyDataAnyOfValue1.t()
+            | [term()],
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -28,9 +29,16 @@ defmodule SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDa
       "data" => %{
         required: true,
         schema: %{
-          kind: :model,
-          module:
-            SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverablePropertyData
+          kind: :union,
+          variants: [
+            %{
+              kind: :model,
+              module:
+                SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverablePropertyDataAnyOfValue1
+            },
+            %{kind: :array, items: %{kind: :any}, max_items: 0}
+          ],
+          composition: :anyOf
         }
       }
     },
@@ -46,11 +54,7 @@ defmodule SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDa
 
     %__MODULE__{
       types: map["types"],
-      data:
-        SellApp.Cast.nested(
-          map["data"],
-          &SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverablePropertyData.from_map/1
-        ),
+      data: map["data"],
       __additional_properties__: Map.drop(map, ["types", "data"]),
       __present_fields__: Map.keys(map)
     }
@@ -63,11 +67,7 @@ defmodule SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDa
       SellApp.Cast.keep_present(
         %{
           "types" => struct.types,
-          "data" =>
-            SellApp.Cast.dump_struct(
-              struct.data,
-              &SellApp.ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverablePropertyData.to_map/1
-            )
+          "data" => SellApp.Cast.dump_union(struct.data)
         },
         ["types", "data"],
         struct.__present_fields__

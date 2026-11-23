@@ -12,6 +12,8 @@ defmodule SellApp.SearchInvoicesResponseValue200ApplicationJsonPropertyDataItemP
     :expires_at,
     :full_price,
     :original_amount,
+    :refund_currency,
+    :refunded_total_cents,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -28,6 +30,8 @@ defmodule SellApp.SearchInvoicesResponseValue200ApplicationJsonPropertyDataItemP
             SellApp.SearchInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyFullPrice.t(),
           original_amount:
             SellApp.SearchInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyOriginalAmount.t(),
+          refund_currency: String.t() | nil,
+          refunded_total_cents: integer(),
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -75,7 +79,9 @@ defmodule SellApp.SearchInvoicesResponseValue200ApplicationJsonPropertyDataItemP
           module:
             SellApp.SearchInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyOriginalAmount
         }
-      }
+      },
+      "refund_currency" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}},
+      "refunded_total_cents" => %{required: true, schema: %{kind: :integer, minimum: 0}}
     },
     additional_properties: true
   }
@@ -114,6 +120,8 @@ defmodule SellApp.SearchInvoicesResponseValue200ApplicationJsonPropertyDataItemP
           map["original_amount"],
           &SellApp.SearchInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyOriginalAmount.from_map/1
         ),
+      refund_currency: map["refund_currency"],
+      refunded_total_cents: map["refunded_total_cents"],
       __additional_properties__:
         Map.drop(map, [
           "fee",
@@ -121,7 +129,9 @@ defmodule SellApp.SearchInvoicesResponseValue200ApplicationJsonPropertyDataItemP
           "subtotal",
           "expires_at",
           "full_price",
-          "original_amount"
+          "original_amount",
+          "refund_currency",
+          "refunded_total_cents"
         ]),
       __present_fields__: Map.keys(map)
     }
@@ -158,9 +168,20 @@ defmodule SellApp.SearchInvoicesResponseValue200ApplicationJsonPropertyDataItemP
             SellApp.Cast.dump_struct(
               struct.original_amount,
               &SellApp.SearchInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyOriginalAmount.to_map/1
-            )
+            ),
+          "refund_currency" => struct.refund_currency,
+          "refunded_total_cents" => struct.refunded_total_cents
         },
-        ["fee", "gateway", "subtotal", "expires_at", "full_price", "original_amount"],
+        [
+          "fee",
+          "gateway",
+          "subtotal",
+          "expires_at",
+          "full_price",
+          "original_amount",
+          "refund_currency",
+          "refunded_total_cents"
+        ],
         struct.__present_fields__
       )
 

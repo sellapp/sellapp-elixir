@@ -1,0 +1,6 @@
+{
+  "data": {
+    "send_delivery_email": true,
+    "send_payment_failure_email": true
+  }
+}

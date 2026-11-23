@@ -30,7 +30,9 @@ defmodule SellApp.OrdersRoundTripTest do
         "total_exclusive_cents" => 1,
         "total_cents" => 1,
         "total_exclusive_usd_cents" => nil,
-        "total_usd_cents" => nil
+        "total_usd_cents" => nil,
+        "refund_currency" => nil,
+        "refunded_total_cents" => 1
       },
       "coupon_id" => nil,
       "line_items" => [
@@ -96,7 +98,9 @@ defmodule SellApp.OrdersRoundTripTest do
           "total_exclusive_cents" => 1,
           "total_cents" => 1,
           "total_exclusive_usd_cents" => nil,
-          "total_usd_cents" => nil
+          "total_usd_cents" => nil,
+          "refund_currency" => nil,
+          "refunded_total_cents" => 1
         },
         "coupon_id" => nil,
         "line_items" => [
@@ -163,7 +167,9 @@ defmodule SellApp.OrdersRoundTripTest do
             "total_exclusive_cents" => 1,
             "total_cents" => 1,
             "total_exclusive_usd_cents" => nil,
-            "total_usd_cents" => nil
+            "total_usd_cents" => nil,
+            "refund_currency" => nil,
+            "refunded_total_cents" => 1
           },
           "coupon_id" => nil,
           "line_items" => [
@@ -236,7 +242,9 @@ defmodule SellApp.OrdersRoundTripTest do
           "total_exclusive_cents" => 1,
           "total_cents" => 1,
           "total_exclusive_usd_cents" => nil,
-          "total_usd_cents" => nil
+          "total_usd_cents" => nil,
+          "refund_currency" => nil,
+          "refunded_total_cents" => 1
         },
         "coupon_id" => nil,
         "line_items" => [
@@ -303,7 +311,9 @@ defmodule SellApp.OrdersRoundTripTest do
           "total_exclusive_cents" => 1,
           "total_cents" => 1,
           "total_exclusive_usd_cents" => nil,
-          "total_usd_cents" => nil
+          "total_usd_cents" => nil,
+          "refund_currency" => nil,
+          "refunded_total_cents" => 1
         },
         "coupon_id" => nil,
         "line_items" => [
@@ -369,7 +379,9 @@ defmodule SellApp.OrdersRoundTripTest do
           "total_exclusive_cents" => 1,
           "total_cents" => 1,
           "total_exclusive_usd_cents" => nil,
-          "total_usd_cents" => nil
+          "total_usd_cents" => nil,
+          "refund_currency" => nil,
+          "refunded_total_cents" => 1
         },
         "coupon_id" => nil,
         "line_items" => [
@@ -434,7 +446,9 @@ defmodule SellApp.OrdersRoundTripTest do
           "total_exclusive_cents" => 1,
           "total_cents" => 1,
           "total_exclusive_usd_cents" => nil,
-          "total_usd_cents" => nil
+          "total_usd_cents" => nil,
+          "refund_currency" => nil,
+          "refunded_total_cents" => 1
         },
         "coupon_id" => nil,
         "line_items" => [
@@ -479,9 +493,20 @@ defmodule SellApp.OrdersRoundTripTest do
           "line_item_id" => 1,
           "type" => "type",
           "status" => "pending",
+          "delivered_product_id" => nil,
           "product_variant_id" => nil,
           "quantity" => 1,
-          "deliverable" => %{"types" => ["types"], "data" => %{}},
+          "deliverable" => %{
+            "types" => ["types"],
+            "data" => %{
+              "serials" => ["serials"],
+              "delivered_files" => ["delivered_files"],
+              "dynamic" => "dynamic",
+              "manual" => "manual",
+              "license_keys" => ["license_keys"],
+              "credits_granted" => 1
+            }
+          },
           "additional_information" => [%{}]
         }
       ]
@@ -529,7 +554,9 @@ defmodule SellApp.OrdersRoundTripTest do
             "total_exclusive_cents" => 1,
             "total_cents" => 1,
             "total_exclusive_usd_cents" => nil,
-            "total_usd_cents" => nil
+            "total_usd_cents" => nil,
+            "refund_currency" => nil,
+            "refunded_total_cents" => 1
           },
           "coupon_id" => nil,
           "line_items" => [
@@ -606,7 +633,9 @@ defmodule SellApp.OrdersRoundTripTest do
           "total_exclusive_cents" => 1,
           "total_cents" => 1,
           "total_exclusive_usd_cents" => nil,
-          "total_usd_cents" => nil
+          "total_usd_cents" => nil,
+          "refund_currency" => nil,
+          "refunded_total_cents" => 1
         },
         "coupon_id" => nil,
         "line_items" => [
@@ -643,6 +672,22 @@ defmodule SellApp.OrdersRoundTripTest do
            |> SellApp.SdkPayOrderFromWalletResponseValue200ApplicationJson.to_map() == serialized
   end
 
+  test "SdkRegenerateOrderTelegramInviteResponseValue201ApplicationJson round-trips between wire and struct" do
+    data = %{"data" => %{"order_id" => 1, "variant_id" => 1, "invite_link" => "invite_link"}}
+
+    serialized =
+      data
+      |> SellApp.SdkRegenerateOrderTelegramInviteResponseValue201ApplicationJson.from_map()
+      |> SellApp.SdkRegenerateOrderTelegramInviteResponseValue201ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkRegenerateOrderTelegramInviteResponseValue201ApplicationJson.from_map()
+           |> SellApp.SdkRegenerateOrderTelegramInviteResponseValue201ApplicationJson.to_map() ==
+             serialized
+  end
+
   test "SdkRetryOrderDynamicDeliveryResponseValue202ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{
@@ -671,7 +716,9 @@ defmodule SellApp.OrdersRoundTripTest do
           "total_exclusive_cents" => 1,
           "total_cents" => 1,
           "total_exclusive_usd_cents" => nil,
-          "total_usd_cents" => nil
+          "total_usd_cents" => nil,
+          "refund_currency" => nil,
+          "refunded_total_cents" => 1
         },
         "coupon_id" => nil,
         "line_items" => [
@@ -738,7 +785,9 @@ defmodule SellApp.OrdersRoundTripTest do
           "total_exclusive_cents" => 1,
           "total_cents" => 1,
           "total_exclusive_usd_cents" => nil,
-          "total_usd_cents" => nil
+          "total_usd_cents" => nil,
+          "refund_currency" => nil,
+          "refunded_total_cents" => 1
         },
         "coupon_id" => nil,
         "line_items" => [
@@ -806,7 +855,9 @@ defmodule SellApp.OrdersRoundTripTest do
             "total_exclusive_cents" => 1,
             "total_cents" => 1,
             "total_exclusive_usd_cents" => nil,
-            "total_usd_cents" => nil
+            "total_usd_cents" => nil,
+            "refund_currency" => nil,
+            "refunded_total_cents" => 1
           },
           "coupon_id" => nil,
           "line_items" => [
@@ -883,7 +934,9 @@ defmodule SellApp.OrdersRoundTripTest do
           "total_exclusive_cents" => 1,
           "total_cents" => 1,
           "total_exclusive_usd_cents" => nil,
-          "total_usd_cents" => nil
+          "total_usd_cents" => nil,
+          "refund_currency" => nil,
+          "refunded_total_cents" => 1
         },
         "coupon_id" => nil,
         "line_items" => [
@@ -950,7 +1003,9 @@ defmodule SellApp.OrdersRoundTripTest do
           "total_exclusive_cents" => 1,
           "total_cents" => 1,
           "total_exclusive_usd_cents" => nil,
-          "total_usd_cents" => nil
+          "total_usd_cents" => nil,
+          "refund_currency" => nil,
+          "refunded_total_cents" => 1
         },
         "coupon_id" => nil,
         "line_items" => [
@@ -1014,7 +1069,9 @@ defmodule SellApp.OrdersRoundTripTest do
         "total_exclusive_cents" => 1,
         "total_cents" => 1,
         "total_exclusive_usd_cents" => nil,
-        "total_usd_cents" => nil
+        "total_usd_cents" => nil,
+        "refund_currency" => nil,
+        "refunded_total_cents" => 1
       },
       "coupon_id" => nil,
       "line_items" => [

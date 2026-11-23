@@ -620,6 +620,21 @@ defmodule SellApp.CouponsRoundTripTest do
            |> SellApp.SdkV2GetCouponResponseValue200ApplicationJson.to_map() == serialized
   end
 
+  test "SdkV2GetCouponUsageResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{"data" => %{"coupon_id" => 1, "uses" => 1}}
+
+    serialized =
+      data
+      |> SellApp.SdkV2GetCouponUsageResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkV2GetCouponUsageResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkV2GetCouponUsageResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkV2GetCouponUsageResponseValue200ApplicationJson.to_map() == serialized
+  end
+
   test "SdkV2ListCouponsResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => [

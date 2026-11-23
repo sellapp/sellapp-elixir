@@ -13,7 +13,9 @@ defmodule SellApp.SdkCreateOrderReplacementRequestApplicationJson do
 
   @type t :: %__MODULE__{
           product_variants:
-            SellApp.CreateOrderReplacementRequestApplicationJsonPropertyProductVariants.t(),
+            integer()
+            | [integer()]
+            | SellApp.CreateOrderReplacementRequestApplicationJsonPropertyProductVariantsAnyOfValue3.t(),
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -24,8 +26,17 @@ defmodule SellApp.SdkCreateOrderReplacementRequestApplicationJson do
       "product_variants" => %{
         required: true,
         schema: %{
-          kind: :model,
-          module: SellApp.CreateOrderReplacementRequestApplicationJsonPropertyProductVariants
+          kind: :union,
+          variants: [
+            %{kind: :integer},
+            %{kind: :array, items: %{kind: :integer}},
+            %{
+              kind: :model,
+              module:
+                SellApp.CreateOrderReplacementRequestApplicationJsonPropertyProductVariantsAnyOfValue3
+            }
+          ],
+          composition: :anyOf
         }
       }
     },
@@ -40,11 +51,7 @@ defmodule SellApp.SdkCreateOrderReplacementRequestApplicationJson do
     SellApp.Schema.validate_model!(map, @schema, :response)
 
     %__MODULE__{
-      product_variants:
-        SellApp.Cast.nested(
-          map["product_variants"],
-          &SellApp.CreateOrderReplacementRequestApplicationJsonPropertyProductVariants.from_map/1
-        ),
+      product_variants: map["product_variants"],
       __additional_properties__: Map.drop(map, ["product_variants"]),
       __present_fields__: Map.keys(map)
     }
@@ -56,11 +63,7 @@ defmodule SellApp.SdkCreateOrderReplacementRequestApplicationJson do
     known =
       SellApp.Cast.keep_present(
         %{
-          "product_variants" =>
-            SellApp.Cast.dump_struct(
-              struct.product_variants,
-              &SellApp.CreateOrderReplacementRequestApplicationJsonPropertyProductVariants.to_map/1
-            )
+          "product_variants" => SellApp.Cast.dump_union(struct.product_variants)
         },
         ["product_variants"],
         struct.__present_fields__

@@ -1,0 +1,21 @@
+{
+  "data": {
+    "google_calendar": {
+      "connected": true,
+      "available": true,
+      "connection_id": null,
+      "account": null,
+      "calendar": null,
+      "health": null,
+      "connected_at": null
+    },
+    "crisp": {
+      "configured": true
+    }
+  },
+  "meta": {
+    "products_without_video_link": [
+      "products_without_video_link"
+    ]
+  }
+}

@@ -245,6 +245,17 @@ defmodule SellApp.PromotionsTest do
              })
   end
 
+  test "get_usage succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "GET"
+      assert String.ends_with?(conn.request_path, "/v2/promotions/test_promotion/usage")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("promotions/get_usage"))
+    end)
+
+    assert {:ok, %SellApp.SdkGetPromotionUsageResponseValue200ApplicationJson{}} =
+             SellApp.Promotions.get_usage(client, "test_promotion")
+  end
+
   test "list encodes query parameters", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()

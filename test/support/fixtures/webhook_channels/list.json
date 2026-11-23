@@ -7,7 +7,13 @@
       "allowed_notifications": [
         "booking.cancelled"
       ],
-      "signing_secret_configured": true
+      "signing_secret_configured": true,
+      "health": {
+        "state": "active",
+        "last_success_at": null,
+        "last_failure_at": null
+      },
+      "last_delivery": null
     }
   ],
   "list_metadata": {

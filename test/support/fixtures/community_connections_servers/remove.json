@@ -1,0 +1,16 @@
+{
+  "data": {
+    "platform": "discord",
+    "id": "id",
+    "name": "name",
+    "removed": true,
+    "access_rules_removed": [
+      {
+        "product_id": 1,
+        "product": "product",
+        "variant_id": 1,
+        "variant": "variant"
+      }
+    ]
+  }
+}

@@ -49,11 +49,11 @@ defmodule SellApp.WebhookPlatform do
   @doc """
   List webhook deliveries
 
-  Destination origin only; response bodies are redacted and capped. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  List your store's outbound webhook deliveries, newest first, 25 per page by default. Each delivery shows only the destination origin; response bodies are redacted and capped. Filter by `event_type` or `status`; both must match exactly, and a value that matches nothing returns an empty page rather than an error. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
-    * `params` — query parameters
+    * `params` — query parameters: `:page`, `:limit`, `:event_type`, `:status`
     * `opts` — per-request options (see `SellApp.Client.request/5`)
   """
   @spec list_webhook_deliveries(SellApp.Client.t(), map(), keyword()) ::
@@ -77,7 +77,7 @@ defmodule SellApp.WebhookPlatform do
       fetch_next = fn cursor ->
         list_webhook_deliveries(
           client,
-          SellApp.Page.next_params(params, "after", cursor),
+          SellApp.Page.next_params(params, "page", cursor),
           Keyword.delete(opts, :with_response)
         )
       end
@@ -90,7 +90,7 @@ defmodule SellApp.WebhookPlatform do
           fetch_next,
           base_url: client.base_url,
           path: "/v2/webhook-deliveries",
-          pagination_param: "after"
+          pagination_param: "page"
         )
 
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}

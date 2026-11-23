@@ -83,4 +83,39 @@ defmodule SellApp.WalletTransactionsRoundTripTest do
            |> SellApp.SdkListWalletTransactionsResponseValue200ApplicationJson.to_map() ==
              serialized
   end
+
+  test "SdkReverseWalletTransactionResponseValue201ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "id" => 1,
+        "wallet_id" => 1,
+        "type" => "TOP_UP",
+        "amount_cents" => 1,
+        "currency_at_source" => nil,
+        "exchange_rate_to_usd" => nil,
+        "order_id" => nil,
+        "charge_id" => nil,
+        "reverses_entry_id" => nil,
+        "expired_at" => nil,
+        "balance_after_cents" => 1,
+        "note" => nil,
+        "idempotency_key" => nil,
+        "expires_at" => nil,
+        "created_by_user_id" => nil,
+        "created_at" => nil
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkReverseWalletTransactionResponseValue201ApplicationJson.from_map()
+      |> SellApp.SdkReverseWalletTransactionResponseValue201ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkReverseWalletTransactionResponseValue201ApplicationJson.from_map()
+           |> SellApp.SdkReverseWalletTransactionResponseValue201ApplicationJson.to_map() ==
+             serialized
+  end
 end

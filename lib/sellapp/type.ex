@@ -5,23 +5,67 @@ defmodule SellApp.Type do
   Type enum.
   """
 
-  @type t :: :product | :order | :null
+  @type t ::
+          :top_up
+          | :top_up_bonus
+          | :cashback
+          | :cashback_clawback
+          | :top_up_clawback
+          | :reward
+          | :refund
+          | :purchase_debit
+          | :manual_adjustment
+          | :reversal
+          | :expiration
+          | :null
 
   @doc "All known values."
   @spec values() :: [t()]
-  def values, do: [:product, :order, :null]
+  def values,
+    do: [
+      :top_up,
+      :top_up_bonus,
+      :cashback,
+      :cashback_clawback,
+      :top_up_clawback,
+      :reward,
+      :refund,
+      :purchase_debit,
+      :manual_adjustment,
+      :reversal,
+      :expiration,
+      :null
+    ]
 
   @doc "Casts a wire string to its atom; unknown values pass through unchanged."
   @spec cast(String.t() | nil) :: t() | String.t() | nil
-  def cast("product"), do: :product
-  def cast("order"), do: :order
+  def cast("TOP_UP"), do: :top_up
+  def cast("TOP_UP_BONUS"), do: :top_up_bonus
+  def cast("CASHBACK"), do: :cashback
+  def cast("CASHBACK_CLAWBACK"), do: :cashback_clawback
+  def cast("TOP_UP_CLAWBACK"), do: :top_up_clawback
+  def cast("REWARD"), do: :reward
+  def cast("REFUND"), do: :refund
+  def cast("PURCHASE_DEBIT"), do: :purchase_debit
+  def cast("MANUAL_ADJUSTMENT"), do: :manual_adjustment
+  def cast("REVERSAL"), do: :reversal
+  def cast("EXPIRATION"), do: :expiration
   def cast("null"), do: :null
   def cast(other), do: other
 
   @doc "Dumps an atom back to its wire string."
   @spec dump(t() | String.t()) :: String.t()
-  def dump(:product), do: "product"
-  def dump(:order), do: "order"
+  def dump(:top_up), do: "TOP_UP"
+  def dump(:top_up_bonus), do: "TOP_UP_BONUS"
+  def dump(:cashback), do: "CASHBACK"
+  def dump(:cashback_clawback), do: "CASHBACK_CLAWBACK"
+  def dump(:top_up_clawback), do: "TOP_UP_CLAWBACK"
+  def dump(:reward), do: "REWARD"
+  def dump(:refund), do: "REFUND"
+  def dump(:purchase_debit), do: "PURCHASE_DEBIT"
+  def dump(:manual_adjustment), do: "MANUAL_ADJUSTMENT"
+  def dump(:reversal), do: "REVERSAL"
+  def dump(:expiration), do: "EXPIRATION"
   def dump(:null), do: "null"
   def dump(other) when is_binary(other), do: other
 end

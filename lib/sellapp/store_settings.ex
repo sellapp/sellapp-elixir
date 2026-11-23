@@ -381,4 +381,878 @@ defmodule SellApp.StoreSettings do
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
     end
   end
+
+  @doc """
+  Retrieve checkout settings
+
+  Get your store's checkout settings: the shopping cart, whether checkout asks for an email, fraud controls, the minimum order total, the billing descriptor, the checkout rate limits, and the crypto checkout values when the store takes crypto through SellApp's crypto processor. The response body can be sent back to `PUT /v2/store/settings/checkout` unchanged. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec get_checkout(SellApp.Client.t(), keyword()) ::
+          {:ok, SellApp.SdkGetCheckoutSettingsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def get_checkout(client, opts \\ []) do
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :get,
+             "/v2/store/settings/checkout",
+             %{},
+             Keyword.put(opts, :operation_id, "getCheckoutSettings")
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{kind: :model, module: SellApp.SdkGetCheckoutSettingsResponseValue200ApplicationJson},
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkGetCheckoutSettingsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Update checkout settings
+
+  Replace all eleven checkout settings. Every field except `crypto` is required; send `null` to remove a nullable one. A missing field returns `422` and nothing is saved. The body of `GET /v2/store/settings/checkout`, including `crypto`, can be sent back unchanged. Sending the same body again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `params` — request body map
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec replace_checkout(SellApp.Client.t(), map(), keyword()) ::
+          {:ok, SellApp.SdkReplaceCheckoutSettingsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def replace_checkout(client, params \\ %{}, opts \\ []) do
+    SellApp.Schema.validate_value!(
+      params,
+      %{kind: :model, module: SellApp.SdkReplaceCheckoutSettingsRequestApplicationJson},
+      :request,
+      "$request.body"
+    )
+
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :put,
+             "/v2/store/settings/checkout",
+             params,
+             Keyword.put(
+               Keyword.put(opts, :request_body, true),
+               :operation_id,
+               "replaceCheckoutSettings"
+             )
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{
+          kind: :model,
+          module: SellApp.SdkReplaceCheckoutSettingsResponseValue200ApplicationJson
+        },
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkReplaceCheckoutSettingsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Update checkout settings
+
+  Change only the checkout settings you send and keep the others, including one someone else saved while your request was in flight. Send `null` to remove `minimum_spend`, `billing_descriptor`, `attempts_per_ip`, `attempts_per_email` or `attempts_per_fingerprint`. `crypto` is read-only here; change it with `PATCH /v2/store/settings/checkout/crypto`. A refused value returns `422` on the field name of this endpoint, such as `rate_limit_window_seconds`, and nothing is saved. Sending the same change again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `params` — request body map
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec update_checkout(SellApp.Client.t(), map(), keyword()) ::
+          {:ok, SellApp.SdkUpdateCheckoutSettingsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def update_checkout(client, params \\ %{}, opts \\ []) do
+    SellApp.Schema.validate_value!(
+      params,
+      %{kind: :model, module: SellApp.SdkUpdateCheckoutSettingsRequestApplicationJson},
+      :request,
+      "$request.body"
+    )
+
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :patch,
+             "/v2/store/settings/checkout",
+             params,
+             Keyword.put(
+               Keyword.put(opts, :request_body, true),
+               :operation_id,
+               "updateCheckoutSettings"
+             )
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{kind: :model, module: SellApp.SdkUpdateCheckoutSettingsResponseValue200ApplicationJson},
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkUpdateCheckoutSettingsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Retrieve tax settings
+
+  Get whether checkout collects VAT, whether your prices include it, and whether checkout asks for billing details. The response body can be sent back to `PUT /v2/store/settings/taxes` unchanged. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec get_taxes(SellApp.Client.t(), keyword()) ::
+          {:ok, SellApp.SdkGetTaxSettingsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def get_taxes(client, opts \\ []) do
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :get,
+             "/v2/store/settings/taxes",
+             %{},
+             Keyword.put(opts, :operation_id, "getTaxSettings")
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{kind: :model, module: SellApp.SdkGetTaxSettingsResponseValue200ApplicationJson},
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkGetTaxSettingsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Update tax settings
+
+  Replace all three tax settings; every field is required. A missing field returns `422` and nothing is saved. `vat_enabled: true` while Stripe Tax is on returns `422` on `vat_enabled` and saves nothing: turn Stripe Tax off in the dashboard first. When Stripe Tax was turned on but Stripe is now turned off as a payment method, turning VAT on also turns Stripe Tax off. Sending the same body again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `params` — request body map
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec replace_taxes(SellApp.Client.t(), map(), keyword()) ::
+          {:ok, SellApp.SdkReplaceTaxSettingsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def replace_taxes(client, params \\ %{}, opts \\ []) do
+    SellApp.Schema.validate_value!(
+      params,
+      %{kind: :model, module: SellApp.SdkReplaceTaxSettingsRequestApplicationJson},
+      :request,
+      "$request.body"
+    )
+
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :put,
+             "/v2/store/settings/taxes",
+             params,
+             Keyword.put(
+               Keyword.put(opts, :request_body, true),
+               :operation_id,
+               "replaceTaxSettings"
+             )
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{kind: :model, module: SellApp.SdkReplaceTaxSettingsResponseValue200ApplicationJson},
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkReplaceTaxSettingsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Update tax settings
+
+  Change only the tax settings you send and keep the others. Turning VAT off also turns VAT-inclusive pricing off. Asking for VAT-inclusive pricing while VAT stays off returns `422` on `vat_inclusive_pricing` and saves nothing. Turning VAT on while Stripe Tax is on returns `422` on `vat_enabled` and saves nothing: turn Stripe Tax off in the dashboard first. When Stripe Tax was turned on but Stripe is now turned off as a payment method, turning VAT on also turns Stripe Tax off. Sending the same change again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `params` — request body map
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec update_taxes(SellApp.Client.t(), map(), keyword()) ::
+          {:ok, SellApp.SdkUpdateTaxSettingsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def update_taxes(client, params \\ %{}, opts \\ []) do
+    SellApp.Schema.validate_value!(
+      params,
+      %{kind: :model, module: SellApp.SdkUpdateTaxSettingsRequestApplicationJson},
+      :request,
+      "$request.body"
+    )
+
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :patch,
+             "/v2/store/settings/taxes",
+             params,
+             Keyword.put(
+               Keyword.put(opts, :request_body, true),
+               :operation_id,
+               "updateTaxSettings"
+             )
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{kind: :model, module: SellApp.SdkUpdateTaxSettingsResponseValue200ApplicationJson},
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkUpdateTaxSettingsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Retrieve customer email settings
+
+  Get which automatic emails your customers get: the delivery email after they pay, and the email asking them to pay when a subscription payment cannot be collected. The address these emails come from is managed with `/v2/store/settings/sender-email`. The response body can be sent back to `PUT /v2/store/settings/customer-emails` unchanged. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec get_customer_emails(SellApp.Client.t(), keyword()) ::
+          {:ok, SellApp.SdkGetCustomerEmailSettingsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def get_customer_emails(client, opts \\ []) do
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :get,
+             "/v2/store/settings/customer-emails",
+             %{},
+             Keyword.put(opts, :operation_id, "getCustomerEmailSettings")
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{
+          kind: :model,
+          module: SellApp.SdkGetCustomerEmailSettingsResponseValue200ApplicationJson
+        },
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkGetCustomerEmailSettingsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Update customer email settings
+
+  Set both customer emails; both fields are required. A missing field returns `422` and nothing is saved. Sending the same body again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `params` — request body map
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec replace_customer_emails(SellApp.Client.t(), map(), keyword()) ::
+          {:ok, SellApp.SdkReplaceCustomerEmailSettingsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def replace_customer_emails(client, params \\ %{}, opts \\ []) do
+    SellApp.Schema.validate_value!(
+      params,
+      %{kind: :model, module: SellApp.SdkReplaceCustomerEmailSettingsRequestApplicationJson},
+      :request,
+      "$request.body"
+    )
+
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :put,
+             "/v2/store/settings/customer-emails",
+             params,
+             Keyword.put(
+               Keyword.put(opts, :request_body, true),
+               :operation_id,
+               "replaceCustomerEmailSettings"
+             )
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{
+          kind: :model,
+          module: SellApp.SdkReplaceCustomerEmailSettingsResponseValue200ApplicationJson
+        },
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkReplaceCustomerEmailSettingsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Update customer email settings
+
+  Turn the customer emails you send on or off and keep the other one. Takes effect for emails sent after the change. Sending the same change again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `params` — request body map
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec update_customer_emails(SellApp.Client.t(), map(), keyword()) ::
+          {:ok, SellApp.SdkUpdateCustomerEmailSettingsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def update_customer_emails(client, params \\ %{}, opts \\ []) do
+    SellApp.Schema.validate_value!(
+      params,
+      %{kind: :model, module: SellApp.SdkUpdateCustomerEmailSettingsRequestApplicationJson},
+      :request,
+      "$request.body"
+    )
+
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :patch,
+             "/v2/store/settings/customer-emails",
+             params,
+             Keyword.put(
+               Keyword.put(opts, :request_body, true),
+               :operation_id,
+               "updateCustomerEmailSettings"
+             )
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{
+          kind: :model,
+          module: SellApp.SdkUpdateCustomerEmailSettingsResponseValue200ApplicationJson
+        },
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkUpdateCustomerEmailSettingsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Retrieve store alert settings
+
+  Get whether the store owner gets an email for each sale. Other alerts go to notification channels (`/v2/store/notification-channels`) and to the dashboard notifications (`/v2/notifications`). The response body can be sent back to `PUT /v2/store/settings/store-alerts` unchanged. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec get_store_alerts(SellApp.Client.t(), keyword()) ::
+          {:ok, SellApp.SdkGetStoreAlertSettingsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def get_store_alerts(client, opts \\ []) do
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :get,
+             "/v2/store/settings/store-alerts",
+             %{},
+             Keyword.put(opts, :operation_id, "getStoreAlertSettings")
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{kind: :model, module: SellApp.SdkGetStoreAlertSettingsResponseValue200ApplicationJson},
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkGetStoreAlertSettingsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Update store alert settings
+
+  Set the sale emails to the store owner; `sale_emails_enabled` is required. Sending the same body again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `params` — request body map
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec replace_store_alerts(SellApp.Client.t(), map(), keyword()) ::
+          {:ok, SellApp.SdkReplaceStoreAlertSettingsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def replace_store_alerts(client, params \\ %{}, opts \\ []) do
+    SellApp.Schema.validate_value!(
+      params,
+      %{kind: :model, module: SellApp.SdkReplaceStoreAlertSettingsRequestApplicationJson},
+      :request,
+      "$request.body"
+    )
+
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :put,
+             "/v2/store/settings/store-alerts",
+             params,
+             Keyword.put(
+               Keyword.put(opts, :request_body, true),
+               :operation_id,
+               "replaceStoreAlertSettings"
+             )
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{
+          kind: :model,
+          module: SellApp.SdkReplaceStoreAlertSettingsResponseValue200ApplicationJson
+        },
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkReplaceStoreAlertSettingsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Update store alert settings
+
+  Turn the sale emails to the store owner on or off. Sending the same change again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `params` — request body map
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec update_store_alerts(SellApp.Client.t(), map(), keyword()) ::
+          {:ok, SellApp.SdkUpdateStoreAlertSettingsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def update_store_alerts(client, params \\ %{}, opts \\ []) do
+    SellApp.Schema.validate_value!(
+      params,
+      %{kind: :model, module: SellApp.SdkUpdateStoreAlertSettingsRequestApplicationJson},
+      :request,
+      "$request.body"
+    )
+
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :patch,
+             "/v2/store/settings/store-alerts",
+             params,
+             Keyword.put(
+               Keyword.put(opts, :request_body, true),
+               :operation_id,
+               "updateStoreAlertSettings"
+             )
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{
+          kind: :model,
+          module: SellApp.SdkUpdateStoreAlertSettingsResponseValue200ApplicationJson
+        },
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkUpdateStoreAlertSettingsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Retrieve personalization settings
+
+  Get the details customers see from your store: the support and Trustpilot addresses, the sender name and custom sender email of customer emails, the business details printed on invoices, and the Back button link of product and checkout pages. The response body can be sent back to `PUT /v2/store/settings/personalization` unchanged. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec get_personalization(SellApp.Client.t(), keyword()) ::
+          {:ok, SellApp.SdkGetPersonalizationSettingsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def get_personalization(client, opts \\ []) do
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :get,
+             "/v2/store/settings/personalization",
+             %{},
+             Keyword.put(opts, :operation_id, "getPersonalizationSettings")
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{
+          kind: :model,
+          module: SellApp.SdkGetPersonalizationSettingsResponseValue200ApplicationJson
+        },
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkGetPersonalizationSettingsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Update personalization settings
+
+  Replace every personalization setting. All fields except `sender_email` are required; send `null` to remove one. A missing field returns `422` and nothing is saved. The body of `GET /v2/store/settings/personalization`, including `sender_email`, can be sent back unchanged. Sending the same body again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `params` — request body map
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec replace_personalization(SellApp.Client.t(), map(), keyword()) ::
+          {:ok, SellApp.SdkReplacePersonalizationSettingsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def replace_personalization(client, params \\ %{}, opts \\ []) do
+    SellApp.Schema.validate_value!(
+      params,
+      %{kind: :model, module: SellApp.SdkReplacePersonalizationSettingsRequestApplicationJson},
+      :request,
+      "$request.body"
+    )
+
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :put,
+             "/v2/store/settings/personalization",
+             params,
+             Keyword.put(
+               Keyword.put(opts, :request_body, true),
+               :operation_id,
+               "replacePersonalizationSettings"
+             )
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{
+          kind: :model,
+          module: SellApp.SdkReplacePersonalizationSettingsResponseValue200ApplicationJson
+        },
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkReplacePersonalizationSettingsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Update personalization settings
+
+  Change only the personalization settings you send and keep the others. Send `null` to remove one. A request with no field this endpoint knows returns `200` with the current settings and saves nothing. A return link needs both `back_link_label` and `back_link_url`: a change that leaves one empty returns `422` on that field. `sender_email` is read-only here. Sending the same change again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `params` — request body map
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec update_personalization(SellApp.Client.t(), map(), keyword()) ::
+          {:ok, SellApp.SdkUpdatePersonalizationSettingsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def update_personalization(client, params \\ %{}, opts \\ []) do
+    SellApp.Schema.validate_value!(
+      params,
+      %{kind: :model, module: SellApp.SdkUpdatePersonalizationSettingsRequestApplicationJson},
+      :request,
+      "$request.body"
+    )
+
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :patch,
+             "/v2/store/settings/personalization",
+             params,
+             Keyword.put(
+               Keyword.put(opts, :request_body, true),
+               :operation_id,
+               "updatePersonalizationSettings"
+             )
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{
+          kind: :model,
+          module: SellApp.SdkUpdatePersonalizationSettingsResponseValue200ApplicationJson
+        },
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkUpdatePersonalizationSettingsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Update crypto checkout settings
+
+  Replace both crypto checkout values, for a store that takes crypto through SellApp's crypto processor; `underpaid_percentage` and `minimum_confirmations` are required. SellApp sends the changed values to the crypto processor and saves them only once it accepts them; an unchanged value is not sent. Returns the checkout settings with the new `crypto` values. `422` on `crypto` when the store does not take crypto through SellApp's crypto processor, or when the processor refuses the values; nothing is saved then. `422` on `underpaid_percentage` or `minimum_confirmations` for a value out of range. Sending the same change again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `params` — request body map
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec replace_crypto_checkout(SellApp.Client.t(), map(), keyword()) ::
+          {:ok, SellApp.SdkReplaceCryptoCheckoutSettingsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def replace_crypto_checkout(client, params \\ %{}, opts \\ []) do
+    SellApp.Schema.validate_value!(
+      params,
+      %{kind: :model, module: SellApp.SdkReplaceCryptoCheckoutSettingsRequestApplicationJson},
+      :request,
+      "$request.body"
+    )
+
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :put,
+             "/v2/store/settings/checkout/crypto",
+             params,
+             Keyword.put(
+               Keyword.put(opts, :request_body, true),
+               :operation_id,
+               "replaceCryptoCheckoutSettings"
+             )
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{
+          kind: :model,
+          module: SellApp.SdkReplaceCryptoCheckoutSettingsResponseValue200ApplicationJson
+        },
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkReplaceCryptoCheckoutSettingsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Update crypto checkout settings
+
+  Change the crypto checkout values you send, for a store that takes crypto through SellApp's crypto processor. SellApp sends the changed values to the crypto processor and saves them only once it accepts them; an unchanged value is not sent. Returns the checkout settings with the new `crypto` values. `422` on `crypto` when the store does not take crypto through SellApp's crypto processor, or when the processor refuses the values; nothing is saved then. `422` on `underpaid_percentage` or `minimum_confirmations` for a value out of range. Sending the same change again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `params` — request body map
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec update_crypto_checkout(SellApp.Client.t(), map(), keyword()) ::
+          {:ok, SellApp.SdkUpdateCryptoCheckoutSettingsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def update_crypto_checkout(client, params \\ %{}, opts \\ []) do
+    SellApp.Schema.validate_value!(
+      params,
+      %{kind: :model, module: SellApp.SdkUpdateCryptoCheckoutSettingsRequestApplicationJson},
+      :request,
+      "$request.body"
+    )
+
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :patch,
+             "/v2/store/settings/checkout/crypto",
+             params,
+             Keyword.put(
+               Keyword.put(opts, :request_body, true),
+               :operation_id,
+               "updateCryptoCheckoutSettings"
+             )
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{
+          kind: :model,
+          module: SellApp.SdkUpdateCryptoCheckoutSettingsResponseValue200ApplicationJson
+        },
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkUpdateCryptoCheckoutSettingsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
 end

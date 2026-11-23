@@ -327,7 +327,7 @@ defmodule SellApp.ProductVariants do
   @doc """
   Search product variants
 
-  Search a product's variants using JSON body filters, search terms, includes, and sort instructions. Requires a token with the listing ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Search a product's variants using JSON body filters, search terms, includes, and sort instructions, 15 per page by default. Draft variants are left out unless you send `with_drafts` or `only_drafts`. Requires a token with the listing ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -368,7 +368,7 @@ defmodule SellApp.ProductVariants do
         search(
           client,
           product,
-          SellApp.Page.next_params(params, "after", cursor),
+          SellApp.Page.next_params(params, "page", cursor),
           Keyword.delete(opts, :with_response)
         )
       end
@@ -381,7 +381,7 @@ defmodule SellApp.ProductVariants do
           fetch_next,
           base_url: client.base_url,
           path: "/v2/products/#{URI.encode(product, &URI.char_unreserved?/1)}/variants/search",
-          pagination_param: "after"
+          pagination_param: "page"
         )
 
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
@@ -553,6 +553,149 @@ defmodule SellApp.ProductVariants do
         SellApp.Cast.nested(
           body,
           &SellApp.SdkBatchDeleteProductVariantsResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Publish a product variant
+
+  Publish one draft option of a booking product so customers can book it. It is checked the way the booking editor checks it: a title, a description of at least 5 characters, finished booking settings, a price, and payment methods enabled for the store that can take its currency. On a published booking product the option can be booked straight away; a draft booking product still needs `POST /v2/products/{product}/publish`, which needs at least one published option when the product has several. Only booking options are published one at a time. A variant of any other kind of product returns `422` on `variant`: its variants are published with the product through `POST /v2/products/{product}/publish`. Requires the `listing` API-key ability and the `listing` permission in your team role. Safe to repeat: once the option is published, another call changes nothing and returns `422` with `This booking option is already published.` on `variant`. Every other refusal is also `422` on `variant`, with one sentence per thing the option still needs. A variant of another product, or a product of another store, returns `404`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `product` — The product path parameter.
+    * `variant` — The variant path parameter.
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec publish(SellApp.Client.t(), String.t(), String.t(), keyword()) ::
+          {:ok, SellApp.SdkPublishProductVariantResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def publish(client, product, variant, opts \\ []) do
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :post,
+             "/v2/products/#{URI.encode(product, &URI.char_unreserved?/1)}/variants/#{URI.encode(variant, &URI.char_unreserved?/1)}/publish",
+             %{},
+             Keyword.put(opts, :operation_id, "publishProductVariant")
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{kind: :model, module: SellApp.SdkPublishProductVariantResponseValue200ApplicationJson},
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkPublishProductVariantResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Duplicate a product variant
+
+  Copy a variant of a normal product onto the same product and return the copy. The copy keeps every setting, the title, and the draft state, so a copy of a published variant is on sale straight away. Downloadable files and their folders are copied too. Serial codes and issued licence keys are not copied: a copy that delivers serial codes gets a stock of `0`, so it shows as sold out until you add codes. Subscription variants cannot be duplicated. Requires the `listing` API-key ability and the `listing` permission in your team role. Not safe to retry blindly: every call creates another variant. If a response is lost, list the product's variants, with `with_drafts=true` for a draft, before trying again. A variant of a bundle, add-on, credits product, booking product, or course returns `422` on `product`. A subscription variant returns `422` on `variant`. A variant of another product returns `404`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `product` — The product path parameter.
+    * `variant` — The variant path parameter.
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec duplicate(SellApp.Client.t(), String.t(), String.t(), keyword()) ::
+          {:ok, SellApp.SdkDuplicateProductVariantResponseValue201ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def duplicate(client, product, variant, opts \\ []) do
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :post,
+             "/v2/products/#{URI.encode(product, &URI.char_unreserved?/1)}/variants/#{URI.encode(variant, &URI.char_unreserved?/1)}/duplicate",
+             %{},
+             Keyword.put(opts, :operation_id, "duplicateProductVariant")
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{
+          kind: :model,
+          module: SellApp.SdkDuplicateProductVariantResponseValue201ApplicationJson
+        },
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkDuplicateProductVariantResponseValue201ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Reorder product variants
+
+  Set the order buyers see a normal product's published variants in, first to last. Send every published variant ID exactly once; draft variants are not part of the order and are refused. The response lists the product's published variants in their new order, without pagination. Requires the `listing` API-key ability and the `listing` permission in your team role. Safe to repeat: the same list gives the same order. A list that leaves out a published variant, or names a draft or a variant of another product, returns `422` on `variant_ids`; read the variants again and send the full list. An ID sent twice returns `422` on `variant_ids.{i}`. A listing that is not a normal product returns `422` on `product`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `product` — The product path parameter.
+    * `params` — request body map
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec reorder(SellApp.Client.t(), String.t(), map(), keyword()) ::
+          {:ok, SellApp.SdkReorderProductVariantsResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def reorder(client, product, params \\ %{}, opts \\ []) do
+    SellApp.Schema.validate_value!(
+      params,
+      %{kind: :model, module: SellApp.SdkReorderProductVariantsRequestApplicationJson},
+      :request,
+      "$request.body"
+    )
+
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :put,
+             "/v2/products/#{URI.encode(product, &URI.char_unreserved?/1)}/variants/order",
+             params,
+             Keyword.put(
+               Keyword.put(opts, :request_body, true),
+               :operation_id,
+               "reorderProductVariants"
+             )
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{kind: :model, module: SellApp.SdkReorderProductVariantsResponseValue200ApplicationJson},
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkReorderProductVariantsResponseValue200ApplicationJson.from_map/1
         )
 
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}

@@ -112,6 +112,28 @@ defmodule SellApp.WalletBonusTiersTest do
              SellApp.WalletBonusTiers.restore(client, "test_bonus_tier")
   end
 
+  test "quote_ succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "GET"
+      assert String.ends_with?(conn.request_path, "/v2/wallet-bonus-tiers/quote")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("wallet_bonus_tiers/quote_"))
+    end)
+
+    assert {:ok, %SellApp.SdkQuoteWalletBonusTierResponseValue200ApplicationJson{}} =
+             SellApp.WalletBonusTiers.quote_(client)
+  end
+
+  test "quote_ encodes query parameters", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()
+      params = Map.new(pairs)
+      assert params["top_up_cents"] == "hello world&x"
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("wallet_bonus_tiers/quote_"))
+    end)
+
+    assert {:ok, _} = SellApp.WalletBonusTiers.quote_(client, %{top_up_cents: "hello world&x"})
+  end
+
   test "list honors per-request options", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       assert Plug.Conn.get_req_header(conn, "x-custom") == ["value"]

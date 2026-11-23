@@ -17,6 +17,38 @@ defmodule SellApp.VariantDeliverablesTest do
     {:ok, client: client}
   end
 
+  test "preview succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "GET"
+
+      assert String.ends_with?(
+               conn.request_path,
+               "/v2/products/test_product/variants/test_variant/deliverable/buyer-notification"
+             )
+
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("variant_deliverables/preview"))
+    end)
+
+    assert {:ok, %SellApp.SdkPreviewVariantBuyerNotificationResponseValue200ApplicationJson{}} =
+             SellApp.VariantDeliverables.preview(client, "test_product", "test_variant")
+  end
+
+  test "notify succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "POST"
+
+      assert String.ends_with?(
+               conn.request_path,
+               "/v2/products/test_product/variants/test_variant/deliverable/buyer-notification"
+             )
+
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("variant_deliverables/notify"))
+    end)
+
+    assert {:ok, %SellApp.SdkNotifyVariantBuyersResponseValue202ApplicationJson{}} =
+             SellApp.VariantDeliverables.notify(client, "test_product", "test_variant")
+  end
+
   test "get succeeds", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       assert conn.method == "GET"
@@ -62,14 +94,14 @@ defmodule SellApp.VariantDeliverablesTest do
              })
   end
 
-  test "get honors per-request options", %{client: client} do
+  test "preview honors per-request options", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       assert Plug.Conn.get_req_header(conn, "x-custom") == ["value"]
       assert conn.host == "override.example.com"
-      Req.Test.json(conn, SellApp.TestFixtures.fixture("variant_deliverables/get"))
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("variant_deliverables/preview"))
     end)
 
-    SellApp.VariantDeliverables.get(
+    SellApp.VariantDeliverables.preview(
       client,
       "test_product",
       "test_variant",
@@ -86,6 +118,6 @@ defmodule SellApp.VariantDeliverablesTest do
     end)
 
     assert {:error, %SellApp.Error.Authentication{status: 401}} =
-             SellApp.VariantDeliverables.get(client, "test_product", "test_variant")
+             SellApp.VariantDeliverables.preview(client, "test_product", "test_variant")
   end
 end

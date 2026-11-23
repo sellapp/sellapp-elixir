@@ -1,0 +1,9 @@
+{
+  "data": {
+    "status": "queued",
+    "product_id": 1,
+    "variant_id": 1,
+    "order_count": 1,
+    "email_count": 1
+  }
+}

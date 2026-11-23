@@ -22,7 +22,7 @@ defmodule SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyDataP
           external_id: String.t() | nil,
           name: String.t() | nil,
           locale: String.t() | nil,
-          metadata: %{optional(String.t()) => SellApp.ScalarMetadataValue.t()},
+          metadata: %{optional(String.t()) => String.t() | number() | boolean() | nil},
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -51,7 +51,14 @@ defmodule SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyDataP
         required: true,
         schema: %{
           kind: :map,
-          values: %{kind: :model, module: SellApp.ScalarMetadataValue},
+          values: %{
+            kind: :nullable,
+            inner: %{
+              kind: :union,
+              variants: [%{kind: :string, max_length: 500}, %{kind: :number}, %{kind: :boolean}],
+              composition: :oneOf
+            }
+          },
           max_properties: 50
         }
       }
@@ -72,7 +79,7 @@ defmodule SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyDataP
       external_id: map["external_id"],
       name: map["name"],
       locale: map["locale"],
-      metadata: SellApp.Cast.map_values(map["metadata"], &SellApp.ScalarMetadataValue.from_map/1),
+      metadata: map["metadata"],
       __additional_properties__:
         Map.drop(map, ["id", "email", "external_id", "name", "locale", "metadata"]),
       __present_fields__: Map.keys(map)
@@ -90,10 +97,7 @@ defmodule SellApp.CancelSubscriptionResponseValue200ApplicationJsonPropertyDataP
           "external_id" => struct.external_id,
           "name" => struct.name,
           "locale" => struct.locale,
-          "metadata" =>
-            SellApp.Cast.map_values(struct.metadata, fn item ->
-              SellApp.Cast.dump_struct(item, &SellApp.ScalarMetadataValue.to_map/1)
-            end)
+          "metadata" => SellApp.Cast.map_values(struct.metadata, &SellApp.Cast.dump_union/1)
         },
         ["id", "email", "external_id", "name", "locale", "metadata"],
         struct.__present_fields__

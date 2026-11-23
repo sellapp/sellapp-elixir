@@ -78,7 +78,7 @@ defmodule SellApp.OrdersTest do
               ]
             }} =
              SellApp.Orders.search(client, %{
-               "filters" => [%{"field" => "field", "operator" => "eq", "value" => nil}],
+               "filters" => [%{"field" => "id", "operator" => "eq", "value" => nil}],
                "sort" => [%{"field" => "created_at", "direction" => "asc"}],
                "pagination" => %{"page" => 1, "limit" => 1}
              })
@@ -91,7 +91,7 @@ defmodule SellApp.OrdersTest do
 
     assert {:ok, %SellApp.Page{data: []} = page} =
              SellApp.Orders.search(client, %{
-               "filters" => [%{"field" => "field", "operator" => "eq", "value" => nil}],
+               "filters" => [%{"field" => "id", "operator" => "eq", "value" => nil}],
                "sort" => [%{"field" => "created_at", "direction" => "asc"}],
                "pagination" => %{"page" => 1, "limit" => 1}
              })
@@ -121,7 +121,8 @@ defmodule SellApp.OrdersTest do
     assert {:ok, %SellApp.SdkUpdateOrderStatusResponseValue200ApplicationJson{}} =
              SellApp.Orders.update_status(client, "test_order", %{
                "status" => "COMPLETED",
-               "expected_status" => nil
+               "expected_status" => nil,
+               "payment_received" => true
              })
   end
 
@@ -145,7 +146,7 @@ defmodule SellApp.OrdersTest do
     end)
 
     assert {:ok, %SellApp.SdkCreateOrderReplacementResponseValue200ApplicationJson{}} =
-             SellApp.Orders.create_replacement(client, "test_order", %{"product_variants" => %{}})
+             SellApp.Orders.create_replacement(client, "test_order", %{"product_variants" => 1})
   end
 
   test "create_refund succeeds", %{client: client} do
@@ -156,7 +157,10 @@ defmodule SellApp.OrdersTest do
     end)
 
     assert {:ok, %SellApp.SdkCreateOrderRefundResponseValue200ApplicationJson{}} =
-             SellApp.Orders.create_refund(client, "test_order", %{"amount" => nil})
+             SellApp.Orders.create_refund(client, "test_order", %{
+               "amount" => nil,
+               "expected_refunded_total_cents" => nil
+             })
   end
 
   test "retry_fulfillment succeeds", %{client: client} do
@@ -204,6 +208,19 @@ defmodule SellApp.OrdersTest do
              SellApp.Orders.send_fulfillment_notifications(client, "test_order", %{
                "email" => nil,
                "product_variant_ids" => nil
+             })
+  end
+
+  test "regenerate_telegram_invite succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "POST"
+      assert String.ends_with?(conn.request_path, "/v2/orders/test_order/telegram-invites")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("orders/regenerate_telegram_invite"))
+    end)
+
+    assert {:ok, %SellApp.SdkRegenerateOrderTelegramInviteResponseValue201ApplicationJson{}} =
+             SellApp.Orders.regenerate_telegram_invite(client, "test_order", %{
+               "variant_id" => nil
              })
   end
 

@@ -321,7 +321,7 @@ defmodule SellApp.TicketsMessages do
   @doc """
   Search ticket messages
 
-  Search a ticket's messages using JSON body filters, search terms, includes, and sort instructions. This v2 route is store-scoped. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Search a ticket's messages using JSON body filters, search terms, includes, and sort instructions. This v2 route is store-scoped. Page through results with `limit` (1 to 100, default 15; a larger value returns `422`) and `page`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -362,7 +362,7 @@ defmodule SellApp.TicketsMessages do
         v2_search_ticket_messages(
           client,
           ticket,
-          SellApp.Page.next_params(params, "after", cursor),
+          SellApp.Page.next_params(params, "page", cursor),
           Keyword.delete(opts, :with_response)
         )
       end
@@ -375,7 +375,7 @@ defmodule SellApp.TicketsMessages do
           fetch_next,
           base_url: client.base_url,
           path: "/v2/tickets/#{URI.encode(ticket, &URI.char_unreserved?/1)}/messages/search",
-          pagination_param: "after"
+          pagination_param: "page"
         )
 
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}

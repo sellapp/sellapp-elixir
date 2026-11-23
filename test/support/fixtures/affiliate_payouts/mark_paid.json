@@ -1,0 +1,10 @@
+{
+  "data": [
+    {
+      "payout_id": 1,
+      "outcome": "paid",
+      "message": "message",
+      "payout": null
+    }
+  ]
+}

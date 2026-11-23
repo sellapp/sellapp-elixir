@@ -65,7 +65,8 @@
             "label": "label"
           }
         ]
-      }
+      },
+      "is_draft": true
     }
   ]
 }

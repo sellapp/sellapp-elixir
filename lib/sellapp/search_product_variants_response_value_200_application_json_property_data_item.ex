@@ -22,6 +22,7 @@ defmodule SellApp.SearchProductVariantsResponseValue200ApplicationJsonPropertyDa
     :updated_at,
     :deleted_at,
     :product,
+    :is_draft,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -51,6 +52,7 @@ defmodule SellApp.SearchProductVariantsResponseValue200ApplicationJsonPropertyDa
           deleted_at: String.t() | nil,
           product:
             SellApp.SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyProduct.t(),
+          is_draft: boolean(),
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -120,7 +122,8 @@ defmodule SellApp.SearchProductVariantsResponseValue200ApplicationJsonPropertyDa
           module:
             SellApp.SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyProduct
         }
-      }
+      },
+      "is_draft" => %{required: true, schema: %{kind: :boolean}}
     },
     additional_properties: true
   }
@@ -169,6 +172,7 @@ defmodule SellApp.SearchProductVariantsResponseValue200ApplicationJsonPropertyDa
           map["product"],
           &SellApp.SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyProduct.from_map/1
         ),
+      is_draft: map["is_draft"],
       __additional_properties__:
         Map.drop(map, [
           "id",
@@ -186,7 +190,8 @@ defmodule SellApp.SearchProductVariantsResponseValue200ApplicationJsonPropertyDa
           "created_at",
           "updated_at",
           "deleted_at",
-          "product"
+          "product",
+          "is_draft"
         ]),
       __present_fields__: Map.keys(map)
     }
@@ -235,7 +240,8 @@ defmodule SellApp.SearchProductVariantsResponseValue200ApplicationJsonPropertyDa
             SellApp.Cast.dump_struct(
               struct.product,
               &SellApp.SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyProduct.to_map/1
-            )
+            ),
+          "is_draft" => struct.is_draft
         },
         [
           "id",
@@ -253,7 +259,8 @@ defmodule SellApp.SearchProductVariantsResponseValue200ApplicationJsonPropertyDa
           "created_at",
           "updated_at",
           "deleted_at",
-          "product"
+          "product",
+          "is_draft"
         ],
         struct.__present_fields__
       )

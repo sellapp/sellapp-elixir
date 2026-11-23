@@ -1,0 +1,12 @@
+{
+  "data": {
+    "top_up_cents": 1,
+    "within_top_up_limits": true,
+    "eligible": true,
+    "bonus_cents": 1,
+    "reason": "reason",
+    "minimum_top_up_cents": null,
+    "maximum_top_up_cents": null,
+    "matching_tier": null
+  }
+}

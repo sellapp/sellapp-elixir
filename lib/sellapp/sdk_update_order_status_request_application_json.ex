@@ -8,6 +8,7 @@ defmodule SellApp.SdkUpdateOrderStatusRequestApplicationJson do
   defstruct [
     :status,
     :expected_status,
+    :payment_received,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -15,6 +16,7 @@ defmodule SellApp.SdkUpdateOrderStatusRequestApplicationJson do
   @type t :: %__MODULE__{
           status: SellApp.SdkUpdateOrderStatusRequestApplicationJsonStatus.t(),
           expected_status: SellApp.ExpectedStatus.t() | nil,
+          payment_received: boolean() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -47,7 +49,8 @@ defmodule SellApp.SdkUpdateOrderStatusRequestApplicationJson do
             ]
           }
         }
-      }
+      },
+      "payment_received" => %{required: false, schema: %{kind: :boolean}}
     },
     additional_properties: true
   }
@@ -66,7 +69,8 @@ defmodule SellApp.SdkUpdateOrderStatusRequestApplicationJson do
           &SellApp.SdkUpdateOrderStatusRequestApplicationJsonStatus.cast/1
         ),
       expected_status: SellApp.Cast.enum(map["expected_status"], &SellApp.ExpectedStatus.cast/1),
-      __additional_properties__: Map.drop(map, ["status", "expected_status"]),
+      payment_received: map["payment_received"],
+      __additional_properties__: Map.drop(map, ["status", "expected_status", "payment_received"]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -83,7 +87,8 @@ defmodule SellApp.SdkUpdateOrderStatusRequestApplicationJson do
               &SellApp.SdkUpdateOrderStatusRequestApplicationJsonStatus.dump/1
             ),
           "expected_status" =>
-            SellApp.Cast.enum(struct.expected_status, &SellApp.ExpectedStatus.dump/1)
+            SellApp.Cast.enum(struct.expected_status, &SellApp.ExpectedStatus.dump/1),
+          "payment_received" => struct.payment_received
         },
         ["status"],
         struct.__present_fields__

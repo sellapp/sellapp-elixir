@@ -205,3 +205,54 @@ Documented HTTP responses: 201, 400, 401, 403, 422, 429, 500. See the API refere
 
 [Response access, transport controls, pagination, and typed errors](../usage.md)
 
+## resend
+
+Resend an affiliate invitation
+
+[API reference](https://sell.app/docs/api/affiliate-program/resend-an-affiliate-invitation) · Effect: **consequential**
+
+```elixir
+def resend(client, invitation, opts \\ [])
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| client | `any` | Yes |
+| invitation | `any` | Yes |
+| opts | `any` | Yes |
+
+Returns: `any`.
+
+```exs
+client = SellApp.Client.new(
+  base_url: System.fetch_env!("SELLAPP_API_BASE_URL"),
+  api_key: System.fetch_env!("SELLAPP_API_KEY"),
+  store: System.fetch_env!("SELLAPP_STORE")
+)
+
+{:ok, result} = SellApp.AffiliateProgram.resend(client, 77)
+IO.inspect(result)
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+

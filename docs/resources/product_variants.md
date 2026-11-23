@@ -526,3 +526,159 @@ Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API r
 
 [Response access, transport controls, pagination, and typed errors](../usage.md)
 
+## publish
+
+Publish a product variant
+
+[API reference](https://sell.app/docs/api/product-variants/publish-a-product-variant) · Effect: **consequential**
+
+```elixir
+def publish(client, product, variant, opts \\ [])
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| client | `any` | Yes |
+| product | `any` | Yes |
+| variant | `any` | Yes |
+| opts | `any` | Yes |
+
+Returns: `any`.
+
+```exs
+client = SellApp.Client.new(
+  base_url: System.fetch_env!("SELLAPP_API_BASE_URL"),
+  api_key: System.fetch_env!("SELLAPP_API_KEY"),
+  store: System.fetch_env!("SELLAPP_STORE")
+)
+
+{:ok, result} = SellApp.ProductVariants.publish(client, 11, 12)
+IO.inspect(result)
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
+## duplicate
+
+Duplicate a product variant
+
+[API reference](https://sell.app/docs/api/product-variants/duplicate-a-product-variant) · Effect: **write**
+
+```elixir
+def duplicate(client, product, variant, opts \\ [])
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| client | `any` | Yes |
+| product | `any` | Yes |
+| variant | `any` | Yes |
+| opts | `any` | Yes |
+
+Returns: `any`.
+
+```exs
+client = SellApp.Client.new(
+  base_url: System.fetch_env!("SELLAPP_API_BASE_URL"),
+  api_key: System.fetch_env!("SELLAPP_API_KEY"),
+  store: System.fetch_env!("SELLAPP_STORE")
+)
+
+{:ok, result} = SellApp.ProductVariants.duplicate(client, 1, 2)
+IO.inspect(result)
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 201, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
+## reorder
+
+Reorder product variants
+
+[API reference](https://sell.app/docs/api/product-variants/reorder-product-variants) · Effect: **consequential**
+
+```elixir
+def reorder(client, product, params \\ %{}, opts \\ [])
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| client | `any` | Yes |
+| product | `any` | Yes |
+| params | `any` | Yes |
+| opts | `any` | Yes |
+
+Returns: `any`.
+
+```exs
+client = SellApp.Client.new(
+  base_url: System.fetch_env!("SELLAPP_API_BASE_URL"),
+  api_key: System.fetch_env!("SELLAPP_API_KEY"),
+  store: System.fetch_env!("SELLAPP_STORE")
+)
+
+{:ok, result} = SellApp.ProductVariants.reorder(client, 1, %{"variant_ids" => [2, 1]})
+IO.inspect(result)
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+

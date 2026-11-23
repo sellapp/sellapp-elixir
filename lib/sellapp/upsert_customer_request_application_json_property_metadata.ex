@@ -13,8 +13,9 @@ defmodule SellApp.UpsertCustomerRequestApplicationJsonPropertyMetadata do
     name: "UpsertCustomerRequestApplicationJsonPropertyMetadata",
     properties: %{},
     additional_properties: %{
-      kind: :model,
-      module: SellApp.UpsertCustomerRequestApplicationJsonPropertyMetadataMapValue
+      kind: :union,
+      variants: [%{kind: :string, max_length: 500}, %{kind: :number}, %{kind: :boolean}],
+      composition: :oneOf
     },
     max_properties: 50
   }

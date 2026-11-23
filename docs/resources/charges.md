@@ -257,3 +257,54 @@ Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API r
 
 [Response access, transport controls, pagination, and typed errors](../usage.md)
 
+## get_summary
+
+Retrieve the charge summary
+
+[API reference](https://sell.app/docs/api/charges/retrieve-the-charge-summary) · Effect: **read**
+
+```elixir
+def get_summary(client, params \\ %{}, opts \\ [])
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| client | `any` | Yes |
+| params | `any` | Yes |
+| opts | `any` | Yes |
+
+Returns: `any`.
+
+```exs
+client = SellApp.Client.new(
+  base_url: System.fetch_env!("SELLAPP_API_BASE_URL"),
+  api_key: System.fetch_env!("SELLAPP_API_KEY"),
+  store: System.fetch_env!("SELLAPP_STORE")
+)
+
+{:ok, result} = SellApp.Charges.get_summary(client, %{})
+IO.inspect(result)
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 200, 400, 401, 403, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+

@@ -110,6 +110,17 @@ defmodule SellApp.ChargesTest do
              SellApp.Charges.mark_voided(client, "test_charge_id")
   end
 
+  test "get_summary succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "GET"
+      assert String.ends_with?(conn.request_path, "/v2/charges/summary")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("charges/get_summary"))
+    end)
+
+    assert {:ok, %SellApp.SdkGetChargeSummaryResponseValue200ApplicationJson{}} =
+             SellApp.Charges.get_summary(client)
+  end
+
   test "list encodes query parameters", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()

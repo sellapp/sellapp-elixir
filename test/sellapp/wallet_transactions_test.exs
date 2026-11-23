@@ -17,6 +17,25 @@ defmodule SellApp.WalletTransactionsTest do
     {:ok, client: client}
   end
 
+  test "reverse succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "POST"
+
+      assert String.ends_with?(
+               conn.request_path,
+               "/v2/wallets/test_customer/transactions/test_transaction/reverse"
+             )
+
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("wallet_transactions/reverse"))
+    end)
+
+    assert {:ok, %SellApp.SdkReverseWalletTransactionResponseValue201ApplicationJson{}} =
+             SellApp.WalletTransactions.reverse(client, "test_customer", "test_transaction", %{
+               "note" => "note",
+               "expected_balance_cents" => 1
+             })
+  end
+
   test "list succeeds", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       assert conn.method == "GET"
@@ -61,17 +80,18 @@ defmodule SellApp.WalletTransactionsTest do
              SellApp.WalletTransactions.list(client, "test_customer", %{page: "hello world&x"})
   end
 
-  test "list honors per-request options", %{client: client} do
+  test "reverse honors per-request options", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       assert Plug.Conn.get_req_header(conn, "x-custom") == ["value"]
       assert conn.host == "override.example.com"
-      Req.Test.json(conn, SellApp.TestFixtures.fixture("wallet_transactions/list"))
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("wallet_transactions/reverse"))
     end)
 
-    SellApp.WalletTransactions.list(
+    SellApp.WalletTransactions.reverse(
       client,
       "test_customer",
-      %{},
+      "test_transaction",
+      %{"note" => "note", "expected_balance_cents" => 1},
       headers: [{"x-custom", "value"}],
       base_url: "https://override.example.com"
     )
@@ -85,6 +105,9 @@ defmodule SellApp.WalletTransactionsTest do
     end)
 
     assert {:error, %SellApp.Error.Authentication{status: 401}} =
-             SellApp.WalletTransactions.list(client, "test_customer")
+             SellApp.WalletTransactions.reverse(client, "test_customer", "test_transaction", %{
+               "note" => "note",
+               "expected_balance_cents" => 1
+             })
   end
 end

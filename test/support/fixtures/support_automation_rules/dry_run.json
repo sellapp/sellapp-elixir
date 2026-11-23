@@ -1,0 +1,15 @@
+{
+  "data": {
+    "ticket_id": 1,
+    "matched": true,
+    "would_execute": true,
+    "rule_id": null,
+    "rule_name": null,
+    "skip_reason": null,
+    "rendered_reply": null,
+    "refund_amount_cents": null,
+    "close_outcome": null,
+    "automation_enabled": true,
+    "currency": "USD"
+  }
+}

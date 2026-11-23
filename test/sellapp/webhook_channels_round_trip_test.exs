@@ -9,7 +9,9 @@ defmodule SellApp.WebhookChannelsRoundTripTest do
       "name" => nil,
       "url" => "url",
       "allowed_notifications" => ["booking.cancelled"],
-      "signing_secret_configured" => true
+      "signing_secret_configured" => true,
+      "health" => %{"state" => "active", "last_success_at" => nil, "last_failure_at" => nil},
+      "last_delivery" => nil
     }
 
     serialized =
@@ -104,7 +106,9 @@ defmodule SellApp.WebhookChannelsRoundTripTest do
           "name" => nil,
           "url" => "url",
           "allowed_notifications" => ["booking.cancelled"],
-          "signing_secret_configured" => true
+          "signing_secret_configured" => true,
+          "health" => %{"state" => "active", "last_success_at" => nil, "last_failure_at" => nil},
+          "last_delivery" => nil
         }
       ],
       "links" => %{"first" => "first", "last" => "last", "prev" => nil, "next" => nil},
@@ -180,7 +184,9 @@ defmodule SellApp.WebhookChannelsRoundTripTest do
           "name" => nil,
           "url" => "url",
           "allowed_notifications" => ["booking.cancelled"],
-          "signing_secret_configured" => true
+          "signing_secret_configured" => true,
+          "health" => %{"state" => "active", "last_success_at" => nil, "last_failure_at" => nil},
+          "last_delivery" => nil
         }
       ],
       "links" => %{"first" => "first", "last" => "last", "prev" => nil, "next" => nil},
@@ -260,7 +266,9 @@ defmodule SellApp.WebhookChannelsRoundTripTest do
       "name" => nil,
       "url" => "url",
       "allowed_notifications" => ["booking.cancelled"],
-      "signing_secret_configured" => true
+      "signing_secret_configured" => true,
+      "health" => %{"state" => "active", "last_success_at" => nil, "last_failure_at" => nil},
+      "last_delivery" => nil
     }
 
     serialized =

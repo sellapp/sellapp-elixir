@@ -134,6 +134,265 @@ defmodule SellApp.StoreSettingsTest do
              })
   end
 
+  test "get_checkout succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "GET"
+      assert String.ends_with?(conn.request_path, "/v2/store/settings/checkout")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("store_settings/get_checkout"))
+    end)
+
+    assert {:ok, %SellApp.SdkGetCheckoutSettingsResponseValue200ApplicationJson{}} =
+             SellApp.StoreSettings.get_checkout(client)
+  end
+
+  test "replace_checkout succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "PUT"
+      assert String.ends_with?(conn.request_path, "/v2/store/settings/checkout")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("store_settings/replace_checkout"))
+    end)
+
+    assert {:ok, %SellApp.SdkReplaceCheckoutSettingsResponseValue200ApplicationJson{}} =
+             SellApp.StoreSettings.replace_checkout(client, %{
+               "shopping_cart_enabled" => true,
+               "customer_email_required" => true,
+               "allow_vpn_purchases" => true,
+               "blacklist_on_dispute" => true,
+               "minimum_spend" => nil,
+               "billing_descriptor" => nil,
+               "attempts_per_customer" => 1,
+               "attempts_per_ip" => nil,
+               "attempts_per_email" => nil,
+               "attempts_per_fingerprint" => nil,
+               "rate_limit_window_seconds" => 60,
+               "crypto" => nil
+             })
+  end
+
+  test "update_checkout succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "PATCH"
+      assert String.ends_with?(conn.request_path, "/v2/store/settings/checkout")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("store_settings/update_checkout"))
+    end)
+
+    assert {:ok, %SellApp.SdkUpdateCheckoutSettingsResponseValue200ApplicationJson{}} =
+             SellApp.StoreSettings.update_checkout(client, %{
+               "shopping_cart_enabled" => true,
+               "customer_email_required" => true,
+               "allow_vpn_purchases" => true,
+               "blacklist_on_dispute" => true,
+               "minimum_spend" => nil,
+               "billing_descriptor" => nil,
+               "attempts_per_customer" => 1,
+               "attempts_per_ip" => nil,
+               "attempts_per_email" => nil,
+               "attempts_per_fingerprint" => nil,
+               "rate_limit_window_seconds" => 60,
+               "crypto" => nil
+             })
+  end
+
+  test "get_taxes succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "GET"
+      assert String.ends_with?(conn.request_path, "/v2/store/settings/taxes")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("store_settings/get_taxes"))
+    end)
+
+    assert {:ok, %SellApp.SdkGetTaxSettingsResponseValue200ApplicationJson{}} =
+             SellApp.StoreSettings.get_taxes(client)
+  end
+
+  test "replace_taxes succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "PUT"
+      assert String.ends_with?(conn.request_path, "/v2/store/settings/taxes")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("store_settings/replace_taxes"))
+    end)
+
+    assert {:ok, %SellApp.SdkReplaceTaxSettingsResponseValue200ApplicationJson{}} =
+             SellApp.StoreSettings.replace_taxes(client, %{
+               "vat_enabled" => true,
+               "vat_inclusive_pricing" => true,
+               "collect_billing_details" => true
+             })
+  end
+
+  test "update_taxes succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "PATCH"
+      assert String.ends_with?(conn.request_path, "/v2/store/settings/taxes")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("store_settings/update_taxes"))
+    end)
+
+    assert {:ok, %SellApp.SdkUpdateTaxSettingsResponseValue200ApplicationJson{}} =
+             SellApp.StoreSettings.update_taxes(client, %{
+               "vat_enabled" => true,
+               "vat_inclusive_pricing" => true,
+               "collect_billing_details" => true
+             })
+  end
+
+  test "get_customer_emails succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "GET"
+      assert String.ends_with?(conn.request_path, "/v2/store/settings/customer-emails")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("store_settings/get_customer_emails"))
+    end)
+
+    assert {:ok, %SellApp.SdkGetCustomerEmailSettingsResponseValue200ApplicationJson{}} =
+             SellApp.StoreSettings.get_customer_emails(client)
+  end
+
+  test "replace_customer_emails succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "PUT"
+      assert String.ends_with?(conn.request_path, "/v2/store/settings/customer-emails")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("store_settings/replace_customer_emails"))
+    end)
+
+    assert {:ok, %SellApp.SdkReplaceCustomerEmailSettingsResponseValue200ApplicationJson{}} =
+             SellApp.StoreSettings.replace_customer_emails(client, %{
+               "send_delivery_email" => true,
+               "send_payment_failure_email" => true
+             })
+  end
+
+  test "update_customer_emails succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "PATCH"
+      assert String.ends_with?(conn.request_path, "/v2/store/settings/customer-emails")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("store_settings/update_customer_emails"))
+    end)
+
+    assert {:ok, %SellApp.SdkUpdateCustomerEmailSettingsResponseValue200ApplicationJson{}} =
+             SellApp.StoreSettings.update_customer_emails(client, %{
+               "send_delivery_email" => true,
+               "send_payment_failure_email" => true
+             })
+  end
+
+  test "get_store_alerts succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "GET"
+      assert String.ends_with?(conn.request_path, "/v2/store/settings/store-alerts")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("store_settings/get_store_alerts"))
+    end)
+
+    assert {:ok, %SellApp.SdkGetStoreAlertSettingsResponseValue200ApplicationJson{}} =
+             SellApp.StoreSettings.get_store_alerts(client)
+  end
+
+  test "replace_store_alerts succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "PUT"
+      assert String.ends_with?(conn.request_path, "/v2/store/settings/store-alerts")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("store_settings/replace_store_alerts"))
+    end)
+
+    assert {:ok, %SellApp.SdkReplaceStoreAlertSettingsResponseValue200ApplicationJson{}} =
+             SellApp.StoreSettings.replace_store_alerts(client, %{"sale_emails_enabled" => true})
+  end
+
+  test "update_store_alerts succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "PATCH"
+      assert String.ends_with?(conn.request_path, "/v2/store/settings/store-alerts")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("store_settings/update_store_alerts"))
+    end)
+
+    assert {:ok, %SellApp.SdkUpdateStoreAlertSettingsResponseValue200ApplicationJson{}} =
+             SellApp.StoreSettings.update_store_alerts(client, %{"sale_emails_enabled" => true})
+  end
+
+  test "get_personalization succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "GET"
+      assert String.ends_with?(conn.request_path, "/v2/store/settings/personalization")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("store_settings/get_personalization"))
+    end)
+
+    assert {:ok, %SellApp.SdkGetPersonalizationSettingsResponseValue200ApplicationJson{}} =
+             SellApp.StoreSettings.get_personalization(client)
+  end
+
+  test "replace_personalization succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "PUT"
+      assert String.ends_with?(conn.request_path, "/v2/store/settings/personalization")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("store_settings/replace_personalization"))
+    end)
+
+    assert {:ok, %SellApp.SdkReplacePersonalizationSettingsResponseValue200ApplicationJson{}} =
+             SellApp.StoreSettings.replace_personalization(client, %{
+               "support_email" => nil,
+               "trustpilot_email" => nil,
+               "sender_name" => nil,
+               "sender_email" => nil,
+               "store_address" => nil,
+               "store_city" => nil,
+               "store_state" => nil,
+               "store_zip" => nil,
+               "store_country" => nil,
+               "store_tax" => nil,
+               "back_link_label" => nil,
+               "back_link_url" => nil
+             })
+  end
+
+  test "update_personalization succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "PATCH"
+      assert String.ends_with?(conn.request_path, "/v2/store/settings/personalization")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("store_settings/update_personalization"))
+    end)
+
+    assert {:ok, %SellApp.SdkUpdatePersonalizationSettingsResponseValue200ApplicationJson{}} =
+             SellApp.StoreSettings.update_personalization(client, %{
+               "support_email" => nil,
+               "trustpilot_email" => nil,
+               "sender_name" => nil,
+               "sender_email" => nil,
+               "store_address" => nil,
+               "store_city" => nil,
+               "store_state" => nil,
+               "store_zip" => nil,
+               "store_country" => nil,
+               "store_tax" => nil,
+               "back_link_label" => nil,
+               "back_link_url" => nil
+             })
+  end
+
+  test "replace_crypto_checkout succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "PUT"
+      assert String.ends_with?(conn.request_path, "/v2/store/settings/checkout/crypto")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("store_settings/replace_crypto_checkout"))
+    end)
+
+    assert {:ok, %SellApp.SdkReplaceCryptoCheckoutSettingsResponseValue200ApplicationJson{}} =
+             SellApp.StoreSettings.replace_crypto_checkout(client, %{
+               "underpaid_percentage" => 1,
+               "minimum_confirmations" => 1
+             })
+  end
+
+  test "update_crypto_checkout succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "PATCH"
+      assert String.ends_with?(conn.request_path, "/v2/store/settings/checkout/crypto")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("store_settings/update_crypto_checkout"))
+    end)
+
+    assert {:ok, %SellApp.SdkUpdateCryptoCheckoutSettingsResponseValue200ApplicationJson{}} =
+             SellApp.StoreSettings.update_crypto_checkout(client, %{
+               "underpaid_percentage" => 1,
+               "minimum_confirmations" => 1
+             })
+  end
+
   test "get honors per-request options", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       assert Plug.Conn.get_req_header(conn, "x-custom") == ["value"]

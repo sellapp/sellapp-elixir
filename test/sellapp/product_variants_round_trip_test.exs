@@ -42,7 +42,8 @@ defmodule SellApp.ProductVariantsRoundTripTest do
         "additional_information" => [
           %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
         ]
-      }
+      },
+      "is_draft" => true
     }
 
     serialized =
@@ -100,7 +101,8 @@ defmodule SellApp.ProductVariantsRoundTripTest do
             "additional_information" => [
               %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
             ]
-          }
+          },
+          "is_draft" => true
         }
       ]
     }
@@ -160,7 +162,8 @@ defmodule SellApp.ProductVariantsRoundTripTest do
             "additional_information" => [
               %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
             ]
-          }
+          },
+          "is_draft" => true
         }
       ]
     }
@@ -220,7 +223,8 @@ defmodule SellApp.ProductVariantsRoundTripTest do
             "additional_information" => [
               %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
             ]
-          }
+          },
+          "is_draft" => true
         }
       ]
     }
@@ -279,7 +283,8 @@ defmodule SellApp.ProductVariantsRoundTripTest do
           "additional_information" => [
             %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
           ]
-        }
+        },
+        "is_draft" => true
       }
     }
 
@@ -337,7 +342,8 @@ defmodule SellApp.ProductVariantsRoundTripTest do
           "additional_information" => [
             %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
           ]
-        }
+        },
+        "is_draft" => true
       }
     }
 
@@ -351,6 +357,65 @@ defmodule SellApp.ProductVariantsRoundTripTest do
     assert serialized
            |> SellApp.SdkDeleteProductVariantResponseValue200ApplicationJson.from_map()
            |> SellApp.SdkDeleteProductVariantResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
+  test "SdkDuplicateProductVariantResponseValue201ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "id" => 1,
+        "product_id" => 1,
+        "title" => "title",
+        "description" => "description",
+        "deliverable" => %{
+          "data" => %{
+            "removeDuplicate" => true,
+            "parsingMode" => "parsingMode",
+            "stock" => nil,
+            "comment" => "comment",
+            "serials" => ["serials"]
+          },
+          "types" => ["types"]
+        },
+        "pricing" => %{
+          "humble" => true,
+          "frequency" => %{"value" => 1, "interval" => "interval"},
+          "type" => "type",
+          "price" => %{"price" => "price", "currency" => "currency"},
+          "trial" => %{
+            "kind" => "free",
+            "length" => %{"value" => 1, "interval" => "DAY"},
+            "price" => %{"price" => "price", "currency" => "currency"}
+          }
+        },
+        "minimum_purchase_quantity" => 1,
+        "maximum_purchase_quantity" => nil,
+        "bulk_discount" => nil,
+        "payment_methods" => ["payment_methods"],
+        "other_settings" => %{"quantity_increments" => 1, "discord_data_required" => true},
+        "order" => nil,
+        "created_at" => "2024-01-01T00:00:00.000Z",
+        "updated_at" => "2024-01-01T00:00:00.000Z",
+        "deleted_at" => nil,
+        "product" => %{
+          "additional_information" => [
+            %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
+          ]
+        },
+        "is_draft" => true
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkDuplicateProductVariantResponseValue201ApplicationJson.from_map()
+      |> SellApp.SdkDuplicateProductVariantResponseValue201ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkDuplicateProductVariantResponseValue201ApplicationJson.from_map()
+           |> SellApp.SdkDuplicateProductVariantResponseValue201ApplicationJson.to_map() ==
              serialized
   end
 
@@ -395,7 +460,8 @@ defmodule SellApp.ProductVariantsRoundTripTest do
           "additional_information" => [
             %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
           ]
-        }
+        },
+        "is_draft" => true
       }
     }
 
@@ -452,7 +518,8 @@ defmodule SellApp.ProductVariantsRoundTripTest do
             "additional_information" => [
               %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
             ]
-          }
+          },
+          "is_draft" => true
         }
       ],
       "links" => %{},
@@ -469,6 +536,126 @@ defmodule SellApp.ProductVariantsRoundTripTest do
     assert serialized
            |> SellApp.SdkListProductVariantsResponseValue200ApplicationJson.from_map()
            |> SellApp.SdkListProductVariantsResponseValue200ApplicationJson.to_map() == serialized
+  end
+
+  test "SdkPublishProductVariantResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "id" => 1,
+        "product_id" => 1,
+        "title" => "title",
+        "description" => "description",
+        "deliverable" => %{
+          "data" => %{
+            "removeDuplicate" => true,
+            "parsingMode" => "parsingMode",
+            "stock" => nil,
+            "comment" => "comment",
+            "serials" => ["serials"]
+          },
+          "types" => ["types"]
+        },
+        "pricing" => %{
+          "humble" => true,
+          "frequency" => %{"value" => 1, "interval" => "interval"},
+          "type" => "type",
+          "price" => %{"price" => "price", "currency" => "currency"},
+          "trial" => %{
+            "kind" => "free",
+            "length" => %{"value" => 1, "interval" => "DAY"},
+            "price" => %{"price" => "price", "currency" => "currency"}
+          }
+        },
+        "minimum_purchase_quantity" => 1,
+        "maximum_purchase_quantity" => nil,
+        "bulk_discount" => nil,
+        "payment_methods" => ["payment_methods"],
+        "other_settings" => %{"quantity_increments" => 1, "discord_data_required" => true},
+        "order" => nil,
+        "created_at" => "2024-01-01T00:00:00.000Z",
+        "updated_at" => "2024-01-01T00:00:00.000Z",
+        "deleted_at" => nil,
+        "product" => %{
+          "additional_information" => [
+            %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
+          ]
+        },
+        "is_draft" => true
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkPublishProductVariantResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkPublishProductVariantResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkPublishProductVariantResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkPublishProductVariantResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
+  test "SdkReorderProductVariantsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => [
+        %{
+          "id" => 1,
+          "product_id" => 1,
+          "title" => "title",
+          "description" => "description",
+          "deliverable" => %{
+            "data" => %{
+              "removeDuplicate" => true,
+              "parsingMode" => "parsingMode",
+              "stock" => nil,
+              "comment" => "comment",
+              "serials" => ["serials"]
+            },
+            "types" => ["types"]
+          },
+          "pricing" => %{
+            "humble" => true,
+            "frequency" => %{"value" => 1, "interval" => "interval"},
+            "type" => "type",
+            "price" => %{"price" => "price", "currency" => "currency"},
+            "trial" => %{
+              "kind" => "free",
+              "length" => %{"value" => 1, "interval" => "DAY"},
+              "price" => %{"price" => "price", "currency" => "currency"}
+            }
+          },
+          "minimum_purchase_quantity" => 1,
+          "maximum_purchase_quantity" => nil,
+          "bulk_discount" => nil,
+          "payment_methods" => ["payment_methods"],
+          "other_settings" => %{"quantity_increments" => 1, "discord_data_required" => true},
+          "order" => nil,
+          "created_at" => "2024-01-01T00:00:00.000Z",
+          "updated_at" => "2024-01-01T00:00:00.000Z",
+          "deleted_at" => nil,
+          "product" => %{
+            "additional_information" => [
+              %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
+            ]
+          },
+          "is_draft" => true
+        }
+      ]
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkReorderProductVariantsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkReorderProductVariantsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkReorderProductVariantsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkReorderProductVariantsResponseValue200ApplicationJson.to_map() ==
+             serialized
   end
 
   test "SdkReplaceProductVariantWithPutResponseValue200ApplicationJson round-trips between wire and struct" do
@@ -512,7 +699,8 @@ defmodule SellApp.ProductVariantsRoundTripTest do
           "additional_information" => [
             %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
           ]
-        }
+        },
+        "is_draft" => true
       }
     }
 
@@ -570,7 +758,8 @@ defmodule SellApp.ProductVariantsRoundTripTest do
             "additional_information" => [
               %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
             ]
-          }
+          },
+          "is_draft" => true
         }
       ],
       "links" => %{},
@@ -631,7 +820,8 @@ defmodule SellApp.ProductVariantsRoundTripTest do
           "additional_information" => [
             %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
           ]
-        }
+        },
+        "is_draft" => true
       }
     }
 
@@ -687,7 +877,8 @@ defmodule SellApp.ProductVariantsRoundTripTest do
         "additional_information" => [
           %{"required" => true, "key" => "key", "type" => "type", "label" => "label"}
         ]
-      }
+      },
+      "is_draft" => true
     }
 
     serialized =

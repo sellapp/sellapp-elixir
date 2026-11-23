@@ -8,11 +8,11 @@ defmodule SellApp.Refunds do
   @doc """
   List refunds
 
-  List refunds for orders and standalone charges in the selected store, one page at a time. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  List refunds for orders and standalone charges in the selected store, newest first, 15 per page by default. Filter by `status`, `provider`, `source`, or the order or charge refunded; filters combine. To see every refund of one order, send `refundable_type=order` and `refundable_id` set to the order ID. A value outside a parameter's accepted values, a `limit` above 100, or a query parameter the endpoint does not take returns `422` on that parameter. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
-    * `params` — query parameters
+    * `params` — query parameters: `:page`, `:limit`, `:status`, `:provider`, `:source`, `:refundable_type`, `:refundable_id`
     * `opts` — per-request options (see `SellApp.Client.request/5`)
   """
   @spec list_refunds(SellApp.Client.t(), map(), keyword()) ::
@@ -34,7 +34,7 @@ defmodule SellApp.Refunds do
       fetch_next = fn cursor ->
         list_refunds(
           client,
-          SellApp.Page.next_params(params, "after", cursor),
+          SellApp.Page.next_params(params, "page", cursor),
           Keyword.delete(opts, :with_response)
         )
       end
@@ -47,7 +47,7 @@ defmodule SellApp.Refunds do
           fetch_next,
           base_url: client.base_url,
           path: "/v2/refunds",
-          pagination_param: "after"
+          pagination_param: "page"
         )
 
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}

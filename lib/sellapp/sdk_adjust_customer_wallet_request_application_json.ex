@@ -9,6 +9,7 @@ defmodule SellApp.SdkAdjustCustomerWalletRequestApplicationJson do
     :amount_cents,
     :idempotency_key,
     :note,
+    :expected_balance_cents,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -17,6 +18,7 @@ defmodule SellApp.SdkAdjustCustomerWalletRequestApplicationJson do
           amount_cents: integer(),
           idempotency_key: String.t(),
           note: String.t(),
+          expected_balance_cents: integer() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -32,6 +34,10 @@ defmodule SellApp.SdkAdjustCustomerWalletRequestApplicationJson do
       "note" => %{
         required: true,
         schema: %{kind: :string, min_length: 1, max_length: 255, pattern: "\\S"}
+      },
+      "expected_balance_cents" => %{
+        required: false,
+        schema: %{kind: :integer, minimum: 0, maximum: 999_999_999_999}
       }
     },
     additional_properties: true
@@ -48,7 +54,9 @@ defmodule SellApp.SdkAdjustCustomerWalletRequestApplicationJson do
       amount_cents: map["amount_cents"],
       idempotency_key: map["idempotency_key"],
       note: map["note"],
-      __additional_properties__: Map.drop(map, ["amount_cents", "idempotency_key", "note"]),
+      expected_balance_cents: map["expected_balance_cents"],
+      __additional_properties__:
+        Map.drop(map, ["amount_cents", "idempotency_key", "note", "expected_balance_cents"]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -61,7 +69,8 @@ defmodule SellApp.SdkAdjustCustomerWalletRequestApplicationJson do
         %{
           "amount_cents" => struct.amount_cents,
           "idempotency_key" => struct.idempotency_key,
-          "note" => struct.note
+          "note" => struct.note,
+          "expected_balance_cents" => struct.expected_balance_cents
         },
         ["amount_cents", "idempotency_key", "note"],
         struct.__present_fields__

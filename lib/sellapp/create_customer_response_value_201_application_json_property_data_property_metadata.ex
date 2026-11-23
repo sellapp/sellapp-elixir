@@ -12,7 +12,14 @@ defmodule SellApp.CreateCustomerResponseValue201ApplicationJsonPropertyDataPrope
   @schema %{
     name: "CreateCustomerResponseValue201ApplicationJsonPropertyDataPropertyMetadata",
     properties: %{},
-    additional_properties: %{kind: :model, module: SellApp.ScalarMetadataValue},
+    additional_properties: %{
+      kind: :nullable,
+      inner: %{
+        kind: :union,
+        variants: [%{kind: :string, max_length: 500}, %{kind: :number}, %{kind: :boolean}],
+        composition: :oneOf
+      }
+    },
     max_properties: 50
   }
   @doc false

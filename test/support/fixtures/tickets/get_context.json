@@ -1,0 +1,39 @@
+{
+  "data": {
+    "ticket_id": 1,
+    "resolution": {
+      "outcome": null,
+      "resolved_at": null,
+      "resolved_by_rule_id": null
+    },
+    "customer": {
+      "email": null,
+      "completed_orders": 1,
+      "lifetime_spend_usd_cents": 1,
+      "first_order_at": null
+    },
+    "linked_order": null,
+    "refund_options": [
+      {
+        "invoice_id": 1,
+        "order_id": 1,
+        "product_id": null,
+        "product_title": null,
+        "currency": "USD",
+        "paid_cents": 1,
+        "active_support_refunds_cents": 1,
+        "refundable_cents": null
+      }
+    ],
+    "activity": [
+      {
+        "id": 1,
+        "event": "refund_issued",
+        "actor_type": "actor_type",
+        "rule": null,
+        "wallet_entry": null,
+        "created_at": "2024-01-01T00:00:00.000Z"
+      }
+    ]
+  }
+}

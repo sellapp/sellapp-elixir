@@ -8,7 +8,7 @@ defmodule SellApp.CashbackRules do
   @doc """
   List cashback rules
 
-  List current and archived store records. Requires the `wallet` or `wallet:write` API ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  List current and archived store records. Requires the `wallet` or `wallet:write` API-key ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -49,7 +49,7 @@ defmodule SellApp.CashbackRules do
   @doc """
   Create a cashback rule
 
-  Create a cashback rule. Requires the `wallet:write` API ability and the store wallet permission. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Create a cashback rule. Requires the `wallet:write` API-key ability and the wallet permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -102,7 +102,7 @@ defmodule SellApp.CashbackRules do
   @doc """
   Update a cashback rule
 
-  Update a cashback rule. Requires the `wallet:write` API ability and the store wallet permission. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Update a cashback rule. Requires the `wallet:write` API-key ability and the wallet permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -156,7 +156,7 @@ defmodule SellApp.CashbackRules do
   @doc """
   Update a cashback rule
 
-  Update a cashback rule. Requires the `wallet:write` API ability and the store wallet permission. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Update a cashback rule. Requires the `wallet:write` API-key ability and the wallet permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -210,7 +210,7 @@ defmodule SellApp.CashbackRules do
   @doc """
   Archive a cashback rule
 
-  Archive a cashback rule. Requires the `wallet:write` API ability and the store wallet permission. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Archive a cashback rule. Requires the `wallet:write` API-key ability and the wallet permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -252,7 +252,7 @@ defmodule SellApp.CashbackRules do
   @doc """
   Restore a cashback rule
 
-  Restore a cashback rule. Requires the `wallet:write` API ability and the store wallet permission. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Restore a cashback rule. Requires the `wallet:write` API-key ability and the wallet permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -285,6 +285,48 @@ defmodule SellApp.CashbackRules do
         SellApp.Cast.nested(
           body,
           &SellApp.SdkRestoreCashbackRuleResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
+  Quote a cashback rule
+
+  See which cashback rule a purchase would earn right now, and how much it would add to the customer's wallet, without creating anything. Send `product_id` to check one product (a rule naming the product wins over the store-wide rule); leave it out to check only the store-wide rule. Add `purchase_cents` to get the cashback amount. Amounts are integer USD cents: `purchase_cents=10000` asks about a $100.00 purchase. Requires the `wallet` or `wallet:write` API-key ability and the wallet permission in your team role. A product that is not in your store returns `422` on `product_id`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `params` — query parameters: `:product_id`, `:purchase_cents`
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec quote_(SellApp.Client.t(), map(), keyword()) ::
+          {:ok, SellApp.SdkQuoteCashbackRuleResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def quote_(client, params \\ %{}, opts \\ []) do
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :get,
+             "/v2/cashback-rules/quote",
+             params,
+             Keyword.put(opts, :operation_id, "quoteCashbackRule")
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{kind: :model, module: SellApp.SdkQuoteCashbackRuleResponseValue200ApplicationJson},
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkQuoteCashbackRuleResponseValue200ApplicationJson.from_map/1
         )
 
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}

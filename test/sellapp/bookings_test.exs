@@ -128,6 +128,42 @@ defmodule SellApp.BookingsTest do
              SellApp.Bookings.cancel(client, "test_booking", %{"status" => "cancelled"})
   end
 
+  test "create succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "POST"
+      assert String.ends_with?(conn.request_path, "/v2/booking-products")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("bookings/create"))
+    end)
+
+    assert {:ok, %SellApp.SdkCreateBookingProductResponseValue201ApplicationJson{}} =
+             SellApp.Bookings.create(client, %{
+               "title" => "title",
+               "description" => nil,
+               "visibility" => "PUBLIC",
+               "variant_title" => "variant_title",
+               "variant_description" => "variant_description",
+               "price_cents" => 1,
+               "compare_at_price_cents" => nil,
+               "currency" => "AUD",
+               "payment_methods" => ["AUTHNET"],
+               "timezone" => "timezone",
+               "duration_minutes" => 30,
+               "min_notice_minutes" => 1,
+               "max_advance_days" => 1,
+               "buffer_before_minutes" => 30,
+               "buffer_after_minutes" => 30,
+               "provider_connection_ids" => [1],
+               "video_provider" => "none",
+               "video_provider_connection_id" => nil,
+               "reminders_enabled" => true,
+               "reminder_offset_value" => 1,
+               "reminder_offset_unit" => "minutes",
+               "availability" => [
+                 %{"day" => 1, "enabled" => true, "start" => "start", "end" => "end"}
+               ]
+             })
+  end
+
   test "list encodes query parameters", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()

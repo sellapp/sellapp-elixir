@@ -173,7 +173,10 @@ defmodule SellApp.TicketsTest do
                ],
                "sort" => [%{"field" => "field", "direction" => "asc"}],
                "search" => %{"value" => nil, "case_sensitive" => true},
-               "includes" => [%{"relation" => "relation"}]
+               "includes" => [%{"relation" => "relation"}],
+               "waiting_on" => nil,
+               "reason" => nil,
+               "customer_email" => nil
              })
   end
 
@@ -195,7 +198,10 @@ defmodule SellApp.TicketsTest do
                ],
                "sort" => [%{"field" => "field", "direction" => "asc"}],
                "search" => %{"value" => nil, "case_sensitive" => true},
-               "includes" => [%{"relation" => "relation"}]
+               "includes" => [%{"relation" => "relation"}],
+               "waiting_on" => nil,
+               "reason" => nil,
+               "customer_email" => nil
              })
 
     refute SellApp.Page.has_more?(page)
@@ -223,8 +229,35 @@ defmodule SellApp.TicketsTest do
     assert {:ok, %SellApp.SdkUpdateTicketResponseValue200ApplicationJson{}} =
              SellApp.Tickets.update(client, "test_ticket", %{
                "status" => "OPEN",
-               "archived" => true
+               "archived" => true,
+               "outcome" => "refunded"
              })
+  end
+
+  test "batch_update succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "PATCH"
+      assert String.ends_with?(conn.request_path, "/v2/tickets/batch")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("tickets/batch_update"))
+    end)
+
+    assert {:ok, %SellApp.SdkBatchUpdateTicketsResponseValue200ApplicationJson{}} =
+             SellApp.Tickets.batch_update(client, %{
+               "action" => "close",
+               "outcome" => "refunded",
+               "resources" => [1]
+             })
+  end
+
+  test "get_context succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "GET"
+      assert String.ends_with?(conn.request_path, "/v2/tickets/test_ticket/context")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("tickets/get_context"))
+    end)
+
+    assert {:ok, %SellApp.SdkV2GetTicketContextResponseValue200ApplicationJson{}} =
+             SellApp.Tickets.get_context(client, "test_ticket")
   end
 
   test "list encodes query parameters", %{client: client} do

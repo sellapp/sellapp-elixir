@@ -207,11 +207,11 @@ defmodule SellApp.Feedback do
   @doc """
   List all feedback
 
-  List customer feedback for your store, 15 entries per page by default. This v2 route is store-scoped. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  List customer feedback for your store, 15 entries per page by default. This v2 route is store-scoped. Use `reply_state` to list only feedback you have or have not replied to. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
-    * `params` — query parameters: `:limit`, `:page`
+    * `params` — query parameters: `:limit`, `:page`, `:reply_state`
     * `opts` — per-request options (see `SellApp.Client.request/5`)
   """
   @spec v2_list_feedback(SellApp.Client.t(), map(), keyword()) ::
@@ -258,7 +258,7 @@ defmodule SellApp.Feedback do
   @doc """
   Search feedback
 
-  Search feedback using JSON body filters, search terms, includes, and sort instructions. This v2 route is store-scoped. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Search feedback using JSON body filters, search terms, includes, and sort instructions. This v2 route is store-scoped. Use `reply_state` to find only feedback you have or have not replied to. Page through results with `limit` (1 to 100, default 15; a larger value returns `422`) and `page`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -297,7 +297,7 @@ defmodule SellApp.Feedback do
       fetch_next = fn cursor ->
         v2_search_feedback(
           client,
-          SellApp.Page.next_params(params, "after", cursor),
+          SellApp.Page.next_params(params, "page", cursor),
           Keyword.delete(opts, :with_response)
         )
       end
@@ -310,7 +310,7 @@ defmodule SellApp.Feedback do
           fetch_next,
           base_url: client.base_url,
           path: "/v2/feedback/search",
-          pagination_param: "after"
+          pagination_param: "page"
         )
 
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}

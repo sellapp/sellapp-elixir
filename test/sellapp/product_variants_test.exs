@@ -448,6 +448,49 @@ defmodule SellApp.ProductVariantsTest do
              SellApp.ProductVariants.batch_delete(client, "test_product", %{"resources" => [1]})
   end
 
+  test "publish succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "POST"
+
+      assert String.ends_with?(
+               conn.request_path,
+               "/v2/products/test_product/variants/test_variant/publish"
+             )
+
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("product_variants/publish"))
+    end)
+
+    assert {:ok, %SellApp.SdkPublishProductVariantResponseValue200ApplicationJson{}} =
+             SellApp.ProductVariants.publish(client, "test_product", "test_variant")
+  end
+
+  test "duplicate succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "POST"
+
+      assert String.ends_with?(
+               conn.request_path,
+               "/v2/products/test_product/variants/test_variant/duplicate"
+             )
+
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("product_variants/duplicate"))
+    end)
+
+    assert {:ok, %SellApp.SdkDuplicateProductVariantResponseValue201ApplicationJson{}} =
+             SellApp.ProductVariants.duplicate(client, "test_product", "test_variant")
+  end
+
+  test "reorder succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "PUT"
+      assert String.ends_with?(conn.request_path, "/v2/products/test_product/variants/order")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("product_variants/reorder"))
+    end)
+
+    assert {:ok, %SellApp.SdkReorderProductVariantsResponseValue200ApplicationJson{}} =
+             SellApp.ProductVariants.reorder(client, "test_product", %{"variant_ids" => [1]})
+  end
+
   test "list encodes query parameters", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()

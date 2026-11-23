@@ -94,6 +94,22 @@ defmodule SellApp.AffiliateProgramTest do
              SellApp.AffiliateProgram.invite(client, %{"email" => "email"})
   end
 
+  test "resend succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "POST"
+
+      assert String.ends_with?(
+               conn.request_path,
+               "/v2/affiliate-invitations/test_invitation/resend"
+             )
+
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("affiliate_program/resend"))
+    end)
+
+    assert {:ok, %SellApp.SdkResendAffiliateInvitationResponseValue200ApplicationJson{}} =
+             SellApp.AffiliateProgram.resend(client, "test_invitation")
+  end
+
   test "list encodes query parameters", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()

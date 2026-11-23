@@ -21,6 +21,9 @@ defmodule SellApp.SdkUpdateCourseRequestApplicationJson do
     :delivery_text,
     :visibility,
     :expected_updated_at,
+    :title,
+    :slug,
+    :description,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -41,6 +44,9 @@ defmodule SellApp.SdkUpdateCourseRequestApplicationJson do
           delivery_text: String.t() | nil,
           visibility: SellApp.CatalogVisibility.t() | nil,
           expected_updated_at: String.t() | nil,
+          title: String.t() | nil,
+          slug: String.t() | nil,
+          description: String.t() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -112,7 +118,16 @@ defmodule SellApp.SdkUpdateCourseRequestApplicationJson do
         required: false,
         schema: %{kind: :enum, values: ["PUBLIC", "ON_HOLD", "HIDDEN", "PRIVATE"]}
       },
-      "expected_updated_at" => %{required: false, schema: %{kind: :string, format: "date-time"}}
+      "expected_updated_at" => %{required: false, schema: %{kind: :string, format: "date-time"}},
+      "title" => %{required: false, schema: %{kind: :string, min_length: 1, max_length: 255}},
+      "slug" => %{
+        required: false,
+        schema: %{kind: :string, max_length: 255, pattern: "^[a-z0-9]+(?:-[a-z0-9]+)*$"}
+      },
+      "description" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :string, min_length: 5}}
+      }
     },
     additional_properties: true
   }
@@ -148,6 +163,9 @@ defmodule SellApp.SdkUpdateCourseRequestApplicationJson do
       delivery_text: map["delivery_text"],
       visibility: SellApp.Cast.enum(map["visibility"], &SellApp.CatalogVisibility.cast/1),
       expected_updated_at: map["expected_updated_at"],
+      title: map["title"],
+      slug: map["slug"],
+      description: map["description"],
       __additional_properties__:
         Map.drop(map, [
           "category",
@@ -164,7 +182,10 @@ defmodule SellApp.SdkUpdateCourseRequestApplicationJson do
           "enrollment_limit",
           "delivery_text",
           "visibility",
-          "expected_updated_at"
+          "expected_updated_at",
+          "title",
+          "slug",
+          "description"
         ]),
       __present_fields__: Map.keys(map)
     }
@@ -198,7 +219,10 @@ defmodule SellApp.SdkUpdateCourseRequestApplicationJson do
           "enrollment_limit" => struct.enrollment_limit,
           "delivery_text" => struct.delivery_text,
           "visibility" => SellApp.Cast.enum(struct.visibility, &SellApp.CatalogVisibility.dump/1),
-          "expected_updated_at" => struct.expected_updated_at
+          "expected_updated_at" => struct.expected_updated_at,
+          "title" => struct.title,
+          "slug" => struct.slug,
+          "description" => struct.description
         },
         [],
         struct.__present_fields__

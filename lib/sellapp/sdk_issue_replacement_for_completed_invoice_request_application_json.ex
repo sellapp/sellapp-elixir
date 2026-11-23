@@ -12,8 +12,7 @@ defmodule SellApp.SdkIssueReplacementForCompletedInvoiceRequestApplicationJson d
   ]
 
   @type t :: %__MODULE__{
-          product_variants:
-            SellApp.IssueReplacementForCompletedInvoiceRequestApplicationJsonPropertyProductVariants.t(),
+          product_variants: integer() | [integer()],
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -24,9 +23,9 @@ defmodule SellApp.SdkIssueReplacementForCompletedInvoiceRequestApplicationJson d
       "product_variants" => %{
         required: true,
         schema: %{
-          kind: :model,
-          module:
-            SellApp.IssueReplacementForCompletedInvoiceRequestApplicationJsonPropertyProductVariants
+          kind: :union,
+          variants: [%{kind: :integer}, %{kind: :array, items: %{kind: :integer}}],
+          composition: :anyOf
         }
       }
     },
@@ -41,11 +40,7 @@ defmodule SellApp.SdkIssueReplacementForCompletedInvoiceRequestApplicationJson d
     SellApp.Schema.validate_model!(map, @schema, :response)
 
     %__MODULE__{
-      product_variants:
-        SellApp.Cast.nested(
-          map["product_variants"],
-          &SellApp.IssueReplacementForCompletedInvoiceRequestApplicationJsonPropertyProductVariants.from_map/1
-        ),
+      product_variants: map["product_variants"],
       __additional_properties__: Map.drop(map, ["product_variants"]),
       __present_fields__: Map.keys(map)
     }
@@ -57,11 +52,7 @@ defmodule SellApp.SdkIssueReplacementForCompletedInvoiceRequestApplicationJson d
     known =
       SellApp.Cast.keep_present(
         %{
-          "product_variants" =>
-            SellApp.Cast.dump_struct(
-              struct.product_variants,
-              &SellApp.IssueReplacementForCompletedInvoiceRequestApplicationJsonPropertyProductVariants.to_map/1
-            )
+          "product_variants" => SellApp.Cast.dump_union(struct.product_variants)
         },
         ["product_variants"],
         struct.__present_fields__

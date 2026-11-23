@@ -1,0 +1,72 @@
+{
+  "data": {
+    "defaults": {
+      "is_active": true,
+      "product_scope": "product_scope"
+    },
+    "counts": {
+      "platform": 1,
+      "custom_total": 1,
+      "custom_active": 1,
+      "custom_inactive": 1,
+      "custom_product_scoped": 1
+    },
+    "platform_reasons": [
+      {
+        "source": "platform",
+        "code": "code",
+        "key": "key",
+        "label": "label",
+        "description": null,
+        "group": "group",
+        "requires_order": true
+      }
+    ],
+    "custom_reasons": [
+      {
+        "source": "store",
+        "code": "code",
+        "key": "key",
+        "id": 1,
+        "label": "label",
+        "description": null,
+        "is_active": true,
+        "product_ids": [
+          1
+        ],
+        "products": [
+          {
+            "id": 1,
+            "title": "title",
+            "type": "type"
+          }
+        ],
+        "product_scope": "all_products"
+      }
+    ],
+    "customer_visible_reasons": [
+      {
+        "source": "platform",
+        "code": "code",
+        "key": "key",
+        "label": "label",
+        "description": null,
+        "group": "group",
+        "requires_order": true
+      }
+    ],
+    "product_scope_filters": [
+      {
+        "value": "value",
+        "label": "label"
+      }
+    ],
+    "active_state_filters": [
+      {
+        "value": "value",
+        "label": "label"
+      }
+    ],
+    "dashboard_url": "dashboard_url"
+  }
+}

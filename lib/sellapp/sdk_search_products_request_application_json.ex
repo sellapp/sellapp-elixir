@@ -10,6 +10,13 @@ defmodule SellApp.SdkSearchProductsRequestApplicationJson do
     :sort,
     :search,
     :includes,
+    :min_price,
+    :max_price,
+    :stock,
+    :visibility,
+    :has_sales,
+    :with_drafts,
+    :only_drafts,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -19,6 +26,13 @@ defmodule SellApp.SdkSearchProductsRequestApplicationJson do
           sort: [SellApp.SearchProductsRequestApplicationJsonPropertySortItem.t()] | nil,
           search: SellApp.SearchProductsRequestApplicationJsonPropertySearch.t() | nil,
           includes: [SellApp.SearchProductsRequestApplicationJsonPropertyIncludesItem.t()] | nil,
+          min_price: integer() | nil,
+          max_price: integer() | nil,
+          stock: SellApp.Stock.t() | nil,
+          visibility: [SellApp.SdkSearchProductsRequestApplicationJsonVisibility.t()] | nil,
+          has_sales: boolean() | nil,
+          with_drafts: boolean() | nil,
+          only_drafts: boolean() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -62,7 +76,44 @@ defmodule SellApp.SdkSearchProductsRequestApplicationJson do
             module: SellApp.SearchProductsRequestApplicationJsonPropertyIncludesItem
           }
         }
-      }
+      },
+      "min_price" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :integer, minimum: 0}}
+      },
+      "max_price" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :integer, minimum: 0}}
+      },
+      "stock" => %{
+        required: false,
+        schema: %{
+          kind: :nullable,
+          inner: %{
+            kind: :enum,
+            values: [
+              "in_stock",
+              "sold_out",
+              "any_variant_sold_out",
+              "limited",
+              "unlimited",
+              "null"
+            ]
+          }
+        }
+      },
+      "visibility" => %{
+        required: false,
+        schema: %{
+          kind: :array,
+          items: %{kind: :enum, values: ["PUBLIC", "ON_HOLD", "HIDDEN", "PRIVATE"]},
+          min_items: 1,
+          unique_items: true
+        }
+      },
+      "has_sales" => %{required: false, schema: %{kind: :nullable, inner: %{kind: :boolean}}},
+      "with_drafts" => %{required: false, schema: %{kind: :boolean}},
+      "only_drafts" => %{required: false, schema: %{kind: :boolean}}
     },
     additional_properties: true
   }
@@ -95,7 +146,31 @@ defmodule SellApp.SdkSearchProductsRequestApplicationJson do
           map["includes"],
           &SellApp.SearchProductsRequestApplicationJsonPropertyIncludesItem.from_map/1
         ),
-      __additional_properties__: Map.drop(map, ["filters", "sort", "search", "includes"]),
+      min_price: map["min_price"],
+      max_price: map["max_price"],
+      stock: SellApp.Cast.enum(map["stock"], &SellApp.Stock.cast/1),
+      visibility:
+        SellApp.Cast.list(
+          map["visibility"],
+          &SellApp.SdkSearchProductsRequestApplicationJsonVisibility.cast/1
+        ),
+      has_sales: map["has_sales"],
+      with_drafts: map["with_drafts"],
+      only_drafts: map["only_drafts"],
+      __additional_properties__:
+        Map.drop(map, [
+          "filters",
+          "sort",
+          "search",
+          "includes",
+          "min_price",
+          "max_price",
+          "stock",
+          "visibility",
+          "has_sales",
+          "with_drafts",
+          "only_drafts"
+        ]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -131,7 +206,18 @@ defmodule SellApp.SdkSearchProductsRequestApplicationJson do
                 item,
                 &SellApp.SearchProductsRequestApplicationJsonPropertyIncludesItem.to_map/1
               )
-            end)
+            end),
+          "min_price" => struct.min_price,
+          "max_price" => struct.max_price,
+          "stock" => SellApp.Cast.enum(struct.stock, &SellApp.Stock.dump/1),
+          "visibility" =>
+            SellApp.Cast.list(
+              struct.visibility,
+              &SellApp.SdkSearchProductsRequestApplicationJsonVisibility.dump/1
+            ),
+          "has_sales" => struct.has_sales,
+          "with_drafts" => struct.with_drafts,
+          "only_drafts" => struct.only_drafts
         },
         [],
         struct.__present_fields__

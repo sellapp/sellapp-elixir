@@ -1,0 +1,41 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "name",
+      "is_active": true,
+      "archived": true,
+      "priority": 1,
+      "match_reason_source": null,
+      "match_reason_code": null,
+      "match_product_ids": [
+        1
+      ],
+      "match_customer_filter": null,
+      "history_window": null,
+      "match_min_order_total_cents": null,
+      "match_max_order_total_cents": null,
+      "min_completed_orders": null,
+      "max_completed_orders": null,
+      "min_lifetime_spend_cents": null,
+      "max_lifetime_spend_cents": null,
+      "min_prior_ticket_count": null,
+      "max_prior_ticket_count": null,
+      "min_prior_support_refund_count": null,
+      "max_prior_support_refund_count": null,
+      "min_prior_support_refund_cents": null,
+      "max_prior_support_refund_cents": null,
+      "customer_age_days_min": null,
+      "customer_age_days_max": null,
+      "response_template_id": null,
+      "action_refund_kind": null,
+      "action_refund_percent_basis": null,
+      "action_refund_fixed_cents": null,
+      "action_refund_cap_cents": null,
+      "action_close_outcome": null,
+      "currency": "USD",
+      "created_at": "2024-01-01T00:00:00.000Z",
+      "updated_at": "2024-01-01T00:00:00.000Z"
+    }
+  ]
+}

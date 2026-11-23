@@ -15,8 +15,8 @@ defmodule SellApp.SdkSearchProductsResponseValue200ApplicationJson do
 
   @type t :: %__MODULE__{
           data: [SellApp.SearchProductsResponseValue200ApplicationJsonPropertyDataItem.t()],
-          links: SellApp.SearchProductsResponseValue200ApplicationJsonPropertyLinks.t(),
-          meta: SellApp.SearchProductsResponseValue200ApplicationJsonPropertyMeta.t(),
+          links: SellApp.PaginationLinks.t(),
+          meta: SellApp.PaginationMeta.t(),
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -34,20 +34,8 @@ defmodule SellApp.SdkSearchProductsResponseValue200ApplicationJson do
           }
         }
       },
-      "links" => %{
-        required: true,
-        schema: %{
-          kind: :model,
-          module: SellApp.SearchProductsResponseValue200ApplicationJsonPropertyLinks
-        }
-      },
-      "meta" => %{
-        required: true,
-        schema: %{
-          kind: :model,
-          module: SellApp.SearchProductsResponseValue200ApplicationJsonPropertyMeta
-        }
-      }
+      "links" => %{required: true, schema: %{kind: :model, module: SellApp.PaginationLinks}},
+      "meta" => %{required: true, schema: %{kind: :model, module: SellApp.PaginationMeta}}
     },
     additional_properties: true
   }
@@ -65,16 +53,8 @@ defmodule SellApp.SdkSearchProductsResponseValue200ApplicationJson do
           map["data"],
           &SellApp.SearchProductsResponseValue200ApplicationJsonPropertyDataItem.from_map/1
         ),
-      links:
-        SellApp.Cast.nested(
-          map["links"],
-          &SellApp.SearchProductsResponseValue200ApplicationJsonPropertyLinks.from_map/1
-        ),
-      meta:
-        SellApp.Cast.nested(
-          map["meta"],
-          &SellApp.SearchProductsResponseValue200ApplicationJsonPropertyMeta.from_map/1
-        ),
+      links: SellApp.Cast.nested(map["links"], &SellApp.PaginationLinks.from_map/1),
+      meta: SellApp.Cast.nested(map["meta"], &SellApp.PaginationMeta.from_map/1),
       __additional_properties__: Map.drop(map, ["data", "links", "meta"]),
       __present_fields__: Map.keys(map)
     }
@@ -93,16 +73,8 @@ defmodule SellApp.SdkSearchProductsResponseValue200ApplicationJson do
                 &SellApp.SearchProductsResponseValue200ApplicationJsonPropertyDataItem.to_map/1
               )
             end),
-          "links" =>
-            SellApp.Cast.dump_struct(
-              struct.links,
-              &SellApp.SearchProductsResponseValue200ApplicationJsonPropertyLinks.to_map/1
-            ),
-          "meta" =>
-            SellApp.Cast.dump_struct(
-              struct.meta,
-              &SellApp.SearchProductsResponseValue200ApplicationJsonPropertyMeta.to_map/1
-            )
+          "links" => SellApp.Cast.dump_struct(struct.links, &SellApp.PaginationLinks.to_map/1),
+          "meta" => SellApp.Cast.dump_struct(struct.meta, &SellApp.PaginationMeta.to_map/1)
         },
         ["data", "links", "meta"],
         struct.__present_fields__

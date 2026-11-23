@@ -30,6 +30,23 @@ defmodule SellApp.TicketsRoundTripTest do
              serialized
   end
 
+  test "SdkBatchUpdateTicketsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => [%{"ticket_id" => 1, "result" => "changed", "message" => nil, "ticket" => nil}]
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkBatchUpdateTicketsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkBatchUpdateTicketsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkBatchUpdateTicketsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkBatchUpdateTicketsResponseValue200ApplicationJson.to_map() == serialized
+  end
+
   test "SdkGetTicketResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{
@@ -151,6 +168,55 @@ defmodule SellApp.TicketsRoundTripTest do
     assert serialized
            |> SellApp.SdkUpdateTicketResponseValue200ApplicationJson.from_map()
            |> SellApp.SdkUpdateTicketResponseValue200ApplicationJson.to_map() == serialized
+  end
+
+  test "SdkV2GetTicketContextResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "ticket_id" => 1,
+        "resolution" => %{"outcome" => nil, "resolved_at" => nil, "resolved_by_rule_id" => nil},
+        "customer" => %{
+          "email" => nil,
+          "completed_orders" => 1,
+          "lifetime_spend_usd_cents" => 1,
+          "first_order_at" => nil
+        },
+        "linked_order" => nil,
+        "refund_options" => [
+          %{
+            "invoice_id" => 1,
+            "order_id" => 1,
+            "product_id" => nil,
+            "product_title" => nil,
+            "currency" => "USD",
+            "paid_cents" => 1,
+            "active_support_refunds_cents" => 1,
+            "refundable_cents" => nil
+          }
+        ],
+        "activity" => [
+          %{
+            "id" => 1,
+            "event" => "refund_issued",
+            "actor_type" => "actor_type",
+            "rule" => nil,
+            "wallet_entry" => nil,
+            "created_at" => "2024-01-01T00:00:00.000Z"
+          }
+        ]
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkV2GetTicketContextResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkV2GetTicketContextResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkV2GetTicketContextResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkV2GetTicketContextResponseValue200ApplicationJson.to_map() == serialized
   end
 
   test "SdkV2GetTicketResponseValue200ApplicationJson round-trips between wire and struct" do

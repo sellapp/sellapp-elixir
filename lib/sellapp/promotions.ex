@@ -402,4 +402,47 @@ defmodule SellApp.Promotions do
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
     end
   end
+
+  @doc """
+  Retrieve promotion usage
+
+  Count the completed orders that used a promotion, across all of its phases and its whole life, and list the newest of them. Only orders whose status is `COMPLETED` count; pending and refunded orders do not. A promotion from another store returns `404`, and so does a deleted one unless you send `with_trashed=true`. Requires the `promotion` API-key ability and the promotion permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `promotion` — The promotion ID.
+    * `params` — query parameters: `:with_trashed`, `:only_trashed`
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec get_usage(SellApp.Client.t(), String.t(), map(), keyword()) ::
+          {:ok, SellApp.SdkGetPromotionUsageResponseValue200ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def get_usage(client, promotion, params \\ %{}, opts \\ []) do
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :get,
+             "/v2/promotions/#{URI.encode(promotion, &URI.char_unreserved?/1)}/usage",
+             params,
+             Keyword.put(opts, :operation_id, "getPromotionUsage")
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{kind: :model, module: SellApp.SdkGetPromotionUsageResponseValue200ApplicationJson},
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkGetPromotionUsageResponseValue200ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
 end

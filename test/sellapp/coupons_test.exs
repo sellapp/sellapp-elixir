@@ -292,7 +292,8 @@ defmodule SellApp.CouponsTest do
                "expires_at" => nil,
                "minimum_amount" => nil,
                "applies_to" => "one_time",
-               "subscription_payments" => nil
+               "subscription_payments" => nil,
+               "maximum_discount_amount" => nil
              })
   end
 
@@ -384,7 +385,8 @@ defmodule SellApp.CouponsTest do
                "expires_at" => nil,
                "minimum_amount" => nil,
                "applies_to" => "one_time",
-               "subscription_payments" => nil
+               "subscription_payments" => nil,
+               "maximum_discount_amount" => nil
              })
   end
 
@@ -407,7 +409,8 @@ defmodule SellApp.CouponsTest do
                "expires_at" => nil,
                "minimum_amount" => nil,
                "applies_to" => "one_time",
-               "subscription_payments" => nil
+               "subscription_payments" => nil,
+               "maximum_discount_amount" => nil
              })
   end
 
@@ -443,7 +446,8 @@ defmodule SellApp.CouponsTest do
                    "expires_at" => nil,
                    "minimum_amount" => nil,
                    "applies_to" => "one_time",
-                   "subscription_payments" => nil
+                   "subscription_payments" => nil,
+                   "maximum_discount_amount" => nil
                  }
                ]
              })
@@ -469,6 +473,17 @@ defmodule SellApp.CouponsTest do
 
     assert {:ok, %SellApp.SdkV2BatchDeleteCouponsResponseValue200ApplicationJson{}} =
              SellApp.Coupons.v2_batch_delete_coupons(client, %{"resources" => [1]})
+  end
+
+  test "v2_get_coupon_usage succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "GET"
+      assert String.ends_with?(conn.request_path, "/v2/coupons/test_coupon/usage")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("coupons/v2_get_coupon_usage"))
+    end)
+
+    assert {:ok, %SellApp.SdkV2GetCouponUsageResponseValue200ApplicationJson{}} =
+             SellApp.Coupons.v2_get_coupon_usage(client, "test_coupon")
   end
 
   test "list encodes query parameters", %{client: client} do

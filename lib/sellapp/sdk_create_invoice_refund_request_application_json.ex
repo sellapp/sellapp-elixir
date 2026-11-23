@@ -7,12 +7,14 @@ defmodule SellApp.SdkCreateInvoiceRefundRequestApplicationJson do
 
   defstruct [
     :amount,
+    :expected_refunded_total_cents,
     __additional_properties__: %{},
     __present_fields__: []
   ]
 
   @type t :: %__MODULE__{
           amount: String.t() | nil,
+          expected_refunded_total_cents: integer() | nil,
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -26,6 +28,10 @@ defmodule SellApp.SdkCreateInvoiceRefundRequestApplicationJson do
           kind: :nullable,
           inner: %{kind: :string, max_length: 32, pattern: "^\\d+(\\.\\d+)?$"}
         }
+      },
+      "expected_refunded_total_cents" => %{
+        required: false,
+        schema: %{kind: :nullable, inner: %{kind: :integer, minimum: 0}}
       }
     },
     additional_properties: true
@@ -40,7 +46,8 @@ defmodule SellApp.SdkCreateInvoiceRefundRequestApplicationJson do
 
     %__MODULE__{
       amount: map["amount"],
-      __additional_properties__: Map.drop(map, ["amount"]),
+      expected_refunded_total_cents: map["expected_refunded_total_cents"],
+      __additional_properties__: Map.drop(map, ["amount", "expected_refunded_total_cents"]),
       __present_fields__: Map.keys(map)
     }
   end
@@ -51,7 +58,8 @@ defmodule SellApp.SdkCreateInvoiceRefundRequestApplicationJson do
     known =
       SellApp.Cast.keep_present(
         %{
-          "amount" => struct.amount
+          "amount" => struct.amount,
+          "expected_refunded_total_cents" => struct.expected_refunded_total_cents
         },
         [],
         struct.__present_fields__

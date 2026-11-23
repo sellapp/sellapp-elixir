@@ -129,7 +129,7 @@ client = SellApp.Client.new(
   store: System.fetch_env!("SELLAPP_STORE")
 )
 
-{:ok, result} = SellApp.Orders.search(client, %{"filters" => [%{"field" => "transaction_id", "operator" => "contains", "value" => "pi_3Example"}, %{"field" => "status", "operator" => "in", "value" => ["COMPLETED"]}], "sort" => [%{"field" => "created_at", "direction" => "desc"}], "pagination" => %{"page" => 1, "limit" => 25}})
+{:ok, result} = SellApp.Orders.search(client, %{"filters" => [%{"field" => "created_at", "operator" => "gte", "value" => "2026-07-01T00:00:00Z"}, %{"field" => "created_at", "operator" => "lte", "value" => "2026-07-31T23:59:59Z"}, %{"field" => "total", "operator" => "gte", "value" => 1000}, %{"field" => "currency", "operator" => "eq", "value" => "USD"}, %{"field" => "status", "operator" => "in", "value" => ["COMPLETED"]}], "sort" => [%{"field" => "created_at", "direction" => "desc"}], "pagination" => %{"page" => 1, "limit" => 25}})
 IO.inspect(result)
 ```
 
@@ -388,7 +388,7 @@ client = SellApp.Client.new(
   store: System.fetch_env!("SELLAPP_STORE")
 )
 
-{:ok, result} = SellApp.Orders.create_refund(client, 9001, %{"amount" => "5.00"}, idempotency_key: "example-mutation-001")
+{:ok, result} = SellApp.Orders.create_refund(client, 9001, %{"amount" => "5.00", "expected_refunded_total_cents" => 0}, idempotency_key: "example-mutation-001")
 IO.inspect(result)
 ```
 
@@ -567,6 +567,58 @@ Supported credential alternatives (each object is one alternative):
 ```
 
 Documented HTTP responses: 200, 400, 401, 403, 404, 409, 410, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
+## regenerate_telegram_invite
+
+Create a Telegram invite link
+
+[API reference](https://sell.app/docs/api/orders/create-a-telegram-invite-link) · Effect: **consequential**
+
+```elixir
+def regenerate_telegram_invite(client, order, params \\ %{}, opts \\ [])
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| client | `any` | Yes |
+| order | `any` | Yes |
+| params | `any` | Yes |
+| opts | `any` | Yes |
+
+Returns: `any`.
+
+```exs
+client = SellApp.Client.new(
+  base_url: System.fetch_env!("SELLAPP_API_BASE_URL"),
+  api_key: System.fetch_env!("SELLAPP_API_KEY"),
+  store: System.fetch_env!("SELLAPP_STORE")
+)
+
+{:ok, result} = SellApp.Orders.regenerate_telegram_invite(client, 9001, %{"variant_id" => 4321}, idempotency_key: "example-mutation-001")
+IO.inspect(result)
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 201, 400, 401, 403, 404, 409, 410, 422, 429, 500. See the API reference for field-level validation and consequences.
 
 [Response access, transport controls, pagination, and typed errors](../usage.md)
 

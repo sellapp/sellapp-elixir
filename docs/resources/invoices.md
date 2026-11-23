@@ -542,7 +542,7 @@ client = SellApp.Client.new(
   store: System.fetch_env!("SELLAPP_STORE")
 )
 
-{:ok, result} = SellApp.Invoices.create_refund(client, 1, %{"amount" => "12.50"})
+{:ok, result} = SellApp.Invoices.create_refund(client, 1, %{"amount" => "12.50", "expected_refunded_total_cents" => 0})
 IO.inspect(result)
 ```
 

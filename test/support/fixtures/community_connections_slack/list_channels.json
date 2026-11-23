@@ -1,0 +1,13 @@
+{
+  "data": {
+    "channels": [
+      {
+        "id": "id",
+        "name": "name",
+        "is_private": true,
+        "num_members": 1
+      }
+    ],
+    "registered_count": 1
+  }
+}

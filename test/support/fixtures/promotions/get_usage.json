@@ -1,0 +1,9 @@
+{
+  "data": {
+    "promotion_id": 1,
+    "uses": 1,
+    "recent_order_ids": [
+      1
+    ]
+  }
+}

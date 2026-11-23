@@ -1,0 +1,10 @@
+{
+  "data": {
+    "product_id": null,
+    "purchase_cents": null,
+    "eligible": true,
+    "cashback_cents": null,
+    "reason": "reason",
+    "matching_rule": null
+  }
+}

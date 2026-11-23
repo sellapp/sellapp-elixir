@@ -91,6 +91,31 @@ defmodule SellApp.CommunityConnectionsRoundTripTest do
              serialized
   end
 
+  test "SdkListCommunityFailedGrantReasonsResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => [
+        %{
+          "reason" => "invalid_credentials",
+          "label" => "label",
+          "count" => 1,
+          "what_to_do" => "what_to_do"
+        }
+      ]
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkListCommunityFailedGrantReasonsResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkListCommunityFailedGrantReasonsResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkListCommunityFailedGrantReasonsResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkListCommunityFailedGrantReasonsResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
   test "SdkPollCommunityConnectionResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{
@@ -143,6 +168,38 @@ defmodule SellApp.CommunityConnectionsRoundTripTest do
            |> SellApp.SdkStartCommunityConnectionResponseValue200ApplicationJson.from_map()
            |> SellApp.SdkStartCommunityConnectionResponseValue200ApplicationJson.to_map() ==
              serialized
+  end
+
+  test "SdkSyncDiscordRolesResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "platform" => "discord",
+        "synced_servers" => [
+          %{
+            "id" => "id",
+            "name" => "name",
+            "synced" => true,
+            "roles_synced" => 1,
+            "hierarchy" => "healthy",
+            "bot_can_assign" => 1,
+            "total_roles" => 1,
+            "error" => "error"
+          }
+        ],
+        "failed_count" => 1
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkSyncDiscordRolesResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkSyncDiscordRolesResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkSyncDiscordRolesResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkSyncDiscordRolesResponseValue200ApplicationJson.to_map() == serialized
   end
 
   test "SdkVerifyCommunityConnectionResponseValue200ApplicationJson round-trips between wire and struct" do

@@ -79,12 +79,26 @@ defmodule SellApp.AffiliatePayoutsTest do
              SellApp.AffiliatePayouts.update(client, "test_payout", %{"status" => "due"})
   end
 
+  test "mark_paid succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "POST"
+      assert String.ends_with?(conn.request_path, "/v2/affiliate-payouts/mark-paid")
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("affiliate_payouts/mark_paid"))
+    end)
+
+    assert {:ok, %SellApp.SdkMarkAffiliatePayoutsPaidResponseValue200ApplicationJson{}} =
+             SellApp.AffiliatePayouts.mark_paid(client, %{
+               "payout_ids" => [1],
+               "expected_total_usd_cents" => 1
+             })
+  end
+
   test "list encodes query parameters", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()
       params = Map.new(pairs)
       assert params["affiliate_id"] == "hello world&x"
-      refute Map.has_key?(params, "limit")
+      refute Map.has_key?(params, "search")
       Req.Test.json(conn, SellApp.TestFixtures.fixture("affiliate_payouts/list"))
     end)
 

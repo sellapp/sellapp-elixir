@@ -42,6 +42,14 @@
   {
     "language": "elixir",
     "fileExtension": "exs",
+    "operationId": "getChargeSummary",
+    "mountTarget": "Charges",
+    "methodName": "get_summary",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Charges.get_summary(client, %{})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
     "operationId": "listGroups",
     "mountTarget": "Groups",
     "methodName": "list",
@@ -221,7 +229,7 @@
     "operationId": "createInvoiceRefund",
     "mountTarget": "Invoices",
     "methodName": "create_refund",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Invoices.create_refund(client, 1, %{\"amount\" => \"12.50\"})\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Invoices.create_refund(client, 1, %{\"amount\" => \"12.50\", \"expected_refunded_total_cents\" => 0})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -373,7 +381,7 @@
     "operationId": "searchProducts",
     "mountTarget": "Products",
     "methodName": "search",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Products.search(client, %{\"filters\" => [%{\"field\" => \"id\", \"operator\" => \"=\", \"value\" => 1}], \"sort\" => [%{\"field\" => \"created_at\", \"direction\" => \"desc\"}]})\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Products.search(client, %{\"search\" => %{\"value\" => \"launch\"}, \"max_price\" => 2500, \"stock\" => \"in_stock\", \"visibility\" => [\"PUBLIC\"], \"has_sales\" => true})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -398,6 +406,62 @@
     "mountTarget": "Products",
     "methodName": "batch_delete",
     "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Products.batch_delete(client, %{\"resources\" => [1, 2]})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "publishProduct",
+    "mountTarget": "Products",
+    "methodName": "publish",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Products.publish(client, 1, %{\"variant_ids\" => [2]})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "duplicateProduct",
+    "mountTarget": "Products",
+    "methodName": "duplicate",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Products.duplicate(client, 1)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "moveProduct",
+    "mountTarget": "Products",
+    "methodName": "move",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Products.move(client, 1, %{\"position\" => 1, \"expected_position\" => 3})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getProductFeaturedVariant",
+    "mountTarget": "ProductsFeaturedVariant",
+    "methodName": "get",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.ProductsFeaturedVariant.get(client, 1)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "replaceProductFeaturedVariant",
+    "mountTarget": "ProductsFeaturedVariant",
+    "methodName": "replace",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.ProductsFeaturedVariant.replace(client, 1, %{\"variant_id\" => 2, \"highlight_label\" => \"best_value\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "listProductSimilarProducts",
+    "mountTarget": "ProductsSimilarProducts",
+    "methodName": "list",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.ProductsSimilarProducts.list(client, 30)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "replaceProductSimilarProducts",
+    "mountTarget": "ProductsSimilarProducts",
+    "methodName": "replace",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.ProductsSimilarProducts.replace(client, 30, %{\"variant_ids\" => [31, 41]})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -518,6 +582,54 @@
     "mountTarget": "ProductVariants",
     "methodName": "batch_delete",
     "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.ProductVariants.batch_delete(client, 1, %{\"resources\" => [1, 2]})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "publishProductVariant",
+    "mountTarget": "ProductVariants",
+    "methodName": "publish",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.ProductVariants.publish(client, 11, 12)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "duplicateProductVariant",
+    "mountTarget": "ProductVariants",
+    "methodName": "duplicate",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.ProductVariants.duplicate(client, 1, 2)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "reorderProductVariants",
+    "mountTarget": "ProductVariants",
+    "methodName": "reorder",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.ProductVariants.reorder(client, 1, %{\"variant_ids\" => [2, 1]})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getVariantSubscriptionSettings",
+    "mountTarget": "ProductVariantsSubscriptionSettings",
+    "methodName": "get",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.ProductVariantsSubscriptionSettings.get(client, 1, 4)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "updateVariantSubscriptionSettings",
+    "mountTarget": "ProductVariantsSubscriptionSettings",
+    "methodName": "update",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.ProductVariantsSubscriptionSettings.update(client, 1, 4, %{\"pause_policy\" => %{\"max_pause_days\" => 30}, \"renewal_policy\" => %{\"redeliver_on_renewal\" => false}, \"expected_state\" => \"3f9a1c0e7b2d4a6f8e1c5b9d0a7f3e2c4b6d8a0f1e3c5a7b9d2f4e6a8c0b1d3e\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "replaceVariantCommunityAccess",
+    "mountTarget": "ProductVariantsCommunityAccess",
+    "methodName": "replace",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.ProductVariantsCommunityAccess.replace(client, 1, 2, %{\"community\" => %{\"platform\" => \"discord\", \"server_id\" => \"1187040134912155648\", \"role_ids\" => [\"1187040299781210112\"], \"required\" => true, \"remove_on_expire\" => true}, \"expected_updated_at\" => \"2024-01-10T18:47:22.000000Z\"})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -746,6 +858,14 @@
   {
     "language": "elixir",
     "fileExtension": "exs",
+    "operationId": "createBookingProduct",
+    "mountTarget": "Bookings",
+    "methodName": "create",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Bookings.create(client, %{\"title\" => \"Strategy consultation\", \"description\" => \"<p>A private strategy session for your next launch.</p>\", \"variant_title\" => \"60 minute session\", \"price_cents\" => 2500, \"currency\" => \"USD\", \"payment_methods\" => [\"STRIPE\"], \"timezone\" => \"Europe/London\", \"duration_minutes\" => 60, \"availability\" => [%{\"day\" => 1, \"enabled\" => true, \"start\" => \"09:00\", \"end\" => \"12:00\"}, %{\"day\" => 3, \"enabled\" => true, \"start\" => \"13:00\", \"end\" => \"17:00\"}]})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
     "operationId": "getBundleItem",
     "mountTarget": "BundleItems",
     "methodName": "get",
@@ -774,6 +894,38 @@
     "mountTarget": "BundleItems",
     "methodName": "detach",
     "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.BundleItems.detach(client, 1, %{\"resources\" => [1]})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "previewVariantBuyerNotification",
+    "mountTarget": "VariantDeliverables",
+    "methodName": "preview",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.VariantDeliverables.preview(client, 1, 2)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "notifyVariantBuyers",
+    "mountTarget": "VariantDeliverables",
+    "methodName": "notify",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.VariantDeliverables.notify(client, 1, 2, idempotency_key: \"example-mutation-001\")\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getVariantDeliverableConfiguration",
+    "mountTarget": "VariantDeliverables",
+    "methodName": "get",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.VariantDeliverables.get(client, \"string_example\", 1)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "replaceVariantDeliverableConfiguration",
+    "mountTarget": "VariantDeliverables",
+    "methodName": "replace",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.VariantDeliverables.replace(client, \"string_example\", 1, %{\"types\" => [\"MANUAL\"], \"data\" => %{\"comment\" => \"Delivery is arranged by Launch Lab.\"}})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -854,6 +1006,14 @@
     "mountTarget": "PromotionsPhases",
     "methodName": "replace",
     "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.PromotionsPhases.replace(client, 1, %{\"phases\" => [%{\"discount_type\" => \"percentage\", \"discount_value\" => \"20\", \"ends_at\" => \"2026-08-04T00:00:00Z\", \"max_redemptions\" => 200, \"minimum_amount\" => \"10\"}, %{\"discount_type\" => \"fixed\", \"discount_value\" => \"5\", \"ends_at\" => nil, \"max_redemptions\" => nil, \"minimum_amount\" => \"25\"}]})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getPromotionUsage",
+    "mountTarget": "Promotions",
+    "methodName": "get_usage",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Promotions.get_usage(client, 30, %{})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -1138,6 +1298,222 @@
   {
     "language": "elixir",
     "fileExtension": "exs",
+    "operationId": "listSupportReplyTemplates",
+    "mountTarget": "SupportReplyTemplates",
+    "methodName": "list",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportReplyTemplates.list(client, %{})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "createSupportReplyTemplate",
+    "mountTarget": "SupportReplyTemplates",
+    "methodName": "create",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportReplyTemplates.create(client, %{\"label\" => \"Refund credited\", \"body\" => \"Hi {customer_email}, we credited {refund_amount} to your {store_name} wallet for {product_title}. Your wallet balance is now {wallet_balance}.\", \"supports_auto_respond\" => true})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getSupportReplyTemplate",
+    "mountTarget": "SupportReplyTemplates",
+    "methodName": "get",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportReplyTemplates.get(client, 32)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "replaceSupportReplyTemplate",
+    "mountTarget": "SupportReplyTemplates",
+    "methodName": "replace",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportReplyTemplates.replace(client, 31, %{\"is_active\" => false, \"expected_updated_at\" => \"2026-07-03T09:12:00.000000Z\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "updateSupportReplyTemplate",
+    "mountTarget": "SupportReplyTemplates",
+    "methodName": "update",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportReplyTemplates.update(client, 31, %{\"is_active\" => false, \"expected_updated_at\" => \"2026-07-03T09:12:00.000000Z\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "deleteSupportReplyTemplate",
+    "mountTarget": "SupportReplyTemplates",
+    "methodName": "delete",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportReplyTemplates.delete(client, 33)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "renderSupportReplyTemplate",
+    "mountTarget": "SupportReplyTemplates",
+    "methodName": "render",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportReplyTemplates.render(client, 1, %{\"ticket_id\" => 4821, \"invoice_id\" => 7001, \"refund_amount_cents\" => 999})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "reorderSupportReplyTemplates",
+    "mountTarget": "SupportReplyTemplates",
+    "methodName": "reorder",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportReplyTemplates.reorder(client, %{\"ordered_template_ids\" => [32, 31]})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getSupportReplyTemplateOptions",
+    "mountTarget": "SupportReplyTemplates",
+    "methodName": "get_options",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportReplyTemplates.get_options(client, %{})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "listSupportReasons",
+    "mountTarget": "SupportReasons",
+    "methodName": "list",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportReasons.list(client, %{})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "createSupportReason",
+    "mountTarget": "SupportReasons",
+    "methodName": "create",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportReasons.create(client, %{\"label\" => \"Download link expired\", \"description\" => \"The download link in the order email no longer works.\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getSupportReason",
+    "mountTarget": "SupportReasons",
+    "methodName": "get",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportReasons.get(client, 14)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "replaceSupportReason",
+    "mountTarget": "SupportReasons",
+    "methodName": "replace",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportReasons.replace(client, 14, %{\"description\" => \"The download link in the order email no longer opens.\", \"expected_updated_at\" => \"2026-07-03T09:10:00.000000Z\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "updateSupportReason",
+    "mountTarget": "SupportReasons",
+    "methodName": "update",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportReasons.update(client, 14, %{\"description\" => \"The download link in the order email no longer opens.\", \"expected_updated_at\" => \"2026-07-03T09:10:00.000000Z\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "deleteSupportReason",
+    "mountTarget": "SupportReasons",
+    "methodName": "delete",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportReasons.delete(client, 15)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getSupportReasonOptions",
+    "mountTarget": "SupportReasons",
+    "methodName": "get_options",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportReasons.get_options(client)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "listSupportAutomationRules",
+    "mountTarget": "SupportAutomationRules",
+    "methodName": "list",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportAutomationRules.list(client, %{})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "createSupportAutomationRule",
+    "mountTarget": "SupportAutomationRules",
+    "methodName": "create",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportAutomationRules.create(client, %{\"name\" => \"Expired download links\", \"match_reason_source\" => \"store\", \"match_reason_code\" => \"download-link-expired\", \"match_product_ids\" => [120], \"match_max_order_total_cents\" => 5000, \"max_prior_support_refund_count\" => 0, \"response_template_id\" => 32, \"action_refund_kind\" => \"partial\", \"action_refund_percent_basis\" => 5000, \"action_refund_cap_cents\" => 1000, \"action_close_outcome\" => \"refunded_partial\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getSupportAutomationRule",
+    "mountTarget": "SupportAutomationRules",
+    "methodName": "get",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportAutomationRules.get(client, 7)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "replaceSupportAutomationRule",
+    "mountTarget": "SupportAutomationRules",
+    "methodName": "replace",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportAutomationRules.replace(client, 7, %{\"name\" => \"Expired download links, first refund only\", \"clear\" => [\"match_max_order_total_cents\"], \"expected_updated_at\" => \"2026-07-03T09:20:00.000000Z\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "updateSupportAutomationRule",
+    "mountTarget": "SupportAutomationRules",
+    "methodName": "update",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportAutomationRules.update(client, 7, %{\"name\" => \"Expired download links, first refund only\", \"clear\" => [\"match_max_order_total_cents\"], \"expected_updated_at\" => \"2026-07-03T09:20:00.000000Z\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "updateSupportAutomationRuleState",
+    "mountTarget": "SupportAutomationRules",
+    "methodName": "update_state",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportAutomationRules.update_state(client, 1, %{\"state\" => \"active\", \"expected_updated_at\" => \"2026-07-03T09:20:00.000000Z\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "reorderSupportAutomationRules",
+    "mountTarget": "SupportAutomationRules",
+    "methodName": "reorder",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportAutomationRules.reorder(client, %{\"ordered_rule_ids\" => [7]})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "dryRunSupportAutomationRules",
+    "mountTarget": "SupportAutomationRules",
+    "methodName": "dry_run",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportAutomationRules.dry_run(client, %{\"ticket_id\" => 4821})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getSupportAutomationSettings",
+    "mountTarget": "SupportAutomationSettings",
+    "methodName": "get",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportAutomationSettings.get(client)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "replaceSupportAutomationSettings",
+    "mountTarget": "SupportAutomationSettings",
+    "methodName": "replace",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportAutomationSettings.replace(client, %{\"automation_enabled\" => true, \"daily_refund_cap_cents\" => 5000, \"expected_automation_enabled\" => false, \"expected_daily_refund_cap_cents\" => nil})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "updateSupportAutomationSettings",
+    "mountTarget": "SupportAutomationSettings",
+    "methodName": "update",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.SupportAutomationSettings.update(client, %{\"automation_enabled\" => true, \"daily_refund_cap_cents\" => 5000, \"expected_automation_enabled\" => false, \"expected_daily_refund_cap_cents\" => nil})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
     "operationId": "listCustomers",
     "mountTarget": "Customers",
     "methodName": "list",
@@ -1221,7 +1597,7 @@
     "operationId": "searchOrders",
     "mountTarget": "Orders",
     "methodName": "search",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Orders.search(client, %{\"filters\" => [%{\"field\" => \"transaction_id\", \"operator\" => \"contains\", \"value\" => \"pi_3Example\"}, %{\"field\" => \"status\", \"operator\" => \"in\", \"value\" => [\"COMPLETED\"]}], \"sort\" => [%{\"field\" => \"created_at\", \"direction\" => \"desc\"}], \"pagination\" => %{\"page\" => 1, \"limit\" => 25}})\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Orders.search(client, %{\"filters\" => [%{\"field\" => \"created_at\", \"operator\" => \"gte\", \"value\" => \"2026-07-01T00:00:00Z\"}, %{\"field\" => \"created_at\", \"operator\" => \"lte\", \"value\" => \"2026-07-31T23:59:59Z\"}, %{\"field\" => \"total\", \"operator\" => \"gte\", \"value\" => 1000}, %{\"field\" => \"currency\", \"operator\" => \"eq\", \"value\" => \"USD\"}, %{\"field\" => \"status\", \"operator\" => \"in\", \"value\" => [\"COMPLETED\"]}], \"sort\" => [%{\"field\" => \"created_at\", \"direction\" => \"desc\"}], \"pagination\" => %{\"page\" => 1, \"limit\" => 25}})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -1261,7 +1637,7 @@
     "operationId": "createOrderRefund",
     "mountTarget": "Orders",
     "methodName": "create_refund",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Orders.create_refund(client, 9001, %{\"amount\" => \"5.00\"}, idempotency_key: \"example-mutation-001\")\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Orders.create_refund(client, 9001, %{\"amount\" => \"5.00\", \"expected_refunded_total_cents\" => 0}, idempotency_key: \"example-mutation-001\")\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -1286,6 +1662,14 @@
     "mountTarget": "Orders",
     "methodName": "send_fulfillment_notifications",
     "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Orders.send_fulfillment_notifications(client, 9001, %{\"email\" => \"maya@example.com\", \"product_variant_ids\" => [4321]}, idempotency_key: \"example-mutation-001\")\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "regenerateOrderTelegramInvite",
+    "mountTarget": "Orders",
+    "methodName": "regenerate_telegram_invite",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Orders.regenerate_telegram_invite(client, 9001, %{\"variant_id\" => 4321}, idempotency_key: \"example-mutation-001\")\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -1358,22 +1742,6 @@
     "mountTarget": "OrdersLineItems",
     "methodName": "get",
     "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.OrdersLineItems.get(client, 4001, 9001)\nIO.inspect(result)\n"
-  },
-  {
-    "language": "elixir",
-    "fileExtension": "exs",
-    "operationId": "getVariantDeliverableConfiguration",
-    "mountTarget": "VariantDeliverables",
-    "methodName": "get",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.VariantDeliverables.get(client, \"string_example\", 1)\nIO.inspect(result)\n"
-  },
-  {
-    "language": "elixir",
-    "fileExtension": "exs",
-    "operationId": "replaceVariantDeliverableConfiguration",
-    "mountTarget": "VariantDeliverables",
-    "methodName": "replace",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.VariantDeliverables.replace(client, \"string_example\", 1, %{\"types\" => [\"MANUAL\"], \"data\" => %{\"comment\" => \"Delivery is arranged by Launch Lab.\"}})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -1542,6 +1910,14 @@
     "mountTarget": "AffiliateProgram",
     "methodName": "invite",
     "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.AffiliateProgram.invite(client, %{\"email\" => \"alex.morgan@example.com\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "resendAffiliateInvitation",
+    "mountTarget": "AffiliateProgram",
+    "methodName": "resend",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.AffiliateProgram.resend(client, 77)\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -1730,6 +2106,14 @@
   {
     "language": "elixir",
     "fileExtension": "exs",
+    "operationId": "getUpsellOfferPerformance",
+    "mountTarget": "UpsellOffers",
+    "methodName": "get_performance",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.UpsellOffers.get_performance(client, 71, %{})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
     "operationId": "listCommunityConnections",
     "mountTarget": "CommunityConnections",
     "methodName": "list",
@@ -1778,6 +2162,62 @@
   {
     "language": "elixir",
     "fileExtension": "exs",
+    "operationId": "listCommunityFailedGrantReasons",
+    "mountTarget": "CommunityConnections",
+    "methodName": "list_failed_grant_reasons",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.CommunityConnections.list_failed_grant_reasons(client)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getCommunityServer",
+    "mountTarget": "CommunityConnectionsServers",
+    "methodName": "get",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.CommunityConnectionsServers.get(client, \"discord\", \"server_ship_room\")\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "removeCommunityServer",
+    "mountTarget": "CommunityConnectionsServers",
+    "methodName": "remove",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.CommunityConnectionsServers.remove(client, \"discord\", \"server_ship_room\", %{\"affected_variant_ids\" => [902]})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "syncDiscordRoles",
+    "mountTarget": "CommunityConnections",
+    "methodName": "sync_discord_roles",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.CommunityConnections.sync_discord_roles(client, %{})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "listSlackAvailableChannels",
+    "mountTarget": "CommunityConnectionsSlack",
+    "methodName": "list_channels",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.CommunityConnectionsSlack.list_channels(client)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "addSlackChannel",
+    "mountTarget": "CommunityConnectionsSlack",
+    "methodName": "add_channel",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.CommunityConnectionsSlack.add_channel(client, %{\"channel_id\" => \"C07LAUNCHVIP\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "replaceSlackWorkspaceInviteLink",
+    "mountTarget": "CommunityConnectionsSlack",
+    "methodName": "replace_invite_link",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.CommunityConnectionsSlack.replace_invite_link(client, %{\"invite_link\" => \"https://join.slack.com/t/launch-lab/shared_invite/zt-2abc123\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
     "operationId": "getWalletSettings",
     "mountTarget": "WalletSettings",
     "methodName": "get",
@@ -1813,7 +2253,7 @@
     "operationId": "adjustCustomerWallet",
     "mountTarget": "Wallet",
     "methodName": "adjust",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Wallet.adjust(client, 1, %{\"amount_cents\" => 2500, \"idempotency_key\" => \"wallet-adjustment-01992a65\", \"note\" => \"Launch-day account credit\"})\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Wallet.adjust(client, 1, %{\"amount_cents\" => 2500, \"idempotency_key\" => \"wallet-adjustment-01992a65\", \"note\" => \"Launch-day account credit\", \"expected_balance_cents\" => 0})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -1822,6 +2262,30 @@
     "mountTarget": "Wallet",
     "methodName": "update_status",
     "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Wallet.update_status(client, 1, %{\"status\" => \"frozen\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "reverseWalletTransaction",
+    "mountTarget": "WalletTransactions",
+    "methodName": "reverse",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.WalletTransactions.reverse(client, 42, 501, %{\"note\" => \"Credit went to the wrong customer\", \"expected_balance_cents\" => 2500})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "listStoreWalletTransactions",
+    "mountTarget": "WalletLedger",
+    "methodName": "list",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.WalletLedger.list(client, %{})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getWalletOverview",
+    "mountTarget": "WalletOverview",
+    "methodName": "get",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.WalletOverview.get(client, %{})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -1890,6 +2354,14 @@
   {
     "language": "elixir",
     "fileExtension": "exs",
+    "operationId": "quoteCashbackRule",
+    "mountTarget": "CashbackRules",
+    "methodName": "quote",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.CashbackRules.quote_(client, %{})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
     "operationId": "listWalletBonusTiers",
     "mountTarget": "WalletBonusTiers",
     "methodName": "list",
@@ -1938,10 +2410,26 @@
   {
     "language": "elixir",
     "fileExtension": "exs",
+    "operationId": "quoteWalletBonusTier",
+    "mountTarget": "WalletBonusTiers",
+    "methodName": "quote",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.WalletBonusTiers.quote_(client, %{\"top_up_cents\" => 20000})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
     "operationId": "listCourses",
     "mountTarget": "Courses",
     "methodName": "list",
     "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Courses.list(client, %{})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "createCourse",
+    "mountTarget": "Courses",
+    "methodName": "create",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Courses.create(client, %{\"category\" => \"design\", \"level\" => \"beginner\", \"language\" => \"English\", \"what_you_learn\" => [\"Sketch a logo concept.\", \"Choose a color palette.\"], \"certificate_enabled\" => true, \"delivery_text\" => \"Open your course from the link in your receipt.\", \"title\" => \"Brand identity basics\", \"description\" => \"<p>Design a logo, color palette, and type system for your next project.</p>\"})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -1974,6 +2462,14 @@
     "mountTarget": "Courses",
     "methodName": "update",
     "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Courses.update(client, \"string_example\", %{\"level\" => \"beginner\", \"visibility\" => \"HIDDEN\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getCourseStudentSummary",
+    "mountTarget": "Courses",
+    "methodName": "get_student_summary",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Courses.get_student_summary(client, %{\"start_date\" => \"2026-08-01\", \"end_date\" => \"2026-08-31\"})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -2058,6 +2554,62 @@
   {
     "language": "elixir",
     "fileExtension": "exs",
+    "operationId": "listCheckoutFieldTemplates",
+    "mountTarget": "CheckoutFieldTemplates",
+    "methodName": "list",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.CheckoutFieldTemplates.list(client, %{})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "createCheckoutFieldTemplate",
+    "mountTarget": "CheckoutFieldTemplates",
+    "methodName": "create",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.CheckoutFieldTemplates.create(client, %{\"name\" => \"Discord access\", \"fields\" => [%{\"type\" => \"text\", \"label\" => \"Discord username\", \"key\" => \"discord_username\", \"required\" => true, \"placeholder\" => \"name#0001\", \"description\" => \"We add this account to the community after purchase.\"}, %{\"type\" => \"radio\", \"label\" => \"Experience level\", \"key\" => \"experience_level\", \"required\" => false, \"options\" => [\"Beginner\", \"Intermediate\", \"Advanced\"], \"variant\" => \"cards\", \"variant_options\" => %{\"vertical\" => true, \"indicator\" => true}}]})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getCheckoutFieldTemplate",
+    "mountTarget": "CheckoutFieldTemplates",
+    "methodName": "get",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.CheckoutFieldTemplates.get(client, 14)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "replaceCheckoutFieldTemplate",
+    "mountTarget": "CheckoutFieldTemplates",
+    "methodName": "replace",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.CheckoutFieldTemplates.replace(client, 14, %{\"name\" => \"Discord onboarding\", \"expected_updated_at\" => \"2026-09-04T09:00:00.000000Z\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "updateCheckoutFieldTemplate",
+    "mountTarget": "CheckoutFieldTemplates",
+    "methodName": "update",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.CheckoutFieldTemplates.update(client, 14, %{\"name\" => \"Discord onboarding\", \"expected_updated_at\" => \"2026-09-04T09:00:00.000000Z\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "deleteCheckoutFieldTemplate",
+    "mountTarget": "CheckoutFieldTemplates",
+    "methodName": "delete",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.CheckoutFieldTemplates.delete(client, 14, %{\"expected_updated_at\" => \"2026-09-04T09:00:00.000000Z\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "duplicateCheckoutFieldTemplate",
+    "mountTarget": "CheckoutFieldTemplates",
+    "methodName": "duplicate",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.CheckoutFieldTemplates.duplicate(client, 14, %{\"name\" => \"Discord access for courses\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
     "operationId": "listPaymentMethods",
     "mountTarget": "PaymentMethods",
     "methodName": "list",
@@ -2094,6 +2646,22 @@
     "mountTarget": "PaymentMethods",
     "methodName": "validate",
     "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.PaymentMethods.validate(client, \"NMI\", %{\"merchant_secure_key\" => \"replace-with-nmi-secure-key\", \"merchant_tokenization_key\" => \"replace-with-nmi-tokenization-key\", \"signing_key\" => \"replace-with-nmi-signing-key\", \"currencies\" => [\"USD\"]})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getPaymentMethodModifier",
+    "mountTarget": "PaymentMethodsModifier",
+    "methodName": "get",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.PaymentMethodsModifier.get(client, \"STRIPE\")\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "replacePaymentMethodModifier",
+    "mountTarget": "PaymentMethodsModifier",
+    "methodName": "replace",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.PaymentMethodsModifier.replace(client, \"STRIPE\", %{\"kind\" => \"fee\", \"percentage\" => \"3.00\", \"fixed_amount\" => \"0.30\", \"condition\" => \"below\", \"threshold\" => \"20.00\"})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -2202,6 +2770,190 @@
   {
     "language": "elixir",
     "fileExtension": "exs",
+    "operationId": "getCheckoutSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "get_checkout",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSettings.get_checkout(client)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "replaceCheckoutSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "replace_checkout",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSettings.replace_checkout(client, %{\"shopping_cart_enabled\" => true, \"customer_email_required\" => true, \"allow_vpn_purchases\" => true, \"blacklist_on_dispute\" => true, \"minimum_spend\" => \"5.00\", \"billing_descriptor\" => \"LAUNCH LAB\", \"attempts_per_customer\" => 5, \"attempts_per_ip\" => 20, \"attempts_per_email\" => nil, \"attempts_per_fingerprint\" => nil, \"rate_limit_window_seconds\" => 3600, \"crypto\" => %{\"underpaid_percentage\" => 2, \"minimum_confirmations\" => 2}})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "updateCheckoutSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "update_checkout",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSettings.update_checkout(client, %{\"minimum_spend\" => \"10.00\", \"attempts_per_email\" => 10})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getTaxSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "get_taxes",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSettings.get_taxes(client)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "replaceTaxSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "replace_taxes",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSettings.replace_taxes(client, %{\"vat_enabled\" => true, \"vat_inclusive_pricing\" => true, \"collect_billing_details\" => false})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "updateTaxSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "update_taxes",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSettings.update_taxes(client, %{\"vat_inclusive_pricing\" => true})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getCustomerEmailSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "get_customer_emails",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSettings.get_customer_emails(client)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "replaceCustomerEmailSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "replace_customer_emails",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSettings.replace_customer_emails(client, %{\"send_delivery_email\" => true, \"send_payment_failure_email\" => false})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "updateCustomerEmailSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "update_customer_emails",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSettings.update_customer_emails(client, %{\"send_payment_failure_email\" => false})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getStoreAlertSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "get_store_alerts",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSettings.get_store_alerts(client)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "replaceStoreAlertSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "replace_store_alerts",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSettings.replace_store_alerts(client, %{\"sale_emails_enabled\" => false})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "updateStoreAlertSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "update_store_alerts",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSettings.update_store_alerts(client, %{\"sale_emails_enabled\" => false})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getPersonalizationSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "get_personalization",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSettings.get_personalization(client)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "replacePersonalizationSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "replace_personalization",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSettings.replace_personalization(client, %{\"support_email\" => \"support@launch-lab.example.com\", \"trustpilot_email\" => nil, \"sender_name\" => \"Launch Lab\", \"sender_email\" => \"orders@launch-lab.example.com\", \"store_address\" => \"651 N Broad St, Suite 206\", \"store_city\" => \"Middletown\", \"store_state\" => \"Delaware\", \"store_zip\" => \"19709\", \"store_country\" => \"United States\", \"store_tax\" => \"EIN 98-7654321\", \"back_link_label\" => \"Back to Launch Lab\", \"back_link_url\" => \"https://launch-lab.example.com\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "updatePersonalizationSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "update_personalization",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSettings.update_personalization(client, %{\"back_link_label\" => \"Return to the shop\", \"back_link_url\" => \"https://launch-lab.example.com/shop\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "replaceCryptoCheckoutSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "replace_crypto_checkout",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSettings.replace_crypto_checkout(client, %{\"underpaid_percentage\" => 1, \"minimum_confirmations\" => 3})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "updateCryptoCheckoutSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "update_crypto_checkout",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSettings.update_crypto_checkout(client, %{\"minimum_confirmations\" => 3})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getSenderEmail",
+    "mountTarget": "StoreSenderEmail",
+    "methodName": "get",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSenderEmail.get(client, %{})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "setSenderEmail",
+    "mountTarget": "StoreSenderEmail",
+    "methodName": "set",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSenderEmail.set(client, %{\"email\" => \"orders@launch-lab.example.com\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "deleteSenderEmail",
+    "mountTarget": "StoreSenderEmail",
+    "methodName": "delete",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSenderEmail.delete(client, %{})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "sendSenderEmailVerification",
+    "mountTarget": "StoreSenderEmail",
+    "methodName": "send_verification",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreSenderEmail.send_verification(client, %{\"email\" => \"orders@launch-lab.example.com\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getStoreIntegrations",
+    "mountTarget": "StoreIntegrations",
+    "methodName": "get",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreIntegrations.get(client)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "disconnectGoogleCalendar",
+    "mountTarget": "StoreIntegrations",
+    "methodName": "disconnect_google_calendar",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreIntegrations.disconnect_google_calendar(client, %{\"connection_id\" => 7})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
     "operationId": "listNotificationChannels",
     "mountTarget": "StoreNotificationChannels",
     "methodName": "list",
@@ -2286,6 +3038,22 @@
     "mountTarget": "StoreCustomDomains",
     "methodName": "refresh",
     "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.StoreCustomDomains.refresh(client, 1)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "listNotifications",
+    "mountTarget": "Notifications",
+    "methodName": "list",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Notifications.list(client, %{})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "markNotificationsSeen",
+    "mountTarget": "Notifications",
+    "methodName": "mark",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Notifications.mark(client, %{\"notification_ids\" => [9182]})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -2402,6 +3170,46 @@
   {
     "language": "elixir",
     "fileExtension": "exs",
+    "operationId": "getAffiliateProducts",
+    "mountTarget": "AffiliatesProducts",
+    "methodName": "get",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.AffiliatesProducts.get(client, 88)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "updateAffiliateProducts",
+    "mountTarget": "AffiliatesProducts",
+    "methodName": "update",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.AffiliatesProducts.update(client, 88, %{\"enable_specific_products\" => true, \"products\" => [%{\"id\" => 42, \"enabled\" => true, \"commission\" => %{\"type\" => \"percentage\", \"percentage\" => \"25\"}}, %{\"id\" => 43, \"enabled\" => true, \"commission\" => %{\"type\" => \"fixed\", \"amount_usd_cents\" => 550}}], \"replace_products\" => true})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getAffiliateCoupon",
+    "mountTarget": "AffiliatesCoupon",
+    "methodName": "get",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.AffiliatesCoupon.get(client, 88)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "saveAffiliateCoupon",
+    "mountTarget": "AffiliatesCoupon",
+    "methodName": "save",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.AffiliatesCoupon.save(client, 88, %{\"code\" => \"ALEX15\", \"type\" => \"PERCENTAGE\", \"discount\" => \"15\", \"store_wide\" => true, \"maximum_discount_amount\" => \"20\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "disableAffiliateCoupon",
+    "mountTarget": "AffiliatesCoupon",
+    "methodName": "disable",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.AffiliatesCoupon.disable(client, 88)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
     "operationId": "listAffiliateReferrals",
     "mountTarget": "AffiliateReferrals",
     "methodName": "list",
@@ -2470,6 +3278,14 @@
     "mountTarget": "AffiliatePayouts",
     "methodName": "update",
     "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.AffiliatePayouts.update(client, 1, %{\"status\" => \"paid\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "markAffiliatePayoutsPaid",
+    "mountTarget": "AffiliatePayouts",
+    "methodName": "mark_paid",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.AffiliatePayouts.mark_paid(client, %{\"payout_ids\" => [91, 92], \"expected_total_usd_cents\" => 4250})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -3250,6 +4066,14 @@
   {
     "language": "elixir",
     "fileExtension": "exs",
+    "operationId": "v2GetCouponUsage",
+    "mountTarget": "Coupons",
+    "methodName": "v2_get_coupon_usage",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Coupons.v2_get_coupon_usage(client, 1)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
     "operationId": "v2ListFeedback",
     "mountTarget": "Feedback",
     "methodName": "v2_list_feedback",
@@ -3421,7 +4245,7 @@
     "operationId": "updateTicket",
     "mountTarget": "Tickets",
     "methodName": "update",
-    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Tickets.update(client, 42, %{\"status\" => \"CLOSED\", \"archived\" => true})\nIO.inspect(result)\n"
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Tickets.update(client, 42, %{\"status\" => \"CLOSED\", \"archived\" => true, \"outcome\" => \"delivered\"})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",
@@ -3454,6 +4278,62 @@
     "mountTarget": "TicketsMessages",
     "methodName": "v2_get_ticket_message",
     "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.TicketsMessages.v2_get_ticket_message(client, 1, 2)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "batchUpdateTickets",
+    "mountTarget": "Tickets",
+    "methodName": "batch_update",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Tickets.batch_update(client, %{\"action\" => \"close\", \"outcome\" => \"delivered\", \"resources\" => [311, 313]})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "v2GetTicketContext",
+    "mountTarget": "Tickets",
+    "methodName": "get_context",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.Tickets.get_context(client, 312)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "v2ListTicketWalletRefundOptions",
+    "mountTarget": "TicketsWalletRefunds",
+    "methodName": "list_options",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.TicketsWalletRefunds.list_options(client, 312)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "v2ListTicketWalletRefunds",
+    "mountTarget": "TicketsWalletRefunds",
+    "methodName": "list",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.TicketsWalletRefunds.list(client, 312)\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "v2RefundTicketToWallet",
+    "mountTarget": "TicketsWalletRefunds",
+    "methodName": "create",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.TicketsWalletRefunds.create(client, 312, %{\"invoice_id\" => 5120, \"amount_cents\" => 500, \"expected_refundable_cents\" => 1999, \"customer_note\" => \"We added $5.00 to your store wallet for the trouble with your download link.\"}, idempotency_key: \"example-mutation-001\")\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "v2ReverseTicketWalletRefund",
+    "mountTarget": "TicketsWalletRefunds",
+    "methodName": "reverse",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.TicketsWalletRefunds.reverse(client, 312, 7001, %{\"reason\" => \"Issued on the wrong ticket.\"})\nIO.inspect(result)\n"
+  },
+  {
+    "language": "elixir",
+    "fileExtension": "exs",
+    "operationId": "getSupportAnalytics",
+    "mountTarget": "TicketsAnalytics",
+    "methodName": "get",
+    "content": "client = SellApp.Client.new(\n  base_url: System.fetch_env!(\"SELLAPP_API_BASE_URL\"),\n  api_key: System.fetch_env!(\"SELLAPP_API_KEY\"),\n  store: System.fetch_env!(\"SELLAPP_STORE\")\n)\n\n{:ok, result} = SellApp.TicketsAnalytics.get(client, %{})\nIO.inspect(result)\n"
   },
   {
     "language": "elixir",

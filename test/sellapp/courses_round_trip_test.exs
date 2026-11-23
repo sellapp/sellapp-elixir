@@ -3,6 +3,95 @@
 defmodule SellApp.CoursesRoundTripTest do
   use ExUnit.Case, async: true
 
+  test "SdkCreateCourseResponseValue201ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "id" => 1,
+        "title" => "title",
+        "slug" => "slug",
+        "description" => nil,
+        "visibility" => "PUBLIC",
+        "is_draft" => true,
+        "delivery_text" => nil,
+        "category" => nil,
+        "level" => "all_levels",
+        "language" => "language",
+        "subtitle" => nil,
+        "author" => nil,
+        "subcategory" => nil,
+        "what_you_learn" => ["what_you_learn"],
+        "requirements" => ["requirements"],
+        "certificate_enabled" => true,
+        "access_type" => "lifetime",
+        "access_duration_days" => nil,
+        "enrollment_limit" => nil,
+        "promo_video" => nil,
+        "sections" => [
+          %{
+            "id" => 1,
+            "title" => "title",
+            "description" => nil,
+            "sort_order" => 1,
+            "lessons" => [
+              %{
+                "id" => 1,
+                "section_id" => 1,
+                "title" => "title",
+                "content" => nil,
+                "type" => "lecture",
+                "is_preview" => true,
+                "is_published" => true,
+                "sort_order" => 1,
+                "video" => nil,
+                "attachments" => [
+                  %{
+                    "id" => 1,
+                    "title" => "title",
+                    "mime_type" => nil,
+                    "size_bytes" => nil,
+                    "sort_order" => 1
+                  }
+                ],
+                "assignment" => nil,
+                "questions" => [
+                  %{
+                    "id" => 1,
+                    "prompt" => "prompt",
+                    "question_type" => "text",
+                    "solution" => nil,
+                    "sort_order" => 1,
+                    "answers" => [
+                      %{"id" => 1, "answer" => "answer", "is_correct" => true, "sort_order" => 1}
+                    ],
+                    "created_at" => "2024-01-01T00:00:00.000Z",
+                    "updated_at" => "2024-01-01T00:00:00.000Z"
+                  }
+                ],
+                "created_at" => "2024-01-01T00:00:00.000Z",
+                "updated_at" => "2024-01-01T00:00:00.000Z"
+              }
+            ],
+            "created_at" => "2024-01-01T00:00:00.000Z",
+            "updated_at" => "2024-01-01T00:00:00.000Z"
+          }
+        ],
+        "created_at" => "2024-01-01T00:00:00.000Z",
+        "updated_at" => "2024-01-01T00:00:00.000Z"
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkCreateCourseResponseValue201ApplicationJson.from_map()
+      |> SellApp.SdkCreateCourseResponseValue201ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkCreateCourseResponseValue201ApplicationJson.from_map()
+           |> SellApp.SdkCreateCourseResponseValue201ApplicationJson.to_map() == serialized
+  end
+
   test "SdkGetCourseResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{
@@ -90,6 +179,61 @@ defmodule SellApp.CoursesRoundTripTest do
     assert serialized
            |> SellApp.SdkGetCourseResponseValue200ApplicationJson.from_map()
            |> SellApp.SdkGetCourseResponseValue200ApplicationJson.to_map() == serialized
+  end
+
+  test "SdkGetCourseStudentSummaryResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "period" => %{
+          "start_date" => "2024-01-01",
+          "end_date" => "2024-01-01",
+          "timezone" => "timezone",
+          "currency" => "currency"
+        },
+        "summary" => %{
+          "students_count" => 1,
+          "multi_course_students_count" => nil,
+          "course_purchases_count" => 1,
+          "course_units_count" => 1,
+          "course_orders_count" => 1,
+          "courses_sold_count" => nil
+        },
+        "students" => [
+          %{
+            "customer_id" => nil,
+            "email" => nil,
+            "courses_count" => 1,
+            "course_purchases_count" => 1,
+            "course_units_count" => 1,
+            "orders_count" => 1,
+            "latest_purchase_at" => nil,
+            "courses" => [%{"course_id" => 1, "title" => "title", "purchases_count" => 1}]
+          }
+        ],
+        "courses" => [
+          %{
+            "course_id" => 1,
+            "title" => "title",
+            "students_count" => 1,
+            "course_purchases_count" => 1,
+            "course_units_count" => 1,
+            "orders_count" => 1
+          }
+        ]
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkGetCourseStudentSummaryResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkGetCourseStudentSummaryResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkGetCourseStudentSummaryResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkGetCourseStudentSummaryResponseValue200ApplicationJson.to_map() ==
+             serialized
   end
 
   test "SdkReplaceCourseResponseValue200ApplicationJson round-trips between wire and struct" do

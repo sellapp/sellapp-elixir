@@ -8,11 +8,11 @@ defmodule SellApp.AffiliateReferrals do
   @doc """
   List affiliate referrals
 
-  List store referrals with their attributed order and purchase line item. Requires the `affiliate` credential ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  List store referrals with their attributed order and purchase line item, newest first, 15 per page by default. Requires the `affiliate` credential ability. Use `search` to find referrals by affiliate email, product or variant title, or an exact referral or order ID. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
-    * `params` — query parameters: `:affiliate_id`, `:order_id`, `:status`, `:limit`, `:page`
+    * `params` — query parameters: `:search`, `:affiliate_id`, `:order_id`, `:status`, `:limit`, `:page`
     * `opts` — per-request options (see `SellApp.Client.request/5`)
   """
   @spec list(SellApp.Client.t(), map(), keyword()) ::

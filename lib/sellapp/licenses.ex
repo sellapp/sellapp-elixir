@@ -114,11 +114,11 @@ defmodule SellApp.Licenses do
   @doc """
   List all license keys
 
-  List your store's license keys. Use `limit` and `page` to read one page at a time. The response schema describes each license. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  List your store's license keys, one page at a time with `limit` and `page`. Filter by part of the key, the customer's email, the product, the order, or `validity`; several filters combine, and a key must match all of them. A filter value in the wrong shape returns `422` on that parameter. Requires the `license` API-key ability. The response schema describes each license. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
-    * `params` — query parameters: `:limit`, `:page`
+    * `params` — query parameters: `:limit`, `:page`, `:key`, `:customer_email`, `:product_id`, `:order_id`, `:validity`
     * `opts` — per-request options (see `SellApp.Client.request/5`)
   """
   @spec list(SellApp.Client.t(), map(), keyword()) ::

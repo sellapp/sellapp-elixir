@@ -45,7 +45,9 @@
         "exclusive": "exclusive",
         "inclusive": "inclusive"
       }
-    }
+    },
+    "refund_currency": null,
+    "refunded_total_cents": 1
   },
   "status": {
     "history": [

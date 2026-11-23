@@ -62,7 +62,8 @@
             "label": "label"
           }
         ]
-      }
+      },
+      "is_draft": true
     }
   ],
   "list_metadata": {

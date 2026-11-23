@@ -214,11 +214,11 @@ defmodule SellApp.Blacklists do
   @doc """
   List blacklist rules
 
-  List store-scoped blacklist rules. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  List your store's blacklist rules, oldest first, 15 per page by default. Narrow the list with `type` and with `search`, which matches part of the blocked value or of the description. An unknown `type`, a `search` longer than 255 characters or a `limit` over 100 returns `422`. An empty `data` array means no rule matches. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
-    * `params` — query parameters
+    * `params` — query parameters: `:limit`, `:page`, `:search`, `:type`
     * `opts` — per-request options (see `SellApp.Client.request/5`)
   """
   @spec v2_list_blacklists(SellApp.Client.t(), map(), keyword()) ::
@@ -238,7 +238,7 @@ defmodule SellApp.Blacklists do
       fetch_next = fn cursor ->
         v2_list_blacklists(
           client,
-          SellApp.Page.next_params(params, "after", cursor),
+          SellApp.Page.next_params(params, "page", cursor),
           Keyword.delete(opts, :with_response)
         )
       end
@@ -251,7 +251,7 @@ defmodule SellApp.Blacklists do
           fetch_next,
           base_url: client.base_url,
           path: "/v2/blacklists",
-          pagination_param: "after"
+          pagination_param: "page"
         )
 
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}

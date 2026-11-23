@@ -1,0 +1,16 @@
+{
+  "data": {
+    "shopping_cart_enabled": true,
+    "customer_email_required": true,
+    "allow_vpn_purchases": true,
+    "blacklist_on_dispute": true,
+    "minimum_spend": null,
+    "billing_descriptor": null,
+    "attempts_per_customer": 1,
+    "attempts_per_ip": null,
+    "attempts_per_email": null,
+    "attempts_per_fingerprint": null,
+    "rate_limit_window_seconds": 60,
+    "crypto": null
+  }
+}

@@ -6,6 +6,64 @@ defmodule SellApp.WalletTransactions do
   """
 
   @doc """
+  Reverse a wallet transaction
+
+  Undo one top-up or manual adjustment in a customer's wallet. SellApp writes a `REVERSAL` entry for the opposite amount, in integer USD cents, and returns it with `201`. Reversing a `TOP_UP` also reverses its `TOP_UP_BONUS`, so the balance drops by the top-up plus its bonus; the returned entry reverses the top-up itself. Reversing a negative `MANUAL_ADJUSTMENT` gives the money back, except credit that the debit had spent and that has since been refunded: a clawback entry takes that part back. The customer is not emailed, and no payment is refunded: reversing a paid top-up does not return money to the customer's card. Requires the `wallet:write` API-key ability and the wallet permission in your team role. Only `TOP_UP` and `MANUAL_ADJUSTMENT` entries can be reversed, once each, and a reversal cannot itself be reversed. Every refusal returns `422` on `transaction` and writes nothing: the entry was already reversed, is a reversal, is an expired credit, or is a type only the system reverses (`TOP_UP_BONUS` goes with its top-up, `CASHBACK` and `REWARD` are reversed by the system, a `REFUND` on its support ticket, a `PURCHASE_DEBIT` through its order); wallets are turned off for the store; or the money is reserved by a checkout or already spent. A customer of another store, a customer without a wallet, or an entry from another customer's wallet returns `404`. Send `expected_balance_cents` with the balance you read to reverse only while the wallet still holds it; otherwise the request returns `422` on `expected_balance_cents` and nothing changes. Repeating the request never takes the money twice: without a key, the repeat returns `422` because the entry is already reversed. To get the original `201` response back instead, send an `Idempotency-Key` header and repeat the same key with the same body within 24 hours; the replay carries `Idempotent-Replayed: true`. The same key with a different body returns `409`. To put money back after a reversal, make a new manual adjustment. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+
+  ## Parameters
+
+    * `customer` — The customer ID whose wallet holds the entry.
+    * `transaction` — The ID of the wallet entry to reverse, as listed by `GET /v2/wallets/{customer}/transactions` or `GET /v2/wallet/transactions`.
+    * `params` — request body map
+    * `opts` — per-request options (see `SellApp.Client.request/5`)
+  """
+  @spec reverse(SellApp.Client.t(), String.t(), String.t(), map(), keyword()) ::
+          {:ok, SellApp.SdkReverseWalletTransactionResponseValue201ApplicationJson.t()}
+          | {:error, SellApp.Error.error()}
+  def reverse(client, customer, transaction, params \\ %{}, opts \\ []) do
+    SellApp.Schema.validate_value!(
+      params,
+      %{kind: :model, module: SellApp.SdkReverseWalletTransactionRequestApplicationJson},
+      :request,
+      "$request.body"
+    )
+
+    with {:ok, body} <-
+           SellApp.Client.request(
+             client,
+             :post,
+             "/v2/wallets/#{URI.encode(customer, &URI.char_unreserved?/1)}/transactions/#{URI.encode(transaction, &URI.char_unreserved?/1)}/reverse",
+             params,
+             Keyword.put(
+               Keyword.put(Keyword.put(opts, :idempotency_supported, true), :request_body, true),
+               :operation_id,
+               "reverseWalletTransaction"
+             )
+           ) do
+      raw_response = if match?(%SellApp.Response{}, body), do: body, else: nil
+      body = if raw_response, do: raw_response.data, else: body
+
+      SellApp.Schema.validate_value!(
+        body,
+        %{
+          kind: :model,
+          module: SellApp.SdkReverseWalletTransactionResponseValue201ApplicationJson
+        },
+        :response,
+        "$response"
+      )
+
+      result =
+        SellApp.Cast.nested(
+          body,
+          &SellApp.SdkReverseWalletTransactionResponseValue201ApplicationJson.from_map/1
+        )
+
+      {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}
+    end
+  end
+
+  @doc """
   List wallet transactions
 
   Read the complete wallet history for one customer in the selected store, newest first. Requires the wallet or wallet:write API-key ability and store wallet permission. Amounts and balances are integer USD cents: 2500 means $25.00. A wallet with no entries returns an empty data array; an unknown wallet returns 404. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.

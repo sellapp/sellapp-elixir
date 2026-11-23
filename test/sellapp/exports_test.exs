@@ -82,17 +82,15 @@ defmodule SellApp.ExportsTest do
     assert {:ok, _} = SellApp.Exports.download_export(client, "test_export")
   end
 
-  test "download_export encodes query parameters", %{client: client} do
+  test "list_exports encodes query parameters", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()
       params = Map.new(pairs)
-      assert params["expires"] == "hello world&x"
-      refute Map.has_key?(params, "signature")
-      Plug.Conn.send_resp(conn, 204, "")
+      assert params["page"] == "hello world&x"
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("exports/list_exports"))
     end)
 
-    assert {:ok, _} =
-             SellApp.Exports.download_export(client, "test_export", %{expires: "hello world&x"})
+    assert {:ok, _} = SellApp.Exports.list_exports(client, %{page: "hello world&x"})
   end
 
   test "list_exports honors per-request options", %{client: client} do

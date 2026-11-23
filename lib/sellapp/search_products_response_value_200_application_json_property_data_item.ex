@@ -25,6 +25,10 @@ defmodule SellApp.SearchProductsResponseValue200ApplicationJsonPropertyDataItem 
     :is_discoverable,
     :variants,
     :url,
+    :price_range,
+    :stock,
+    :sales,
+    :sold_out,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -39,7 +43,7 @@ defmodule SellApp.SearchProductsResponseValue200ApplicationJsonPropertyDataItem 
           ],
           order: integer() | nil,
           visibility: String.t(),
-          delivery_text: String.t(),
+          delivery_text: String.t() | nil,
           additional_information: [
             SellApp.SearchProductsResponseValue200ApplicationJsonPropertyDataItemPropertyAdditionalInformationItem.t()
           ],
@@ -56,6 +60,10 @@ defmodule SellApp.SearchProductsResponseValue200ApplicationJsonPropertyDataItem 
             SellApp.SearchProductsResponseValue200ApplicationJsonPropertyDataItemPropertyVariantsItem.t()
           ],
           url: String.t(),
+          price_range: String.t() | nil,
+          stock: integer() | nil,
+          sales: integer(),
+          sold_out: boolean(),
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -80,7 +88,7 @@ defmodule SellApp.SearchProductsResponseValue200ApplicationJsonPropertyDataItem 
       },
       "order" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :integer}}},
       "visibility" => %{required: true, schema: %{kind: :string}},
-      "delivery_text" => %{required: true, schema: %{kind: :string}},
+      "delivery_text" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}},
       "additional_information" => %{
         required: true,
         schema: %{
@@ -121,7 +129,11 @@ defmodule SellApp.SearchProductsResponseValue200ApplicationJsonPropertyDataItem 
           }
         }
       },
-      "url" => %{required: true, schema: %{kind: :string}}
+      "url" => %{required: true, schema: %{kind: :string}},
+      "price_range" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}},
+      "stock" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :integer}}},
+      "sales" => %{required: true, schema: %{kind: :integer}},
+      "sold_out" => %{required: true, schema: %{kind: :boolean}}
     },
     additional_properties: true
   }
@@ -169,6 +181,10 @@ defmodule SellApp.SearchProductsResponseValue200ApplicationJsonPropertyDataItem 
           &SellApp.SearchProductsResponseValue200ApplicationJsonPropertyDataItemPropertyVariantsItem.from_map/1
         ),
       url: map["url"],
+      price_range: map["price_range"],
+      stock: map["stock"],
+      sales: map["sales"],
+      sold_out: map["sold_out"],
       __additional_properties__:
         Map.drop(map, [
           "id",
@@ -189,7 +205,11 @@ defmodule SellApp.SearchProductsResponseValue200ApplicationJsonPropertyDataItem 
           "section_order",
           "is_discoverable",
           "variants",
-          "url"
+          "url",
+          "price_range",
+          "stock",
+          "sales",
+          "sold_out"
         ]),
       __present_fields__: Map.keys(map)
     }
@@ -241,7 +261,11 @@ defmodule SellApp.SearchProductsResponseValue200ApplicationJsonPropertyDataItem 
                 &SellApp.SearchProductsResponseValue200ApplicationJsonPropertyDataItemPropertyVariantsItem.to_map/1
               )
             end),
-          "url" => struct.url
+          "url" => struct.url,
+          "price_range" => struct.price_range,
+          "stock" => struct.stock,
+          "sales" => struct.sales,
+          "sold_out" => struct.sold_out
         },
         [
           "id",
@@ -262,7 +286,11 @@ defmodule SellApp.SearchProductsResponseValue200ApplicationJsonPropertyDataItem 
           "section_order",
           "is_discoverable",
           "variants",
-          "url"
+          "url",
+          "price_range",
+          "stock",
+          "sales",
+          "sold_out"
         ],
         struct.__present_fields__
       )

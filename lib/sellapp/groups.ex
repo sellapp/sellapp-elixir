@@ -237,7 +237,7 @@ defmodule SellApp.Groups do
   @doc """
   Search groups
 
-  Search groups using JSON body filters, search terms, includes, and sort instructions. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+  Search groups using JSON body filters, search terms, includes, and sort instructions, 15 per page by default. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
 
   ## Parameters
 
@@ -270,7 +270,7 @@ defmodule SellApp.Groups do
       fetch_next = fn cursor ->
         search(
           client,
-          SellApp.Page.next_params(params, "after", cursor),
+          SellApp.Page.next_params(params, "page", cursor),
           Keyword.delete(opts, :with_response)
         )
       end
@@ -283,7 +283,7 @@ defmodule SellApp.Groups do
           fetch_next,
           base_url: client.base_url,
           path: "/v2/groups/search",
-          pagination_param: "after"
+          pagination_param: "page"
         )
 
       {:ok, if(raw_response, do: %{raw_response | data: result}, else: result)}

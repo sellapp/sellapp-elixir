@@ -101,6 +101,33 @@ defmodule SellApp.WalletBonusTiersRoundTripTest do
              serialized
   end
 
+  test "SdkQuoteWalletBonusTierResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "top_up_cents" => 1,
+        "within_top_up_limits" => true,
+        "eligible" => true,
+        "bonus_cents" => 1,
+        "reason" => "reason",
+        "minimum_top_up_cents" => nil,
+        "maximum_top_up_cents" => nil,
+        "matching_tier" => nil
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkQuoteWalletBonusTierResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkQuoteWalletBonusTierResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkQuoteWalletBonusTierResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkQuoteWalletBonusTierResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
+
   test "SdkReplaceWalletBonusTierResponseValue200ApplicationJson round-trips between wire and struct" do
     data = %{
       "data" => %{

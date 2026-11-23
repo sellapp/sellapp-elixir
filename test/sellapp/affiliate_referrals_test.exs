@@ -72,12 +72,12 @@ defmodule SellApp.AffiliateReferralsTest do
     Req.Test.stub(SellApp.Client, fn conn ->
       pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()
       params = Map.new(pairs)
-      assert params["affiliate_id"] == "hello world&x"
-      refute Map.has_key?(params, "order_id")
+      assert params["search"] == "hello world&x"
+      refute Map.has_key?(params, "affiliate_id")
       Req.Test.json(conn, SellApp.TestFixtures.fixture("affiliate_referrals/list"))
     end)
 
-    assert {:ok, _} = SellApp.AffiliateReferrals.list(client, %{affiliate_id: "hello world&x"})
+    assert {:ok, _} = SellApp.AffiliateReferrals.list(client, %{search: "hello world&x"})
   end
 
   test "list honors per-request options", %{client: client} do

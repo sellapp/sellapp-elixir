@@ -5,17 +5,19 @@ defmodule SellApp.SearchOrdersRequestApplicationJsonPropertyFiltersItemOperator 
   SearchOrdersRequestApplicationJsonPropertyFiltersItemOperator enum.
   """
 
-  @type t :: :eq | :contains | :in
+  @type t :: :eq | :contains | :in | :gte | :lte
 
   @doc "All known values."
   @spec values() :: [t()]
-  def values, do: [:eq, :contains, :in]
+  def values, do: [:eq, :contains, :in, :gte, :lte]
 
   @doc "Casts a wire string to its atom; unknown values pass through unchanged."
   @spec cast(String.t() | nil) :: t() | String.t() | nil
   def cast("eq"), do: :eq
   def cast("contains"), do: :contains
   def cast("in"), do: :in
+  def cast("gte"), do: :gte
+  def cast("lte"), do: :lte
   def cast(other), do: other
 
   @doc "Dumps an atom back to its wire string."
@@ -23,5 +25,7 @@ defmodule SellApp.SearchOrdersRequestApplicationJsonPropertyFiltersItemOperator 
   def dump(:eq), do: "eq"
   def dump(:contains), do: "contains"
   def dump(:in), do: "in"
+  def dump(:gte), do: "gte"
+  def dump(:lte), do: "lte"
   def dump(other) when is_binary(other), do: other
 end

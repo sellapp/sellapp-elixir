@@ -1,0 +1,16 @@
+{
+  "data": {
+    "id": 1,
+    "ticket_id": 1,
+    "invoice_id": null,
+    "customer_id": null,
+    "amount_cents": 1,
+    "currency": "USD",
+    "balance_after_cents": 1,
+    "customer_note": null,
+    "automatic": true,
+    "reversed": true,
+    "reversal": null,
+    "created_at": "2024-01-01T00:00:00.000Z"
+  }
+}

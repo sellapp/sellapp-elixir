@@ -1,6 +1,20 @@
 # Move to the current SellApp API contract
 
-This update covers 438 SDK operations. Existing API-key constructors remain available. Review the changes below before rebuilding your integration.
+This update covers 548 SDK operations. Existing API-key constructors remain available. Review the changes below before rebuilding your integration.
+
+## SDK and CLI 0.3.0
+
+This refresh adds 110 operations to the 0.2.1 contract, bringing generated coverage to 548 operations. No operation is removed. The public specification has 568 operations; 20 remain intentionally excluded from SDK generation.
+
+New operations cover product publishing and duplication, checkout field templates, store settings, payment-method fees and discounts, wallet summaries and reversals, support templates and automation, affiliate management, notifications, and community connections. Existing responses and filters also change. Recompile code that constructs generated models or passes filter enums, and consult the generated method reference for exact types.
+
+Fields that accept multiple value shapes now retain those alternatives when the schema uses a named component. Checkout field options accept text or labelled objects; replacement requests retain the documented integer, list, and object forms of `product_variants`. Recompile callers that constructed the former placeholder object types. In .NET, mixed-value fields use the corresponding `OneOf` alternatives without converting numbers or booleans to text. Kotlin also keeps different array limits on otherwise similar models, including the empty list used to clear similar products. Rust product-move helpers use `move_with_options` and `move_raw`; the primary `move_` method is unchanged. Rust query arrays preserve an existing `[]` suffix in the declared wire name, including `requested_placeholders[]`.
+
+Publishing products can make them available for purchase. Buyer notifications and affiliate invitations send emails. Wallet refunds and reversals change customer balances. Read the operation's prerequisites and retry rules before sending these requests; a preview or successful queue response does not establish that an external action finished.
+
+The reviewed MCP catalog contains 417 business tools. Mutating additions require confirmation; previews, quotes, dry runs and reply-template rendering remain reads. Rendering still requires the backend's `support:write` operation permission. Current store membership and role checks remain authoritative.
+
+The SDK build and registry release are separate from backend deployment. These additions correspond to backend pull request `sellapp/sell#658`; until that change is deployed, the newly generated methods do not establish that the routes are available on a target environment.
 
 ## SDK and CLI 0.2.1 retry correction
 

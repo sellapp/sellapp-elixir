@@ -1,0 +1,10 @@
+{
+  "data": {
+    "email": null,
+    "verified": null,
+    "sender_name": null,
+    "default_from": "default_from",
+    "customer_emails_from": "customer_emails_from",
+    "pending": null
+  }
+}

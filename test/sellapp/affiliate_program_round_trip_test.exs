@@ -183,4 +183,29 @@ defmodule SellApp.AffiliateProgramRoundTripTest do
            |> SellApp.SdkReplaceAffiliateProgramConfigurationResponseValue200ApplicationJson.to_map() ==
              serialized
   end
+
+  test "SdkResendAffiliateInvitationResponseValue200ApplicationJson round-trips between wire and struct" do
+    data = %{
+      "data" => %{
+        "id" => 1,
+        "email" => "email",
+        "status" => "pending",
+        "invited_at" => nil,
+        "application_submitted_at" => nil,
+        "created_at" => nil
+      }
+    }
+
+    serialized =
+      data
+      |> SellApp.SdkResendAffiliateInvitationResponseValue200ApplicationJson.from_map()
+      |> SellApp.SdkResendAffiliateInvitationResponseValue200ApplicationJson.to_map()
+
+    assert serialized == data
+
+    assert serialized
+           |> SellApp.SdkResendAffiliateInvitationResponseValue200ApplicationJson.from_map()
+           |> SellApp.SdkResendAffiliateInvitationResponseValue200ApplicationJson.to_map() ==
+             serialized
+  end
 end

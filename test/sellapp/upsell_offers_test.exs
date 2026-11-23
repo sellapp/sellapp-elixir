@@ -222,6 +222,22 @@ defmodule SellApp.UpsellOffersTest do
              SellApp.UpsellOffers.delete(client, "test_upsell_offer")
   end
 
+  test "get_performance succeeds", %{client: client} do
+    Req.Test.stub(SellApp.Client, fn conn ->
+      assert conn.method == "GET"
+
+      assert String.ends_with?(
+               conn.request_path,
+               "/v2/upsell-offers/test_upsell_offer/performance"
+             )
+
+      Req.Test.json(conn, SellApp.TestFixtures.fixture("upsell_offers/get_performance"))
+    end)
+
+    assert {:ok, %SellApp.SdkGetUpsellOfferPerformanceResponseValue200ApplicationJson{}} =
+             SellApp.UpsellOffers.get_performance(client, "test_upsell_offer")
+  end
+
   test "list encodes query parameters", %{client: client} do
     Req.Test.stub(SellApp.Client, fn conn ->
       pairs = URI.query_decoder(conn.query_string) |> Enum.to_list()
