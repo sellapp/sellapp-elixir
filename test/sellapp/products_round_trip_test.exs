@@ -42,6 +42,7 @@ defmodule SellApp.ProductsRoundTripTest do
       "is_discoverable" => true,
       "variants" => [%{"id" => 1, "title" => "title"}],
       "url" => "url",
+      "type" => "type",
       "price_range" => nil,
       "stock" => nil,
       "sales" => 1,
@@ -101,7 +102,8 @@ defmodule SellApp.ProductsRoundTripTest do
           "section_order" => nil,
           "is_discoverable" => true,
           "variants" => [%{"id" => 1, "title" => "title"}],
-          "url" => "url"
+          "url" => "url",
+          "type" => "type"
         }
       ]
     }
@@ -158,7 +160,8 @@ defmodule SellApp.ProductsRoundTripTest do
           "section_order" => nil,
           "is_discoverable" => true,
           "variants" => [%{"id" => 1, "title" => "title"}],
-          "url" => "url"
+          "url" => "url",
+          "type" => "type"
         }
       ]
     }
@@ -215,7 +218,8 @@ defmodule SellApp.ProductsRoundTripTest do
           "section_order" => nil,
           "is_discoverable" => true,
           "variants" => [%{"id" => 1, "title" => "title"}],
-          "url" => "url"
+          "url" => "url",
+          "type" => "type"
         }
       ]
     }
@@ -271,7 +275,8 @@ defmodule SellApp.ProductsRoundTripTest do
         "section_order" => nil,
         "is_discoverable" => true,
         "variants" => [%{"id" => 1, "title" => "title"}],
-        "url" => "url"
+        "url" => "url",
+        "type" => "type"
       }
     }
 
@@ -326,7 +331,8 @@ defmodule SellApp.ProductsRoundTripTest do
         "section_order" => nil,
         "is_discoverable" => true,
         "variants" => [%{"id" => 1, "title" => "title"}],
-        "url" => "url"
+        "url" => "url",
+        "type" => "type"
       }
     }
 
@@ -381,7 +387,8 @@ defmodule SellApp.ProductsRoundTripTest do
         "section_order" => nil,
         "is_discoverable" => true,
         "variants" => [%{"id" => 1, "title" => "title"}],
-        "url" => "url"
+        "url" => "url",
+        "type" => "type"
       }
     }
 
@@ -436,7 +443,8 @@ defmodule SellApp.ProductsRoundTripTest do
         "section_order" => nil,
         "is_discoverable" => true,
         "variants" => [%{"id" => 1, "title" => "title"}],
-        "url" => "url"
+        "url" => "url",
+        "type" => "type"
       }
     }
 
@@ -493,6 +501,7 @@ defmodule SellApp.ProductsRoundTripTest do
           "is_discoverable" => true,
           "variants" => [%{"id" => 1, "title" => "title"}],
           "url" => "url",
+          "type" => "type",
           "price_range" => nil,
           "stock" => nil,
           "sales" => 1,
@@ -563,7 +572,8 @@ defmodule SellApp.ProductsRoundTripTest do
         "section_order" => nil,
         "is_discoverable" => true,
         "variants" => [%{"id" => 1, "title" => "title"}],
-        "url" => "url"
+        "url" => "url",
+        "type" => "type"
       }
     }
 
@@ -618,7 +628,8 @@ defmodule SellApp.ProductsRoundTripTest do
         "section_order" => nil,
         "is_discoverable" => true,
         "variants" => [%{"id" => 1, "title" => "title"}],
-        "url" => "url"
+        "url" => "url",
+        "type" => "type"
       }
     }
 
@@ -673,7 +684,8 @@ defmodule SellApp.ProductsRoundTripTest do
         "section_order" => nil,
         "is_discoverable" => true,
         "variants" => [%{"id" => 1, "title" => "title"}],
-        "url" => "url"
+        "url" => "url",
+        "type" => "type"
       }
     }
 
@@ -730,6 +742,7 @@ defmodule SellApp.ProductsRoundTripTest do
           "is_discoverable" => true,
           "variants" => [%{"id" => 1, "title" => "title"}],
           "url" => "url",
+          "type" => "type",
           "price_range" => nil,
           "stock" => nil,
           "sales" => 1,
@@ -800,7 +813,8 @@ defmodule SellApp.ProductsRoundTripTest do
         "section_order" => nil,
         "is_discoverable" => true,
         "variants" => [%{"id" => 1, "title" => "title"}],
-        "url" => "url"
+        "url" => "url",
+        "type" => "type"
       }
     }
 
@@ -855,6 +869,7 @@ defmodule SellApp.ProductsRoundTripTest do
       "is_discoverable" => true,
       "variants" => [%{"id" => 1, "title" => "title"}],
       "url" => "url",
+      "type" => "type",
       "price_range" => nil,
       "stock" => nil,
       "sales" => 1,

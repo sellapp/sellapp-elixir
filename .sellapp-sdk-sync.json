@@ -2,12 +2,12 @@
   "schemaVersion": 1,
   "language": "elixir",
   "repository": "sellapp/sellapp-elixir",
-  "sourceSha": "77cf567815f22f4c07cf6b707ab25d4ca74877af",
-  "specSha256": "588138cc0421d9c2f8b7382d2924ce51982635c344b9e57f6f46b68e18ea4d69",
+  "sourceSha": "47e5b156f89777b62ae90a33cac16756b9830558",
+  "specSha256": "2319bc01512943c10a5788a130a1d189fbb2b14d76b0142e62a47b759c391662",
   "runId": "0",
   "runAttempt": "1",
-  "treeDigest": "e50a237544c9e8d6e5534d3dfd404f8da6aab3f2e3eba7e890e31b47017045d1",
-  "contentDigest": "cce5aad833cc7e8899e7317019857ec224ead8e66b7498a2f367349aab42f37e",
+  "treeDigest": "b75961f268152fb427998576d675bb98d6463d60f1c299e7be507e6b2eea8aca",
+  "contentDigest": "1752466b9fc89e67251983656b160af3b1fc5a07b3fce11c69916f86c186e89f",
   "files": [
     {
       "path": ".formatter.exs",
@@ -72,7 +72,7 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "sha256": "9f3a0a905298694412462d7ff8812eb3a7f9708ae379c2b9e5fc484c3625ceba"
+      "sha256": "38112ea8586a885f48a3c60a6756000eb7211740504322972a65843f9711ffbf"
     },
     {
       "path": "docs/methods.md",
@@ -82,7 +82,7 @@
     {
       "path": "docs/migration.md",
       "mode": "100644",
-      "sha256": "93cb5f3632ba41e91cbef0eca56536cabd6d525e748dc9aac4e736502807b09e"
+      "sha256": "2a2c9726edcf4a78185eac87a67824fed8e50054d5c67c18bd1d44255cb49c8f"
     },
     {
       "path": "docs/operation-examples.json",
@@ -592,7 +592,7 @@
     {
       "path": "docs/usage.md",
       "mode": "100644",
-      "sha256": "7bfafee3102967f6160878011e56ee0731ca661f9725976917e155f428e947bc"
+      "sha256": "628f02b9f6f998039fac487b26284819c194c362e25166e842ae7e281c5d12c2"
     },
     {
       "path": "examples/README.md",
@@ -622,7 +622,7 @@
     {
       "path": "generation-manifest.json",
       "mode": "100644",
-      "sha256": "7f0535c0a7ad52214b9daf3806a9c590bb97f9789c7bc95e7e5bcd9e06735653"
+      "sha256": "3a7c27fb3e7b9a03ada7c411fed06ab18673e241ac1e6ed6a60ac0d5f46d19c0"
     },
     {
       "path": "lib/sellapp.ex",
@@ -1097,7 +1097,7 @@
     {
       "path": "lib/sellapp/batch_create_products_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "deb1c4f83ad2cc73dfc8b77e067818988be96de86444efbbc0887b10308f7504"
+      "sha256": "f0880de9565f21a10f12802be60d70dfa274f0ae366102b3dad43064a825b0a3"
     },
     {
       "path": "lib/sellapp/batch_create_products_response_value_200_application_json_property_data_item_property_additional_information_item.ex",
@@ -1127,7 +1127,7 @@
     {
       "path": "lib/sellapp/batch_create_products_response_value_201_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "7cde9fca8e729a96452f408870f3d14c1588b1edfe5d36e1e001b4ee03fc13fc"
+      "sha256": "a9b76d19b2fc84c9cfe9daa26abf38905a5059ef1aed2554e46e19a6a642ca15"
     },
     {
       "path": "lib/sellapp/batch_create_products_response_value_201_application_json_property_data_item_property_additional_information_item.ex",
@@ -1282,7 +1282,7 @@
     {
       "path": "lib/sellapp/batch_delete_products_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "f09ab6031132ca9428a633e5dc09d48e6f24384cfb5bb8ce4ab33be7aa1975e7"
+      "sha256": "4c50e0a146ac1d477f3b49e53a153e78c9de1f12e3ca90ff37a84aa1be2b78f3"
     },
     {
       "path": "lib/sellapp/batch_delete_products_response_value_200_application_json_property_data_item_property_additional_information_item.ex",
@@ -1557,7 +1557,7 @@
     {
       "path": "lib/sellapp/batch_update_products_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "1b9f1709acb22632c5e34aadc6a0c8f981d1b5f730b5e0d80aac761aacc57430"
+      "sha256": "71e96209e475c4bc2ff9bf79a40b3160255d66c9bf0a5a10812997d3c5504fa9"
     },
     {
       "path": "lib/sellapp/batch_update_products_response_value_200_application_json_property_data_item_property_additional_information_item.ex",
@@ -1842,7 +1842,7 @@
     {
       "path": "lib/sellapp/client.ex",
       "mode": "100644",
-      "sha256": "fb07b4ccc55580e16c8d496422d4f800c5df259880fa039b3e74ed3cdd8c0332"
+      "sha256": "a56fae9e2f09ff106543712a3d2b3d25037d3a9a0571464f7322b8d2d8874c04"
     },
     {
       "path": "lib/sellapp/close_outcome.ex",
@@ -2147,7 +2147,7 @@
     {
       "path": "lib/sellapp/create_booking_product_response_value_201_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "b05d7e7dfd720bafe35b50b8c80970eee7db20f45be5288663da6568e8f3bf29"
+      "sha256": "c14449e3ad884ee1a264cf5ee51bd298d6c218d864182f40abe53db36bfa56b4"
     },
     {
       "path": "lib/sellapp/create_booking_product_response_value_201_application_json_property_data_property_additional_information_item.ex",
@@ -3522,7 +3522,7 @@
     {
       "path": "lib/sellapp/create_product_response_value_201_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "99ae9ef0ff9f2858485424b346639f0708c63c4502fb49d5707088c5a18ddff9"
+      "sha256": "facad974f7cc664e1750889b96d104531f5db37f50e3ca5c1869ef2bc6dc4382"
     },
     {
       "path": "lib/sellapp/create_product_response_value_201_application_json_property_data_property_additional_information_item.ex",
@@ -4317,7 +4317,7 @@
     {
       "path": "lib/sellapp/delete_product_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "ef6bdd0cd1ac50b8e4ce54ea730258de0807255b23073ac865ae739f1509f3bd"
+      "sha256": "97e7c1436000c15deb071b93bae421bd21c3060fd8f706afc0781898a555138f"
     },
     {
       "path": "lib/sellapp/delete_product_response_value_200_application_json_property_data_property_additional_information_item.ex",
@@ -4677,7 +4677,7 @@
     {
       "path": "lib/sellapp/duplicate_product_response_value_201_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "1138bac302b8154c0b7537608374b6aa9264ab461858f378e6b982f9385d67bb"
+      "sha256": "9687387f89a34aeae1d6048c6c82d58a5170067b210456c2b3a3fdaf56b84333"
     },
     {
       "path": "lib/sellapp/duplicate_product_response_value_201_application_json_property_data_property_additional_information_item.ex",
@@ -6042,7 +6042,7 @@
     {
       "path": "lib/sellapp/get_product_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "a1ba0e550cbd49700b92a8b21b005093a3f58e2388cc7566bf2419284df187ca"
+      "sha256": "df7b7e839b863000180a8665a92dca1a011af6fa347f05cef181a08249e2f316"
     },
     {
       "path": "lib/sellapp/get_product_response_value_200_application_json_property_data_property_additional_information_item.ex",
@@ -8127,7 +8127,7 @@
     {
       "path": "lib/sellapp/list_products_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "bee6fd9f9dbf04207668dbe907d0896d6115830a5aeeb0b1f45e8b1d44c45f73"
+      "sha256": "406001cb020906262b5594bc838d0d8139396b69dd51218e0cf81acc95ca3172"
     },
     {
       "path": "lib/sellapp/list_products_response_value_200_application_json_property_data_item_property_additional_information_item.ex",
@@ -8672,7 +8672,7 @@
     {
       "path": "lib/sellapp/move_product_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "1c9fe9558c8a491465a1891c1c9ea590c41bd34b936b20bd0f89aa4d5e6f2d8e"
+      "sha256": "55cfc278066a3ee066ad0892339c23f14c6d3ee5f6e9ea325e4d1ec21d26b746"
     },
     {
       "path": "lib/sellapp/move_product_response_value_200_application_json_property_data_property_additional_information_item.ex",
@@ -9027,7 +9027,7 @@
     {
       "path": "lib/sellapp/publish_product_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "2aeecfead28357b8cca4a686eac2c24ed6a84b27065f58136e562bf11a0da2cc"
+      "sha256": "efbaf02f7e5c2abaaa786590a746939d5074f657431f7c088a6147ac96123ac2"
     },
     {
       "path": "lib/sellapp/publish_product_response_value_200_application_json_property_data_property_additional_information_item.ex",
@@ -10272,7 +10272,7 @@
     {
       "path": "lib/sellapp/replace_product_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "ea4708428ae8815112d7e89eebe2efbdc57e82e5f9faad1ae13eb114640957b4"
+      "sha256": "4bf53c0c42ab8cc056daf5e33e28521eded5cafe57f027727c95458e0b1f511a"
     },
     {
       "path": "lib/sellapp/replace_product_response_value_200_application_json_property_data_property_additional_information_item.ex",
@@ -17032,7 +17032,7 @@
     {
       "path": "lib/sellapp/search_products_response_value_200_application_json_property_data_item.ex",
       "mode": "100644",
-      "sha256": "c74da3583c973a1ba2a5428b85fa03a6edba5e6ee15fe9ec1661ac60d71509fb"
+      "sha256": "9beeca2809545f928c67c8edfc3c755702b558a8d6ccc802067470988f37875d"
     },
     {
       "path": "lib/sellapp/search_products_response_value_200_application_json_property_data_item_property_additional_information_item.ex",
@@ -18707,7 +18707,7 @@
     {
       "path": "lib/sellapp/update_product_response_value_200_application_json_property_data.ex",
       "mode": "100644",
-      "sha256": "62707b80128e3da819dff9ea45990e57145200556653d81943cc9161e621721c"
+      "sha256": "7bf02fa43333d607a686b83a6103c835de729cd982d46a4ec91a95f13d0f87dc"
     },
     {
       "path": "lib/sellapp/update_product_response_value_200_application_json_property_data_property_additional_information_item.ex",
@@ -20517,7 +20517,7 @@
     {
       "path": "mix.exs",
       "mode": "100644",
-      "sha256": "5b3dde4ed114f061d574a744dcbfd8035e467b79ace0e570a7b8a6770daed470"
+      "sha256": "dec4df3a26bbac7a256b7ac309bf398ab1a01761c616aa210c0cf4934e038428"
     },
     {
       "path": "test/operation_contract_test.exs",
@@ -21132,7 +21132,7 @@
     {
       "path": "test/sellapp/products_round_trip_test.exs",
       "mode": "100644",
-      "sha256": "464bd1ac1d097bffc40382e77a9882e6c25bd9651d05d8916ba22586adb15dd5"
+      "sha256": "537aaec4e98eb5d64824c168c2e355f01055349ec09243a2a0aa3157d7d4d89a"
     },
     {
       "path": "test/sellapp/products_similar_products_round_trip_test.exs",
@@ -23017,67 +23017,67 @@
     {
       "path": "test/support/fixtures/products/batch_create.json",
       "mode": "100644",
-      "sha256": "c3c25e4e63acde4142d8dd5e00c8208de93bf6c1141051522a0d279b081b6f61"
+      "sha256": "bb7cac91a695694775cdeb183919a1117148c226455f6a3c5f7254dc1ad85523"
     },
     {
       "path": "test/support/fixtures/products/batch_delete.json",
       "mode": "100644",
-      "sha256": "c3c25e4e63acde4142d8dd5e00c8208de93bf6c1141051522a0d279b081b6f61"
+      "sha256": "bb7cac91a695694775cdeb183919a1117148c226455f6a3c5f7254dc1ad85523"
     },
     {
       "path": "test/support/fixtures/products/batch_update.json",
       "mode": "100644",
-      "sha256": "c3c25e4e63acde4142d8dd5e00c8208de93bf6c1141051522a0d279b081b6f61"
+      "sha256": "bb7cac91a695694775cdeb183919a1117148c226455f6a3c5f7254dc1ad85523"
     },
     {
       "path": "test/support/fixtures/products/create.json",
       "mode": "100644",
-      "sha256": "f804d90b82a29b22f9c5245147010f67aa4e43fab6eddab6ee2a748e26bd596f"
+      "sha256": "90347edcf0ee50926981ed205b90647bea320ec06cfe19022b4880be9a277cf2"
     },
     {
       "path": "test/support/fixtures/products/delete.json",
       "mode": "100644",
-      "sha256": "f804d90b82a29b22f9c5245147010f67aa4e43fab6eddab6ee2a748e26bd596f"
+      "sha256": "90347edcf0ee50926981ed205b90647bea320ec06cfe19022b4880be9a277cf2"
     },
     {
       "path": "test/support/fixtures/products/duplicate.json",
       "mode": "100644",
-      "sha256": "f804d90b82a29b22f9c5245147010f67aa4e43fab6eddab6ee2a748e26bd596f"
+      "sha256": "90347edcf0ee50926981ed205b90647bea320ec06cfe19022b4880be9a277cf2"
     },
     {
       "path": "test/support/fixtures/products/get.json",
       "mode": "100644",
-      "sha256": "f804d90b82a29b22f9c5245147010f67aa4e43fab6eddab6ee2a748e26bd596f"
+      "sha256": "90347edcf0ee50926981ed205b90647bea320ec06cfe19022b4880be9a277cf2"
     },
     {
       "path": "test/support/fixtures/products/list.json",
       "mode": "100644",
-      "sha256": "53c38318c108f97e21114a55f0c0bb1c5b0ade6048b9d049f19e5198871e45c0"
+      "sha256": "6bb664e1ee6c23eb9745383d9a8f927d6bd8941fc6842b93c3571a9a0aa06ef8"
     },
     {
       "path": "test/support/fixtures/products/move.json",
       "mode": "100644",
-      "sha256": "f804d90b82a29b22f9c5245147010f67aa4e43fab6eddab6ee2a748e26bd596f"
+      "sha256": "90347edcf0ee50926981ed205b90647bea320ec06cfe19022b4880be9a277cf2"
     },
     {
       "path": "test/support/fixtures/products/publish.json",
       "mode": "100644",
-      "sha256": "f804d90b82a29b22f9c5245147010f67aa4e43fab6eddab6ee2a748e26bd596f"
+      "sha256": "90347edcf0ee50926981ed205b90647bea320ec06cfe19022b4880be9a277cf2"
     },
     {
       "path": "test/support/fixtures/products/replace.json",
       "mode": "100644",
-      "sha256": "f804d90b82a29b22f9c5245147010f67aa4e43fab6eddab6ee2a748e26bd596f"
+      "sha256": "90347edcf0ee50926981ed205b90647bea320ec06cfe19022b4880be9a277cf2"
     },
     {
       "path": "test/support/fixtures/products/search.json",
       "mode": "100644",
-      "sha256": "53c38318c108f97e21114a55f0c0bb1c5b0ade6048b9d049f19e5198871e45c0"
+      "sha256": "6bb664e1ee6c23eb9745383d9a8f927d6bd8941fc6842b93c3571a9a0aa06ef8"
     },
     {
       "path": "test/support/fixtures/products/update.json",
       "mode": "100644",
-      "sha256": "f804d90b82a29b22f9c5245147010f67aa4e43fab6eddab6ee2a748e26bd596f"
+      "sha256": "90347edcf0ee50926981ed205b90647bea320ec06cfe19022b4880be9a277cf2"
     },
     {
       "path": "test/support/fixtures/products_addons/list.json",

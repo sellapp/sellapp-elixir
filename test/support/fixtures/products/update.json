@@ -51,6 +51,7 @@
         "title": "title"
       }
     ],
-    "url": "url"
+    "url": "url",
+    "type": "type"
   }
 }

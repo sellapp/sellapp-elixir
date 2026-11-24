@@ -25,6 +25,7 @@ defmodule SellApp.BatchUpdateProductsResponseValue200ApplicationJsonPropertyData
     :is_discoverable,
     :variants,
     :url,
+    :type,
     __additional_properties__: %{},
     __present_fields__: []
   ]
@@ -56,6 +57,7 @@ defmodule SellApp.BatchUpdateProductsResponseValue200ApplicationJsonPropertyData
             SellApp.BatchUpdateProductsResponseValue200ApplicationJsonPropertyDataItemPropertyVariantsItem.t()
           ],
           url: String.t(),
+          type: String.t(),
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -121,7 +123,8 @@ defmodule SellApp.BatchUpdateProductsResponseValue200ApplicationJsonPropertyData
           }
         }
       },
-      "url" => %{required: true, schema: %{kind: :string}}
+      "url" => %{required: true, schema: %{kind: :string}},
+      "type" => %{required: true, schema: %{kind: :string}}
     },
     additional_properties: true
   }
@@ -169,6 +172,7 @@ defmodule SellApp.BatchUpdateProductsResponseValue200ApplicationJsonPropertyData
           &SellApp.BatchUpdateProductsResponseValue200ApplicationJsonPropertyDataItemPropertyVariantsItem.from_map/1
         ),
       url: map["url"],
+      type: map["type"],
       __additional_properties__:
         Map.drop(map, [
           "id",
@@ -189,7 +193,8 @@ defmodule SellApp.BatchUpdateProductsResponseValue200ApplicationJsonPropertyData
           "section_order",
           "is_discoverable",
           "variants",
-          "url"
+          "url",
+          "type"
         ]),
       __present_fields__: Map.keys(map)
     }
@@ -241,7 +246,8 @@ defmodule SellApp.BatchUpdateProductsResponseValue200ApplicationJsonPropertyData
                 &SellApp.BatchUpdateProductsResponseValue200ApplicationJsonPropertyDataItemPropertyVariantsItem.to_map/1
               )
             end),
-          "url" => struct.url
+          "url" => struct.url,
+          "type" => struct.type
         },
         [
           "id",
@@ -262,7 +268,8 @@ defmodule SellApp.BatchUpdateProductsResponseValue200ApplicationJsonPropertyData
           "section_order",
           "is_discoverable",
           "variants",
-          "url"
+          "url",
+          "type"
         ],
         struct.__present_fields__
       )

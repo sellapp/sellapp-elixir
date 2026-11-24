@@ -57,7 +57,7 @@ defmodule SellApp.CreateBookingProductResponseValue201ApplicationJsonPropertyDat
             SellApp.CreateBookingProductResponseValue201ApplicationJsonPropertyDataPropertyVariantsItem.t()
           ],
           url: String.t(),
-          type: String.t() | nil,
+          type: String.t(),
           __additional_properties__: map(),
           __present_fields__: [String.t()]
         }
@@ -124,7 +124,7 @@ defmodule SellApp.CreateBookingProductResponseValue201ApplicationJsonPropertyDat
         }
       },
       "url" => %{required: true, schema: %{kind: :string}},
-      "type" => %{required: false, schema: %{kind: :string}}
+      "type" => %{required: true, schema: %{kind: :string}}
     },
     additional_properties: true
   }
@@ -268,7 +268,8 @@ defmodule SellApp.CreateBookingProductResponseValue201ApplicationJsonPropertyDat
           "section_order",
           "is_discoverable",
           "variants",
-          "url"
+          "url",
+          "type"
         ],
         struct.__present_fields__
       )

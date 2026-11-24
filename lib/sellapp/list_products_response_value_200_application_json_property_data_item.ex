@@ -25,6 +25,7 @@ defmodule SellApp.ListProductsResponseValue200ApplicationJsonPropertyDataItem do
     :is_discoverable,
     :variants,
     :url,
+    :type,
     :price_range,
     :stock,
     :sales,
@@ -60,6 +61,7 @@ defmodule SellApp.ListProductsResponseValue200ApplicationJsonPropertyDataItem do
             SellApp.ListProductsResponseValue200ApplicationJsonPropertyDataItemPropertyVariantsItem.t()
           ],
           url: String.t(),
+          type: String.t(),
           price_range: String.t() | nil,
           stock: integer() | nil,
           sales: integer(),
@@ -130,6 +132,7 @@ defmodule SellApp.ListProductsResponseValue200ApplicationJsonPropertyDataItem do
         }
       },
       "url" => %{required: true, schema: %{kind: :string}},
+      "type" => %{required: true, schema: %{kind: :string}},
       "price_range" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :string}}},
       "stock" => %{required: true, schema: %{kind: :nullable, inner: %{kind: :integer}}},
       "sales" => %{required: true, schema: %{kind: :integer}},
@@ -181,6 +184,7 @@ defmodule SellApp.ListProductsResponseValue200ApplicationJsonPropertyDataItem do
           &SellApp.ListProductsResponseValue200ApplicationJsonPropertyDataItemPropertyVariantsItem.from_map/1
         ),
       url: map["url"],
+      type: map["type"],
       price_range: map["price_range"],
       stock: map["stock"],
       sales: map["sales"],
@@ -206,6 +210,7 @@ defmodule SellApp.ListProductsResponseValue200ApplicationJsonPropertyDataItem do
           "is_discoverable",
           "variants",
           "url",
+          "type",
           "price_range",
           "stock",
           "sales",
@@ -262,6 +267,7 @@ defmodule SellApp.ListProductsResponseValue200ApplicationJsonPropertyDataItem do
               )
             end),
           "url" => struct.url,
+          "type" => struct.type,
           "price_range" => struct.price_range,
           "stock" => struct.stock,
           "sales" => struct.sales,
@@ -287,6 +293,7 @@ defmodule SellApp.ListProductsResponseValue200ApplicationJsonPropertyDataItem do
           "is_discoverable",
           "variants",
           "url",
+          "type",
           "price_range",
           "stock",
           "sales",

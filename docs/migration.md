@@ -2,6 +2,12 @@
 
 This update covers 548 SDK operations. Existing API-key constructors remain available. Review the changes below before rebuilding your integration.
 
+## SDK and CLI 0.3.1
+
+Product responses now expose `type`. List and search responses also expose `price_range`, `stock`, `sales`, and `sold_out`. The price range is display text; read numeric amounts from variant pricing. A `null` stock value means that at least one variant has unlimited stock. Sales count completed order line items, not their quantities.
+
+No endpoint or request changes in this release. Coverage remains 548 SDK operations from 568 public operations. Update test fixtures or code that constructs product response models to include the required fields. The MCP catalog retains 417 tools with refreshed product response schemas; backend delivery is tracked separately.
+
 ## SDK and CLI 0.3.0
 
 This refresh adds 110 operations to the 0.2.1 contract, bringing generated coverage to 548 operations. No operation is removed. The public specification has 568 operations; 20 remain intentionally excluded from SDK generation.
